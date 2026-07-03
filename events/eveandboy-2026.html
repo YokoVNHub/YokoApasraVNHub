@@ -48,12 +48,14 @@
             justify-content:center;
             align-items:center;
             z-index:9999;
+            cursor: pointer;
         }
 
         .lightbox img{
             max-width:90%;
             max-height:90%;
             border-radius:12px;
+            transition: .3s ease;
         }
 
         .lightbox.active{
@@ -153,6 +155,7 @@
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
     <img id="lightbox-img">
+    
 </div>
 
 <script>
@@ -160,17 +163,45 @@ const images = document.querySelectorAll('.gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
-images.forEach(img => {
+let currentIndex = 0;
+let imageArray = Array.from(images);
+
+function showImage(index){
+    if(index < 0) index = imageArray.length - 1;
+    if(index >= imageArray.length) index = 0;
+
+    currentIndex = index;
+    lightboxImg.src = imageArray[currentIndex].src;
+    lightbox.classList.add('active');
+}
+
+images.forEach((img, index) => {
     img.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        lightboxImg.src = img.src;
+        showImage(index);
     });
 });
 
 lightbox.addEventListener('click', () => {
     lightbox.classList.remove('active');
 });
-</script>
 
+document.addEventListener('keydown', (e) => {
+
+    if(!lightbox.classList.contains('active')) return;
+
+    if(e.key === "ArrowRight"){
+        showImage(currentIndex + 1);
+    }
+
+    if(e.key === "ArrowLeft"){
+        showImage(currentIndex - 1);
+    }
+
+    if(e.key === "Escape"){
+        lightbox.classList.remove('active');
+    }
+
+});
+</script>
 </body>
 </html>
