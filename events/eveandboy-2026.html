@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yoko @ EVEANDBOY | VNHub</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .event-header{
+            padding:40px 0;
+        }
+
+        .event-title{
+            font-size:28px;
+            margin-bottom:8px;
+        }
+
+        .event-meta{
+            opacity:.6;
+            margin-bottom:20px;
+        }
+
+        /* GALLERY GRID */
+        .gallery{
+            columns:3;
+            column-gap:16px;
+        }
+
+        .gallery img{
+            width:100%;
+            margin-bottom:16px;
+            border-radius:14px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .gallery img:hover{
+            transform:scale(1.02);
+        }
+
+        /* LIGHTBOX */
+        .lightbox{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.85);
+            display:none;
+            justify-content:center;
+            align-items:center;
+            z-index:9999;
+        }
+
+        .lightbox img{
+            max-width:90%;
+            max-height:90%;
+            border-radius:12px;
+        }
+
+        .lightbox.active{
+            display:flex;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+
+        <a href="../index.html" class="logo">
+            <img src="../assets/logo/logo.png">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html">Events</a></li>
+            <li><a href="#">Exclusive</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+    </div>
+</header>
+
+<section class="event-header container">
+
+    <div class="event-title">Yoko @ EVEANDBOY</div>
+    <div class="event-meta">30 June 2026 • Bangkok • 86 Photos</div>
+
+</section>
+
+<!-- GALLERY -->
+<section class="container">
+
+    <div class="gallery">
+
+        <img src="../assets/images/hero.jpg">
+        <img src="../assets/images/hero.jpg">
+        <img src="../assets/images/hero.jpg">
+        <img src="../assets/images/hero.jpg">
+        <img src="../assets/images/hero.jpg">
+        <img src="../assets/images/hero.jpg">
+
+    </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <img id="lightbox-img">
+</div>
+
+<script>
+const images = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+    });
+});
+
+lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+</script>
+
+</body>
+</html>
