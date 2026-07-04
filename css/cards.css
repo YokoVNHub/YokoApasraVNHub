@@ -1,0 +1,116 @@
+/* ==========================
+   EVENTS
+========================== */
+
+.event-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+
+}
+
+/* CARD */
+
+.event-card{
+
+    display:flex;
+    gap:28px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.3s;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+
+}
+
+.event-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 16px 40px rgba(0,0,0,.08);
+
+}
+
+/* THUMB */
+
+.event-thumb{
+
+    width:320px;
+    height:180px;
+
+    flex-shrink:0;
+
+    overflow:hidden;
+
+}
+
+.event-thumb img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.45s;
+
+}
+
+.event-card:hover img{
+
+    transform:scale(1.06);
+
+}
+
+/* INFO */
+
+.event-info{
+
+    padding:28px 8px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.event-info h2{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.event-date{
+
+    color:#777;
+
+    margin-bottom:6px;
+
+}
+
+.event-location{
+
+    color:#999;
+
+    margin-bottom:18px;
+
+}
+
+.event-count{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
