@@ -1,54 +1,51 @@
-/* ==========================
-   EVENTS
-========================== */
-
-.event-list{
-
-    display:flex;
-    flex-direction:column;
-    gap:28px;
-
-}
-
-/* CARD */
+/* ==========================================
+   EVENT CARDS
+========================================== */
 
 .event-card{
 
     display:flex;
+    align-items:center;
     gap:28px;
 
     background:#fff;
 
-    border:1px solid var(--border);
+    border:1px solid #f5d5e5;
+    border-radius:24px;
 
-    border-radius:22px;
+    padding:22px;
 
-    overflow:hidden;
+    margin-top:24px;
 
-    transition:.3s;
+    text-decoration:none;
+    color:inherit;
 
-    box-shadow:0 8px 24px rgba(0,0,0,.05);
+    transition:.25s ease;
 
 }
 
 .event-card:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-4px);
 
     box-shadow:0 16px 40px rgba(0,0,0,.08);
 
 }
 
-/* THUMB */
+/* ==========================================
+   THUMBNAIL
+========================================== */
 
 .event-thumb{
 
-    width:320px;
-    height:180px;
+    width:280px;
+    height:170px;
 
     flex-shrink:0;
 
     overflow:hidden;
+
+    border-radius:18px;
 
 }
 
@@ -57,68 +54,125 @@
     width:100%;
     height:100%;
 
+    display:block;
+
     object-fit:cover;
 
-    transition:.45s;
+    object-position:50% 20%;
+
+    transition:.35s;
 
 }
 
-.event-card:hover img{
+.event-card:hover .event-thumb img{
 
-    transform:scale(1.06);
+    transform:scale(1.05);
 
 }
 
-/* INFO */
+/* ==========================================
+   EVENT INFO
+========================================== */
 
 .event-info{
 
-    padding:28px 8px;
+    flex:1;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
 
 }
 
 .event-info h2{
 
-    font-size:30px;
+    font-size:2rem;
 
-    margin-bottom:10px;
+    margin-bottom:14px;
+
+    color:#2d3553;
 
 }
 
 .event-date{
 
-    color:#777;
+    color:#666;
 
-    margin-bottom:6px;
+    margin-bottom:8px;
+
+    font-size:1rem;
 
 }
 
 .event-location{
 
-    color:#999;
+    color:#777;
 
     margin-bottom:18px;
 
-}
-
-.event-count{
-
-    color:var(--primary);
-
-    font-weight:600;
+    font-size:1rem;
 
 }
 
-.gallery img{
+.event-photos{
 
-    width:100%;
-    border-radius:18px;
-    display:block;
+    display:inline-block;
+
+    color:#ff5fa5;
+
+    font-weight:700;
+
+}
+
+/* ==========================================
+   LATEST EVENT
+========================================== */
+
+.latest-event{
+
+    padding:80px 0;
+
+}
+
+.latest-event h2{
+
+    font-size:2rem;
+
+    margin-bottom:28px;
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:900px){
+
+    .event-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .event-thumb{
+
+        width:100%;
+        height:220px;
+
+    }
+
+    .event-info{
+
+        width:100%;
+
+    }
+
+    .event-info h2{
+
+        font-size:1.6rem;
+
+    }
 
 }
