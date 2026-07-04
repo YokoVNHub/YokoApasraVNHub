@@ -95,7 +95,7 @@
 
     <div class="gallery">
         <img src="../assets/..." class="gallery-img">
-        <img src="../assets/events/eveandboy-2026/001.jpg">
+        <img src="../assets/events/eveandboy-2026/001.jpg" class="gallery-img">
 <img src="../assets/events/eveandboy-2026/002.jpg" class="gallery-img">
 <img src="../assets/events/eveandboy-2026/003.jpg" class="gallery-img">
 <img src="../assets/events/eveandboy-2026/004.jpg" class="gallery-img">
@@ -185,37 +185,6 @@ images.forEach((img, index) => {
 lightbox.addEventListener('click', () => {
     lightbox.classList.remove('active');
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const images = document.querySelectorAll(".gallery-img");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-
-    let currentIndex = 0;
-    const imageArray = Array.from(images);
-
-    function showImage(index) {
-
-        if (index < 0) index = imageArray.length - 1;
-        if (index >= imageArray.length) index = 0;
-
-        currentIndex = index;
-        lightboxImg.src = imageArray[currentIndex].src;
-
-        lightbox.classList.add("active");
-    }
-
-    images.forEach((img, index) => {
-        img.addEventListener("click", () => {
-            showImage(index);
-        });
-    });
-
-    lightbox.addEventListener("click", () => {
-        lightbox.classList.remove("active");
-        lightboxImg.src = ""; // 🔥 FIX quan trọng
-    });
 
     document.addEventListener("keydown", (e) => {
 
