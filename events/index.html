@@ -6,15 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Events | YokoApasraVNHub</title>
+    <title>Events | Yoko Apasra VNHub</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/cards.css">
+    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="../css/lightbox.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 
 </head>
 
@@ -27,7 +27,9 @@
         <a href="/YokoApasraVNHub/" class="logo">
 
             <img src="/YokoApasraVNHub/assets/logo/logo.png"
-                 alt="YokoApasraVNHub">
+                 alt="Yoko Apasra VNHub">
+
+            <span>Yoko Apasra VNHub</span>
 
         </a>
 
@@ -37,7 +39,7 @@
 
                 <li><a href="/YokoApasraVNHub/">Home</a></li>
 
-                <li><a href="/YokoApasraVNHub/events/">Events</a></li>
+                <li><a href="/YokoApasraVNHub/events/" class="active">Events</a></li>
 
                 <li><a href="/YokoApasraVNHub/exclusive/">Exclusive</a></li>
 
@@ -51,55 +53,66 @@
 
 </header>
 
-<section>
 
-<div class="container">
+<main>
 
-<h1 class="section-title">Events</h1>
+<section class="events-page">
 
-<p class="section-desc">
-A collection of Yoko Apasra's public appearances,
-fan meetings and brand events.
-</p>
+    <div class="container">
 
-<div class="event-list">
+        <div class="page-title">
 
-<a class="event-card"
-href="eveandboy-2026.html">
+            <h1>Events</h1>
 
-<div class="event-thumb">
+            <p>
+                A collection of Yoko Apasra's public appearances,
+                fan meetings and brand events.
+            </p>
 
-<img
-src="../assets/events/eveandboy-2026/001.jpg"
-alt="Yoko EVEANDBOY">
+        </div>
 
-</div>
 
-<div class="event-info">
+        <!-- ===========================
+             EVENT CARD
+        ============================ -->
 
-<h2>Yoko @ EVEANDBOY</h2>
+        <a href="eveandboy-2026.html" class="event-card">
 
-<p class="event-date">
-30 June 2026
-</p>
+            <div class="event-thumb">
 
-<p class="event-location">
-Bangkok, Thailand
-</p>
+                <img src="../assets/events/eveandboy-2026/001.jpg"
+                     alt="Yoko @ EVEANDBOY">
 
-<p class="event-count">
-51 Photos
-</p>
+            </div>
 
-</div>
+            <div class="event-info">
 
-</a>
+                <h2>Yoko @ EVEANDBOY</h2>
 
-</div>
+                <p class="event-date">
+                    📅 30 June 2026
+                </p>
 
-</div>
+                <p class="event-location">
+                    📍 Bangkok, Thailand
+                </p>
+
+                <span class="event-photos">
+                    📷 51 Photos
+                </span>
+
+            </div>
+
+        </a>
+
+        <!-- END CARD -->
+
+
+    </div>
 
 </section>
+
+</main>
 
 </body>
 
