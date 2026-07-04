@@ -32,8 +32,8 @@ body{
 }
 
 img{
-    width:100%;
     display:block;
+    max-width:100%;
 }
 
 a{
@@ -138,6 +138,10 @@ a{
 
     width:100%;
 
+}
+
+.gallery img{
+    width:100%;
 }
 
 /* ================= HERO ================= */
@@ -332,5 +336,40 @@ footer small{
     gap:18px;
     font-size:.9rem;
 }
+/* ==========================
+   LIGHTBOX
+========================== */
 
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+    cursor:pointer;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:92vw;
+    max-height:92vh;
+
+    width:auto;
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:16px;
+
+    box-shadow:0 20px 80px rgba(0,0,0,.45);
+}
 }
