@@ -1,9 +1,6 @@
 .container{
-
-    width:min(var(--container),92%);
-
-    margin:auto;
-
+    width:min(1200px,92%);
+    margin:0 auto;
 }
 
 section{
