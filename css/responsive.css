@@ -1,0 +1,29 @@
+@media(max-width:768px){
+
+.header-container{
+
+    flex-direction:column;
+
+    height:auto;
+
+    padding:18px 0;
+
+}
+
+.nav-menu{
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+.section-title{
+
+    font-size:34px;
+
+}
+
+}
