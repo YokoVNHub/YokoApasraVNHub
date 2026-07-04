@@ -1,114 +1,123 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",()=>{
 
-    const gallery = document.getElementById("gallery");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
+const gallery=document.getElementById("gallery");
 
-    if (!gallery || !lightbox || !lightboxImg) return;
+const lightbox=document.getElementById("lightbox");
 
-    let images = [];
-    let currentIndex = 0;
+const lightboxImg=document.getElementById("lightbox-img");
 
-    function updateImages() {
-        images = [...gallery.querySelectorAll(".gallery-img")];
+const prev=document.querySelector(".lb-prev");
+
+const next=document.querySelector(".lb-next");
+
+const close=document.querySelector(".lb-close");
+
+const counter=document.getElementById("lb-counter");
+
+let images=[];
+
+let current=0;
+
+function refreshImages(){
+
+    images=[...gallery.querySelectorAll(".gallery-img")];
+
+}
+
+function open(index){
+
+    refreshImages();
+
+    current=index;
+
+    update();
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow="hidden";
+
+}
+
+function update(){
+
+    lightboxImg.src=images[current].src;
+
+    counter.textContent=`${current+1} / ${images.length}`;
+
+}
+
+function closeBox(){
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow="";
+
+}
+
+function nextImg(){
+
+    current++;
+
+    if(current>=images.length){
+
+        current=0;
+
     }
 
-    function openLightbox(index) {
+    update();
 
-        updateImages();
+}
 
-        currentIndex = index;
+function prevImg(){
 
-        lightboxImg.src = images[currentIndex].src;
+    current--;
 
-        lightbox.classList.add("active");
+    if(current<0){
 
-        document.body.style.overflow = "hidden";
-
-    }
-
-    function closeLightbox() {
-
-        lightbox.classList.remove("active");
-
-        lightboxImg.src = "";
-
-        document.body.style.overflow = "";
+        current=images.length-1;
 
     }
 
-    function nextImage() {
+    update();
 
-        currentIndex++;
+}
 
-        if(currentIndex >= images.length){
+gallery.addEventListener("click",(e)=>{
 
-            currentIndex = 0;
+    if(!e.target.classList.contains("gallery-img")) return;
 
-        }
+    refreshImages();
 
-        lightboxImg.src = images[currentIndex].src;
+    open(images.indexOf(e.target));
+
+});
+
+next.onclick=nextImg;
+
+prev.onclick=prevImg;
+
+close.onclick=closeBox;
+
+lightbox.onclick=(e)=>{
+
+    if(e.target===lightbox){
+
+        closeBox();
 
     }
 
-    function prevImage() {
+};
 
-        currentIndex--;
+document.addEventListener("keydown",(e)=>{
 
-        if(currentIndex < 0){
+    if(!lightbox.classList.contains("active")) return;
 
-            currentIndex = images.length - 1;
+    if(e.key==="Escape") closeBox();
 
-        }
+    if(e.key==="ArrowRight") nextImg();
 
-        lightboxImg.src = images[currentIndex].src;
+    if(e.key==="ArrowLeft") prevImg();
 
-    }
-
-    gallery.addEventListener("click",(e)=>{
-
-        if(!e.target.classList.contains("gallery-img")) return;
-
-        updateImages();
-
-        const index = images.indexOf(e.target);
-
-        openLightbox(index);
-
-    });
-
-    lightbox.addEventListener("click",(e)=>{
-
-        if(e.target===lightbox){
-
-            closeLightbox();
-
-        }
-
-    });
-
-    document.addEventListener("keydown",(e)=>{
-
-        if(!lightbox.classList.contains("active")) return;
-
-        if(e.key==="Escape"){
-
-            closeLightbox();
-
-        }
-
-        if(e.key==="ArrowRight"){
-
-            nextImage();
-
-        }
-
-        if(e.key==="ArrowLeft"){
-
-            prevImage();
-
-        }
-
-    });
+});
 
 });
