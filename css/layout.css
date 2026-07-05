@@ -68,25 +68,27 @@ section{
 
 .schedule-image{
 
-    overflow: hidden;
+    max-width:700px;
 
-    border-radius: 22px;
-   
-    max-width:760px;
-   
-    margin:auto;
+    width:100%;
+
+    margin:0 auto;
+
+    overflow:hidden;
+
+    border-radius:22px;
 
 }
 
 .schedule-image img{
 
-    width: 100%;
+    width:100%;
 
-    display: block;
+    height:auto;
 
-    border-radius: 22px;
+    display:block;
 
-    transition: .4s ease;
+    border-radius:22px;
 
 }
 
