@@ -1,174 +1,261 @@
-/* =========================================================
-   LAYOUT
-========================================================= */
+/* ==========================================
+   CONTAINER
+========================================== */
 
-.container {
-    width: min(1200px, 92%);
-    margin: 0 auto;
+.container{
+
+    width:min(1200px,92%);
+    margin:0 auto;
+
 }
 
-/* =========================================================
-   GENERAL SECTION
-========================================================= */
+/* ==========================================
+   SECTION
+========================================== */
 
-section {
-    padding: 90px 0;
+section{
+
+    padding:100px 0;
+
 }
 
-.section-title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 18px;
-    color: var(--text);
+.section-title{
+
+    font-size:2.5rem;
+    font-weight:700;
+    text-align:center;
+
+    color:#2d3553;
+
+    margin-bottom:16px;
+
 }
 
-.section-desc {
-    max-width: 720px;
-    margin: 0 auto 50px;
-    text-align: center;
-    color: var(--text-light);
-    line-height: 1.8;
+.section-desc{
+
+    max-width:760px;
+
+    margin:0 auto 48px;
+
+    text-align:center;
+
+    color:#6e7185;
+
+    line-height:1.8;
+
 }
 
-/* =========================================================
+/* ==========================================
    HERO
-========================================================= */
+========================================== */
 
-.hero {
-    padding: 90px 0 100px;
-    text-align: center;
+.hero{
+
+    padding:70px 0 100px;
+
 }
 
-.hero-subtitle {
-    display: inline-block;
-    margin-bottom: 14px;
+.hero .container{
 
-    font-size: .95rem;
-    font-weight: 500;
-    letter-spacing: .25em;
-    text-transform: uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 
-    color: var(--text-light);
 }
 
-.hero h1 {
-    font-size: clamp(2.8rem, 7vw, 4.3rem);
-    font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 22px;
+.hero-content{
+
+    max-width:760px;
+
+    text-align:center;
+
+    margin-bottom:48px;
+
 }
 
-.hero-description {
-    max-width: 560px;
+.hero-subtitle{
 
-    margin: 0 auto 50px;
+    font-size:1rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
 
-    font-size: 1.08rem;
-    line-height: 1.9;
+    color:#ff6ba5;
 
-    color: var(--text-light);
+    margin-bottom:18px;
+
 }
 
-.hero img {
-    width: 100%;
-    max-width: 980px;
+.hero h1{
 
-    aspect-ratio: 2.2 / 1;
+    font-size:3.8rem;
+    line-height:1.15;
 
-    object-fit: cover;
-    object-position: center;
+    color:#2d3553;
 
-    display: block;
+    margin-bottom:24px;
 
-    margin: 0 auto 45px;
-
-    border-radius: 26px;
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, .08);
-
-    transition: transform .35s ease;
 }
 
-.hero img:hover {
-    transform: scale(1.01);
+.hero-text{
+
+    color:#6e7185;
+
+    font-size:1.1rem;
+
+    line-height:1.9;
+
+    margin-bottom:36px;
+
 }
 
-/* =========================================================
-   HERO BUTTON
-========================================================= */
+.hero-button{
 
-.hero-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .6rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    padding: 15px 34px;
+    padding:15px 34px;
 
-    border-radius: 999px;
+    border-radius:999px;
 
-    background: #ff6bb5;
-    color: #fff;
+    background:#ff6ba5;
 
-    font-weight: 600;
-    font-size: .95rem;
+    color:#fff;
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
+    font-weight:600;
+
+    transition:.3s ease;
+
 }
 
-.hero-button:hover {
-    transform: translateY(-3px);
+.hero-button:hover{
 
-    box-shadow:
-        0 10px 25px rgba(255, 107, 181, .35);
+    transform:translateY(-4px);
+
+    box-shadow:0 16px 40px rgba(255,107,165,.25);
+
 }
 
-/* =========================================================
+.hero-image{
+
+    width:100%;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:32px;
+
+    object-fit:cover;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================
+   SCHEDULE
+========================================== */
+
+.schedule-card{
+
+    background:rgba(255,255,255,.45);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 60px rgba(255,120,180,.10);
+
+    transition:.35s ease;
+
+}
+
+.schedule-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.schedule-card img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+/* ==========================================
    ABOUT
-========================================================= */
+========================================== */
 
-.about {
-    text-align: center;
+.about-card{
+
+    background:rgba(255,255,255,.45);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:30px;
+
+    padding:60px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(255,120,180,.10);
+
+    transition:.35s ease;
+
 }
 
-.about .container {
-    max-width: 760px;
+.about-card:hover{
+
+    transform:translateY(-6px);
+
 }
 
-.about h2 {
-    font-size: clamp(2rem, 5vw, 2.6rem);
-    margin-bottom: 24px;
+.about-card .section-desc{
+
+    margin-bottom:36px;
+
 }
 
-.about p {
-    color: var(--text-light);
-    line-height: 1.9;
-    margin-bottom: 18px;
+/* ==========================================
+   LATEST EVENT
+========================================== */
+
+.latest-event{
+
+    padding-bottom:120px;
+
 }
 
-.about p:last-child {
-    margin-bottom: 0;
-}
-
-/* =========================================================
+/* ==========================================
    FOOTER
-========================================================= */
+========================================== */
 
-footer {
-    padding: 50px 0;
-    text-align: center;
+.footer{
+
+    padding:50px 0;
+
+    text-align:center;
+
+    border-top:1px solid #f2dbe7;
+
 }
 
-footer p {
-    margin-bottom: 10px;
-    font-weight: 500;
-}
+.footer p{
 
-footer small {
-    color: var(--text-light);
+    color:#7d7d7d;
+
+    line-height:1.8;
+
 }
