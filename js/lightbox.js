@@ -17,14 +17,15 @@ const counter=document.getElementById("lb-counter");
     let images=[];
 
 let current=0;
-
+    
+}
+                          
 function refreshImages(){
 
     images=[...gallery.querySelectorAll(".gallery-img")];
 
-}
-
     const images = document.querySelectorAll(".lightbox-trigger");
+}
 
     images.forEach(image => {
 
