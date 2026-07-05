@@ -297,3 +297,51 @@ section{
     line-height: 1.8;
 
 }
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    text-decoration:none;
+
+}
+
+.logo img{
+
+    width:54px;
+
+    display:block;
+
+}
+
+.logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.2;
+
+}
+
+.logo-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:#ff5a9d;
+
+}
+
+.logo-subtitle{
+
+    font-size:.78rem;
+
+    color:#888;
+
+}
