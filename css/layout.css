@@ -3,228 +3,92 @@
 ========================================== */
 
 .container{
-
-    width:min(1200px,92%);
-    margin:0 auto;
-
+    width: min(1200px, 92%);
+    margin: 0 auto;
 }
 
 /* ==========================================
-   SECTION
+   GLOBAL SECTION
 ========================================== */
 
 section{
-
-    padding:100px 0;
-
+    padding: 90px 0;
 }
 
 .section-title{
-
-    font-size:2.5rem;
-    font-weight:700;
-    text-align:center;
-
-    color:#2d3553;
-
-    margin-bottom:16px;
-
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d3553;
+    text-align: center;
+    margin-bottom: 16px;
 }
 
 .section-desc{
-
-    max-width:760px;
-
-    margin:0 auto 48px;
-
-    text-align:center;
-
-    color:#6e7185;
-
-    line-height:1.8;
-
-}
-
-/* ==========================================
-   HERO
-========================================== */
-
-.hero{
-
-    padding:70px 0 100px;
-
-}
-
-.hero .container{
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-}
-
-.hero-content{
-
-    max-width:760px;
-
-    text-align:center;
-
-    margin-bottom:48px;
-
-}
-
-.hero-subtitle{
-
-    font-size:1rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
-
-    color:#ff6ba5;
-
-    margin-bottom:18px;
-
-}
-
-.hero h1{
-
-    font-size:3.8rem;
-    line-height:1.15;
-
-    color:#2d3553;
-
-    margin-bottom:24px;
-
-}
-
-.hero-text{
-
-    color:#6e7185;
-
-    font-size:1.1rem;
-
-    line-height:1.9;
-
-    margin-bottom:36px;
-
-}
-
-.hero-button{
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:15px 34px;
-
-    border-radius:999px;
-
-    background:#ff6ba5;
-
-    color:#fff;
-
-    font-weight:600;
-
-    transition:.3s ease;
-
-}
-
-.hero-button:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:0 16px 40px rgba(255,107,165,.25);
-
-}
-
-.hero-image{
-
-    width:100%;
-
-}
-
-.hero-image img{
-
-    width:100%;
-
-    display:block;
-
-    border-radius:32px;
-
-    object-fit:cover;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
-
+    max-width: 760px;
+    margin: 0 auto 40px;
+    text-align: center;
+    line-height: 1.8;
+    color: #6e7185;
 }
 
 /* ==========================================
    SCHEDULE
 ========================================== */
 
+.schedule{
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+
 .schedule-card{
 
-    background:rgba(255,255,255,.45);
+    padding: 48px;
 
-    border:1px solid rgba(255,255,255,.75);
+    background: rgba(255,255,255,.45);
 
-    backdrop-filter:blur(18px);
+    border: 1px solid rgba(255,255,255,.75);
 
-    border-radius:30px;
+    backdrop-filter: blur(18px);
 
-    overflow:hidden;
+    border-radius: 30px;
 
-    box-shadow:0 20px 60px rgba(255,120,180,.10);
+    box-shadow: 0 20px 60px rgba(255,120,180,.10);
 
-    transition:.35s ease;
+    transition: .35s ease;
 
 }
 
 .schedule-card:hover{
 
-    transform:translateY(-6px);
+    transform: translateY(-6px);
+
+    box-shadow: 0 28px 70px rgba(255,120,180,.18);
 
 }
 
-.schedule-card img{
+.schedule-image{
 
-    width:100%;
+    overflow: hidden;
 
-    display:block;
-
-}
-
-/* ==========================================
-   ABOUT
-========================================== */
-
-.about-card{
-
-    background:rgba(255,255,255,.45);
-
-    border:1px solid rgba(255,255,255,.75);
-
-    backdrop-filter:blur(18px);
-
-    border-radius:30px;
-
-    padding:60px;
-
-    text-align:center;
-
-    box-shadow:0 20px 60px rgba(255,120,180,.10);
-
-    transition:.35s ease;
+    border-radius: 22px;
 
 }
 
-.about-card:hover{
+.schedule-image img{
 
-    transform:translateY(-6px);
+    width: 100%;
+
+    display: block;
+
+    border-radius: 22px;
+
+    transition: .4s ease;
 
 }
 
-.about-card .section-desc{
+.schedule-card:hover .schedule-image img{
 
-    margin-bottom:36px;
+    transform: scale(1.02);
 
 }
 
@@ -233,8 +97,82 @@ section{
 ========================================== */
 
 .latest-event{
+    padding: 0 0 90px;
+}
 
-    padding-bottom:120px;
+/* ==========================================
+   ABOUT
+========================================== */
+
+.about{
+    padding-bottom: 120px;
+}
+
+.about-card{
+
+    padding: 56px;
+
+    background: rgba(255,255,255,.45);
+
+    border: 1px solid rgba(255,255,255,.75);
+
+    backdrop-filter: blur(18px);
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(255,120,180,.10);
+
+    transition: .35s ease;
+
+}
+
+.about-card:hover{
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 28px 70px rgba(255,120,180,.18);
+
+}
+
+.about-card .section-desc{
+
+    margin-bottom: 32px;
+
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.hero-button{
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 32px;
+
+    border-radius: 999px;
+
+    background: #ff6ba5;
+
+    color: #fff;
+
+    font-weight: 600;
+
+    transition: .3s ease;
+
+}
+
+.hero-button:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 14px 35px rgba(255,107,165,.25);
 
 }
 
@@ -244,18 +182,18 @@ section{
 
 .footer{
 
-    padding:50px 0;
+    padding: 50px 0;
 
-    text-align:center;
+    border-top: 1px solid #f2dbe7;
 
-    border-top:1px solid #f2dbe7;
+    text-align: center;
 
 }
 
 .footer p{
 
-    color:#7d7d7d;
+    color: #7d7d7d;
 
-    line-height:1.8;
+    line-height: 1.8;
 
 }
