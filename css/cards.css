@@ -1,178 +1,205 @@
-/* ==========================================
+/* =========================================================
    EVENT CARDS
-========================================== */
+========================================================= */
 
-.event-card{
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 36px;
 
-    display:flex;
-    align-items:center;
-    gap:28px;
+    margin-top: 28px;
+    padding: 24px;
 
-    background:#fff;
+    background: #fff;
 
-    border:1px solid #f5d5e5;
-    border-radius:24px;
+    border: 1px solid #f3dce7;
+    border-radius: 24px;
 
-    padding:22px;
+    text-decoration: none;
+    color: inherit;
 
-    margin-top:24px;
-
-    text-decoration:none;
-    color:inherit;
-
-    transition:.25s ease;
-
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
 }
 
-.event-card:hover{
+.event-card:hover {
+    transform: translateY(-6px);
 
-    transform:translateY(-4px);
+    border-color: #f0bdd6;
 
-    box-shadow:0 16px 40px rgba(0,0,0,.08);
-
+    box-shadow:
+        0 18px 42px rgba(0,0,0,.08);
 }
 
-/* ==========================================
+/* =========================================================
    THUMBNAIL
-========================================== */
+========================================================= */
 
-.event-thumb{
+.event-thumb {
+    width: 340px;
+    aspect-ratio: 16 / 10;
 
-    width:280px;
-    height:170px;
+    flex-shrink: 0;
 
-    flex-shrink:0;
+    overflow: hidden;
+    border-radius: 20px;
 
-    overflow:hidden;
-
-    border-radius:18px;
-
+    background: #f7f7f7;
 }
 
-.event-thumb img{
+.event-thumb img {
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 
-    display:block;
+    display: block;
 
-    object-fit:cover;
+    object-fit: cover;
+    object-position: center;
 
-    object-position:50% 20%;
-
-    transition:.35s;
-
+    transition:
+        transform .45s ease;
 }
 
-.event-card:hover .event-thumb img{
-
-    transform:scale(1.05);
-
+.event-card:hover .event-thumb img {
+    transform: scale(1.06);
 }
 
-/* ==========================================
+/* =========================================================
    EVENT INFO
-========================================== */
+========================================================= */
 
-.event-info{
+.event-info {
 
-    flex:1;
+    flex: 1;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+    min-width: 0;
 }
 
-.event-info h2{
+.event-info h2 {
 
-    font-size:2rem;
+    margin-bottom: 18px;
 
-    margin-bottom:14px;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    line-height: 1.25;
 
-    color:#2d3553;
-
+    color: var(--text);
 }
 
-.event-date{
+.event-date,
+.event-location {
 
-    color:#666;
+    color: var(--text-light);
 
-    margin-bottom:8px;
-
-    font-size:1rem;
-
+    font-size: .98rem;
+    line-height: 1.7;
 }
 
-.event-location{
-
-    color:#777;
-
-    margin-bottom:18px;
-
-    font-size:1rem;
-
+.event-date {
+    margin-bottom: 8px;
 }
 
-.event-photos{
-
-    display:inline-block;
-
-    color:#ff5fa5;
-
-    font-weight:700;
-
+.event-location {
+    margin-bottom: 24px;
 }
 
-/* ==========================================
+.event-photos {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    width: fit-content;
+
+    color: #ff5fa5;
+
+    font-weight: 600;
+
+    transition: .25s;
+}
+
+.event-card:hover .event-photos {
+    letter-spacing: .03em;
+}
+
+/* =========================================================
    LATEST EVENT
-========================================== */
+========================================================= */
 
-.latest-event{
+.latest-event {
+    padding: 90px 0;
+}
 
-    padding:80px 0;
+.latest-event h2 {
+    margin-bottom: 36px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .event-card {
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 24px;
+    }
+
+    .event-thumb {
+
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .event-info {
+        width: 100%;
+    }
 
 }
 
-.latest-event h2{
-
-    font-size:2rem;
-
-    margin-bottom:28px;
-
-}
-
-/* ==========================================
+/* =========================================================
    MOBILE
-========================================== */
+========================================================= */
 
-@media (max-width:900px){
+@media (max-width: 576px) {
 
-    .event-card{
+    .event-card {
 
-        flex-direction:column;
+        padding: 18px;
+        gap: 18px;
 
-        align-items:flex-start;
-
+        border-radius: 20px;
     }
 
-    .event-thumb{
+    .event-thumb {
 
-        width:100%;
-        height:220px;
-
+        border-radius: 16px;
     }
 
-    .event-info{
+    .event-info h2 {
 
-        width:100%;
-
+        font-size: 1.45rem;
+        margin-bottom: 14px;
     }
 
-    .event-info h2{
+    .event-date,
+    .event-location {
 
-        font-size:1.6rem;
+        font-size: .95rem;
+    }
 
+    .event-location {
+
+        margin-bottom: 18px;
     }
 
 }
