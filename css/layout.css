@@ -36,65 +36,159 @@ section{
 ========================================== */
 
 .schedule{
-    padding-top: 60px;
-    padding-bottom: 100px;
+
+    padding-top:60px;
+    padding-bottom:100px;
+
 }
 
 .schedule-card{
 
-    padding: 60px;
+    padding:50px;
 
-    background: rgba(255,255,255,.18);
+    background:rgba(255,255,255,.18);
 
-    border: 1px solid rgba(255,255,255,.45);
+    border:1px solid rgba(255,255,255,.45);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:blur(24px);
 
-    border-radius: 30px;
+    border-radius:32px;
 
-    box-shadow: 0 20px 60px rgba(255,120,180,.10);
-
-    transition: .35s ease;
+    box-shadow:0 18px 60px rgba(255,120,180,.08);
 
 }
 
-.schedule-card:hover{
+.schedule-header{
 
-    transform: translateY(-6px);
+    text-align:center;
 
-    box-shadow: 0 28px 70px rgba(255,120,180,.18);
+    margin-bottom:50px;
 
 }
 
-.schedule-image{
+.schedule-content{
 
-    max-width:700px;
+    display:grid;
 
-    width:100%;
+    grid-template-columns:380px 1fr;
 
-    margin:0 auto;
+    gap:60px;
+
+    align-items:center;
+
+}
+
+.schedule-poster{
+
+    border-radius:24px;
 
     overflow:hidden;
 
-    border-radius:22px;
-
 }
 
-.schedule-image img{
+.schedule-poster img{
 
     width:100%;
 
-    height:auto;
-
     display:block;
 
-    border-radius:22px;
+    transition:.35s;
 
 }
 
-.schedule-card:hover .schedule-image img{
+.schedule-poster:hover img{
 
-    transform: scale(1.02);
+    transform:scale(1.03);
+
+}
+
+.schedule-info h2{
+
+    font-size:2rem;
+
+    color:#2d3553;
+
+    margin:18px 0 36px;
+
+}
+
+.schedule-badge{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:#ffe4ef;
+
+    color:#ff4f98;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.schedule-item{
+
+    display:flex;
+
+    gap:24px;
+
+    margin-bottom:28px;
+
+}
+
+.schedule-date{
+
+    width:90px;
+
+    font-weight:700;
+
+    color:#ff4f98;
+
+    font-size:1.1rem;
+
+}
+
+.schedule-date.birthday{
+
+    color:#ff7b00;
+
+}
+
+.schedule-detail h3{
+
+    margin-bottom:8px;
+
+    color:#2d3553;
+
+}
+
+.schedule-detail p{
+
+    margin-bottom:6px;
+
+    color:#666;
+
+}
+
+.schedule-detail small{
+
+    color:#999;
+
+}
+
+.schedule-source{
+
+    margin-top:40px;
+
+    color:#999;
+
+    font-size:.95rem;
 
 }
 
