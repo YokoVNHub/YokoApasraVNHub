@@ -1,205 +1,223 @@
-/* =========================================================
-   EVENT CARDS
-========================================================= */
+/* ==========================================
+   EVENT CARD
+========================================== */
 
-.event-card {
-    display: flex;
-    align-items: center;
-    gap: 36px;
+.event-card{
 
-    margin-top: 28px;
-    padding: 24px;
+    display:flex;
+    align-items:center;
+    gap:36px;
 
-    background: #fff;
+    background:rgba(255,255,255,.45);
 
-    border: 1px solid #f3dce7;
-    border-radius: 24px;
+    border:1px solid rgba(255,255,255,.75);
 
-    text-decoration: none;
-    color: inherit;
+    backdrop-filter:blur(18px);
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        border-color .3s ease;
+    border-radius:30px;
+
+    padding:28px;
+
+    text-decoration:none;
+
+    color:inherit;
+
+    box-shadow:0 20px 60px rgba(255,120,180,.10);
+
+    transition:.35s ease;
+
 }
 
-.event-card:hover {
-    transform: translateY(-6px);
+.event-card:hover{
 
-    border-color: #f0bdd6;
+    transform:translateY(-8px);
 
-    box-shadow:
-        0 18px 42px rgba(0,0,0,.08);
+    box-shadow:0 28px 70px rgba(255,120,180,.18);
+
 }
 
-/* =========================================================
+/* ==========================================
    THUMBNAIL
-========================================================= */
+========================================== */
 
-.event-thumb {
-    width: 340px;
-    aspect-ratio: 16 / 10;
+.event-thumb{
 
-    flex-shrink: 0;
+    width:340px;
+    height:210px;
 
-    overflow: hidden;
-    border-radius: 20px;
+    flex-shrink:0;
 
-    background: #f7f7f7;
+    overflow:hidden;
+
+    border-radius:24px;
+
 }
 
-.event-thumb img {
+.event-thumb img{
 
-    width: 100%;
-    height: 100%;
+    width:100%;
+    height:100%;
 
-    display: block;
+    display:block;
 
-    object-fit: cover;
-    object-position: center;
+    object-fit:cover;
 
-    transition:
-        transform .45s ease;
+    object-position:center;
+
+    transition:.45s ease;
+
 }
 
-.event-card:hover .event-thumb img {
-    transform: scale(1.06);
+.event-card:hover .event-thumb img{
+
+    transform:scale(1.05);
+
 }
 
-/* =========================================================
+/* ==========================================
    EVENT INFO
-========================================================= */
+========================================== */
 
-.event-info {
+.event-info{
 
-    flex: 1;
+    flex:1;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    min-width: 0;
-}
-
-.event-info h2 {
-
-    margin-bottom: 18px;
-
-    font-size: clamp(1.7rem, 3vw, 2.2rem);
-    line-height: 1.25;
-
-    color: var(--text);
-}
-
-.event-date,
-.event-location {
-
-    color: var(--text-light);
-
-    font-size: .98rem;
-    line-height: 1.7;
-}
-
-.event-date {
-    margin-bottom: 8px;
-}
-
-.event-location {
-    margin-bottom: 24px;
-}
-
-.event-photos {
-
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    width: fit-content;
-
-    color: #ff5fa5;
-
-    font-weight: 600;
-
-    transition: .25s;
-}
-
-.event-card:hover .event-photos {
-    letter-spacing: .03em;
-}
-
-/* =========================================================
-   LATEST EVENT
-========================================================= */
-
-.latest-event {
-    padding: 90px 0;
-}
-
-.latest-event h2 {
-    margin-bottom: 36px;
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .event-card {
-
-        flex-direction: column;
-        align-items: flex-start;
-
-        gap: 24px;
-    }
-
-    .event-thumb {
-
-        width: 100%;
-        aspect-ratio: 16 / 9;
-    }
-
-    .event-info {
-        width: 100%;
-    }
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 
 }
 
-/* =========================================================
+.event-info h2{
+
+    font-size:2rem;
+
+    color:#2d3553;
+
+    margin-bottom:18px;
+
+}
+
+.event-date{
+
+    color:#7b7b7b;
+
+    margin-bottom:10px;
+
+}
+
+.event-location{
+
+    color:#7b7b7b;
+
+    margin-bottom:24px;
+
+}
+
+.event-photos{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    width:max-content;
+
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    background:#ff6ba5;
+
+    color:#fff;
+
+    font-weight:600;
+
+    transition:.3s ease;
+
+}
+
+.event-card:hover .event-photos{
+
+    background:#ff5a9d;
+
+}
+
+/* ==========================================
+   GLASS CARD
+========================================== */
+
+.schedule-card,
+.about-card{
+
+    transition:.35s ease;
+
+}
+
+.schedule-card:hover,
+.about-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 24px 60px rgba(255,120,180,.16);
+
+}
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.schedule-card img{
+
+    width:100%;
+
+    display:block;
+
+    transition:.45s ease;
+
+}
+
+.schedule-card:hover img{
+
+    transform:scale(1.02);
+
+}
+
+/* ==========================================
    MOBILE
-========================================================= */
+========================================== */
 
-@media (max-width: 576px) {
+@media(max-width:900px){
 
-    .event-card {
+    .event-card{
 
-        padding: 18px;
-        gap: 18px;
+        flex-direction:column;
 
-        border-radius: 20px;
+        align-items:flex-start;
+
+        gap:24px;
+
+        padding:22px;
+
     }
 
-    .event-thumb {
+    .event-thumb{
 
-        border-radius: 16px;
+        width:100%;
+
+        height:230px;
+
     }
 
-    .event-info h2 {
+    .event-info{
 
-        font-size: 1.45rem;
-        margin-bottom: 14px;
+        width:100%;
+
     }
 
-    .event-date,
-    .event-location {
+    .event-info h2{
 
-        font-size: .95rem;
-    }
+        font-size:1.6rem;
 
-    .event-location {
-
-        margin-bottom: 18px;
     }
 
 }
