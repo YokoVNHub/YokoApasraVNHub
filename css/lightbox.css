@@ -1,29 +1,23 @@
 /* ==========================================
-   LIGHTBOX v1.1
+   LIGHTBOX UI v2
 ========================================== */
 
 .lightbox{
 
     position:fixed;
-
     inset:0;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-    background:rgba(10,12,20,.78);
-
-    backdrop-filter:blur(10px);
-
     opacity:0;
-
     visibility:hidden;
 
-    transition:opacity .28s ease,
-               visibility .28s ease;
+    background:rgba(18,18,24,.88);
+    backdrop-filter:blur(18px);
+
+    transition:.35s ease;
 
     z-index:9999;
 
@@ -32,35 +26,33 @@
 .lightbox.show{
 
     opacity:1;
-
     visibility:visible;
 
 }
 
+/* =========================
+   IMAGE
+========================= */
+
 .lightbox img{
 
-    max-width:92vw;
-
+    max-width:min(92vw,1300px);
     max-height:88vh;
 
-    border-radius:18px;
+    border-radius:22px;
 
     object-fit:contain;
 
     box-shadow:
 
-        0 20px 60px rgba(0,0,0,.45),
+        0 30px 80px rgba(0,0,0,.45),
 
         0 0 0 1px rgba(255,255,255,.08);
 
-    transform:scale(.95);
-
-    opacity:0;
+    transform:scale(.96);
 
     transition:
-
-        transform .25s ease,
-
+        transform .35s ease,
         opacity .25s ease;
 
 }
@@ -69,11 +61,11 @@
 
     transform:scale(1);
 
-    opacity:1;
-
 }
 
-/* ========= Buttons ========= */
+/* =========================
+   BUTTONS
+========================= */
 
 .lightbox-close,
 .lightbox-prev,
@@ -81,41 +73,32 @@
 
     position:absolute;
 
-    width:54px;
-
-    height:54px;
+    width:60px;
+    height:60px;
 
     display:flex;
-
+    justify-content:center;
     align-items:center;
 
-    justify-content:center;
-
-    padding:0;
-
     border:none;
+    border-radius:999px;
 
-    border-radius:50%;
+    background:rgba(255,255,255,.10);
 
-    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
 
-    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.12);
 
     color:#fff;
 
     cursor:pointer;
 
-    font-size:26px;
-
-    line-height:1;
+    font-size:0;
 
     transition:
-
         background .25s,
-
-        transform .2s,
-
-        opacity .2s;
+        transform .25s,
+        box-shadow .25s;
 
 }
 
@@ -123,81 +106,109 @@
 .lightbox-prev:hover,
 .lightbox-next:hover{
 
-    background:rgba(255,255,255,.25);
+    background:rgba(255,120,185,.22);
 
     transform:scale(1.08);
 
-}
-
-.lightbox-close:active,
-.lightbox-prev:active,
-.lightbox-next:active{
-
-    transform:scale(.95);
+    box-shadow:
+        0 10px 30px rgba(255,105,180,.25);
 
 }
 
-/* ========= Position ========= */
+/* =========================
+   SVG ARROWS
+========================= */
 
-.lightbox-close{
+.lightbox-prev::before{
 
-    top:24px;
+    content:"";
 
-    right:24px;
+    width:18px;
+    height:18px;
+
+    border-left:3px solid #fff;
+    border-bottom:3px solid #fff;
+
+    transform:
+        rotate(45deg)
+        translate(2px,-2px);
 
 }
+
+.lightbox-next::before{
+
+    content:"";
+
+    width:18px;
+    height:18px;
+
+    border-right:3px solid #fff;
+    border-bottom:3px solid #fff;
+
+    transform:
+        rotate(-45deg)
+        translate(-2px,-2px);
+
+}
+
+.lightbox-close::before{
+
+    content:"✕";
+
+    font-size:24px;
+    font-weight:300;
+
+}
+
+/* =========================
+   POSITION
+========================= */
 
 .lightbox-prev{
 
-    left:28px;
-
+    left:38px;
     top:50%;
-
     transform:translateY(-50%);
 
 }
 
 .lightbox-next{
 
-    right:28px;
-
+    right:38px;
     top:50%;
-
     transform:translateY(-50%);
 
 }
 
-.lightbox-prev:hover{
+.lightbox-close{
 
-    transform:translateY(-50%) scale(1.08);
-
-}
-
-.lightbox-next:hover{
-
-    transform:translateY(-50%) scale(1.08);
+    top:30px;
+    right:30px;
 
 }
 
-/* ========= Counter ========= */
+/* =========================
+   COUNTER
+========================= */
 
 .lightbox-counter{
 
     position:absolute;
 
     top:28px;
-
     left:50%;
 
     transform:translateX(-50%);
 
-    padding:8px 16px;
+    padding:10px 18px;
 
     border-radius:999px;
 
-    background:rgba(255,255,255,.10);
+    background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.10);
 
     color:#fff;
 
@@ -205,88 +216,106 @@
 
     font-weight:600;
 
-    letter-spacing:.6px;
+    letter-spacing:.5px;
 
 }
 
-/* ========= Caption ========= */
+/* =========================
+   CAPTION
+========================= */
 
 .lightbox-caption{
 
     position:absolute;
 
-    bottom:28px;
-
     left:50%;
+    bottom:28px;
 
     transform:translateX(-50%);
 
-    max-width:90%;
+    padding:12px 24px;
 
-    text-align:center;
+    border-radius:999px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.08);
 
     color:#fff;
 
     font-size:.95rem;
 
-    line-height:1.5;
+    font-weight:500;
 
-    opacity:.88;
+    max-width:90%;
 
-}
+    white-space:nowrap;
 
-/* ========= Loading ========= */
+    overflow:hidden;
 
-.lightbox img.loading{
-
-    opacity:.2;
-
-    filter:blur(6px);
+    text-overflow:ellipsis;
 
 }
 
-/* ========= Hide buttons when unnecessary ========= */
+/* =========================
+   SINGLE IMAGE
+========================= */
 
-.lightbox.single .lightbox-prev,
-.lightbox.single .lightbox-next,
-.lightbox.single .lightbox-counter{
+.lightbox.single
+.lightbox-prev,
+
+.lightbox.single
+.lightbox-next,
+
+.lightbox.single
+.lightbox-counter{
 
     display:none;
 
 }
 
-/* ========= Responsive ========= */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width:768px){
 
     .lightbox img{
 
-        max-width:95vw;
+        max-width:96vw;
+        max-height:78vh;
 
-        max-height:80vh;
-
-        border-radius:14px;
+        border-radius:16px;
 
     }
 
     .lightbox-prev,
     .lightbox-next{
 
-        width:46px;
-
-        height:46px;
-
-        font-size:22px;
+        width:48px;
+        height:48px;
 
     }
 
     .lightbox-close{
 
         width:44px;
-
         height:44px;
 
-        top:14px;
+        top:18px;
+        right:18px;
+
+    }
+
+    .lightbox-prev{
+
+        left:14px;
+
+    }
+
+    .lightbox-next{
 
         right:14px;
 
@@ -294,9 +323,9 @@
 
     .lightbox-counter{
 
-        top:16px;
+        top:18px;
 
-        font-size:.82rem;
+        font-size:.8rem;
 
     }
 
@@ -304,7 +333,13 @@
 
         bottom:18px;
 
-        font-size:.85rem;
+        width:calc(100% - 40px);
+
+        white-space:normal;
+
+        border-radius:16px;
+
+        text-align:center;
 
     }
 
