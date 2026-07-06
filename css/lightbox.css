@@ -1,5 +1,5 @@
 /* ==========================================
-   LIGHTBOX
+   LIGHTBOX v1.1
 ========================================== */
 
 .lightbox{
@@ -8,13 +8,22 @@
 
     inset:0;
 
-    display:none;
+    display:flex;
 
     justify-content:center;
 
     align-items:center;
 
-    background:rgba(0,0,0,.92);
+    background:rgba(10,12,20,.78);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:opacity .28s ease,
+               visibility .28s ease;
 
     z-index:9999;
 
@@ -22,7 +31,9 @@
 
 .lightbox.show{
 
-    display:flex;
+    opacity:1;
+
+    visibility:visible;
 
 }
 
@@ -32,11 +43,37 @@
 
     max-height:88vh;
 
-    border-radius:14px;
+    border-radius:18px;
 
     object-fit:contain;
 
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.45),
+
+        0 0 0 1px rgba(255,255,255,.08);
+
+    transform:scale(.95);
+
+    opacity:0;
+
+    transition:
+
+        transform .25s ease,
+
+        opacity .25s ease;
+
 }
+
+.lightbox.show img{
+
+    transform:scale(1);
+
+    opacity:1;
+
+}
+
+/* ========= Buttons ========= */
 
 .lightbox-close,
 .lightbox-prev,
@@ -44,25 +81,41 @@
 
     position:absolute;
 
-    width:50px;
+    width:54px;
 
-    height:50px;
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0;
 
     border:none;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(16px);
 
     color:#fff;
 
     cursor:pointer;
 
-    font-size:24px;
+    font-size:26px;
 
-    backdrop-filter:blur(12px);
+    line-height:1;
 
-    transition:.25s;
+    transition:
+
+        background .25s,
+
+        transform .2s,
+
+        opacity .2s;
 
 }
 
@@ -70,9 +123,21 @@
 .lightbox-prev:hover,
 .lightbox-next:hover{
 
-    background:rgba(255,255,255,.28);
+    background:rgba(255,255,255,.25);
+
+    transform:scale(1.08);
 
 }
+
+.lightbox-close:active,
+.lightbox-prev:active,
+.lightbox-next:active{
+
+    transform:scale(.95);
+
+}
+
+/* ========= Position ========= */
 
 .lightbox-close{
 
@@ -84,7 +149,7 @@
 
 .lightbox-prev{
 
-    left:30px;
+    left:28px;
 
     top:50%;
 
@@ -94,7 +159,7 @@
 
 .lightbox-next{
 
-    right:30px;
+    right:28px;
 
     top:50%;
 
@@ -102,60 +167,144 @@
 
 }
 
+.lightbox-prev:hover{
+
+    transform:translateY(-50%) scale(1.08);
+
+}
+
+.lightbox-next:hover{
+
+    transform:translateY(-50%) scale(1.08);
+
+}
+
+/* ========= Counter ========= */
+
 .lightbox-counter{
 
     position:absolute;
 
-    top:26px;
+    top:28px;
 
     left:50%;
 
     transform:translateX(-50%);
 
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(12px);
+
     color:#fff;
+
+    font-size:.9rem;
 
     font-weight:600;
 
-    letter-spacing:.5px;
+    letter-spacing:.6px;
 
 }
+
+/* ========= Caption ========= */
 
 .lightbox-caption{
 
     position:absolute;
 
-    bottom:30px;
+    bottom:28px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    color:#fff;
+    max-width:90%;
 
     text-align:center;
 
-    max-width:90%;
+    color:#fff;
 
     font-size:.95rem;
 
+    line-height:1.5;
+
+    opacity:.88;
+
 }
 
+/* ========= Loading ========= */
+
+.lightbox img.loading{
+
+    opacity:.2;
+
+    filter:blur(6px);
+
+}
+
+/* ========= Hide buttons when unnecessary ========= */
+
+.lightbox.single .lightbox-prev,
+.lightbox.single .lightbox-next,
+.lightbox.single .lightbox-counter{
+
+    display:none;
+
+}
+
+/* ========= Responsive ========= */
+
 @media (max-width:768px){
+
+    .lightbox img{
+
+        max-width:95vw;
+
+        max-height:80vh;
+
+        border-radius:14px;
+
+    }
 
     .lightbox-prev,
     .lightbox-next{
 
-        width:42px;
+        width:46px;
 
-        height:42px;
+        height:46px;
+
+        font-size:22px;
 
     }
 
     .lightbox-close{
 
+        width:44px;
+
+        height:44px;
+
+        top:14px;
+
+        right:14px;
+
+    }
+
+    .lightbox-counter{
+
         top:16px;
 
-        right:16px;
+        font-size:.82rem;
+
+    }
+
+    .lightbox-caption{
+
+        bottom:18px;
+
+        font-size:.85rem;
 
     }
 
