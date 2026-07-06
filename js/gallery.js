@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const img = document.createElement("img");
 
-        img.className = "gallery-img";
+        img.className = "gallery-img lightbox-trigger";
 
         img.loading = "lazy";
 
