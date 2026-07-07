@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const image = document.getElementById("lightbox-image");
     const caption = document.getElementById("lightbox-caption");
     const counter = document.getElementById("lightbox-counter");
+    const download = document.getElementById("lightbox-download");
 
     const closeBtn = document.querySelector(".lightbox-close");
     const prevBtn = document.querySelector(".lightbox-prev");
@@ -14,108 +15,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let images = [];
     let currentIndex = 0;
-    let isAnimating = false;
 
-    /* ===========================
-       Counter
-    =========================== */
+    /* ==========================================
+       SHOW IMAGE
+    ========================================== */
 
-    function updateCounter() {
+    function showImage(index) {
 
-        if (!counter) return;
+        currentIndex = index;
 
-        counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        const current = images[currentIndex];
 
-    }
+        image.src = current.src;
+        image.alt = current.alt;
 
-    /* ===========================
-       Caption
-    =========================== */
+        if (caption) {
 
-    function updateCaption() {
-
-        if (!caption) return;
-
-        const text = images[currentIndex].alt.trim();
-
-        caption.textContent =
-            text !== ""
-                ? text
-                : `Photo ${currentIndex + 1}`;
-
-    }
-
-    /* ===========================
-       Navigation
-    =========================== */
-
-    function updateNavigation() {
-
-        if (images.length <= 1) {
-
-            lightbox.classList.add("single");
-
-            return;
+            caption.textContent = current.alt;
 
         }
 
-        lightbox.classList.remove("single");
+        if (counter) {
+
+            counter.textContent =
+                `${currentIndex + 1} / ${images.length}`;
+
+        }
+
+        if (download) {
+
+            download.href = current.src;
+
+            const parts = current.src.split("/");
+
+            const folder = parts[parts.length - 2];
+
+            const file = parts[parts.length - 1];
+
+            download.download = `yoko-${folder}-${file}`;
+
+        }
+
+        if (images.length <= 1) {
+
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+
+        } else {
+
+            prevBtn.style.display = "flex";
+            nextBtn.style.display = "flex";
+
+        }
 
     }
 
-    /* ===========================
-       Load Image
-    =========================== */
-
-    function loadImage(index) {
-
-        if (isAnimating) return;
-
-        isAnimating = true;
-
-        image.classList.add("loading");
-
-        image.style.opacity = "0";
-
-        const newImage = new Image();
-
-        newImage.src = images[index].src;
-
-        newImage.onload = () => {
-
-            currentIndex = index;
-
-            image.src = newImage.src;
-
-            image.alt = images[index].alt;
-
-            updateCaption();
-
-            updateCounter();
-
-            updateNavigation();
-
-            requestAnimationFrame(() => {
-
-                image.classList.remove("loading");
-
-                image.style.opacity = "1";
-
-                isAnimating = false;
-
-            });
-
-        };
-
-    }
-
-    /* ===========================
-       Open
-    =========================== */
+    /* ==========================================
+       OPEN
+    ========================================== */
 
     function open(index) {
 
-        loadImage(index);
+        showImage(index);
 
         lightbox.classList.add("show");
 
@@ -123,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ===========================
-       Close
-    =========================== */
+    /* ==========================================
+       CLOSE
+    ========================================== */
 
     function close() {
 
@@ -135,35 +96,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ===========================
-       Previous
-    =========================== */
+    /* ==========================================
+       PREVIOUS
+    ========================================== */
 
     function previous() {
 
-        const index =
+        currentIndex =
             (currentIndex - 1 + images.length) % images.length;
 
-        loadImage(index);
+        showImage(currentIndex);
 
     }
 
-    /* ===========================
-       Next
-    =========================== */
+    /* ==========================================
+       NEXT
+    ========================================== */
 
     function next() {
 
-        const index =
+        currentIndex =
             (currentIndex + 1) % images.length;
 
-        loadImage(index);
+        showImage(currentIndex);
 
     }
 
-    /* ===========================
-       Click Image
-    =========================== */
+    /* ==========================================
+       OPEN LIGHTBOX
+    ========================================== */
 
     document.addEventListener("click", (event) => {
 
@@ -182,9 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* ===========================
-       Buttons
-    =========================== */
+    /* ==========================================
+       BUTTON EVENTS
+    ========================================== */
 
     closeBtn?.addEventListener("click", close);
 
@@ -192,9 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     nextBtn?.addEventListener("click", next);
 
-    /* ===========================
-       Click Background
-    =========================== */
+    /* ==========================================
+       CLICK BACKGROUND
+    ========================================== */
 
     lightbox.addEventListener("click", (event) => {
 
@@ -206,9 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* ===========================
-       Keyboard
-    =========================== */
+    /* ==========================================
+       KEYBOARD
+    ========================================== */
 
     document.addEventListener("keydown", (event) => {
 
@@ -246,34 +207,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* ===========================
-       Swipe (Mobile)
-    =========================== */
+    /* ==========================================
+       MOBILE SWIPE
+    ========================================== */
 
-    let touchStartX = 0;
-    let touchEndX = 0;
+    let startX = 0;
 
     lightbox.addEventListener("touchstart", (event) => {
 
-        touchStartX = event.changedTouches[0].screenX;
+        startX = event.touches[0].clientX;
 
     });
 
     lightbox.addEventListener("touchend", (event) => {
 
-        touchEndX = event.changedTouches[0].screenX;
+        const endX = event.changedTouches[0].clientX;
 
-        const distance = touchStartX - touchEndX;
+        const distance = endX - startX;
 
         if (Math.abs(distance) < 50) return;
 
         if (distance > 0) {
 
-            if (images.length > 1) next();
+            previous();
 
         } else {
 
-            if (images.length > 1) previous();
+            next();
 
         }
 
