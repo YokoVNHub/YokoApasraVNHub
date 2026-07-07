@@ -143,4 +143,125 @@
         font-size: .95rem;
     }
 
+   /* =========================
+   HOME - Schedule
+========================= */
+
+@media (max-width:768px){
+
+    .schedule-card{
+
+        padding:28px 22px;
+
+    }
+
+    .schedule-header{
+
+        text-align:center;
+
+        margin-bottom:30px;
+
+    }
+
+    .schedule-content{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:34px;
+
+    }
+
+    .schedule-poster{
+
+        display:flex;
+
+        justify-content:center;
+
+    }
+
+    .schedule-poster img{
+
+        width:100%;
+
+        max-width:380px;
+
+        border-radius:22px;
+
+    }
+
+    .schedule-info{
+
+        width:100%;
+
+    }
+
+    .schedule-info h2{
+
+        text-align:center;
+
+        margin-bottom:28px;
+
+    }
+
+    .schedule-item{
+
+        display:block;
+
+        padding:20px 0;
+
+        border-bottom:1px solid rgba(0,0,0,.08);
+
+    }
+
+    .schedule-item:last-child{
+
+        border-bottom:none;
+
+    }
+
+    .schedule-date{
+
+        display:block;
+
+        margin-bottom:10px;
+
+        font-size:1rem;
+
+        font-weight:700;
+
+    }
+
+    .schedule-detail h3{
+
+        font-size:1.25rem;
+
+        line-height:1.4;
+
+        margin-bottom:8px;
+    }
+
+    .schedule-detail p{
+
+        line-height:1.7;
+
+        margin-bottom:6px;
+
+    }
+
+    .schedule-detail small{
+
+        line-height:1.7;
+
+    }
+
+    .schedule-source{
+
+        text-align:center;
+
+        margin-top:24px;
+
+    }
+
 }
