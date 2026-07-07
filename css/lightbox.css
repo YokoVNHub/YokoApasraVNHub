@@ -350,4 +350,79 @@
 
     }
 
+/* ==========================================
+   DOWNLOAD BUTTON
+========================================== */
+
+.lightbox-download{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:70px;
+
+    transform:translateX(-50%);
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(20px);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    font-size:.95rem;
+
+    transition:
+        background .25s,
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.lightbox-download:hover{
+
+    background:rgba(255,105,180,.22);
+
+    box-shadow:0 12px 30px rgba(255,105,180,.25);
+
+    transform:translateX(-50%) translateY(-2px);
+
+}
+
+.lightbox-download svg{
+
+    width:20px;
+
+    height:20px;
+
+    transition:transform .25s;
+
+}
+
+.lightbox-download:hover svg{
+
+    transform:translateY(3px);
+
+}
+
+.lightbox-download span{
+
+    white-space:nowrap;
+
 }
