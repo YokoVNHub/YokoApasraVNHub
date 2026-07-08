@@ -258,7 +258,7 @@
 
     position:absolute;
 
-    bottom:68px;
+    bottom:86px;
 
     left:50%;
 
@@ -350,6 +350,8 @@
 
     }
 
+} 
+
 /* ==========================================
    DOWNLOAD
 ========================================== */
@@ -364,48 +366,44 @@
 
     transform:translateX(-50%);
 
-    display:inline-flex;
+    display:flex;
 
     align-items:center;
 
+    justify-content:center;
+
     gap:8px;
 
-    padding:8px 14px;
+    min-width:140px;
+
+    padding:12px 20px;
 
     border-radius:999px;
 
-    color:#ffffff;
+    background:rgba(255,255,255,.10);
 
-    font-size:.9rem;
+    backdrop-filter:blur(18px);
 
-    font-weight:500;
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#fff;
 
     text-decoration:none;
 
+    font-size:.95rem;
+
+    font-weight:600;
+
     transition:all .25s ease;
 
-}
-
-.lightbox-download svg{
-
-    width:18px;
-
-    height:18px;
-
-    transition:transform .25s ease;
+    z-index:10001;
 
 }
 
 .lightbox-download:hover{
 
-    background:rgba(255,255,255,.12);
+    background:rgba(255,120,185,.22);
 
-    backdrop-filter:blur(12px);
-
-}
-
-.lightbox-download:hover svg{
-
-    transform:translateY(2px);
+    transform:translateX(-50%) scale(1.05);
 
 }
