@@ -15,10 +15,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const events = await response.json();
+        
+        console.log(events);
 
         container.innerHTML = "";
 
         events.forEach(event => {
+
+            console.log(event);
 
             const cover = String(event.cover || "001").padStart(3, "0");
 
