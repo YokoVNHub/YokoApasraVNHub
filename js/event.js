@@ -214,15 +214,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     /* ==========================================
        REFRESH LIGHTBOX
     ========================================== */
+if (
+    window.refreshLightbox
+) {
 
-    if (typeof initializeLightbox === "function") {
+    window.refreshLightbox();
 
-        initializeLightbox();
-
-    }
-
-});
-
+}
 /* ==========================================
    HELPER
 ========================================== */
