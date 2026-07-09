@@ -148,19 +148,17 @@ body.lightbox-open {
 /*==================================
 =         Stage Layout             =
 ==================================*/
+.lightbox-stage{
 
-.lightbox-stage {
+    position:fixed;
 
-    position: relative;
+    inset:0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
 
-    width: 100%;
-    height: 100%;
+    justify-content:center;
+    align-items:center;
 }
-
 
 
 /*==================================
@@ -171,7 +169,7 @@ body.lightbox-open {
     
 display: block;
 
-    max-width: 82vw;
+    max-width: 85vw;
     
     max-height: 88vh;
 
@@ -179,6 +177,8 @@ display: block;
     
     height: auto;
 
+    margin: auto;
+    
     object-fit:contain;
 
     border-radius:28px;
@@ -352,42 +352,22 @@ display: block;
 .lightbox-prev,
 .lightbox-next{
 
-    width:56px;
+    position:fixed;
 
-    height:56px;
+    top:50%;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    font-size:1.35rem;
-
-    font-weight:600;
-
-    user-select:none;
-
-    z-index:1002;
-
+    transform:translateY(-50%);
 }
-
 
 .lightbox-prev{
 
-    justify-self:start;
-
+    left:40px;
 }
-
 
 .lightbox-next{
 
-    justify-self:end;
-
+    right:40px;
 }
-
 
 .lightbox-prev:hover,
 .lightbox-next:hover{
