@@ -380,12 +380,11 @@ body.lightbox-open{
     color:var(--lb-pink-light);
 
     transform:
-        rotate(90deg)
-        scale(1.08);
+        scale(1.08)
+        rotate(90deg);
 
     box-shadow:
-
-        0 0 18px rgba(255,125,187,.35);
+        0 0 25px rgba(255,125,187,.45);
 
 }
 
@@ -501,13 +500,20 @@ body.lightbox-open{
 
 }
 
-.lightbox-prev:hover,
+.lightbox-prev:hover{
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+}
+
 .lightbox-next:hover{
 
     background:rgba(255,125,187,.18);
 
-    transform:
-
+transform:
+        translateY(-50%)
         scale(1.08);
 
     box-shadow:
@@ -1860,6 +1866,225 @@ body.lightbox-open{
 .lightbox a{
 
     -webkit-tap-highlight-color:transparent;
+
+}
+
+/*==================================================
+    MOON CURSOR
+==================================================*/
+
+.lb-moon{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:28px;
+
+    height:28px;
+
+    pointer-events:none;
+
+    z-index:999999;
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:
+
+        radial-gradient(
+
+            circle at 35% 35%,
+
+            #fffdf7 0%,
+
+            #ffeecb 38%,
+
+            #ffd9a8 62%,
+
+            #ffc1d6 100%
+
+        );
+
+    box-shadow:
+
+        0 0 12px rgba(255,230,180,.45),
+
+        0 0 24px rgba(255,170,210,.25),
+
+        inset -5px -5px 8px rgba(255,170,210,.18);
+
+    transition:
+
+        width .25s ease,
+
+        height .25s ease,
+
+        box-shadow .25s ease,
+
+        filter .25s ease;
+
+}
+
+
+/*==================================
+=      Moon Hover Download         =
+==================================*/
+
+.lb-moon.download-hover{
+
+    width:34px;
+
+    height:34px;
+
+    filter:brightness(1.15);
+
+    box-shadow:
+
+        0 0 16px rgba(255,205,120,.65),
+
+        0 0 36px rgba(255,125,187,.35),
+
+        0 0 60px rgba(255,125,187,.18);
+
+}
+
+/*==================================
+=        Moon Hover States         =
+==================================*/
+
+.lb-moon.prev-hover{
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg)
+        scale(1.08);
+
+    box-shadow:
+        0 0 14px rgba(255,245,210,.6),
+        0 0 30px rgba(255,200,220,.25);
+
+}
+
+.lb-moon.next-hover{
+
+    transform:
+        translate(-50%,-50%)
+        rotate(18deg)
+        scale(1.08);
+
+    box-shadow:
+        0 0 14px rgba(255,245,210,.6),
+        0 0 30px rgba(255,200,220,.25);
+
+}
+
+.lb-moon.close-hover{
+
+    transform:
+        translate(-50%,-50%)
+        rotate(180deg)
+        scale(1.12);
+
+    filter:brightness(1.2);
+
+    box-shadow:
+        0 0 18px rgba(255,125,187,.55),
+        0 0 40px rgba(255,125,187,.3);
+
+}
+
+/*==================================
+=         Bubble Cursor            =
+==================================*/
+
+.lb-bubble{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    pointer-events:none;
+
+    border-radius:50%;
+
+    z-index:999998;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,255,255,.95),
+
+            rgba(255,190,220,.75)
+
+        );
+
+    box-shadow:
+
+        0 0 8px rgba(255,170,210,.35);
+
+}
+
+
+/*==================================
+=      Download Bubble Boost       =
+==================================*/
+
+.lightbox-download:hover{
+
+    transform:
+
+        translateY(-2px)
+
+        scale(1.02);
+
+}
+
+.lightbox-download:hover .bubble{
+
+    animation-duration:.8s;
+
+}
+
+
+/*==================================
+=        Cursor Hide               =
+==================================*/
+
+.lightbox.show{
+
+    cursor:none;
+
+}
+
+.lightbox.show *{
+
+    cursor:none !important;
+
+}
+
+
+/*==================================
+=      Respect Touch Device        =
+==================================*/
+
+@media (hover:none){
+
+    .lb-moon,
+
+    .lb-bubble{
+
+        display:none;
+
+    }
 
 }
 
