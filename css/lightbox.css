@@ -197,21 +197,26 @@ body.lightbox-open {
 
 #lightbox-image.loading{
 
-    opacity:.35;
+    opacity:0;
 
-    filter:blur(3px);
+    transform:
+        scale(.96);
+
+    filter:
+        blur(8px);
 
 }
-
 
 #lightbox-image.loaded{
 
     opacity:1;
 
+    transform:
+        scale(1);
+
     filter:none;
 
 }
-
 
 #lightbox-image.fade-out{
 
