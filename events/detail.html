@@ -79,59 +79,40 @@
 
 <div id="lightbox" class="lightbox">
 
-    <button
-        class="lightbox-close"
-        aria-label="Close">
-
+    <button class="lightbox-close">
         &times;
+    </button>
 
+    <div
+        id="lightbox-counter"
+        class="lightbox-counter">
+    </div>
+
+    <button class="lightbox-prev">
+        &#10094;
+    </button>
+
+    <div class="lightbox-stage">
+
+        <img id="lightbox-image">
+
+    </div>
+
+    <button class="lightbox-next">
+        &#10095;
     </button>
 
     <a
         id="lightbox-download"
-        class="lightbox-download"
-        href=""
-        download
-        aria-label="Download">
+        class="lightbox-download">
 
-        <span>Download Original</span>
+        Download Original
 
         <i class="bubble"></i>
         <i class="bubble"></i>
         <i class="bubble"></i>
 
     </a>
-
-    <!-- Stage -->
-    <div class="lightbox-stage">
-
-        <button
-            class="lightbox-prev"
-            aria-label="Previous">
-
-            &#10094;
-
-        </button>
-
-        <img
-            id="lightbox-image"
-            src=""
-            alt="">
-
-        <button
-            class="lightbox-next"
-            aria-label="Next">
-
-            &#10095;
-
-        </button>
-
-    </div>
-
-    <div
-        id="lightbox-counter"
-        class="lightbox-counter">
-    </div>
 
     <p
         id="lightbox-caption"
