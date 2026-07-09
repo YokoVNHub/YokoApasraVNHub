@@ -1,55 +1,71 @@
 /*==================================================
     YokoApasraVNHub
-    Lightbox V2
-    CEO Fried Egg Edition 🍳
-    Part 1 / 4
+    Lightbox V3
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    "use strict";
 
     /*==================================
     =            Elements             =
     ==================================*/
 
-    const dom = {
+    const gallery = document.getElementById("gallery");
+    const lightbox = document.getElementById("lightbox");
 
-        lightbox: document.getElementById("lightbox"),
+    if (!gallery || !lightbox) return;
 
-        image: document.getElementById("lightbox-image"),
+    const stage = lightbox.querySelector(".lightbox-stage");
 
-        caption: document.getElementById("lightbox-caption"),
+    const image = document.getElementById("lightbox-image");
+    const caption = document.getElementById("lightbox-caption");
+    const counter = document.getElementById("lightbox-counter");
 
-        counter: document.getElementById("lightbox-counter"),
+    const download = document.getElementById("lightbox-download");
 
-        download: document.getElementById("lightbox-download"),
+    const prev = lightbox.querySelector(".lightbox-prev");
+    const next = lightbox.querySelector(".lightbox-next");
+    const close = lightbox.querySelector(".lightbox-close");
 
-        close: document.querySelector(".lightbox-close"),
 
-        prev: document.querySelector(".lightbox-prev"),
-
-        next: document.querySelector(".lightbox-next"),
-
-        gallery: document.getElementById("gallery")
-
-    };
-
-    if (!dom.lightbox || !dom.gallery) return;
 
     /*==================================
-    =         Gallery Images          =
+    =          Gallery Info           =
     ==================================*/
 
-    let images = [];
+    const folder = gallery.dataset.folder || "";
+    const total = Number(gallery.dataset.total || 0);
+
+
+
+    /*==================================
+    =             State               =
+    ==================================*/
 
     let currentIndex = 0;
 
+    let isOpen = false;
+
     let isAnimating = false;
+
+    let images = [];
+
+
+
+    /*==================================
+    =         Image Collection        =
+    ==================================*/
 
     function collectImages() {
 
         images = [
 
-            ...document.querySelectorAll(".lightbox-trigger")
+            ...gallery.querySelectorAll(
+
+                ".lightbox-trigger"
+
+            )
 
         ];
 
@@ -57,119 +73,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
     collectImages();
 
+
+
     /*==================================
-    =         Lock Scroll             =
+    =          Utilities              =
     ==================================*/
+
+    function pad(number) {
+
+        return String(number).padStart(3, "0");
+
+    }
+
+
+
+    function getImagePath(index) {
+
+        return `../assets/events/${folder}/${pad(index + 1)}.jpg`;
+
+    }
+
+
 
     function lockScroll() {
 
-        document.body.classList.add("lightbox-open");
+        document.body.classList.add(
+
+            "lightbox-open"
+
+        );
 
     }
+
+
 
     function unlockScroll() {
 
-        document.body.classList.remove("lightbox-open");
+        document.body.classList.remove(
+
+            "lightbox-open"
+
+        );
 
     }
 
-    /*==================================
-    =          Open Lightbox          =
-    ==================================*/
 
-    function openLightbox(index) {
 
-        if (isAnimating) return;
+    function preload(index) {
 
-        currentIndex = index;
+        if (
 
-        dom.lightbox.classList.add("show");
+            index < 0 ||
 
-        lockScroll();
+            index >= total
 
-        showImage(currentIndex);
+        ) return;
 
-    }
+        const img = new Image();
 
-    /*==================================
-    =         Close Lightbox          =
-    ==================================*/
-
-    function closeLightbox() {
-
-        if (isAnimating) return;
-
-        dom.lightbox.classList.remove("show");
-
-        unlockScroll();
+        img.src = getImagePath(index);
 
     }
 
-    /*==================================
-    =      Temporary Show Image       =
-    ==================================*/
 
-    function showImage(index) {
 
-        const img = images[index];
+    function preloadNearby() {
 
-        if (!img) return;
+        preload(currentIndex - 1);
 
-        dom.image.src = img.src;
-
-        dom.image.alt = img.alt;
+        preload(currentIndex + 1);
 
     }
 
+
+
     /*==================================
-    =       Click Gallery Image       =
+    =         UI Update               =
     ==================================*/
 
-    function bindGallery() {
+    function updateCounter() {
 
-        images.forEach((img, index) => {
+        counter.textContent =
 
-            img.addEventListener("click", () => {
-
-                openLightbox(index);
-
-            });
-
-        });
+            `${currentIndex + 1} / ${total}`;
 
     }
 
-    bindGallery();
 
-    /*==================================
-    =        Close Button             =
-    ==================================*/
 
-    dom.close.addEventListener(
+    function updateCaption() {
 
-        "click",
+        const img = images[currentIndex];
 
-        closeLightbox
+        caption.textContent =
 
-    );
+            img ? img.alt : "";
 
-    /*==================================
-    =      Click Overlay Close        =
-    ==================================*/
+    }
 
-    dom.lightbox.addEventListener("click", (e) => {
 
-        if (e.target === dom.lightbox) {
 
-            closeLightbox();
+    function updateDownload() {
 
-        }
+        const src = getImagePath(currentIndex);
 
-    });
+        download.href = src;
 
-});
+        download.download =
 
-    /*==================================
+            src.split("/").pop();
+
+    }
+
+                              /*==================================
     =          Show Image             =
     ==================================*/
 
@@ -177,29 +193,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (isAnimating) return;
 
+        const src = getImagePath(index);
+
         isAnimating = true;
 
-        const img = images[index];
-
-        if (!img) {
-
-            isAnimating = false;
-
-            return;
-
-        }
-
-        dom.image.classList.remove(
+        image.classList.remove(
             "loaded",
             "fade-in"
         );
 
-        dom.image.classList.add(
+        image.classList.add(
             "loading",
             "fade-out"
         );
-
-        const src = img.dataset.full || img.src;
 
         const loader = new Image();
 
@@ -207,18 +213,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         loader.onload = () => {
 
-            dom.image.src = src;
+            image.src = src;
 
-            dom.image.alt = img.alt;
+            image.alt =
 
-            dom.image.classList.remove(
+                images[index]?.alt ||
+
+                `Photo ${index + 1}`;
+
+            image.classList.remove(
+
                 "loading",
+
                 "fade-out"
+
             );
 
-            dom.image.classList.add(
+            image.classList.add(
+
                 "loaded",
+
                 "fade-in"
+
             );
 
             updateCounter();
@@ -227,220 +243,280 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateDownload();
 
-            preloadAround();
+            preloadNearby();
 
-            setTimeout(() => {
+            isAnimating = false;
 
-                isAnimating = false;
+        };
 
-            }, 250);
+        loader.onerror = () => {
+
+            image.classList.remove(
+
+                "loading",
+
+                "fade-out"
+
+            );
+
+            caption.textContent =
+
+                "Unable to load image.";
+
+            isAnimating = false;
 
         };
 
     }
 
 
-    /*==================================
-    =        Counter Update           =
-    ==================================*/
-
-    function updateCounter() {
-
-        dom.counter.textContent =
-            `${currentIndex + 1} / ${images.length}`;
-
-    }
-
 
     /*==================================
-    =        Caption Update           =
+    =        Open Lightbox            =
     ==================================*/
 
-    function updateCaption() {
+    function openLightbox(index) {
 
-        const img = images[currentIndex];
+        if (isOpen) return;
 
-        if (!img) return;
+        currentIndex = index;
 
-        dom.caption.textContent =
-            img.alt || "";
+        isOpen = true;
 
-    }
+        lockScroll();
 
+        lightbox.classList.add(
 
-    /*==================================
-    =       Download Update           =
-    ==================================*/
+            "show"
 
-    function updateDownload() {
-
-        const img = images[currentIndex];
-
-        if (!img) return;
-
-        const src = img.dataset.full || img.src;
-
-        dom.download.href = src;
-
-        const filename = src.split("/").pop();
-
-        dom.download.download = filename;
-
-    }
-
-
-    /*==================================
-    =        Image Preload            =
-    ==================================*/
-
-    function preload(index) {
-
-        if (
-            index < 0 ||
-            index >= images.length
-        ) return;
-
-        const preloadImg = new Image();
-
-        preloadImg.src =
-            images[index].dataset.full ||
-            images[index].src;
-
-    }
-
-
-    function preloadAround() {
-
-        preload(currentIndex - 1);
-
-        preload(currentIndex + 1);
-
-    }
-
-    /*==================================
-    =          Previous Image         =
-    ==================================*/
-
-    function showPrev() {
-
-        if (isAnimating) return;
-
-        currentIndex--;
-
-        if (currentIndex < 0) {
-
-            currentIndex = images.length - 1;
-
-        }
+        );
 
         showImage(currentIndex);
 
     }
 
 
+
     /*==================================
-    =            Next Image           =
+    =       Close Lightbox            =
     ==================================*/
 
-    function showNext() {
+    function closeLightbox() {
 
-        if (isAnimating) return;
+        if (!isOpen) return;
+
+        isOpen = false;
+
+        unlockScroll();
+
+        lightbox.classList.remove(
+
+            "show"
+
+        );
+
+        image.classList.remove(
+
+            "loading",
+
+            "fade-in",
+
+            "fade-out"
+
+        );
+
+    }
+
+
+
+    /*==================================
+    =       Previous Image            =
+    ==================================*/
+
+    function previousImage() {
+
+        if (
+
+            isAnimating ||
+
+            !isOpen
+
+        ) return;
+
+        currentIndex--;
+
+        if (
+
+            currentIndex < 0
+
+        ) {
+
+            currentIndex =
+
+                total - 1;
+
+        }
+
+        showImage(
+
+            currentIndex
+
+        );
+
+    }
+
+
+
+    /*==================================
+    =          Next Image             =
+    ==================================*/
+
+    function nextImage() {
+
+        if (
+
+            isAnimating ||
+
+            !isOpen
+
+        ) return;
 
         currentIndex++;
 
-        if (currentIndex >= images.length) {
+        if (
+
+            currentIndex >= total
+
+        ) {
 
             currentIndex = 0;
 
         }
 
-        showImage(currentIndex);
+        showImage(
+
+            currentIndex
+
+        );
 
     }
 
-
-    /*==================================
-    =          Button Events          =
+                              /*==================================
+    =       Gallery Click Event       =
     ==================================*/
 
-    dom.prev.addEventListener(
+    gallery.addEventListener("click", (event) => {
 
-        "click",
+        const target = event.target.closest(".lightbox-trigger");
 
-        (e) => {
+        if (!target) return;
 
-            e.stopPropagation();
+        collectImages();
 
-            showPrev();
+        const index = images.indexOf(target);
 
-        }
+        if (index === -1) return;
 
-    );
+        openLightbox(index);
 
+    });
 
-    dom.next.addEventListener(
-
-        "click",
-
-        (e) => {
-
-            e.stopPropagation();
-
-            showNext();
-
-        }
-
-    );
 
 
     /*==================================
-    =         Keyboard Events         =
+    =       Previous Button           =
     ==================================*/
 
-    document.addEventListener(
+    prev.addEventListener("click", (event) => {
 
-        "keydown",
+        event.stopPropagation();
 
-        (e) => {
+        previousImage();
 
-            if (
+    });
 
-                !dom.lightbox.classList.contains("show")
-
-            ) return;
-
-
-            switch (e.key) {
-
-                case "ArrowLeft":
-
-                    showPrev();
-
-                    break;
-
-
-                case "ArrowRight":
-
-                    showNext();
-
-                    break;
-
-
-                case "Escape":
-
-                    closeLightbox();
-
-                    break;
-
-            }
-
-        }
-
-    );
 
 
     /*==================================
-    =            Touch Swipe          =
+    =         Next Button             =
+    ==================================*/
+
+    next.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        nextImage();
+
+    });
+
+
+
+    /*==================================
+    =        Close Button             =
+    ==================================*/
+
+    close.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        closeLightbox();
+
+    });
+
+
+
+    /*==================================
+    =        Overlay Click            =
+    ==================================*/
+
+    lightbox.addEventListener("click", (event) => {
+
+        if (event.target === lightbox) {
+
+            closeLightbox();
+
+        }
+
+    });
+
+
+
+    /*==================================
+    =       Keyboard Control          =
+    ==================================*/
+
+    document.addEventListener("keydown", (event) => {
+
+        if (!isOpen) return;
+
+        switch (event.key) {
+
+            case "ArrowLeft":
+
+                previousImage();
+
+                break;
+
+            case "ArrowRight":
+
+                nextImage();
+
+                break;
+
+            case "Escape":
+
+                closeLightbox();
+
+                break;
+
+        }
+
+    });
+
+
+
+    /*==================================
+    =          Touch Swipe            =
     ==================================*/
 
     let touchStartX = 0;
@@ -448,54 +524,54 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchEndX = 0;
 
 
-    dom.image.addEventListener(
+
+    image.addEventListener(
 
         "touchstart",
 
-        (e) => {
+        (event) => {
 
             touchStartX =
 
-                e.changedTouches[0].clientX;
+                event.changedTouches[0].clientX;
 
         },
 
         {
 
-            passive:true
+            passive: true
 
         }
 
     );
 
 
-    dom.image.addEventListener(
+
+    image.addEventListener(
 
         "touchend",
 
-        (e) => {
+        (event) => {
 
             touchEndX =
 
-                e.changedTouches[0].clientX;
+                event.changedTouches[0].clientX;
 
             const distance =
 
                 touchEndX - touchStartX;
 
-
             if (Math.abs(distance) < 60) return;
-
 
             if (distance > 0) {
 
-                showPrev();
+                previousImage();
 
             }
 
             else {
 
-                showNext();
+                nextImage();
 
             }
 
@@ -503,67 +579,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
 
-            passive:true
+            passive: true
 
         }
 
     );
 
 
+
     /*==================================
-    =        Mouse Wheel Zoom         =
+    =       Prevent Drag Image        =
     ==================================*/
 
-    dom.image.addEventListener(
+    image.addEventListener(
 
-        "wheel",
+        "dragstart",
 
-        (e) => {
+        (event) => {
 
-            e.preventDefault();
-
-        },
-
-        {
-
-            passive:false
+            event.preventDefault();
 
         }
 
     );
 
 
+
     /*==================================
-    =       Window Resize Reset       =
+    =       Disable Context Menu      =
     ==================================*/
 
-    window.addEventListener(
+    image.addEventListener(
 
-        "resize",
+        "contextmenu",
 
-        () => {
+        (event) => {
 
-            if (
-
-                !dom.lightbox.classList.contains("show")
-
-            ) return;
-
-            dom.image.classList.remove(
-
-                "fade-in",
-
-                "fade-out"
-
-            );
+            event.preventDefault();
 
         }
 
-    /*==================================
-    =       CEO Fried Egg Cursor      =
+    );
+
+                              /*==================================
+    =       Fried Egg Cursor 🍳       =
     ==================================*/
 
-    if (window.matchMedia("(hover:hover)").matches) {
+    if (window.matchMedia("(hover: hover)").matches) {
 
         const egg = document.createElement("div");
 
@@ -572,29 +634,24 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(egg);
 
         let mouseX = window.innerWidth / 2;
-
         let mouseY = window.innerHeight / 2;
 
         let eggX = mouseX;
-
         let eggY = mouseY;
 
-        document.addEventListener("mousemove", (e) => {
+        document.addEventListener("mousemove", (event) => {
 
-            mouseX = e.clientX;
-
-            mouseY = e.clientY;
+            mouseX = event.clientX;
+            mouseY = event.clientY;
 
         });
 
         function animateEgg() {
 
-            eggX += (mouseX - eggX) * .18;
-
-            eggY += (mouseY - eggY) * .18;
+            eggX += (mouseX - eggX) * 0.18;
+            eggY += (mouseY - eggY) * 0.18;
 
             egg.style.left = eggX + "px";
-
             egg.style.top = eggY + "px";
 
             requestAnimationFrame(animateEgg);
@@ -604,8 +661,9 @@ document.addEventListener("DOMContentLoaded", () => {
         animateEgg();
 
 
+
         /*==================================
-        =         Hover States            =
+        =          Hover State           =
         ==================================*/
 
         function bindHover(element, className) {
@@ -626,18 +684,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        bindHover(dom.prev, "prev-hover");
+        bindHover(prev, "prev-hover");
+        bindHover(next, "next-hover");
+        bindHover(close, "close-hover");
+        bindHover(download, "download-hover");
 
-        bindHover(dom.next, "next-hover");
-
-        bindHover(dom.close, "close-hover");
-
-        bindHover(dom.download, "download-hover");
 
 
         /*==================================
-        =          Bubble Trail           =
+        =          Bubble Trail          =
         ==================================*/
+
+        let bubbleTimer = null;
 
         function createBubble() {
 
@@ -646,23 +704,19 @@ document.addEventListener("DOMContentLoaded", () => {
             bubble.className = "lb-bubble";
 
             bubble.style.left = eggX + "px";
-
             bubble.style.top = eggY + "px";
 
             const size = 6 + Math.random() * 8;
 
             bubble.style.width = size + "px";
-
             bubble.style.height = size + "px";
 
             document.body.appendChild(bubble);
 
             const angle = Math.random() * Math.PI * 2;
-
-            const distance = 18 + Math.random() * 28;
+            const distance = 15 + Math.random() * 30;
 
             const dx = Math.cos(angle) * distance;
-
             const dy = Math.sin(angle) * distance;
 
             bubble.animate(
@@ -674,7 +728,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         transform:
                             "translate(0,0) scale(.5)",
 
-                        opacity:.9
+                        opacity: .9
 
                     },
 
@@ -683,7 +737,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         transform:
                             `translate(${dx}px,${dy}px) scale(1.4)`,
 
-                        opacity:0
+                        opacity: 0
 
                     }
 
@@ -691,9 +745,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 {
 
-                    duration:700,
+                    duration: 700,
 
-                    easing:"ease-out"
+                    easing: "ease-out"
 
                 }
 
@@ -703,38 +757,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 bubble.remove();
 
-            },700);
+            }, 700);
 
         }
 
 
-        let bubbleTimer = null;
 
-        dom.download.addEventListener("mouseenter", () => {
+        download.addEventListener("mouseenter", () => {
 
-            bubbleTimer = setInterval(createBubble, 90);
+            bubbleTimer = setInterval(
+
+                createBubble,
+
+                90
+
+            );
 
         });
 
-        dom.download.addEventListener("mouseleave", () => {
+
+
+        download.addEventListener("mouseleave", () => {
 
             clearInterval(bubbleTimer);
-
-        });
-
-
-        /*==================================
-        =         Cleanup                =
-        ==================================*/
-
-        window.addEventListener("beforeunload", () => {
-
-            clearInterval(bubbleTimer);
-
-            egg.remove();
 
         });
 
     }
-       
-    );
+
+
+
+    /*==================================
+    =          Initialize             =
+    ==================================*/
+
+    collectImages();
+
+});
