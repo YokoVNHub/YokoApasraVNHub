@@ -49,22 +49,28 @@
 =         Lightbox Root            =
 ==================================*/
 
-.lightbox{
+.lightbox {
 
-    position:fixed;
-    inset:0;
+    position: fixed;
+    inset: 0;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    opacity:0;
-    visibility:hidden;
+    background:
+        rgba(8,8,15,.72);
 
-    transition:.35s;
+    backdrop-filter: blur(35px);
 
-    z-index:9999;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .35s;
+
+    z-index: 99999;
 }
+
 /*==================================
 =         Active State             =
 ==================================*/
@@ -76,6 +82,11 @@
 
 }
 
+body.lightbox-open {
+
+    overflow: hidden;
+
+}
 /*==================================
 =        Background Glow           =
 ==================================*/
@@ -140,13 +151,14 @@
 
 .lightbox-stage {
 
-    display:flex;
+    position: relative;
 
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -156,22 +168,23 @@
 ==================================*/
 
 #lightbox-image{
+    
+display: block;
 
-    display:block;
+    max-width: 82vw;
+    
+    max-height: 88vh;
 
-    max-width:100%;
-
-    max-height:85vh;
-
-    width:auto;
-
-    height:auto;
+    width: auto;
+    
+    height: auto;
 
     object-fit:contain;
 
-    border-radius:24px;
+    border-radius:28px;
 
-    box-shadow:var(--lb-shadow);
+   box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
 
     user-select:none;
 
