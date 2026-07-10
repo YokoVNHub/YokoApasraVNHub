@@ -174,7 +174,9 @@ document.addEventListener(
                             .querySelector(
                                 "img"
                             )
-                            ?.alt || "";
+                            ?.alt ||
+
+                        `Photo ${index + 1}`;
 
                     currentIndex =
                         index;
@@ -243,6 +245,10 @@ document.addEventListener(
 
         function nextImage() {
 
+            if (
+                !images.length
+            ) return;
+
             currentIndex++;
 
             if (
@@ -262,6 +268,10 @@ document.addEventListener(
 
         function prevImage() {
 
+            if (
+                !images.length
+            ) return;
+
             currentIndex--;
 
             if (
@@ -279,6 +289,8 @@ document.addEventListener(
 
         }
 
+        /*========================*/
+        /* OPEN IMAGE */
         /*========================*/
 
         document.addEventListener(
@@ -313,6 +325,10 @@ document.addEventListener(
             }
         );
 
+        /*========================*/
+        /* BUTTONS */
+        /*========================*/
+
         closeButton?.addEventListener(
             "click",
             closeLightbox
@@ -328,6 +344,8 @@ document.addEventListener(
             prevImage
         );
 
+        /*========================*/
+        /* BACKDROP */
         /*========================*/
 
         lightbox.addEventListener(
@@ -346,6 +364,8 @@ document.addEventListener(
             }
         );
 
+        /*========================*/
+        /* KEYBOARD */
         /*========================*/
 
         document.addEventListener(
@@ -388,65 +408,65 @@ document.addEventListener(
             }
         );
 
+        /*========================*/
+        /* TOUCH SWIPE */
+        /*========================*/
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+        lightbox.addEventListener(
+            "touchstart",
+            (event) => {
+
+                touchStartX =
+                    event.changedTouches[0]
+                        .screenX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+        lightbox.addEventListener(
+            "touchend",
+            (event) => {
+
+                touchEndX =
+                    event.changedTouches[0]
+                        .screenX;
+
+                const distance =
+                    touchEndX -
+                    touchStartX;
+
+                if (
+                    Math.abs(
+                        distance
+                    ) < 60
+                ) return;
+
+                if (
+                    distance > 0
+                ) {
+
+                    prevImage();
+
+                }
+
+                else {
+
+                    nextImage();
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
     }
-
-/*========================*/
-/* TOUCH SUPPORT */
-/*========================*/
-
-let touchStartX = 0;
-
-let touchEndX = 0;
-
-lightbox.addEventListener(
-    "touchstart",
-    (event) => {
-
-        touchStartX =
-            event.changedTouches[0]
-                .screenX;
-
-    },
-    { passive:true }
 );
-
-lightbox.addEventListener(
-    "touchend",
-    (event) => {
-
-        touchEndX =
-            event.changedTouches[0]
-                .screenX;
-
-        const distance =
-            touchEndX -
-            touchStartX;
-
-        if (
-            Math.abs(
-                distance
-            ) < 60
-        ) return;
-
-        if (
-            distance > 0
-        ) {
-
-            prevImage();
-
-        }
-
-        else {
-
-            nextImage();
-
-        }
-
-    },
-    { passive:true }
-);
-
-});
-
-
-    
