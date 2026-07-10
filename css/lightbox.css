@@ -1,6 +1,6 @@
-/*==================================
-=            LIGHTBOX             =
-==================================*/
+/* ==========================================
+   LIGHTBOX CONTAINER
+========================================== */
 
 .lightbox{
 
@@ -12,7 +12,7 @@
     align-items:center;
 
     background:
-        rgba(12,12,20,.72);
+        rgba(15,15,25,.58);
 
     backdrop-filter:
         blur(35px);
@@ -21,8 +21,7 @@
     visibility:hidden;
 
     transition:
-        opacity .35s ease,
-        visibility .35s ease;
+        .35s ease;
 
     z-index:99999;
 
@@ -41,9 +40,9 @@ body.lightbox-open{
 
 }
 
-/*==================================
-=              STAGE              =
-==================================*/
+/* ==========================================
+   IMAGE STAGE
+========================================== */
 
 .lightbox-stage{
 
@@ -57,13 +56,13 @@ body.lightbox-open{
     padding:
         100px
         120px
-        130px;
+        120px;
 
 }
 
-/*==================================
-=            MAIN IMAGE           =
-==================================*/
+/* ==========================================
+   MAIN IMAGE
+========================================== */
 
 #lightbox-image{
 
@@ -80,82 +79,87 @@ body.lightbox-open{
     border-radius:30px;
 
     box-shadow:
-        0 30px 90px
+        0 30px 100px
         rgba(0,0,0,.45);
 
     user-select:none;
     -webkit-user-drag:none;
 
     transition:
-        opacity .25s ease,
-        transform .25s ease;
+        opacity .3s ease,
+        transform .3s ease;
 
 }
 
-/*==================================
-=             COUNTER             =
-==================================*/
+/* ==========================================
+   COUNTER
+========================================== */
 
 .lightbox-counter{
 
     position:fixed;
 
-    top:18px;
+    top:14px;
     left:50%;
 
     transform:
         translateX(-50%);
 
     padding:
-        10px 20px;
+        12px 22px;
 
     border-radius:999px;
 
     background:
-        rgba(20,20,32,.55);
+
+        linear-gradient(
+            135deg,
+            rgba(255,120,190,.18),
+            rgba(255,180,220,.08)
+        );
 
     backdrop-filter:
         blur(20px);
 
     color:#fff;
 
-    font-size:.95rem;
     font-weight:700;
+    font-size:.95rem;
 
     box-shadow:
-        0 0 20px
-        rgba(255,120,190,.18);
+        0 0 30px
+        rgba(255,120,190,.15);
 
     z-index:10010;
 
 }
 
-/*==================================
-=          CLOSE BUTTON           =
-==================================*/
+/* ==========================================
+   BUTTON BASE
+========================================== */
 
-.lightbox-close{
-
-    position:fixed;
-
-    top:16px;
-    right:18px;
-
-    width:58px;
-    height:58px;
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
 
     border:none;
-    border-radius:50%;
 
     background:
-        rgba(20,20,32,.55);
+
+        linear-gradient(
+            135deg,
+            rgba(255,120,190,.16),
+            rgba(255,180,220,.08)
+        );
 
     backdrop-filter:
         blur(20px);
 
-    color:#fff;
+    border:
+        1px solid
+        rgba(255,220,235,.08);
 
-    font-size:1.7rem;
+    color:#fff;
 
     cursor:pointer;
 
@@ -164,171 +168,43 @@ body.lightbox-open{
     align-items:center;
 
     box-shadow:
-        0 0 0 1px rgba(255,170,220,.10),
-        0 0 25px rgba(255,120,190,.18);
 
-    transition:.3s;
+        0 0 0 1px
+        rgba(255,180,220,.05),
 
-    z-index:10010;
+        0 15px 45px
+        rgba(255,120,190,.12);
 
-}
-
-.lightbox-close:hover{
-
-    transform:
-        scale(1.08)
-        rotate(8deg);
-
-    background:
-        rgba(255,150,210,.18);
-
-    box-shadow:
-        0 0 40px rgba(255,130,200,.40);
+    transition:
+        .3s ease;
 
 }
 
-/*==================================
-=         DOWNLOAD BUTTON         =
-==================================*/
+/* ==========================================
+   CLOSE
+========================================== */
 
-.lightbox-download{
+.lightbox-close{
 
     position:fixed;
 
-    top:16px;
-    right:92px;
+    top:14px;
+    right:18px;
 
+    width:58px;
     height:58px;
-
-    padding:
-        0 22px;
-
-    border-radius:999px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    font-weight:700;
-    font-size:.92rem;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,120,190,.18),
-            rgba(255,180,220,.10)
-        );
-
-    backdrop-filter:
-        blur(20px);
-
-    box-shadow:
-        0 0 0 1px rgba(255,170,220,.12),
-        0 0 25px rgba(255,120,190,.18);
-
-    transition:.3s;
-
-    overflow:hidden;
-
-    z-index:10010;
-
-}
-
-.lightbox-download:hover{
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 0 45px rgba(255,130,200,.40);
-
-}
-
-/*==================================
-=             BUBBLES             =
-==================================*/
-
-.bubble{
-
-    position:absolute;
-
-    bottom:12px;
-
-    width:8px;
-    height:8px;
 
     border-radius:50%;
 
-    background:
-        rgba(255,190,225,.8);
+    font-size:1.8rem;
 
-    opacity:0;
-
-    box-shadow:
-        0 0 10px
-        rgba(255,160,210,.5);
+    z-index:10020;
 
 }
 
-.lightbox-download:hover .bubble{
-
-    animation:
-        bubbleFloat
-        1.8s infinite;
-
-}
-
-.bubble:nth-child(2){
-
-    left:55%;
-    animation-delay:.25s;
-
-}
-
-.bubble:nth-child(3){
-
-    left:75%;
-    animation-delay:.5s;
-
-}
-
-@keyframes bubbleFloat{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-            translateY(0)
-            scale(.4);
-
-    }
-
-    40%{
-
-        opacity:1;
-
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-            translateY(-42px)
-            scale(1.1);
-
-    }
-
-}
-
-/*==================================
-=           PREV/NEXT             =
-==================================*/
+/* ==========================================
+   PREV/NEXT
+========================================== */
 
 .lightbox-prev,
 .lightbox-next{
@@ -340,81 +216,338 @@ body.lightbox-open{
     transform:
         translateY(-50%);
 
-    width:72px;
-    height:72px;
+    width:70px;
+    height:70px;
 
-    border:none;
     border-radius:50%;
 
-    background:
-        rgba(20,20,32,.55);
-
-    backdrop-filter:
-        blur(20px);
-
-    color:#fff;
-
     font-size:2rem;
-    font-weight:700;
 
-    cursor:pointer;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    box-shadow:
-        0 0 0 1px rgba(255,170,220,.10),
-        0 0 25px rgba(255,120,190,.18);
-
-    transition:.3s;
-
-    z-index:10010;
+    z-index:10020;
 
 }
 
 .lightbox-prev{
 
-    left:55px;
+    left:30px;
 
 }
 
 .lightbox-next{
 
-    right:55px;
+    right:30px;
 
 }
 
+/* ==========================================
+   BUTTON HOVER
+========================================== */
+
+.lightbox-close:hover,
 .lightbox-prev:hover,
+.lightbox-next:hover{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,150,210,.24),
+            rgba(255,210,235,.12)
+        );
+
+    box-shadow:
+
+        0 0 55px
+        rgba(255,130,205,.32);
+
+}
+
+.lightbox-close:hover{
+
+    transform:
+        scale(1.08)
+        rotate(10deg);
+
+}
+
+.lightbox-prev:hover{
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+}
+
 .lightbox-next:hover{
 
     transform:
         translateY(-50%)
         scale(1.08);
 
+}
+
+/* ==========================================
+   DOWNLOAD
+========================================== */
+
+.lightbox-download{
+
+    position:fixed;
+
+    top:14px;
+    right:90px;
+
+    height:58px;
+
+    padding:
+        0 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
     background:
-        rgba(255,150,210,.18);
+
+        linear-gradient(
+            135deg,
+            rgba(255,120,190,.22),
+            rgba(255,180,220,.10)
+        );
+
+    backdrop-filter:
+        blur(20px);
+
+    border:
+        1px solid
+        rgba(255,220,235,.10);
+
+    color:#fff;
+
+    font-weight:700;
+    font-size:.92rem;
+
+    overflow:hidden;
 
     box-shadow:
-        0 0 45px rgba(255,130,200,.40);
+
+        0 0 50px
+        rgba(255,120,190,.18);
+
+    transition:
+        .3s ease;
+
+    z-index:10020;
 
 }
 
-/*==================================
-=             CAPTION             =
-==================================*/
+.lightbox-download:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+
+        0 0 70px
+        rgba(255,130,205,.35);
+
+}
+
+/* ==========================================
+   EGG EMOJI
+========================================== */
+
+.lightbox-download::before{
+
+    content:"🥚";
+
+    margin-right:10px;
+
+    display:inline-block;
+
+}
+
+.lightbox-download:hover::before{
+
+    animation:
+        eggShake .8s ease;
+
+}
+
+@keyframes eggShake{
+
+    0%,100%{
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    20%{
+
+        transform:
+            rotate(-18deg);
+
+    }
+
+    40%{
+
+        transform:
+            rotate(15deg);
+
+    }
+
+    60%{
+
+        transform:
+            rotate(-10deg);
+
+    }
+
+    80%{
+
+        transform:
+            rotate(8deg);
+
+    }
+
+}
+
+/* ==========================================
+   YOKO EGGS
+========================================== */
+
+.bubble{
+
+    position:absolute;
+
+    bottom:12px;
+
+    width:12px;
+    height:16px;
+
+    border-radius:
+
+        50%
+        50%
+        45%
+        45%;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            #ffffff,
+            #ffe8f3
+        );
+
+    border:
+
+        1px solid
+        rgba(255,210,230,.7);
+
+    box-shadow:
+
+        0 0 15px
+        rgba(255,180,220,.35);
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.lightbox-download:hover .bubble{
+
+    animation:
+        yokoEgg
+        1.8s infinite;
+
+}
+
+.bubble:nth-child(2){
+
+    left:45%;
+
+    --x:8px;
+    --r:15deg;
+
+    animation-delay:.25s;
+
+}
+
+.bubble:nth-child(3){
+
+    left:70%;
+
+    --x:-6px;
+    --r:-15deg;
+
+    animation-delay:.5s;
+
+}
+
+.bubble:nth-child(1){
+
+    left:20%;
+
+    --x:-10px;
+    --r:-20deg;
+
+}
+
+@keyframes yokoEgg{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(0)
+            scale(.5);
+
+    }
+
+    25%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-50px)
+            translateX(var(--x))
+            rotate(var(--r))
+            scale(1.1);
+
+    }
+
+}
+
+/* ==========================================
+   CAPTION
+========================================== */
 
 .lightbox-caption{
 
     position:fixed;
 
-    bottom:28px;
+    bottom:24px;
     left:50%;
 
     transform:
         translateX(-50%);
 
-    max-width:70vw;
+    max-width:75vw;
 
     text-align:center;
 
@@ -424,27 +557,19 @@ body.lightbox-open{
     font-weight:700;
 
     text-shadow:
-        0 4px 20px
-        rgba(0,0,0,.8);
+
+        0 4px 25px
+        rgba(0,0,0,.7);
 
     z-index:10010;
 
 }
 
-/*==================================
-=             MOBILE              =
-==================================*/
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media (max-width:768px){
-
-    .lightbox-stage{
-
-        padding:
-            90px
-            20px
-            120px;
-
-    }
 
     .lightbox-prev,
     .lightbox-next{
@@ -452,7 +577,7 @@ body.lightbox-open{
         width:58px;
         height:58px;
 
-        font-size:1.5rem;
+        font-size:1.6rem;
 
     }
 
@@ -481,7 +606,7 @@ body.lightbox-open{
 
     .lightbox-caption{
 
-        max-width:90vw;
+        width:90vw;
 
         font-size:.9rem;
 
