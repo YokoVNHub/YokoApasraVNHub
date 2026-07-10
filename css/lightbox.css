@@ -1,136 +1,100 @@
-/*==================================
-=          LIGHTBOX ROOT           =
-==================================*/
-
+/*==============================*/
 .lightbox{
-
     position:fixed;
     inset:0;
+    z-index:99999;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    background:
-        rgba(8,8,15,.72);
-
-    backdrop-filter:
-        blur(35px);
+    background:rgba(15,15,25,.65);
+    backdrop-filter:blur(32px);
 
     opacity:0;
     visibility:hidden;
-
     transition:.35s;
-
-    z-index:99999;
 }
 
 .lightbox.show{
-
     opacity:1;
     visibility:visible;
-
 }
 
 body.lightbox-open{
-
     overflow:hidden;
-
 }
 
-/*==================================
-=          IMAGE STAGE             =
-==================================*/
+/*==============================*/
 
 .lightbox-stage{
-
-    position:fixed;
-    inset:0;
+    position:relative;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    overflow:hidden;
+    width:100%;
+    height:100%;
 
     padding:40px;
-
-    z-index:1;
-
-    pointer-events:none;
-
 }
 
-/*==================================
-=          MAIN IMAGE              =
-==================================*/
+/*==============================*/
 
 #lightbox-image{
 
-    position:relative;
-
-    z-index:2;
-
-    pointer-events:auto;
-
-    display:block;
-
     max-width:88vw;
-    max-height:88vh;
-
-    width:auto;
-    height:auto;
-
-    object-fit:contain;
+    max-height:86vh;
 
     border-radius:28px;
 
-    cursor:zoom-in;
-
-    user-select:none;
-    -webkit-user-drag:none;
+    object-fit:contain;
 
     box-shadow:
-
         0 25px 80px
         rgba(0,0,0,.45);
 
-    transform:scale(1);
-
     transition:
+        transform .3s,
+        opacity .3s;
 
-        opacity .35s ease,
-        transform .35s ease;
-
+    cursor:pointer;
 }
 
-#lightbox-image.loading{
+/*==============================*/
+/* COUNTER */
+/*==============================*/
 
-    opacity:0;
+.lightbox-counter{
 
-    transform:
-        scale(.96);
+    position:fixed;
 
+    top:18px;
+    left:30px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+
+        0 0 0 1px
+        rgba(255,255,255,.08);
 }
 
-/*==================================
-=            BUTTONS               =
-==================================*/
-
-.lightbox-close,
-.lightbox-prev,
-.lightbox-next,
-.lightbox-counter,
-.lightbox-download,
-.lightbox-caption{
-
-    z-index:100;
-
-}
-
-/*==================================
-=        CLOSE / PREV / NEXT       =
-==================================*/
+/*==============================*/
+/* BUTTONS */
+/*==============================*/
 
 .lightbox-close,
 .lightbox-prev,
@@ -138,39 +102,53 @@ body.lightbox-open{
 
     position:fixed;
 
+    width:58px;
+    height:58px;
+
+    border:none;
+    border-radius:999px;
+
+    cursor:pointer;
+
     display:flex;
     justify-content:center;
     align-items:center;
 
-    width:68px;
-    height:68px;
-
-    border:none;
-
-    border-radius:999px;
-
     color:#fff;
 
-    font-size:30px;
-
-    cursor:pointer;
-
-    backdrop-filter:
-        blur(20px);
+    font-size:34px;
 
     background:
-        rgba(255,230,240,.24);
+
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+    backdrop-filter:
+        blur(18px);
 
     box-shadow:
 
         0 0 0 1px
-        rgba(255,190,220,.25),
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        ),
 
-        0 0 50px
-        rgba(255,170,210,.25);
+        0 8px 30px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
 
     transition:.3s;
-
 }
 
 .lightbox-close:hover,
@@ -178,23 +156,18 @@ body.lightbox-open{
 .lightbox-next:hover{
 
     background:
-        rgba(255,230,240,.35);
+        rgba(
+            255,
+            255,
+            255,
+            .14
+        );
 
-    box-shadow:
-
-        0 0 60px
-        rgba(255,170,210,.40);
-
+    transform:
+        scale(1.06);
 }
 
-.lightbox-close{
-
-    top:30px;
-    right:30px;
-
-    font-size:40px;
-
-}
+/*==============================*/
 
 .lightbox-prev{
 
@@ -203,7 +176,6 @@ body.lightbox-open{
 
     transform:
         translateY(-50%);
-
 }
 
 .lightbox-next{
@@ -213,369 +185,166 @@ body.lightbox-open{
 
     transform:
         translateY(-50%);
-
 }
 
-.lightbox-prev:hover,
-.lightbox-next:hover{
+.lightbox-close{
 
-    transform:
-        translateY(-50%)
-        scale(1.08);
-
+    top:14px;
+    right:18px;
 }
 
-.lightbox-close:hover{
+/*==============================*/
+/* DOWNLOAD */
+/*==============================*/
 
-    transform:
-        scale(1.08);
-
-}
-
-/*==================================
-=            COUNTER               =
-==================================*/
-
-.lightbox-counter{
+.lightbox-download{
 
     position:fixed;
 
-    top:34px;
-    left:34px;
+    top:14px;
+    right:92px;
 
     padding:
-        12px 20px;
+
+        14px 22px;
 
     border-radius:999px;
 
     color:#fff;
-
-    font-size:14px;
-    font-weight:600;
-
-    backdrop-filter:
-        blur(20px);
+    text-decoration:none;
+    font-weight:700;
 
     background:
-        rgba(255,230,240,.18);
 
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+
+        0 0 0 1px
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        ),
+
+        0 8px 30px
+        rgba(
+            0,
+            0,
+            0,
+            .18
+        );
+
+    transition:.3s;
 }
 
-/*==================================
-=            CAPTION               =
-==================================*/
+.lightbox-download:hover{
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .14
+        );
+
+    transform:
+        translateY(-2px);
+}
+
+/*==============================*/
+/* CAPTION */
+/*==============================*/
 
 .lightbox-caption{
 
     position:fixed;
 
     left:50%;
-    bottom:35px;
+    bottom:22px;
 
     transform:
         translateX(-50%);
 
-    max-width:80vw;
+    color:#fff;
+
+    font-size:15px;
+    font-weight:700;
 
     text-align:center;
 
-    color:#fff;
-
-    font-size:16px;
-    font-weight:700;
-
     text-shadow:
-
-        0 3px 20px
+        0 3px 12px
         rgba(0,0,0,.45);
-
 }
 
-/*==================================
-=         DOWNLOAD BUTTON          =
-==================================*/
-
-.lightbox-download{
-
-    position:fixed;
-
-    top:30px;
-    right:120px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:
-        14px 24px;
-
-    border-radius:999px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    font-weight:600;
-
-    overflow:hidden;
-
-    backdrop-filter:
-        blur(20px);
-
-    background:
-
-        linear-gradient(
-
-            135deg,
-
-            rgba(
-                255,
-                235,
-                245,
-                .30
-            ),
-
-            rgba(
-                255,
-                170,
-                210,
-                .22
-            )
-
-        );
-
-    box-shadow:
-
-        0 0 50px
-        rgba(
-            255,
-            170,
-            210,
-            .22
-        );
-
-    transition:.3s;
-
-}
-
-.lightbox-download:hover{
-
-    transform:
-        translateY(-3px);
-
-}
-
-/*==================================
-=         YOKO BUBBLES ✨          =
-==================================*/
-
-.lightbox-download .bubble{
-
-    position:absolute;
-
-    border-radius:50%;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    background:
-
-        radial-gradient(
-
-            circle,
-
-            rgba(
-                255,
-                255,
-                255,
-                .95
-            ) 0%,
-
-            rgba(
-                255,
-                220,
-                235,
-                .80
-            ) 45%,
-
-            rgba(
-                255,
-                170,
-                210,
-                .20
-            ) 100%
-
-        );
-
-    box-shadow:
-
-        0 0 18px
-        rgba(
-            255,
-            190,
-            230,
-            .50
-        );
-
-}
-
-.lightbox-download .bubble:nth-child(2){
-
-    width:8px;
-    height:8px;
-
-    left:20%;
-
-    animation-delay:0s;
-
-}
-
-.lightbox-download .bubble:nth-child(3){
-
-    width:12px;
-    height:12px;
-
-    left:50%;
-
-    animation-delay:.4s;
-
-}
-
-.lightbox-download .bubble:nth-child(4){
-
-    width:10px;
-    height:10px;
-
-    left:75%;
-
-    animation-delay:.8s;
-
-}
-
-.lightbox-download:hover .bubble{
-
-    animation:
-
-        yokoBubble
-        2.4s
-        infinite;
-
-}
-
-@keyframes yokoBubble{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-
-            translateY(10px)
-            scale(.6);
-
-    }
-
-    25%{
-
-        opacity:.7;
-
-    }
-
-    50%{
-
-        transform:
-
-            translateY(-6px)
-            translateX(4px)
-            scale(1);
-
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-
-            translateY(-20px)
-            translateX(-4px)
-            scale(1.3);
-
-    }
-
-}
-
-/*==================================
-=             MOBILE               =
-==================================*/
+/*==============================*/
+/* MOBILE */
+/*==============================*/
 
 @media (max-width:768px){
+
+    #lightbox-image{
+
+        max-width:94vw;
+        max-height:78vh;
+    }
 
     .lightbox-prev,
     .lightbox-next{
 
-        width:56px;
-        height:56px;
+        width:52px;
+        height:52px;
 
         font-size:26px;
-
-        top:45%;
-
     }
 
     .lightbox-prev{
 
         left:12px;
-
     }
 
     .lightbox-next{
 
         right:12px;
-
-    }
-
-    .lightbox-close{
-
-        width:56px;
-        height:56px;
-
-        top:20px;
-        right:20px;
-
-        font-size:34px;
-
-    }
-
-    .lightbox-download{
-
-        top:auto;
-        bottom:25px;
-
-        left:50%;
-        right:auto;
-
-        transform:
-            translateX(-50%);
-
     }
 
     .lightbox-counter{
 
-        top:20px;
-        left:20px;
+        left:14px;
+        top:14px;
+    }
 
+    .lightbox-close{
+
+        right:12px;
+        top:12px;
+    }
+
+    .lightbox-download{
+
+        right:76px;
+        top:12px;
+
+        padding:
+            13px 18px;
+
+        font-size:13px;
     }
 
     .lightbox-caption{
 
-        bottom:90px;
-
         width:90vw;
-
-        font-size:14px;
-
+        bottom:18px;
     }
 
 }
