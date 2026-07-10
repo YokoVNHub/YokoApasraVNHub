@@ -55,6 +55,10 @@ document.addEventListener(
 
         let zoom = 1;
 
+        let touchStartX = 0;
+
+        /*========================*/
+        /* COLLECT */
         /*========================*/
 
         function collectImages() {
@@ -73,6 +77,8 @@ document.addEventListener(
             collectImages;
 
         /*========================*/
+        /* ZOOM */
+        /*========================*/
 
         function resetZoom() {
 
@@ -81,8 +87,25 @@ document.addEventListener(
             image.style.transform =
                 "scale(1)";
 
+            image.style.cursor =
+                "zoom-in";
+
         }
 
+        function applyZoom() {
+
+            image.style.transform =
+                `scale(${zoom})`;
+
+            image.style.cursor =
+                zoom > 1
+                ? "zoom-out"
+                : "zoom-in";
+
+        }
+
+        /*========================*/
+        /* UI */
         /*========================*/
 
         function updateUI() {
@@ -127,6 +150,8 @@ document.addEventListener(
         }
 
         /*========================*/
+        /* PRELOAD */
+        /*========================*/
 
         function preload(index) {
 
@@ -155,6 +180,8 @@ document.addEventListener(
 
         }
 
+        /*========================*/
+        /* SHOW IMAGE */
         /*========================*/
 
         function showImage(index) {
@@ -231,8 +258,12 @@ document.addEventListener(
         }
 
         /*========================*/
+        /* OPEN / CLOSE */
+        /*========================*/
 
-        function openLightbox(index) {
+        function openLightbox(
+            index
+        ) {
 
             collectImages();
 
@@ -248,7 +279,9 @@ document.addEventListener(
                 "lightbox-open"
             );
 
-            showImage(index);
+            showImage(
+                index
+            );
 
         }
 
@@ -266,6 +299,8 @@ document.addEventListener(
 
         }
 
+        /*========================*/
+        /* NAVIGATION */
         /*========================*/
 
         function nextImage() {
@@ -307,7 +342,7 @@ document.addEventListener(
         }
 
         /*========================*/
-        /* OPEN */
+        /* OPEN EVENT */
         /*========================*/
 
         document.addEventListener(
@@ -343,6 +378,8 @@ document.addEventListener(
         );
 
         /*========================*/
+        /* BUTTONS */
+        /*========================*/
 
         closeButton?.addEventListener(
             "click",
@@ -359,6 +396,8 @@ document.addEventListener(
             prevImage
         );
 
+        /*========================*/
+        /* CLICK OUTSIDE */
         /*========================*/
 
         lightbox.addEventListener(
@@ -395,20 +434,20 @@ document.addEventListener(
                     event.key
                 ) {
 
-                        case "Escape":
+                    case "Escape":
 
-                            closeLightbox();
-                            break;
+                        closeLightbox();
+                        break;
 
-                        case "ArrowRight":
+                    case "ArrowRight":
 
-                            nextImage();
-                            break;
+                        nextImage();
+                        break;
 
-                        case "ArrowLeft":
+                    case "ArrowLeft":
 
-                            prevImage();
-                            break;
+                        prevImage();
+                        break;
 
                 }
 
@@ -418,8 +457,6 @@ document.addEventListener(
         /*========================*/
         /* TOUCH SWIPE */
         /*========================*/
-
-        let touchStartX = 0;
 
         lightbox.addEventListener(
             "touchstart",
@@ -474,23 +511,28 @@ document.addEventListener(
         );
 
         /*========================*/
-        /* ZOOM */
+        /* ONE CLICK ZOOM */
         /*========================*/
 
         image.addEventListener(
-            "dblclick",
-            () => {
+            "click",
+            (event) => {
+
+                event.stopPropagation();
 
                 zoom =
                     zoom === 1
                     ? 2
                     : 1;
 
-                image.style.transform =
-                    `scale(${zoom})`;
+                applyZoom();
 
             }
         );
+
+        /*========================*/
+        /* MOUSE WHEEL */
+        /*========================*/
 
         lightbox.addEventListener(
             "wheel",
@@ -505,6 +547,7 @@ document.addEventListener(
                 event.preventDefault();
 
                 zoom +=
+
                     event.deltaY > 0
                     ? -0.15
                     : 0.15;
@@ -518,8 +561,7 @@ document.addEventListener(
                         )
                     );
 
-                image.style.transform =
-                    `scale(${zoom})`;
+                applyZoom();
 
             },
             {
