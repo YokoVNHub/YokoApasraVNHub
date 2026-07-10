@@ -1,79 +1,31 @@
-/*==================================================
-    YokoApasraVNHub
-    Lightbox V2
-    CEO Fried Egg Edition 🥚🍳
-    Part 1 / 4
-==================================================*/
-
-
 /*==================================
-=            Variables             =
+=            LIGHTBOX             =
 ==================================*/
 
-:root{
+.lightbox{
 
-    --lb-bg:
-        rgba(10,12,18,.92);
+    position:fixed;
+    inset:0;
 
-    --lb-panel:
-        rgba(255,255,255,.08);
-
-    --lb-border:
-        rgba(255,255,255,.12);
-
-    --lb-shadow:
-        0 18px 45px rgba(0,0,0,.35);
-
-    --lb-pink:
-        #ff7dbb;
-
-    --lb-pink-soft:
-        #ffc1d6;
-
-    --lb-white:
-        #ffffff;
-
-    --lb-text:
-        #f7f7f7;
-
-    --lb-radius:
-        20px;
-
-    --lb-transition:
-        .28s ease;
-
-}
-
-
-/*==================================
-=         Lightbox Root            =
-==================================*/
-
-.lightbox {
-
-    position: fixed;
-    inset: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     background:
-        rgba(8,8,15,.72);
+        rgba(10,10,18,.78);
 
-    backdrop-filter: blur(35px);
+    backdrop-filter:
+        blur(35px);
 
-    opacity: 0;
-    visibility: hidden;
+    opacity:0;
+    visibility:hidden;
 
-    transition: .35s;
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
 
-    z-index: 99999;
+    z-index:99999;
 }
-
-/*==================================
-=         Active State             =
-==================================*/
 
 .lightbox.show{
 
@@ -82,162 +34,69 @@
 
 }
 
-body.lightbox-open {
+body.lightbox-open{
 
-    overflow: hidden;
-
-}
-/*==================================
-=        Background Glow           =
-==================================*/
-
-.lightbox::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    background:
-
-        radial-gradient(
-
-            circle at top,
-
-            rgba(255,125,187,.08),
-
-            transparent 35%
-
-        );
-
-    z-index:0;
+    overflow:hidden;
 
 }
-
-
-.lightbox::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    background:
-
-        radial-gradient(
-
-            circle at bottom,
-
-            rgba(255,255,255,.03),
-
-            transparent 40%
-
-        );
-
-    z-index:0;
-
-}
-
 
 /*==================================
-=         Stage Layout             =
+=             STAGE               =
 ==================================*/
+
 .lightbox-stage{
 
-    position:relative;
+    position:fixed;
+    inset:0;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
-    width:100%;
-    height:100%;
+    padding:
+        100px
+        140px
+        120px;
 
-    padding:80px;
+    pointer-events:none;
+
 }
+
 /*==================================
-=          Main Image              =
+=             IMAGE               =
 ==================================*/
 
 #lightbox-image{
 
     display:block;
 
-    max-width:min(85vw,1200px);
-
-    max-height:85vh;
+    max-width:85vw;
+    max-height:86vh;
 
     width:auto;
     height:auto;
 
     object-fit:contain;
 
-    border-radius:28px;
+    border-radius:30px;
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.45);
+        0 30px 100px
+        rgba(0,0,0,.45);
+
+    pointer-events:auto;
 
     user-select:none;
     -webkit-user-drag:none;
 
-    z-index:1;
-}
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
 
+}
 
 /*==================================
-=        Image States              =
-==================================*/
-
-#lightbox-image.loading{
-
-    opacity:0;
-
-    transform:
-        scale(.96);
-
-    filter:
-        blur(8px);
-
-}
-
-#lightbox-image.loaded{
-
-    opacity:1;
-
-    transform:
-        scale(1);
-
-    filter:none;
-
-}
-
-#lightbox-image.fade-out{
-
-    opacity:0;
-
-    transform:scale(.98);
-
-}
-
-
-#lightbox-image.fade-in{
-
-    opacity:1;
-
-    transform:scale(1);
-
-}
-
-
-/*==================================
-=           Counter                =
+=            COUNTER              =
 ==================================*/
 
 .lightbox-counter{
@@ -245,101 +104,136 @@ body.lightbox-open {
     position:fixed;
 
     top:24px;
-
     left:50%;
 
-    transform:translateX(-50%);
-
-    min-width:82px;
+    transform:
+        translateX(-50%);
 
     padding:
-
-        10px 18px;
-
-    text-align:center;
-
-    color:var(--lb-text);
-
-    font-size:.9rem;
-
-    font-weight:600;
+        12px 22px;
 
     border-radius:999px;
 
-    background:var(--lb-panel);
+    background:
+        rgba(25,25,35,.45);
 
-    border:1px solid var(--lb-border);
+    backdrop-filter:
+        blur(20px);
 
-    backdrop-filter:blur(16px);
+    color:#fff;
 
-    -webkit-backdrop-filter:blur(16px);
+    font-size:.95rem;
+    font-weight:700;
 
-    box-shadow:var(--lb-shadow);
-
-    z-index:1003;
+    z-index:10010;
 
 }
 
-
 /*==================================
-=        Common Glass UI           =
+=            CLOSE                =
 ==================================*/
 
-.lightbox button,
-.lightbox a{
+.lightbox-close{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    width:56px;
+    height:56px;
 
     border:none;
 
-    outline:none;
+    border-radius:50%;
+
+    background:
+        rgba(25,25,35,.45);
+
+    backdrop-filter:
+        blur(20px);
+
+    color:#fff;
+
+    font-size:1.7rem;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    z-index:10010;
+
+    transition:.25s;
+
+}
+
+.lightbox-close:hover{
+
+    transform:
+        scale(1.08)
+        rotate(8deg);
+
+    background:
+        rgba(255,255,255,.15);
+
+}
+
+/*==================================
+=           DOWNLOAD              =
+==================================*/
+
+.lightbox-download{
+
+    position:fixed;
+
+    top:20px;
+    right:92px;
+
+    height:56px;
+
+    padding:
+        0 22px;
+
+    border-radius:999px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        rgba(25,25,35,.45);
+
+    backdrop-filter:
+        blur(20px);
+
+    color:#fff;
 
     text-decoration:none;
 
-    color:var(--lb-white);
+    font-size:.92rem;
+    font-weight:700;
 
-    background:var(--lb-panel);
+    z-index:10010;
 
-    border:1px solid var(--lb-border);
+    transition:.25s;
 
-    backdrop-filter:blur(16px);
-
-    -webkit-backdrop-filter:blur(16px);
-
-    transition:
-
-        transform var(--lb-transition),
-
-        background var(--lb-transition),
-
-        box-shadow var(--lb-transition),
-
-        opacity var(--lb-transition);
+    overflow:hidden;
 
 }
 
+.lightbox-download:hover{
 
-/*==================================
-=      Desktop Cursor Only         =
-==================================*/
+    transform:
+        translateY(-2px);
 
-@media (hover:hover){
-
-    .lightbox.show,
-    .lightbox.show *{
-
-        cursor:none !important;
-
-    }
+    background:
+        rgba(255,255,255,.15);
 
 }
 
-/*==================================================
-    Part 2 / 4
-    Controls
-==================================================*/
-
-
 /*==================================
-=         Prev / Next              =
+=          PREV / NEXT            =
 ==================================*/
 
 .lightbox-prev,
@@ -349,1091 +243,218 @@ body.lightbox-open {
 
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
+
+    width:74px;
+    height:74px;
+
+    min-width:74px;
+    min-height:74px;
+
+    border:none;
+
+    border-radius:50%;
+
+    padding:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        rgba(25,25,35,.45);
+
+    backdrop-filter:
+        blur(20px);
+
+    color:#fff;
+
+    font-size:2rem;
+    font-weight:700;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    z-index:10010;
+
+    transition:.25s;
+
 }
 
 .lightbox-prev{
 
-    left:40px;
+    left:max(35px,4vw);
+
 }
 
 .lightbox-next{
 
-    right:40px;
+    right:max(35px,4vw);
+
 }
 
 .lightbox-prev:hover,
 .lightbox-next:hover{
 
-    transform:scale(1.08);
-
-    background:rgba(255,255,255,.12);
-
-    box-shadow:
-
-        0 0 18px rgba(255,125,187,.25);
-
-}
-
-
-.lightbox-prev:active,
-.lightbox-next:active{
-
-    transform:scale(.95);
-
-}
-
-
-/*==================================
-=         Close Button             =
-==================================*/
-
-.lightbox-close{
-
-    position:fixed;
-
-    top:24px;
-
-    right:24px;
-
-    width:56px;
-
-    height:56px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    font-size:1.7rem;
-
-    line-height:1;
-
-    z-index:1005;
-
-}
-
-
-.lightbox-close:hover{
-
     transform:
-
-        rotate(20deg)
-
-        scale(1.08);
+        translateY(-50%)
+        scale(1.1);
 
     background:
-
-        rgba(255,125,187,.15);
-
-    box-shadow:
-
-        0 0 20px rgba(255,125,187,.35);
+        rgba(255,255,255,.15);
 
 }
-
-
-.lightbox-close:active{
-
-    transform:scale(.95);
-
-}
-
 
 /*==================================
-=         Caption                  =
+=            CAPTION              =
 ==================================*/
 
 .lightbox-caption{
 
     position:fixed;
 
+    bottom:34px;
     left:50%;
 
-    bottom:92px;
+    transform:
+        translateX(-50%);
 
-    transform:translateX(-50%);
+    max-width:70vw;
 
-    width:min(90vw,900px);
+    color:#fff;
 
     text-align:center;
 
-    color:var(--lb-text);
-
-    font-size:.96rem;
-
-    line-height:1.6;
+    font-size:1rem;
+    font-weight:700;
 
     text-shadow:
+        0 4px 20px
+        rgba(0,0,0,.7);
 
-        0 2px 10px rgba(0,0,0,.4);
-
-    z-index:1003;
+    z-index:10010;
 
 }
-
 
 /*==================================
-=       Download Button            =
+=            BUBBLES              =
 ==================================*/
 
-.lightbox-download{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:28px;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:
-
-        14px 28px;
-
-    border-radius:999px;
-
-    overflow:hidden;
-
-    font-weight:600;
-
-    letter-spacing:.2px;
-
-    z-index:1004;
-
-}
-
-
-.lightbox-download span{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
-.lightbox-download:hover{
-
-    transform:
-
-        translateX(-50%)
-
-        translateY(-2px)
-
-        scale(1.03);
-
-    background:
-
-        rgba(255,255,255,.12);
-
-    box-shadow:
-
-        0 0 22px rgba(255,125,187,.25);
-
-}
-
-
-.lightbox-download:active{
-
-    transform:
-
-        translateX(-50%)
-
-        scale(.97);
-
-}
-
-
-/*==================================
-=       Bubble Inside Button       =
-==================================*/
-
-.lightbox-download .bubble{
+.bubble{
 
     position:absolute;
 
-    bottom:-12px;
+    bottom:10px;
 
-    width:10px;
-
-    height:10px;
+    width:8px;
+    height:8px;
 
     border-radius:50%;
 
     background:
-
-        radial-gradient(
-
-            circle,
-
-            rgba(255,255,255,.95),
-
-            rgba(255,192,222,.65)
-
-        );
+        rgba(255,255,255,.65);
 
     opacity:0;
 
-    pointer-events:none;
-
 }
-
 
 .lightbox-download:hover .bubble{
 
     animation:
-
-        bubbleRise 1.4s linear infinite;
-
-}
-
-
-.lightbox-download .bubble:nth-child(2){
-
-    left:22%;
-
-    animation-delay:0s;
+        bubbleFloat
+        1.8s infinite;
 
 }
 
+.bubble:nth-child(2){
 
-.lightbox-download .bubble:nth-child(3){
+    left:55%;
 
-    left:52%;
-
-    animation-delay:.45s;
-
-}
-
-
-.lightbox-download .bubble:nth-child(4){
-
-    left:76%;
-
-    animation-delay:.85s;
+    animation-delay:.2s;
 
 }
 
+.bubble:nth-child(3){
 
-@keyframes bubbleRise{
+    left:75%;
+
+    animation-delay:.4s;
+
+}
+
+@keyframes bubbleFloat{
 
     0%{
 
+        opacity:0;
+
         transform:
-
             translateY(0)
-
             scale(.4);
 
-        opacity:0;
-
     }
 
-    20%{
-
-        opacity:.7;
-
-    }
-
-    100%{
-
-        transform:
-
-            translateY(-42px)
-
-            scale(1.25);
-
-        opacity:0;
-
-    }
-
-}
-
-
-/*==================================
-=         Focus Visible            =
-==================================*/
-
-.lightbox button:focus-visible,
-.lightbox a:focus-visible{
-
-    outline:2px solid var(--lb-pink);
-
-    outline-offset:3px;
-
-}
-
-/*==================================================
-    Part 3 / 4
-    CEO Fried Egg Cursor 🍳
-==================================================*/
-
-
-/*==================================
-=        Fried Egg Cursor          =
-==================================*/
-
-.lb-egg{
-
-    position:fixed;
-
-    left:0;
-
-    top:0;
-
-    width:28px;
-
-    height:28px;
-
-    pointer-events:none;
-
-    transform:translate(-50%,-50%);
-
-    z-index:1010;
-
-    transition:
-
-        transform .25s ease,
-
-        filter .25s ease,
-
-        width .25s ease,
-
-        height .25s ease;
-
-}
-
-
-/*==================================
-=         Egg White                =
-==================================*/
-
-.lb-egg::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:#fffdf8;
-
-    border-radius:
-
-        54% 46%
-
-        58% 42%
-
-        / 46% 58%
-
-        42% 54%;
-
-    box-shadow:
-
-        0 0 10px rgba(255,255,255,.45),
-
-        inset -3px -4px 6px rgba(0,0,0,.05);
-
-}
-
-
-/*==================================
-=         Egg Yolk                 =
-==================================*/
-
-.lb-egg::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    width:11px;
-
-    height:11px;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-
-        radial-gradient(
-
-            circle,
-
-            #ffe16d,
-
-            #ffb400
-
-        );
-
-    box-shadow:
-
-        0 0 8px rgba(255,196,0,.45);
-
-}
-
-
-/*==================================
-=       Download Hover             =
-==================================*/
-
-.lb-egg.download-hover{
-
-    transform:
-
-        translate(-50%,-50%)
-
-        scale(1.12);
-
-    filter:brightness(1.15);
-
-}
-
-
-.lb-egg.download-hover::after{
-
-    box-shadow:
-
-        0 0 10px rgba(255,196,0,.7),
-
-        0 0 20px rgba(255,196,0,.45);
-
-}
-
-
-/*==================================
-=         Prev Hover               =
-==================================*/
-
-.lb-egg.prev-hover{
-
-    transform:
-
-        translate(-50%,-50%)
-
-        rotate(-18deg)
-
-        scale(1.05);
-
-}
-
-
-/*==================================
-=         Next Hover               =
-==================================*/
-
-.lb-egg.next-hover{
-
-    transform:
-
-        translate(-50%,-50%)
-
-        rotate(18deg)
-
-        scale(1.05);
-
-}
-
-
-/*==================================
-=        Close Hover               =
-==================================*/
-
-.lb-egg.close-hover{
-
-    animation:
-
-        eggShake .45s ease;
-
-    filter:
-
-        drop-shadow(
-
-            0 0 12px
-
-            rgba(255,125,187,.45)
-
-        );
-
-}
-
-
-@keyframes eggShake{
-
-    0%{
-
-        transform:
-
-            translate(-50%,-50%)
-
-            rotate(0deg);
-
-    }
-
-    25%{
-
-        transform:
-
-            translate(-50%,-50%)
-
-            rotate(-12deg);
-
-    }
-
-    50%{
-
-        transform:
-
-            translate(-50%,-50%)
-
-            rotate(10deg);
-
-    }
-
-    75%{
-
-        transform:
-
-            translate(-50%,-50%)
-
-            rotate(-6deg);
-
-    }
-
-    100%{
-
-        transform:
-
-            translate(-50%,-50%)
-
-            rotate(0deg);
-
-    }
-
-}
-
-
-/*==================================
-=       Bubble Cursor              =
-==================================*/
-
-.lb-bubble{
-
-    position:fixed;
-
-    left:0;
-
-    top:0;
-
-    width:10px;
-
-    height:10px;
-
-    pointer-events:none;
-
-    border-radius:50%;
-
-    z-index:1009;
-
-    background:
-
-        radial-gradient(
-
-            circle,
-
-            rgba(255,255,255,.95),
-
-            rgba(255,192,222,.55)
-
-        );
-
-    box-shadow:
-
-        0 0 6px rgba(255,192,222,.35);
-
-    filter:blur(.2px);
-
-}
-
-
-/*==================================
-=      Glass Hover States          =
-==================================*/
-
-.lightbox-prev:hover,
-.lightbox-next:hover,
-.lightbox-close:hover,
-.lightbox-download:hover{
-
-    backdrop-filter:
-
-        blur(18px)
-
-        saturate(180%);
-
-    -webkit-backdrop-filter:
-
-        blur(18px)
-
-        saturate(180%);
-
-}
-
-
-/*==================================
-=       Soft Floating              =
-==================================*/
-
-@keyframes eggFloat{
-
-    0%{
-
-        margin-top:0;
-
-    }
-
-    50%{
-
-        margin-top:-2px;
-
-    }
-
-    100%{
-
-        margin-top:0;
-
-    }
-
-}
-
-
-.lb-egg{
-
-    animation:
-
-        eggFloat
-
-        2.8s ease-in-out infinite;
-
-}
-
-/*==================================================
-    Part 4 / 4
-    Animation • Responsive • Accessibility
-==================================================*/
-
-
-/*==================================
-=        Overlay Animation         =
-==================================*/
-
-@keyframes lightboxFadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
+    40%{
 
         opacity:1;
 
     }
 
-}
-
-
-@keyframes lightboxFadeOut{
-
-    from{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        opacity:0;
-
-    }
-
-}
-
-
-.lightbox.show{
-
-    animation:
-
-        lightboxFadeIn .35s ease;
-
-}
-
-
-.lightbox.hide{
-
-    animation:
-
-        lightboxFadeOut .28s ease forwards;
-
-}
-
-
-/*==================================
-=          Image Zoom              =
-==================================*/
-
-@keyframes imageZoomIn{
-
-    from{
+    100%{
 
         opacity:0;
 
         transform:
-            scale(.96);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
+            translateY(-45px)
             scale(1);
 
     }
 
 }
 
-
-@keyframes imageZoomOut{
-
-    from{
-
-        opacity:1;
-
-        transform:
-            scale(1);
-
-    }
-
-    to{
-
-        opacity:0;
-
-        transform:
-            scale(.96);
-
-    }
-
-}
-
-
-#lightbox-image.fade-in{
-
-    animation:
-
-        imageZoomIn .28s ease;
-
-}
-
-
-#lightbox-image.fade-out{
-
-    animation:
-
-        imageZoomOut .22s ease;
-
-}
-
-
 /*==================================
-=         Button Glow              =
-==================================*/
-
-.lightbox button:hover,
-.lightbox a:hover{
-
-    border-color:
-
-        rgba(255,125,187,.35);
-
-}
-
-
-.lightbox button:active,
-.lightbox a:active{
-
-    transition-duration:.12s;
-
-}
-
-
-/*==================================
-=      Scroll Lock Support         =
-==================================*/
-
-body.lightbox-open{
-
-    overflow:hidden;
-
-    touch-action:none;
-
-}
-
-
-/*==================================
-=       Selection Disable          =
-==================================*/
-
-.lightbox,
-.lightbox *{
-
-    user-select:none;
-
-    -webkit-user-select:none;
-
-}
-
-
-/*==================================
-=     Reduced Motion Support       =
-==================================*/
-
-@media (prefers-reduced-motion:reduce){
-
-    *{
-
-        animation:none !important;
-
-        transition:none !important;
-
-        scroll-behavior:auto !important;
-
-    }
-
-}
-
-
-/*==================================
-=          Tablet                  =
-==================================*/
-
-@media (max-width:992px){
-
-    .lightbox-stage{
-
-        grid-template-columns:
-
-            60px
-
-            minmax(0,1fr)
-
-            60px;
-
-    }
-
-    .lightbox-prev,
-    .lightbox-next{
-
-        width:50px;
-
-        height:50px;
-
-        font-size:1.2rem;
-
-    }
-
-    .lightbox-close{
-
-        width:50px;
-
-        height:50px;
-
-    }
-
-}
-
-
-/*==================================
-=          Mobile                  =
+=            MOBILE               =
 ==================================*/
 
 @media (max-width:768px){
 
     .lightbox-stage{
 
-        width:100vw;
-
-        height:100vh;
-
         padding:
-
-            0 12px;
-
-        grid-template-columns:
-
-            48px
-
-            minmax(0,1fr)
-
-            48px;
+            90px
+            25px
+            120px;
 
     }
 
-#lightbox-image{
+    .lightbox-prev,
+    .lightbox-next{
 
-    max-width:85vw;
-    max-height:85vh;
+        width:58px;
+        height:58px;
 
-    border-radius:24px;
+        font-size:1.5rem;
 
-}
+    }
 
-    .lightbox-counter{
+    .lightbox-download{
 
-        top:16px;
-
-        font-size:.82rem;
+        right:82px;
 
         padding:
+            0 18px;
 
-            8px 16px;
+        font-size:.82rem;
 
     }
 
     .lightbox-caption{
 
-        width:90vw;
-
-        bottom:82px;
-
-        font-size:.88rem;
-
-    }
-
-    .lightbox-download{
-
-        bottom:18px;
-
-        padding:
-
-            12px 22px;
+        max-width:90vw;
 
         font-size:.9rem;
-
-    }
-
-    .lightbox-close{
-
-        top:16px;
-
-        right:16px;
-
-    }
-
-}
-
-
-/*==================================
-=         Small Mobile             =
-==================================*/
-
-@media (max-width:480px){
-
-    .lightbox-prev,
-    .lightbox-next{
-
-        width:44px;
-
-        height:44px;
-
-        font-size:1rem;
-
-    }
-
-    .lightbox-close{
-
-        width:44px;
-
-        height:44px;
-
-        font-size:1.35rem;
-
-    }
-
-    .lightbox-download{
-
-        width:calc(100% - 32px);
-
-        justify-content:center;
-
-    }
-
-}
-
-
-/*==================================
-=       Touch Devices              =
-==================================*/
-
-@media (hover:none){
-
-    .lb-egg,
-
-    .lb-bubble{
-
-        display:none;
-
-    }
-
-}
-
-
-/*==================================
-=       High Contrast              =
-==================================*/
-
-@media (prefers-contrast:more){
-
-    .lightbox button,
-    .lightbox a{
-
-        border:
-
-            2px solid #fff;
-
-    }
-
-}
-
-
-/*==================================
-=          Print                   =
-==================================*/
-
-@media print{
-
-    .lightbox{
-
-        display:none !important;
 
     }
 
