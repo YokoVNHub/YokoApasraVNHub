@@ -3,63 +3,42 @@
 ===================================================== */
 
 .events-hero{
-
     position:relative;
-
-    padding:100px 0 260px;
-
     background:
+        linear-gradient(
+            180deg,
+            #fff8fc 0%,
+            #ffffff 100%
+        );
 
-    linear-gradient(
-        180deg,
-        #fff8fc 0%,
-        #ffffff 100%
-    );
-
+    padding:100px 0 230px;
     overflow:hidden;
-
 }
 
 .hero-layout{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:flex-end;
-
     gap:60px;
-
 }
 
 .hero-copy{
-
-    flex:1;
-
     max-width:620px;
-
 }
 
 .hero-kicker{
-
     display:inline-block;
-
-    color:#ff69a9;
-
-    font-weight:700;
-
-    letter-spacing:.18em;
-
     margin-bottom:24px;
 
+    color:#ff69a9;
+    font-weight:700;
+    letter-spacing:.18em;
+    font-size:.85rem;
 }
 
 .hero-title{
-
     font-size:5rem;
-
-    line-height:1;
-
+    line-height:.95;
     font-family:
         "Playfair Display",
         serif;
@@ -67,65 +46,60 @@
     color:#2d3553;
 
     margin-bottom:28px;
-
 }
 
 .hero-title span{
-
     display:block;
-
     color:#ff69a9;
-
 }
 
 .hero-desc{
-
     max-width:500px;
-
     color:#777;
-
     line-height:1.9;
-
-    margin-bottom:50px;
-
 }
 
 /* =====================================================
-   HERO STATS
+   STATS
 ===================================================== */
 
 .hero-stats{
-
     display:flex;
-
-    gap:60px;
-
-    align-items:center;
-
+    gap:24px;
+    margin-top:55px;
 }
 
 .hero-stat{
+    min-width:180px;
 
-    display:flex;
+    padding:28px;
 
-    flex-direction:column;
+    background:
+        rgba(255,255,255,.72);
 
+    backdrop-filter:blur(20px);
+
+    border:
+        1px solid rgba(255,255,255,.7);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 20px 45px rgba(255,120,180,.08);
 }
 
 .hero-stat strong{
+    display:block;
 
-    font-size:2.1rem;
-
+    font-size:2.2rem;
     color:#2d3553;
 
+    margin-bottom:10px;
 }
 
 .hero-stat span{
-
     color:#888;
-
     font-size:.95rem;
-
 }
 
 /* =====================================================
@@ -133,47 +107,29 @@
 ===================================================== */
 
 .hero-image{
-
-    flex:1;
-
     display:flex;
-
-    justify-content:flex-end;
-
     align-items:flex-end;
-
 }
 
 .hero-image img{
-
-    width:560px;
-
+    width:540px;
     max-width:100%;
-
-    object-fit:contain;
-
+    display:block;
 }
 
 /* =====================================================
-   LATEST EVENT
+   LATEST
 ===================================================== */
 
 .latest-event{
-
-    margin-top:-180px;
-
+    margin-top:-160px;
     position:relative;
-
-    z-index:20;
-
+    z-index:10;
 }
 
 .latest-card{
-
     display:grid;
-
-    grid-template-columns:
-        1.2fr 1fr;
+    grid-template-columns:1.1fr 1fr;
 
     overflow:hidden;
 
@@ -182,43 +138,29 @@
     border-radius:42px;
 
     box-shadow:
-
-        0 30px 80px
-        rgba(0,0,0,.08);
-
+        0 30px 80px rgba(0,0,0,.08);
 }
 
 .latest-image{
-
     min-height:500px;
-
 }
 
 .latest-image img{
-
     width:100%;
     height:100%;
-
     object-fit:cover;
-
 }
 
 .latest-content{
-
     padding:70px;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
 }
 
 .latest-tag{
-
     display:inline-flex;
-
     width:max-content;
 
     padding:10px 18px;
@@ -230,69 +172,52 @@
     color:#ff69a9;
 
     font-size:.85rem;
-
     font-weight:700;
 
     margin-bottom:28px;
-
 }
 
 .latest-content h2{
-
     font-size:2.5rem;
+    line-height:1.3;
 
     color:#2d3553;
 
-    line-height:1.3;
-
-    margin-bottom:26px;
-
+    margin-bottom:24px;
 }
 
 .latest-content p{
-
     color:#777;
-
-    margin-bottom:14px;
-
+    margin-bottom:12px;
 }
 
 .latest-btn{
-
     margin-top:28px;
 
     color:#ff69a9;
-
     font-weight:700;
-
 }
 
 /* =====================================================
-   EVENTS PAGE
+   EVENTS
 ===================================================== */
 
 .events-page{
-
     padding:120px 0;
-
 }
 
 .events-heading{
-
     margin-bottom:40px;
-
 }
 
 .events-heading h2{
-
-    font-size:2.7rem;
+    font-size:2.8rem;
 
     font-family:
         "Playfair Display",
         serif;
 
     color:#2d3553;
-
 }
 
 /* =====================================================
@@ -300,63 +225,46 @@
 ===================================================== */
 
 .events-toolbar{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    gap:40px;
+    gap:30px;
 
     margin-bottom:55px;
 
     flex-wrap:wrap;
-
 }
 
 .events-filter{
-
     display:flex;
-
+    gap:14px;
     flex-wrap:wrap;
-
-    gap:16px;
-
 }
 
 .events-filter button{
-
     border:none;
 
     background:#fff;
 
-    border:1px solid #ffe2ef;
+    border:
+        1px solid #ffe2ef;
 
     border-radius:999px;
 
-    padding:14px 26px;
-
-    font-weight:600;
+    padding:13px 24px;
 
     color:#ff69a9;
+
+    font-weight:600;
 
     cursor:pointer;
 
     transition:.3s;
-
-}
-
-.events-filter button:hover{
-
-    transform:translateY(-2px);
-
 }
 
 .events-filter button.active{
-
     background:
-
         linear-gradient(
             135deg,
             #ff5db8,
@@ -364,46 +272,30 @@
         );
 
     color:#fff;
-
 }
 
-/* =====================================================
-   ACTIONS
-===================================================== */
-
 .events-actions{
-
     display:flex;
-
     gap:18px;
-
     align-items:center;
-
 }
 
 .events-sort select{
-
     border:none;
 
     background:#fff;
 
-    padding:15px 24px;
+    padding:15px 26px;
 
     border-radius:999px;
 
     box-shadow:
-
-        0 10px 30px
-        rgba(255,120,180,.08);
+        0 12px 35px rgba(255,120,180,.08);
 
     font-family:inherit;
-
-    cursor:pointer;
-
 }
 
 .view-toggle{
-
     display:flex;
 
     gap:8px;
@@ -415,35 +307,25 @@
     border-radius:999px;
 
     box-shadow:
-
-        0 10px 30px
-        rgba(255,120,180,.08);
-
+        0 12px 35px rgba(255,120,180,.08);
 }
 
 .view-btn{
-
     width:46px;
     height:46px;
 
     border:none;
+    border-radius:50%;
 
     background:none;
 
-    border-radius:50%;
-
     cursor:pointer;
 
-    color:#bbb;
-
-    transition:.3s;
-
+    color:#b6b6b6;
 }
 
 .view-btn.active{
-
     background:
-
         linear-gradient(
             135deg,
             #ff5db8,
@@ -451,7 +333,6 @@
         );
 
     color:#fff;
-
 }
 
 /* =====================================================
@@ -459,81 +340,81 @@
 ===================================================== */
 
 .events-grid{
-
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(290px,1fr)
-        );
+        repeat(4,1fr);
 
-    gap:34px;
-
+    gap:32px;
 }
 
 /* =====================================================
    CARD
 ===================================================== */
 
-.archive-card{
-
+.event-card{
     display:block;
 
     background:#fff;
 
-    border-radius:34px;
+    border-radius:32px;
 
     overflow:hidden;
 
-    box-shadow:
-
-        0 18px 55px
-        rgba(255,120,180,.08);
+    text-decoration:none;
+    color:inherit;
 
     transition:.35s;
 
+    box-shadow:
+        0 18px 55px rgba(255,120,180,.08);
 }
 
-.archive-card:hover{
-
+.event-card:hover{
     transform:translateY(-8px);
-
 }
 
-.archive-thumb{
+.event-thumb{
+    position:relative;
 
     height:260px;
 
     overflow:hidden;
-
 }
 
-.archive-thumb img{
-
+.event-thumb img{
     width:100%;
     height:100%;
 
     object-fit:cover;
 
     transition:.45s;
-
 }
 
-.archive-card:hover img{
-
+.event-card:hover img{
     transform:scale(1.05);
-
 }
 
-.archive-info{
+.event-date-badge{
+    position:absolute;
 
-    padding:28px;
+    top:18px;
+    left:18px;
 
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:12px 16px;
+
+    text-align:center;
 }
 
-.archive-info h3{
+.event-info{
+    padding:26px;
+}
 
+.event-info h2{
     font-size:1.35rem;
 
     color:#2d3553;
@@ -541,59 +422,37 @@
     margin-bottom:14px;
 
     line-height:1.5;
-
 }
 
-.archive-info p{
-
+.event-date{
     color:#777;
-
     margin-bottom:10px;
-
 }
 
-.archive-photos{
-
+.event-photos{
     color:#ff69a9;
-
     font-weight:600;
-
 }
 
 /* =====================================================
-   LIST VIEW
+   LIST MODE
 ===================================================== */
 
 .events-grid.list-view{
-
     display:flex;
-
     flex-direction:column;
-
 }
 
-.events-grid.list-view .archive-card{
-
+.events-grid.list-view .event-card{
     display:flex;
-
     align-items:center;
-
 }
 
-.events-grid.list-view .archive-thumb{
-
+.events-grid.list-view .event-thumb{
     width:340px;
-
     height:220px;
 
     flex-shrink:0;
-
-}
-
-.events-grid.list-view .archive-info{
-
-    flex:1;
-
 }
 
 /* =====================================================
@@ -601,23 +460,16 @@
 ===================================================== */
 
 .events-footer{
-
     padding:120px 0;
-
     text-align:center;
-
 }
 
 .footer-message{
-
     max-width:760px;
-
     margin:auto;
-
 }
 
 .footer-message h2{
-
     font-size:3rem;
 
     line-height:1.2;
@@ -628,33 +480,24 @@
 
     color:#2d3553;
 
-    margin-bottom:28px;
-
+    margin-bottom:26px;
 }
 
 .footer-message p{
-
     color:#777;
-
-    margin-bottom:16px;
-
+    margin-bottom:14px;
 }
 
 .footer-divider{
-
     width:90px;
     height:1px;
 
     background:#e5e5e5;
 
     margin:40px auto;
-
 }
 
 .footer-message small{
-
     color:#aaa;
-
     line-height:1.8;
-
 }
