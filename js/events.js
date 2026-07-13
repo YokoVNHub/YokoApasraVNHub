@@ -1,238 +1,278 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
 
-    const eventsContainer =
-        document.getElementById("events-list");
+    const list =
+        document.getElementById(
+            "events-list"
+        );
 
-    const latestContainer =
-        document.getElementById("latest-event-card");
+    const latest =
+        document.getElementById(
+            "latest-event-card"
+        );
 
-    const totalEventsEl =
-        document.getElementById("total-events");
+    const monthFilter =
+        document.getElementById(
+            "month-filter"
+        );
 
-    const totalPhotosEl =
-        document.getElementById("total-photos");
-
-    if (!eventsContainer) return;
+    const sortSelect =
+        document.getElementById(
+            "sort-select"
+        );
 
     try {
 
-        const response =
-            await fetch("../data/gallery.json");
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Cannot load gallery.json"
+        const res =
+            await fetch(
+                "../data/gallery.json"
             );
 
-        }
-
         const events =
-            await response.json();
+            await res.json();
 
-        /* ==========================================
-           SORT EVENTS (Newest → Oldest)
-        ========================================== */
+        /*
+        stats
+        */
 
-        events.sort((a, b) => {
+        document.getElementById(
+            "total-events"
+        ).textContent =
+            events.length;
 
-            return (
-                new Date(b.date) -
-                new Date(a.date)
+        const totalPhotos =
+            events.reduce(
+                (sum, e) =>
+                    sum + e.photos,
+                0
+            );
+
+        document.getElementById(
+            "total-photos"
+        ).textContent =
+            totalPhotos.toLocaleString()
+            + "+";
+
+        /*
+        latest card
+        */
+
+        const latestEvent =
+            events[0];
+
+        latest.innerHTML = `
+
+        <div class="latest-card">
+
+            <div class="event-thumb">
+
+                <img
+                    src="../assets/events/${latestEvent.folder}/${latestEvent.cover}.${latestEvent.format}"
+                    alt="${latestEvent.title}">
+
+            </div>
+
+            <div>
+
+                <div class="latest-badge">
+                    ⭐ LATEST EVENT
+                </div>
+
+                <h2>
+                    ${latestEvent.title}
+                </h2>
+
+                <p class="event-date">
+                    📅 ${latestEvent.date}
+                </p>
+
+                <p>
+                    ${latestEvent.photos}
+                    photos archived.
+                </p>
+
+                <a
+                    class="event-photos"
+                    href="detail.html?id=${latestEvent.id}">
+
+                    View Gallery →
+
+                </a>
+
+            </div>
+
+        </div>
+        `;
+
+        /*
+        months
+        */
+
+        const months =
+            [
+                "All",
+                ...new Set(
+                    events.map(e =>
+                        e.date.split(" ")[1]
+                    )
+                )
+            ];
+
+        months.forEach(month => {
+
+            const btn =
+                document.createElement(
+                    "button"
+                );
+
+            btn.textContent =
+                month;
+
+            if (
+                month === "All"
+            ) {
+
+                btn.classList.add(
+                    "active"
+                );
+
+            }
+
+            btn.onclick = () => {
+
+                document
+                    .querySelectorAll(
+                        "#month-filter button"
+                    )
+                    .forEach(
+                        b =>
+                            b.classList.remove(
+                                "active"
+                            )
+                    );
+
+                btn.classList.add(
+                    "active"
+                );
+
+                render(month);
+
+            };
+
+            monthFilter.appendChild(
+                btn
             );
 
         });
 
-        /* ==========================================
-           HERO STATS
-        ========================================== */
+        /*
+        render
+        */
 
-        const totalPhotos =
-            events.reduce(
-
-                (sum, event) => {
-
-                    return (
-                        sum +
-                        (event.photos || 0)
-                    );
-
-                },
-
-                0
-
-            );
-
-        if (totalEventsEl) {
-
-            totalEventsEl.textContent =
-                events.length.toLocaleString();
-
-        }
-
-        if (totalPhotosEl) {
-
-            totalPhotosEl.textContent =
-                `${totalPhotos.toLocaleString()}+`;
-
-        }
-
-        /* ==========================================
-           LATEST EVENT
-        ========================================== */
-
-        if (
-            latestContainer &&
-            events.length > 0
+        function render(
+            month = "All"
         ) {
 
-            const latest =
-                events[0];
+            let filtered =
+                [...events];
 
-            const cover =
-                String(
-                    latest.cover || "001"
-                ).padStart(3, "0");
+            if (
+                month !== "All"
+            ) {
 
-            const ext =
-                latest.format || "jpg";
+                filtered =
+                    filtered.filter(
+                        e =>
+                            e.date.includes(
+                                month
+                            )
+                    );
 
-            latestContainer.innerHTML = `
+            }
 
-                <a
-                    class="event-card latest-card"
-                    href="detail.html?id=${encodeURIComponent(latest.id)}">
+            if (
+                sortSelect.value
+                === "oldest"
+            ) {
 
-                    <div class="event-thumb">
+                filtered.reverse();
 
-                        <img
-                            src="../assets/events/${latest.folder}/${cover}.${ext}"
-                            alt="${latest.title}">
+            }
 
-                    </div>
+            list.innerHTML = "";
 
-                    <div class="event-info">
+            filtered.forEach(
+                event => {
 
-                        <span class="latest-badge">
+                const parts =
+                    event.date.split(
+                        " "
+                    );
 
-                            ✨ Latest Event
+                const day =
+                    parts[0];
 
-                        </span>
+                const month =
+                    parts[1].slice(
+                        0,
+                        3
+                    );
 
-                        <h2>
+                const year =
+                    parts[2];
 
-                            ${latest.title}
+                const card =
+                    document.createElement(
+                        "a"
+                    );
 
-                        </h2>
+                card.className =
+                    "event-card";
 
-                        <p class="event-date">
+                card.href =
+                    `detail.html?id=${event.id}`;
 
-                            📅 ${latest.date}
-
-                        </p>
-
-                        <span class="event-photos">
-
-                            📷 ${latest.photos}
-                            Photos
-
-                        </span>
-
-                    </div>
-
-                </a>
-
-            `;
-
-        }
-
-        /* ==========================================
-           EVENT GRID
-        ========================================== */
-
-        eventsContainer.innerHTML = "";
-
-        events.forEach(event => {
-
-            const cover =
-                String(
-                    event.cover || "001"
-                ).padStart(3, "0");
-
-            const ext =
-                event.format || "jpg";
-
-            const card =
-                document.createElement("a");
-
-            card.className =
-                "event-card";
-
-            card.href =
-                `detail.html?id=${encodeURIComponent(event.id)}`;
-
-            const date =
-                new Date(event.date);
-
-            const day =
-                String(
-                    date.getDate()
-                ).padStart(2, "0");
-
-            const month =
-                date.toLocaleString(
-                    "en-US",
-                    {
-                        month: "short"
-                    }
-                );
-
-            const year =
-                date.getFullYear();
-
-            card.innerHTML = `
-
+                card.innerHTML =
+                `
                 <div class="event-thumb">
 
                     <div class="event-date-badge">
 
                         <strong>
-
                             ${day}
-
                         </strong>
 
                         <span>
-
                             ${month}
-
                         </span>
 
                         <small>
-
                             ${year}
-
                         </small>
 
                     </div>
 
                     <img
-                        src="../assets/events/${event.folder}/${cover}.${ext}"
-                        alt="${event.title}"
-                        loading="lazy"
-                        decoding="async">
+                        src="../assets/events/${event.folder}/${event.cover}.${event.format}"
+                        alt="${event.title}">
 
                 </div>
 
                 <div class="event-info">
 
                     <h2>
-
                         ${event.title}
-
                     </h2>
 
-                    <span class="event-photos">
+                    <p class="event-date">
+
+                        📅 ${event.date}
+
+                    </p>
+
+                    <span
+                        class="event-photos">
 
                         📷
                         ${event.photos}
@@ -241,41 +281,39 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </span>
 
                 </div>
+                `;
 
-            `;
+                list.appendChild(
+                    card
+                );
 
-            eventsContainer.appendChild(
-                card
-            );
+            });
 
-        });
+        }
+
+        sortSelect.addEventListener(
+            "change",
+            () => {
+
+                const active =
+                    document.querySelector(
+                        "#month-filter .active"
+                    );
+
+                render(
+                    active.textContent
+                );
+
+            }
+        );
+
+        render();
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(error);
-
-        eventsContainer.innerHTML = `
-
-            <div class="empty-state">
-
-                <h2>
-
-                    Unable to load events
-
-                </h2>
-
-                <p>
-
-                    Please check
-                    gallery.json
-
-                </p>
-
-            </div>
-
-        `;
 
     }
 
