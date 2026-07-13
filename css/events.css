@@ -4,31 +4,303 @@
 
 .events-page{
 
-    padding:100px 0 120px;
-
     position:relative;
+    padding:90px 0 140px;
 
 }
 
 .events-page .container{
 
-    width:min(1280px,90%);
+    width:min(1500px,92%);
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.events-hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+
+        90px 0
+        200px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #fff8fb,
+            #fff3f8
+        );
+
+}
+
+.hero-layout{
+
+    display:grid;
+
+    grid-template-columns:
+
+        1fr
+        1fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    position:relative;
+
+}
+
+.hero-copy{
+
+    z-index:2;
+}
+
+.hero-kicker{
+
+    display:inline-block;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:#9aa0b8;
+
+    margin-bottom:24px;
+
+    letter-spacing:.08em;
+
+}
+
+.hero-title{
+
+    line-height:.9;
+
+    margin-bottom:32px;
+
+}
+
+.hero-title{
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:6.5rem;
+
+    color:#2d3553;
+
+}
+
+.hero-title span{
+
+    display:block;
+
+    color:#ff6cae;
+}
+
+.hero-copy p{
+
+    font-size:1.25rem;
+
+    color:#70768c;
+
+    line-height:1.9;
+
+    max-width:560px;
 
 }
 
 /* ==========================================
-   TITLE
+   HERO IMAGE
+========================================== */
+
+.hero-image{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+.hero-image img{
+
+    width:100%;
+    max-width:760px;
+
+    display:block;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* ==========================================
+   BUBBLES
+========================================== */
+
+.hero-bubble{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9),
+            rgba(255,255,255,.3)
+        );
+
+    filter:blur(2px);
+
+}
+
+.b1{
+
+    width:180px;
+    height:180px;
+
+    top:130px;
+    left:15%;
+
+}
+
+.b2{
+
+    width:120px;
+    height:120px;
+
+    top:260px;
+    right:18%;
+
+}
+
+.b3{
+
+    width:300px;
+    height:300px;
+
+    right:-80px;
+    bottom:20px;
+
+}
+
+/* ==========================================
+   STATS
+========================================== */
+
+.hero-stats{
+
+    display:flex;
+
+    gap:24px;
+
+    margin-top:55px;
+
+}
+
+.hero-stats div{
+
+    min-width:190px;
+
+    background:
+
+        rgba(255,255,255,.65);
+
+    backdrop-filter:blur(24px);
+
+    border:
+
+        1px solid rgba(255,255,255,.9);
+
+    border-radius:34px;
+
+    padding:30px;
+
+    box-shadow:
+
+        0 18px 50px
+        rgba(255,120,180,.08);
+
+}
+
+.hero-stats strong{
+
+    display:block;
+
+    font-size:2.2rem;
+
+    color:#2d3553;
+
+    margin-bottom:12px;
+
+}
+
+.hero-stats span{
+
+    color:#7f8599;
+}
+
+/* ==========================================
+   LATEST EVENT
+========================================== */
+
+.latest-event{
+
+    margin-top:-130px;
+
+    position:relative;
+
+    z-index:20;
+
+}
+
+#latest-event-card{
+
+    background:
+
+        rgba(255,255,255,.72);
+
+    backdrop-filter:blur(30px);
+
+    border:
+
+        1px solid rgba(255,255,255,.8);
+
+    border-radius:42px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 35px 80px
+        rgba(255,120,180,.12);
+
+}
+
+/* ==========================================
+   EVENTS SECTION
 ========================================== */
 
 .events-heading{
 
-    margin-bottom:36px;
+    margin-bottom:40px;
 
 }
 
 .events-heading h2{
 
-    font-size:2.6rem;
+    font-size:3rem;
 
     font-family:"Playfair Display",serif;
 
@@ -50,9 +322,7 @@
 
     gap:40px;
 
-    flex-wrap:wrap;
-
-    margin-bottom:55px;
+    margin-bottom:60px;
 
 }
 
@@ -74,9 +344,11 @@
 
     border:none;
 
-    background:rgba(255,255,255,.9);
+    background:
 
-    border:1px solid #ffe1ee;
+        rgba(255,255,255,.85);
+
+    border:1px solid #ffe2ee;
 
     border-radius:999px;
 
@@ -92,24 +364,22 @@
 
     transition:.3s;
 
-    box-shadow:
-        0 10px 25px rgba(255,120,180,.05);
-
 }
 
 .events-filter button:hover{
 
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 
 }
 
 .events-filter button.active{
 
     background:
+
         linear-gradient(
             135deg,
             #ff5db8,
-            #ff9c77
+            #ff9b77
         );
 
     color:#fff;
@@ -130,41 +400,33 @@
 
     gap:18px;
 
-    margin-left:auto;
-
 }
 
-/* ==========================================
-   SORT
-========================================== */
-
 .events-sort select{
-
-    appearance:none;
 
     border:none;
 
     background:#fff;
 
-    padding:15px 28px;
+    padding:16px 30px;
 
     border-radius:999px;
-
-    font-family:inherit;
 
     font-weight:600;
 
     color:#555;
 
-    cursor:pointer;
-
     box-shadow:
-        0 12px 35px rgba(255,120,180,.08);
+
+        0 12px 35px
+        rgba(255,120,180,.08);
+
+    cursor:pointer;
 
 }
 
 /* ==========================================
-   GRID / LIST
+   VIEW TOGGLE
 ========================================== */
 
 .view-toggle{
@@ -182,7 +444,9 @@
     border-radius:999px;
 
     box-shadow:
-        0 12px 35px rgba(255,120,180,.08);
+
+        0 12px 35px
+        rgba(255,120,180,.08);
 
 }
 
@@ -197,29 +461,24 @@
 
     background:transparent;
 
-    color:#b6b6b6;
-
     cursor:pointer;
 
     font-size:1.1rem;
 
+    color:#bbb;
+
     transition:.3s;
-
-}
-
-.view-btn:hover{
-
-    background:#fff5f9;
 
 }
 
 .view-btn.active{
 
     background:
+
         linear-gradient(
             135deg,
             #ff5db8,
-            #ff9c77
+            #ff9b77
         );
 
     color:#fff;
@@ -227,35 +486,23 @@
 }
 
 /* ==========================================
-   GRID WRAPPER
-========================================== */
-
-.events-grid-wrapper{
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:center;
-
-}
-
-/* ==========================================
-   EVENT GRID
+   GRID
 ========================================== */
 
 #events-list{
 
     width:100%;
 
-    max-width:1180px;
-
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
 
-    gap:32px;
+        repeat(
+            4,
+            minmax(0,1fr)
+        );
+
+    gap:34px;
 
 }
 
@@ -268,36 +515,47 @@
     display:block;
 
     background:
-        rgba(255,255,255,.7);
+
+        rgba(255,255,255,.65);
 
     backdrop-filter:blur(24px);
 
     border:
-        1px solid rgba(255,255,255,.8);
 
-    border-radius:32px;
+        1px solid rgba(255,255,255,.85);
+
+    border-radius:34px;
 
     overflow:hidden;
+
+    text-decoration:none;
+
+    color:inherit;
 
     transition:.35s;
 
     box-shadow:
-        0 18px 50px rgba(255,120,180,.08);
+
+        0 20px 50px
+        rgba(255,120,180,.08);
 
 }
 
 .event-card:hover{
 
     transform:
-        translateY(-8px);
+
+        translateY(-10px);
 
     box-shadow:
-        0 28px 70px rgba(255,120,180,.12);
+
+        0 28px 70px
+        rgba(255,120,180,.12);
 
 }
 
 /* ==========================================
-   IMAGE
+   THUMB
 ========================================== */
 
 .event-thumb{
@@ -305,7 +563,8 @@
     position:relative;
 
     width:100%;
-    height:250px;
+
+    aspect-ratio:1/1;
 
     overflow:hidden;
 
@@ -318,7 +577,7 @@
 
     object-fit:cover;
 
-    transition:.45s;
+    transition:.5s;
 
 }
 
@@ -339,20 +598,19 @@
     top:18px;
     left:18px;
 
-    z-index:5;
-
     background:
+
         rgba(255,255,255,.92);
 
     backdrop-filter:blur(12px);
 
     border-radius:18px;
 
-    padding:10px 14px;
+    width:62px;
+
+    padding:10px 0;
 
     text-align:center;
-
-    min-width:64px;
 
 }
 
@@ -364,25 +622,15 @@
 
     color:#2d3553;
 
-    line-height:1;
-
 }
 
 .event-date-badge span{
 
     display:block;
 
-    font-size:.75rem;
+    font-size:.72rem;
 
     color:#777;
-
-    margin-top:5px;
-
-}
-
-.event-date-badge small{
-
-    color:#aaa;
 
 }
 
@@ -392,7 +640,7 @@
 
 .event-info{
 
-    padding:26px;
+    padding:24px;
 
 }
 
@@ -400,19 +648,21 @@
 
     font-size:1.35rem;
 
+    line-height:1.45;
+
     color:#2d3553;
 
     margin-bottom:14px;
-
-    line-height:1.4;
 
 }
 
 .event-date{
 
-    color:#777;
+    color:#888;
 
     margin-bottom:10px;
+
+    font-size:.92rem;
 
 }
 
@@ -421,6 +671,101 @@
     color:#ff5a9d;
 
     font-weight:600;
+
+    font-size:.92rem;
+
+}
+
+/* ==========================================
+   LIST VIEW
+========================================== */
+
+#events-list.list-view{
+
+    grid-template-columns:1fr;
+
+}
+
+#events-list.list-view .event-card{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+#events-list.list-view .event-thumb{
+
+    width:340px;
+
+    aspect-ratio:auto;
+
+    height:230px;
+
+    flex-shrink:0;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.events-footer{
+
+    padding:100px 0 140px;
+
+}
+
+.footer-message{
+
+    background:
+
+        rgba(255,255,255,.65);
+
+    backdrop-filter:blur(24px);
+
+    border-radius:42px;
+
+    padding:60px;
+
+    text-align:center;
+
+    box-shadow:
+
+        0 25px 60px
+        rgba(255,120,180,.08);
+
+}
+
+.footer-message h2{
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:3rem;
+
+    color:#ff6ba9;
+
+    margin-bottom:24px;
+
+}
+
+.footer-message p{
+
+    color:#666;
+
+    line-height:1.9;
+
+}
+
+.footer-message small{
+
+    display:block;
+
+    margin-top:40px;
+
+    color:#999;
 
 }
 
@@ -441,21 +786,23 @@
 
 @media(max-width:900px){
 
+    .hero-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-image{
+
+        justify-content:center;
+
+    }
+
     .events-toolbar{
 
         flex-direction:column;
 
         align-items:flex-start;
-
-    }
-
-    .events-actions{
-
-        width:100%;
-
-        justify-content:space-between;
-
-        margin-left:0;
 
     }
 
@@ -470,9 +817,15 @@
 
 @media(max-width:680px){
 
-    .events-heading h2{
+    .hero-title{
 
-        font-size:2rem;
+        font-size:4rem;
+
+    }
+
+    .hero-stats{
+
+        flex-direction:column;
 
     }
 
@@ -482,21 +835,16 @@
 
     }
 
-    .events-actions{
+    #events-list.list-view .event-card{
 
-        flex-wrap:wrap;
-
-    }
-
-    .events-sort{
-
-        width:100%;
+        flex-direction:column;
 
     }
 
-    .events-sort select{
+    #events-list.list-view .event-thumb{
 
         width:100%;
+        height:250px;
 
     }
 
