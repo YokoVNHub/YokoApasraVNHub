@@ -32,7 +32,7 @@ let currentMonth = "all";
 async function loadEvents() {
 
     const response =
-        await fetch("../data/events.json");
+        await fetch("../data/gallery.json");
 
     events = await response.json();
 
