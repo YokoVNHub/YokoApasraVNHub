@@ -1,204 +1,370 @@
-<main>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- HERO -->
+<head>
 
-    <section class="events-hero">
+    <meta charset="UTF-8">
 
-        <div class="container hero-layout">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-            <div class="hero-copy">
+    <title>
+        Events • Yoko Apasra VNHub
+    </title>
 
-                <span class="hero-kicker">
-                    🤍 YOKO APASRA
-                </span>
+    <!-- Fonts -->
 
-                <h1 class="hero-title">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-                    Events
-                    <span>Archive</span>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-                </h1>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
 
-                <p class="hero-desc">
+    <!-- CSS -->
 
-                    Preserving Yoko's beautiful moments
-                    through every event and appearance.
+    <link rel="stylesheet"
+          href="../css/style.css">
 
-                </p>
+    <!-- favicon -->
 
-                <div class="hero-stats">
+    <link rel="icon"
+          href="../assets/logo/logo.png">
 
-                    <div class="hero-stat">
+</head>
 
-                        <strong id="total-events">
-                            0
-                        </strong>
+<body>
 
-                        <span>
-                            Events Archived
-                        </span>
 
-                    </div>
+    <!-- ================= HEADER ================= -->
 
-                    <div class="hero-stat">
+    <header class="header">
 
-                        <strong id="total-photos">
-                            0
-                        </strong>
+        <div class="container header-container">
 
-                        <span>
-                            Photos Preserved
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="hero-image">
+            <a href="../index.html"
+               class="logo">
 
                 <img
-                    src="../assets/images/events.png"
-                    alt="Yoko">
+                    src="../assets/logo/logo.png"
+                    alt="YokoVNHub">
 
-            </div>
+                <span class="logo-title">
+
+                    Yoko Apasra VNHub
+
+                </span>
+
+            </a>
+
+
+            <nav>
+
+                <ul class="nav-menu">
+
+                    <li>
+
+                        <a href="../index.html">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                           href="./"
+                           class="active">
+
+                            Events
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../exclusive/">
+
+                            Exclusive
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="../about/">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
 
         </div>
 
-    </section>
+    </header>
 
 
-    <!-- LATEST -->
 
-    <section class="latest-event">
+    <!-- ================= MAIN ================= -->
 
-        <div class="container">
+    <main>
 
-            <div id="latest-event-card"></div>
+        <!-- HERO -->
 
-        </div>
+        <section class="events-hero">
 
-    </section>
+            <div class="container hero-layout">
+
+                <div class="hero-copy">
+
+                    <span class="hero-kicker">
+
+                        ♡ YOKO APASRA
+
+                    </span>
+
+                    <h1 class="hero-title">
+
+                        Events
+                        <span>
+
+                            Archive
+
+                        </span>
+
+                    </h1>
+
+                    <p class="hero-desc">
+
+                        Preserving Yoko's beautiful moments
+                        through every event and appearance.
+
+                    </p>
 
 
-    <!-- EVENTS -->
+                    <div class="hero-stats">
 
-    <section class="events-page">
+                        <div class="hero-stat">
 
-        <div class="container">
+                            <strong
+                                id="total-events">
 
-            <div class="events-heading">
+                                0
 
-                <h2>
+                            </strong>
 
-                    Browse All Events 🤍
+                            <span>
 
-                </h2>
+                                Events Archived
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="hero-stat">
+
+                            <strong
+                                id="total-photos">
+
+                                0
+
+                            </strong>
+
+                            <span>
+
+                                Photos Preserved
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <img
+                        src="../assets/images/events.png"
+                        alt="Yoko Apasra">
+
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="events-toolbar">
+
+
+        <!-- LATEST EVENT -->
+
+        <section class="latest-event">
+
+            <div class="container">
+
+                <div id="latest-event-card">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- EVENTS -->
+
+        <section class="events-page">
+
+            <div class="container">
+
+                <div class="events-heading">
+
+                    <h2>
+
+                        Browse All Events 🤍
+
+                    </h2>
+
+                </div>
+
+
+
+                <div class="events-toolbar">
+
+                    <div
+                        id="month-filter"
+                        class="events-filter">
+
+                    </div>
+
+
+                    <div class="events-actions">
+
+                        <div class="events-sort">
+
+                            <select
+                                id="sort-select">
+
+                                <option value="newest">
+
+                                    Newest First
+
+                                </option>
+
+                                <option value="oldest">
+
+                                    Oldest First
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="view-toggle">
+
+                            <button
+                                id="grid-view"
+                                class="view-btn active">
+
+                                ⊞
+
+                            </button>
+
+                            <button
+                                id="list-view"
+                                class="view-btn">
+
+                                ☰
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
 
                 <div
-                    id="month-filter"
-                    class="events-filter">
-
-                </div>
-
-
-                <div class="events-actions">
-
-                    <div class="events-sort">
-
-                        <select id="sort-select">
-
-                            <option value="newest">
-                                Newest First
-                            </option>
-
-                            <option value="oldest">
-                                Oldest First
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="view-toggle">
-
-                        <button
-                            id="grid-view"
-                            class="view-btn active">
-
-                            ⊞
-
-                        </button>
-
-                        <button
-                            id="list-view"
-                            class="view-btn">
-
-                            ☰
-
-                        </button>
-
-                    </div>
+                    id="events-list"
+                    class="events-grid">
 
                 </div>
 
             </div>
 
-
-            <div
-                id="events-list"
-                class="events-grid">
-
-            </div>
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- FOOTER -->
 
-    <section class="events-footer">
+        <!-- FOOTER -->
 
-        <div class="container">
+        <section class="events-footer">
 
-            <div class="footer-message">
+            <div class="container">
 
-                <h2>
+                <div class="footer-message">
 
-                    WITH YO,<br>
-                    THROUGH EVERY CHAPTER
+                    <h2>
 
-                </h2>
+                        WITH YO,<br>
+                        THROUGH EVERY CHAPTER
 
-                <p>
+                    </h2>
 
-                    For people who love
-                    Yoko Apasra 🤍🫧
+                    <p>
 
-                </p>
+                        For people who love
+                        Yoko Apasra 🤍🫧
 
-                <div class="footer-divider"></div>
+                    </p>
 
-                <small>
+                    <div class="footer-divider"></div>
 
-                    Unofficial fan-made archive.<br>
-                    Non-commercial project.
+                    <small>
 
-                </small>
+                        Unofficial fan-made archive.<br>
+                        Non-commercial project.<br>
+                        All photos belong to
+                        their respective owners.
+
+                    </small>
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+    </main>
 
-</main>
 
-<script src="../js/events.js"></script>
+
+    <!-- JS -->
+
+    <script src="../js/events.js"></script>
+
+</body>
+
+</html>
