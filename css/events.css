@@ -747,3 +747,28 @@
     display:block;
 
 }
+
+.footer-divider{
+
+    width:70px;
+    height:1px;
+
+    background:#f0d6e2;
+
+    margin:24px 0;
+
+}
+
+.footer-content small{
+
+    display:block;
+
+    color:#9a96a5;
+
+    line-height:1.9;
+
+    font-size:.95rem;
+
+    letter-spacing:.03em;
+
+}
