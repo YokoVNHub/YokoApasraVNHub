@@ -1,110 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>Events • Yoko Apasra VNHub</title>
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="../css/style.css">
-
-</head>
-
-<body>
-
-<header class="header">
-
-    <div class="container header-container">
-
-        <a href="../index.html"
-           class="logo">
-
-            <img
-                src="../assets/logo/logo.png"
-                alt="Yoko Apasra VNHub">
-
-            <div class="logo-text">
-
-                <span class="logo-title">
-
-                    Yoko Apasra VNHub
-
-                </span>
-
-            </div>
-
-        </a>
-
-        <nav>
-
-            <ul class="nav-menu">
-
-                <li>
-                    <a href="../index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="./">
-                        Events
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../exclusive/">
-                        Exclusive
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../about/">
-                        About
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </div>
-
-</header>
-
 <main>
 
     <!-- HERO -->
 
     <section class="events-hero">
 
-        <div class="hero-bubble b1"></div>
-        <div class="hero-bubble b2"></div>
-        <div class="hero-bubble b3"></div>
-
         <div class="container hero-layout">
 
             <div class="hero-copy">
 
                 <span class="hero-kicker">
-
                     🤍 YOKO APASRA
-
                 </span>
 
                 <h1 class="hero-title">
@@ -114,7 +19,7 @@
 
                 </h1>
 
-                <p>
+                <p class="hero-desc">
 
                     Preserving Yoko's beautiful moments
                     through every event and appearance.
@@ -123,50 +28,26 @@
 
                 <div class="hero-stats">
 
-                    <div>
+                    <div class="hero-stat">
 
                         <strong id="total-events">
-
                             0
-
                         </strong>
 
                         <span>
-
                             Events Archived
-
                         </span>
 
                     </div>
 
-                    <div>
+                    <div class="hero-stat">
 
                         <strong id="total-photos">
-
                             0
-
                         </strong>
 
                         <span>
-
                             Photos Preserved
-
-                        </span>
-
-                    </div>
-
-                    <div>
-
-                        <strong>
-
-                            100%
-
-                        </strong>
-
-                        <span>
-
-                            Yoko Love
-
                         </span>
 
                     </div>
@@ -179,7 +60,7 @@
 
                 <img
                     src="../assets/images/events.png"
-                    alt="Yoko Apasra">
+                    alt="Yoko">
 
             </div>
 
@@ -188,17 +69,13 @@
     </section>
 
 
-    <!-- LATEST EVENT -->
+    <!-- LATEST -->
 
     <section class="latest-event">
 
         <div class="container">
 
-            <div id="latest-event-card">
-
-                <!-- JS Render -->
-
-            </div>
+            <div id="latest-event-card"></div>
 
         </div>
 
@@ -222,15 +99,11 @@
             </div>
 
 
-            <!-- TOOLBAR -->
-
             <div class="events-toolbar">
 
                 <div
-                    class="events-filter"
-                    id="month-filter">
-
-                    <!-- JS -->
+                    id="month-filter"
+                    class="events-filter">
 
                 </div>
 
@@ -242,21 +115,16 @@
                         <select id="sort-select">
 
                             <option value="newest">
-
                                 Newest First
-
                             </option>
 
                             <option value="oldest">
-
                                 Oldest First
-
                             </option>
 
                         </select>
 
                     </div>
-
 
                     <div class="view-toggle">
 
@@ -283,11 +151,9 @@
             </div>
 
 
-            <!-- EVENTS GRID -->
-
-            <div id="events-list">
-
-                <!-- JS Render -->
+            <div
+                id="events-list"
+                class="events-grid">
 
             </div>
 
@@ -318,24 +184,12 @@
 
                 </p>
 
-                <p>
-
-                    Powered by love,
-                    protein &
-                    sunny-side-up behavior 🍳
-
-                </p>
-
                 <div class="footer-divider"></div>
 
                 <small>
 
                     Unofficial fan-made archive.<br>
-
-                    Non-commercial project.<br>
-
-                    All photos and media belong to
-                    their respective owners.
+                    Non-commercial project.
 
                 </small>
 
@@ -348,7 +202,3 @@
 </main>
 
 <script src="../js/events.js"></script>
-
-</body>
-
-</html>
