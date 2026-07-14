@@ -68,7 +68,9 @@
                     <a
                         href="./"
                         class="active">
+
                         Events
+
                     </a>
                 </li>
 
@@ -93,24 +95,16 @@
 </header>
 
 
+
 <main class="events-page">
 
     <!-- HERO -->
 
     <section class="events-hero">
 
-        <div class="hero-bubbles">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
         <div class="container hero-layout">
 
-            <div class="hero-content">
+            <div class="hero-copy">
 
                 <span class="hero-kicker">
 
@@ -139,32 +133,87 @@
 
                 <div class="hero-stats">
 
-    <div class="hero-stat">
-        <div class="hero-stat-icon">📅</div>
-        <div>
-            <strong id="total-events">11</strong>
-            <span>Events Archived</span>
-        </div>
-    </div>
+                    <div class="hero-stat">
 
-    <div class="hero-stat">
-        <div class="hero-stat-icon">📷</div>
-        <div>
-            <strong id="total-photos">1167</strong>
-            <span>Photos Archived</span>
-        </div>
-    </div>
+                        <div class="hero-stat-icon">
+                            📅
+                        </div>
 
-    <div class="hero-stat">
-        <div class="hero-stat-icon">🤍</div>
-        <div>
-            <strong>100%</strong>
-            <span>Yoko Love</span>
-        </div>
-    </div>
+                        <div>
 
-</div>
+                            <strong
+                                id="total-events">
+
+                                11
+
+                            </strong>
+
+                            <span>
+
+                                Events Archived
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-stat">
+
+                        <div class="hero-stat-icon">
+                            📷
+                        </div>
+
+                        <div>
+
+                            <strong
+                                id="total-photos">
+
+                                1,167
+
+                            </strong>
+
+                            <span>
+
+                                Photos Archived
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-stat">
+
+                        <div class="hero-stat-icon">
+                            🤍
+                        </div>
+
+                        <div>
+
+                            <strong>
+
+                                100%
+
+                            </strong>
+
+                            <span>
+
+                                Yoko Love
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
+
             <div class="hero-image">
 
                 <img
@@ -179,9 +228,9 @@
 
 
 
-    <!-- LATEST EVENT -->
+    <!-- LATEST -->
 
-    <section class="latest-section">
+    <section class="latest-event">
 
         <div class="container">
 
@@ -207,10 +256,7 @@
                 <h2>
 
                     Browse All Events
-
-                    <span>
-                        🤍
-                    </span>
+                    🤍
 
                 </h2>
 
@@ -220,43 +266,50 @@
 
             <div class="events-toolbar">
 
-<div id="month-filter"
-     class="events-filter">
-</div>
+                <div
+                    id="month-filter"
+                    class="events-filter">
+
+                </div>
 
 
-                <div class="toolbar-right">
+                <div class="events-actions">
 
-                    <select
-                        id="sort-select">
+                    <div class="events-sort">
 
-                        <option value="newest">
+                        <select
+                            id="sort-select">
 
-                            Newest First
+                            <option value="newest">
 
-                        </option>
+                                Newest First
 
-                        <option value="oldest">
+                            </option>
 
-                            Oldest First
+                            <option value="oldest">
 
-                        </option>
+                                Oldest First
 
-                    </select>
+                            </option>
+
+                        </select>
+
+                    </div>
 
 
                     <div class="view-toggle">
 
                         <button
                             id="grid-view"
-                            class="active">
+                            class="view-btn active">
 
                             ⊞
 
                         </button>
 
                         <button
-                            id="list-view">
+                            id="list-view"
+                            class="view-btn">
 
                             ☰
 
@@ -267,6 +320,7 @@
                 </div>
 
             </div>
+
 
 
             <div
@@ -316,12 +370,12 @@
 
                         Powered by love,
                         protein &
-                        sunny-side-up
-                        behavior 🍳
+                        sunny-side-up behavior 🍳
 
                     </p>
 
-                    <div class="footer-divider">
+                    <div
+                        class="footer-divider">
 
                     </div>
 
@@ -329,12 +383,12 @@
 
                         Unofficial fan-made archive.
                         <br>
-
                         Non-commercial project.
 
                     </small>
 
                 </div>
+
 
 
                 <div class="footer-mascot">
@@ -354,8 +408,10 @@
 </main>
 
 
+
 <script
     src="../js/events.js">
+
 </script>
 
 </body>
