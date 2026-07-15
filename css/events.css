@@ -820,8 +820,8 @@
     justify-content:space-between;
     align-items:center;
 
-    gap:70px;
-
+    gap:40px;
+    flex-wrap:wrap;
     padding:48px 60px;
 
     border-radius:40px;
