@@ -109,10 +109,6 @@
 ========================= */
 @media (max-width:768px){
 
-    .events-hero{
-        padding:70px 0 120px;
-    }
-
     .hero-layout{
         gap:20px;
     }
@@ -165,7 +161,7 @@
     }
 
     .latest-image{
-        min-height:220px;
+        height:220px;
     }
 
     .latest-image img{
