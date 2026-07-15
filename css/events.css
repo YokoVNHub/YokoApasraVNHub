@@ -26,32 +26,80 @@
 
 .events-bubbles span{
     position:absolute;
-
     border-radius:50%;
 
     background:
         radial-gradient(
             circle at 30% 30%,
-            rgba(255,255,255,.75),
-            rgba(255,195,225,.32)
+            rgba(255,255,255,.95) 0%,
+            rgba(255,240,248,.75) 20%,
+            rgba(255,210,230,.35) 60%,
+            rgba(255,190,220,.18) 100%
         );
 
     border:
-        1px solid
-        rgba(255,190,225,.45);
+        2px solid
+        rgba(255,185,220,.45);
 
     box-shadow:
-        inset 0 0 30px rgba(255,255,255,.45),
-        0 0 35px rgba(255,190,225,.25);
+        inset
+        -12px -12px 20px
+        rgba(255,255,255,.35),
 
-    backdrop-filter:blur(10px);
+        inset
+        10px 10px 20px
+        rgba(255,200,225,.25),
 
-    opacity:.9;
+        0 0 30px
+        rgba(255,190,220,.35);
+
+    backdrop-filter:
+        blur(8px);
+
+    opacity:.95;
 
     animation:
-        bubbleFloat 5s ease-in-out infinite;
+        bubbleFloat
+        5s ease-in-out infinite;
 }
 
+.events-bubbles span::before{
+    content:"";
+
+    position:absolute;
+
+    width:28%;
+    height:28%;
+
+    top:18%;
+    left:20%;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.95);
+
+    filter:blur(2px);
+}
+
+.events-bubbles span::after{
+    content:"";
+
+    position:absolute;
+
+    width:14%;
+    height:14%;
+
+    top:42%;
+    left:35%;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.75);
+
+    filter:blur(1px);
+}
 /* TOP */
 
 .events-bubbles span:nth-child(1){
@@ -905,31 +953,36 @@
 
     0%{
         transform:
-            translate(0,0)
+            translateY(0)
+            translateX(0)
             scale(1);
     }
 
     25%{
         transform:
-            translate(15px,-18px)
-            scale(1.03);
+            translateY(-18px)
+            translateX(12px)
+            scale(1.04);
     }
 
     50%{
         transform:
-            translate(-20px,-35px)
-            scale(1.07);
+            translateY(-35px)
+            translateX(-10px)
+            scale(1.08);
     }
 
     75%{
         transform:
-            translate(20px,-15px)
-            scale(1.02);
+            translateY(-15px)
+            translateX(15px)
+            scale(1.03);
     }
 
     100%{
         transform:
-            translate(0,0)
+            translateY(0)
+            translateX(0)
             scale(1);
     }
 }
