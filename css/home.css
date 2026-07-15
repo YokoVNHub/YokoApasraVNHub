@@ -5,6 +5,31 @@
 .home-page section{
     position:relative;
     z-index:2;
+    margin-bottom:45px;
+}
+
+/* ======================================================
+   SHARED CARD
+====================================================== */
+
+.latest-card,
+.schedule-card,
+.featured-card,
+.about-card,
+.social-card{
+
+    background:
+        rgba(255,255,255,.55);
+
+    backdrop-filter:blur(28px);
+
+    border:1px solid rgba(255,190,220,.35);
+
+    border-radius:42px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(255,180,220,.08);
 }
 
 /* ======================================================
@@ -12,36 +37,31 @@
 ====================================================== */
 
 .home-hero{
-    position:relative;
-    padding:80px 0 130px;
+    padding:70px 0 90px;
 }
 
 .hero-layout{
 
     display:grid;
-    grid-template-columns:1.1fr .9fr;
+    grid-template-columns:1.05fr .95fr;
 
     align-items:center;
     gap:80px;
 }
 
 .hero-copy{
-    max-width:620px;
+    max-width:600px;
 }
 
 .hero-kicker{
 
     display:inline-flex;
-    align-items:center;
 
-    padding:10px 20px;
+    padding:10px 22px;
 
     border-radius:999px;
 
-    background:
-        rgba(255,255,255,.65);
-
-    backdrop-filter:blur(18px);
+    background:white;
 
     color:#ff6cae;
 
@@ -52,12 +72,12 @@
 
 .hero-title{
 
-    font-size:5.8rem;
-    line-height:.92;
+    font-size:6rem;
+    line-height:.9;
 
     color:#2f3555;
 
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
 .hero-title span{
@@ -66,12 +86,10 @@
 
 .hero-desc{
 
-    font-size:1.1rem;
+    font-size:1.15rem;
     line-height:1.9;
 
     color:#7c8196;
-
-    max-width:500px;
 
     margin-bottom:18px;
 }
@@ -80,21 +98,38 @@
 
     color:#ff8cbc;
 
-    font-size:1.2rem;
-
-    font-family:
-        "Playfair Display",
-        serif;
+    font-size:1.25rem;
 
     font-style:italic;
 
     margin-bottom:40px;
 }
 
-.hero-buttons{
+.hero-button{
 
-    display:flex;
-    gap:16px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:15px 32px;
+
+    border-radius:999px;
+
+    background:#ff6cae;
+
+    color:white;
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.hero-button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(255,140,190,.25);
 }
 
 .hero-visual{
@@ -104,137 +139,52 @@
 .hero-visual img{
 
     width:100%;
-    max-width:700px;
+    max-width:720px;
 
     display:block;
-    margin-bottom:-400px;
+
+    margin:auto;
 
     filter:
         drop-shadow(
-            0 30px 60px
+            0 35px 70px
             rgba(255,180,220,.20)
         );
-}
-
-/* bubbles */
-
-.home-hero::before,
-.home-hero::after{
-
-    content:"";
-    position:absolute;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle at 30% 30%,
-            rgba(255,255,255,.95),
-            rgba(255,220,235,.35)
-        );
-
-    border:
-        2px solid
-        rgba(255,190,225,.45);
-
-    box-shadow:
-        0 0 30px
-        rgba(255,190,225,.35);
-}
-
-.home-hero::before{
-
-    width:140px;
-    height:140px;
-
-    top:120px;
-    right:8%;
-}
-
-.home-hero::after{
-
-    width:70px;
-    height:70px;
-
-    bottom:80px;
-    right:20%;
-}
-
-/* ======================================================
-   CARD SHARED
-====================================================== */
-
-.schedule-card,
-.latest-card,
-.featured-card,
-.about-card,
-.social-card{
-
-    background:
-        rgba(255,255,255,.55);
-
-    backdrop-filter:blur(28px);
-
-    border:
-        1px solid
-        rgba(255,190,220,.35);
-
-    border-radius:42px;
-
-    box-shadow:
-        0 20px 60px
-        rgba(255,180,220,.08);
 }
 
 /* ======================================================
    LATEST EVENT
 ====================================================== */
 
-.latest-home{
-    padding-bottom:60px;
-}
-
 .latest-card{
 
     display:grid;
 
     grid-template-columns:
-        1.1fr .9fr;
+        1.05fr .95fr;
 
     gap:45px;
 
     padding:32px;
 }
 
-.latest-thumb{
-
-    position:relative;
-    overflow:hidden;
-
-    border-radius:30px;
-}
-
-.latest-thumb img{
+.latest-card img{
 
     width:100%;
-    height:320px;
+    height:330px;
 
     object-fit:cover;
-    object-position:center;
 
-    display:block;
+    border-radius:28px;
 }
 
 .latest-info{
 
-    display:flex;
     flex-direction:column;
     justify-content:center;
 }
 
 .latest-badge{
-
-    display:inline-flex;
 
     width:max-content;
 
@@ -243,13 +193,13 @@
     border-radius:999px;
 
     background:
-        rgba(255,170,210,.18);
+        rgba(255,170,210,.15);
 
     color:#ff6cae;
 
-    font-weight:600;
+    font-weight:700;
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .latest-info h2{
@@ -258,25 +208,25 @@
 
     color:#2f3555;
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .latest-meta{
 
     display:flex;
-    gap:20px;
-
     flex-wrap:wrap;
 
-    margin-bottom:22px;
+    gap:22px;
 
     color:#8d92a6;
+
+    margin-bottom:25px;
 }
 
 .latest-info p{
 
-    line-height:1.9;
     color:#7c8196;
+    line-height:1.9;
 
     margin-bottom:35px;
 }
@@ -285,8 +235,16 @@
    SCHEDULE
 ====================================================== */
 
-.schedule-home{
-    padding-bottom:60px;
+.schedule-card{
+
+    display:grid;
+
+    grid-template-columns:
+        320px 1fr;
+
+    gap:55px;
+
+    padding:45px;
 }
 
 .schedule-copy{
@@ -300,44 +258,27 @@
 
     color:#2f3555;
 
-    margin-bottom:14px;
+    margin-bottom:18px;
 }
 
 .schedule-copy p{
 
     color:#7c8196;
-    line-height:1.8;
-}
-
-.schedule-card{
-
-    display:grid;
-
-    grid-template-columns:
-        330px 1fr;
-
-    gap:60px;
-
-    padding:45px;
+    line-height:1.9;
 }
 
 .schedule-poster img{
 
     width:100%;
-    display:block;
 
     border-radius:28px;
 
-    transition:.35s;
+    display:block;
 }
 
-.schedule-poster:hover img{
-    transform:scale(1.03);
-}
+.schedule-highlights h2{
 
-.schedule-highlights h3{
-
-    font-size:2.2rem;
+    font-size:3rem;
 
     color:#2f3555;
 
@@ -347,46 +288,73 @@
 .schedule-item{
 
     display:flex;
-    gap:30px;
+    align-items:center;
 
-    padding:22px 0;
+    gap:28px;
 
-    border-bottom:
-        1px solid
-        rgba(255,190,220,.20);
+    background:white;
+
+    border-radius:24px;
+
+    padding:24px 28px;
+
+    margin-bottom:18px;
 }
 
 .schedule-date{
 
     width:80px;
 
-    flex-shrink:0;
+    text-align:center;
+
+    color:#ff6cae;
+}
+
+.schedule-date strong{
+
+    display:block;
+
+    font-size:2rem;
+}
+
+.schedule-date span{
+
+    color:#8d92a6;
+
+    font-size:.95rem;
+}
+
+.schedule-detail h3{
+
+    color:#2f3555;
+
+    margin-bottom:6px;
+}
+
+.schedule-detail p{
+
+    color:#8d92a6;
+}
+
+.schedule-tag{
+
+    margin-left:auto;
 
     color:#ff6cae;
 
     font-weight:700;
-
-    font-size:1.15rem;
 }
 
-.schedule-detail h4{
+.schedule-note{
 
-    color:#2f3555;
+    margin-top:20px;
 
-    margin-bottom:8px;
-}
-
-.schedule-detail p{
-    color:#8c90a5;
+    color:#8d92a6;
 }
 
 /* ======================================================
    FEATURED
 ====================================================== */
-
-.featured-home{
-    padding-bottom:60px;
-}
 
 .featured-card{
     padding:45px;
@@ -408,121 +376,131 @@
     color:#2f3555;
 }
 
+.view-all-btn{
+
+    display:inline-flex;
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+    background:#ff97bf;
+
+    color:white;
+
+    font-weight:700;
+}
+
 .featured-grid{
 
     display:grid;
 
     grid-template-columns:
-        repeat(5,1fr);
+        repeat(6,1fr);
 
     gap:18px;
 }
 
-.featured-item{
-
-    overflow:hidden;
-
-    border-radius:24px;
-}
-
-.featured-item img{
+.featured-grid img{
 
     width:100%;
+
+    border-radius:22px;
+
+    display:block;
 
     aspect-ratio:3/4;
 
     object-fit:cover;
-    object-position:center;
-
-    display:block;
 
     transition:.35s;
 }
 
-.featured-item:hover img{
-    transform:scale(1.05);
+.featured-grid img:hover{
+
+    transform:translateY(-6px);
 }
 
 /* ======================================================
    ABOUT
 ====================================================== */
 
-.about-home{
-    padding-bottom:60px;
-}
-
 .about-card{
 
-    text-align:center;
+    display:grid;
 
-    padding:70px 60px;
+    grid-template-columns:
+        220px 1fr auto;
+
+    align-items:center;
+
+    gap:50px;
+
+    padding:45px 60px;
 }
 
-.about-card h2{
+.about-chibi{
+
+    width:180px;
+}
+
+.about-content h2{
 
     font-size:3rem;
 
     color:#2f3555;
 
-    margin-bottom:20px;
+    margin-bottom:16px;
 }
 
-.about-card p{
-
-    max-width:700px;
-
-    margin:auto;
-
-    line-height:1.9;
+.about-content p{
 
     color:#7c8196;
+
+    line-height:1.9;
 }
 
 .about-slogan{
 
-    margin-top:16px;
-
-    color:#ff7fb5;
-
-    font-size:1.15rem;
-
-    font-family:
-        "Playfair Display",
-        serif;
+    color:#ff88bb;
 
     font-style:italic;
 
-    margin-bottom:35px;
+    margin-top:14px;
 }
 
 /* ======================================================
    SOCIAL
 ====================================================== */
 
-.social-footer{
-    padding-bottom:50px;
-}
-
 .social-card{
 
     position:relative;
 
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+
+    grid-template-columns:
+        1fr 1px 1fr;
+
     align-items:center;
 
     gap:60px;
 
-    padding:55px 60px;
+    padding:55px 70px;
 
     overflow:hidden;
 }
 
-.social-copy{
-    max-width:400px;
+.social-divider{
+
+    width:1px;
+    height:130px;
+
+    background:
+        rgba(255,190,220,.45);
 }
 
-.social-kicker{
+.social-title{
 
     display:block;
 
@@ -530,108 +508,46 @@
 
     font-weight:700;
 
-    letter-spacing:.15em;
-
-    margin-bottom:18px;
+    margin-bottom:30px;
 }
 
-.social-copy h2{
-
-    font-size:3.4rem;
-
-    line-height:1.1;
-
-    color:#2f3555;
-
-    margin-bottom:20px;
-}
-
-.social-copy p{
-
-    color:#7c8196;
-
-    line-height:1.9;
-}
-
-.social-links{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:18px;
-
-    width:600px;
-}
-
-.social-links a{
+.social-row{
 
     display:flex;
+
+    gap:55px;
+}
+
+.social-row a{
+
+    display:flex;
+    flex-direction:column;
+
     align-items:center;
 
-    gap:18px;
-
-    padding:22px;
-
-    border-radius:24px;
-
-    background:white;
-
-    border:
-        1px solid
-        rgba(255,190,220,.30);
-
-    transition:.35s;
+    gap:14px;
 }
 
-.social-links a:hover{
+.social-row i{
 
-    transform:
-        translateY(-5px);
+    font-size:2rem;
 
-    box-shadow:
-        0 16px 35px
-        rgba(255,180,220,.15);
+    color:#53597c;
 }
 
-.social-links i{
+.social-row span{
 
-    width:30px;
-
-    text-align:center;
-
-    font-size:1.7rem;
-
-    color:#ff6cae;
+    color:#7c8196;
 }
 
-.social-links strong{
-
-    display:block;
-
-    color:#2f3555;
-
-    margin-bottom:4px;
-}
-
-.social-links span{
-
-    color:#8c90a5;
-}
-
-.social-mascot{
+.social-chibi{
 
     position:absolute;
 
-    right:35px;
+    right:25px;
     bottom:-5px;
-}
-
-.social-mascot img{
 
     width:170px;
-    display:block;
 }
 
 /* ======================================================
@@ -642,11 +558,70 @@
 
     text-align:center;
 
-    padding:30px 20px 40px;
+    padding:35px 20px 50px;
 
     color:#9ca1b4;
 
     line-height:1.9;
+}
 
-    font-size:.95rem;
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:1100px){
+
+    .hero-layout,
+    .latest-card,
+    .schedule-card,
+    .about-card{
+
+        grid-template-columns:1fr;
+    }
+
+    .social-card{
+
+        grid-template-columns:1fr;
+    }
+
+    .social-divider{
+        display:none;
+    }
+
+    .featured-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .hero-title{
+        font-size:4.5rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .featured-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .social-row{
+
+        flex-wrap:wrap;
+        gap:30px;
+    }
+
+    .hero-title{
+
+        font-size:3.5rem;
+    }
+
+    .latest-info h2,
+    .schedule-highlights h2,
+    .about-content h2{
+
+        font-size:2.3rem;
+    }
 }
