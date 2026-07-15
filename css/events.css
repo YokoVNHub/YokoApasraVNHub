@@ -5,45 +5,112 @@
 .events-page{
     position:relative;
     overflow:hidden;
-    padding-bottom:80px;
 }
 
 /* ======================================================
-   FOOTER
+   BACKGROUND BUBBLES
 ====================================================== */
 
-.events-footer{
-    position:relative;
-    padding-top:100px;
-    z-index:2;
+.events-bubbles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
 }
 
-.footer-message{
-
-    position:relative;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:70px;
-
-    padding:48px 60px;
-
-    border-radius:40px;
+.events-bubbles span{
+    position:absolute;
+    border-radius:50%;
 
     background:
-        rgba(255,255,255,.48);
-
-    backdrop-filter:blur(28px);
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(255,255,255,.75),
+            rgba(255,190,220,.22)
+        );
 
     border:
         1px solid rgba(255,190,220,.45);
 
     box-shadow:
-        0 18px 60px rgba(255,180,210,.10);
+        inset 0 0 20px rgba(255,255,255,.45),
+        0 8px 30px rgba(255,180,210,.15);
 
-    overflow:hidden;
+    animation:
+        bubbleFloat
+        9s ease-in-out infinite;
+}
+
+/* bubbles positions */
+
+.events-bubbles span:nth-child(1){
+    width:250px;
+    height:250px;
+    top:100px;
+    left:-90px;
+}
+
+.events-bubbles span:nth-child(2){
+    width:140px;
+    height:140px;
+    top:500px;
+    right:120px;
+}
+
+.events-bubbles span:nth-child(3){
+    width:180px;
+    height:180px;
+    top:950px;
+    left:80px;
+}
+
+.events-bubbles span:nth-child(4){
+    width:120px;
+    height:120px;
+    top:1350px;
+    right:80px;
+}
+
+.events-bubbles span:nth-child(5){
+    width:90px;
+    height:90px;
+    top:1800px;
+    left:10%;
+}
+
+.events-bubbles span:nth-child(6){
+    width:170px;
+    height:170px;
+    top:2100px;
+    right:-40px;
+}
+
+.events-bubbles span:nth-child(7){
+    width:130px;
+    height:130px;
+    bottom:400px;
+    left:-30px;
+}
+
+.events-bubbles span:nth-child(8){
+    width:110px;
+    height:110px;
+    bottom:100px;
+    right:120px;
+}
+
+.events-bubbles span:nth-child(9){
+    width:70px;
+    height:70px;
+    top:750px;
+    right:25%;
+}
+
+.events-bubbles span:nth-child(10){
+    width:85px;
+    height:85px;
+    bottom:700px;
+    left:30%;
 }
 
 /* ======================================================
@@ -660,10 +727,6 @@
    FOOTER
 ====================================================== */
 
-/* ======================================================
-   FOOTER
-====================================================== */
-
 .events-footer{
     position:relative;
     padding-top:100px;
@@ -777,7 +840,6 @@
         mascotFloat
         5s ease-in-out infinite;
 }
-
 /* ======================================================
    SITE CREDIT
 ====================================================== */
@@ -795,6 +857,7 @@
 
     line-height:1.8;
 }
+
 /* ======================================================
    ANIMATION
 ====================================================== */
@@ -831,7 +894,6 @@
         transform:translateY(0);
     }
 }
-
 /* ======================================================
    RESPONSIVE
 ====================================================== */
