@@ -94,7 +94,7 @@
 
     margin:auto;
 
-    margin-bottom:-250px;
+    margin-bottom:-400px;
 
     filter:
         drop-shadow(
@@ -124,6 +124,10 @@
         rgba(255,205,225,.65);
 
     border-radius:42px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(255,180,220,.08);
 }
 
 
@@ -133,24 +137,26 @@
 
 .latest-home{
 
-    padding-top:120px;
+    padding-top:0;
     padding-bottom:60px;
 }
 
 .latest-card{
 
-    max-width:1080px;
+    max-width:980px;
 
     margin:auto;
 
     display:grid;
 
     grid-template-columns:
-        380px 1fr;
+        340px 1fr;
 
-    gap:42px;
+    gap:36px;
 
-    padding:30px;
+    align-items:center;
+
+    padding:26px;
 }
 
 .latest-thumb{
@@ -163,7 +169,7 @@
 .latest-thumb img{
 
     width:100%;
-    height:420px;
+    height:330px;
 
     object-fit:cover;
 
@@ -197,11 +203,11 @@
 
 .latest-info h2{
 
-    font-size:2.8rem;
+    font-size:2.5rem;
 
     color:#2f3555;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .latest-meta{
@@ -213,7 +219,7 @@
 
     color:#8b90a3;
 
-    margin-bottom:25px;
+    margin-bottom:20px;
 }
 
 .latest-info p{
@@ -222,15 +228,17 @@
 
     line-height:1.9;
 
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
 .latest-info .hero-button{
 
     width:max-content;
+    min-width:unset;
 
-    padding:
-        16px 36px;
+    height:50px;
+
+    padding:0 28px;
 }
 
 
@@ -247,25 +255,25 @@
     display:grid;
 
     grid-template-columns:
-        300px 1fr;
+        280px 1fr;
 
-    gap:60px;
+    gap:45px;
 
-    padding:40px;
+    padding:36px;
 }
 
 .schedule-copy{
 
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
 .schedule-copy h2{
 
-    font-size:3rem;
+    font-size:2.7rem;
 
     color:#2f3555;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .schedule-copy p{
@@ -286,7 +294,7 @@
 
 .schedule-highlights h3{
 
-    font-size:2.3rem;
+    font-size:2rem;
 
     color:#2f3555;
 
@@ -298,24 +306,24 @@
     display:flex;
     align-items:center;
 
-    gap:35px;
+    gap:28px;
 
     background:white;
 
-    border-radius:30px;
+    border-radius:26px;
 
-    padding:32px 40px;
+    padding:28px 32px;
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .schedule-date{
 
-    width:70px;
+    width:60px;
 
     color:#ff6cae;
 
-    font-size:3rem;
+    font-size:2.2rem;
     font-weight:700;
 
     flex-shrink:0;
@@ -328,7 +336,7 @@
 
 .schedule-detail h4{
 
-    font-size:1.5rem;
+    font-size:1.25rem;
 
     color:#2f3555;
 
@@ -370,21 +378,11 @@
 
 .featured-head a{
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    width:200px;
-    height:52px;
-
-    border-radius:999px;
-
-    background:
-        rgba(255,130,180,.12);
-
     color:#ff6cae;
 
     font-weight:700;
+
+    font-size:1rem;
 }
 
 .featured-grid{
@@ -408,7 +406,7 @@
 
     width:100%;
 
-    aspect-ratio:3/4;
+    aspect-ratio:4/5;
 
     object-fit:cover;
 
@@ -432,20 +430,18 @@
 
 .about-card{
 
-    position:relative;
-
-    padding:70px;
+    padding:60px;
 
     text-align:center;
 }
 
 .about-chibi{
 
-    width:150px;
+    width:140px;
 
     margin:auto;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .about-card h2{
@@ -490,18 +486,23 @@
 
 .social-card{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:
-        1fr
-        220px
-        1fr;
-
+    justify-content:space-between;
     align-items:center;
 
     gap:40px;
 
-    padding:60px;
+    padding:45px 55px;
+}
+
+.social-left,
+.social-right{
+    flex:1;
+}
+
+.social-right{
+    text-align:right;
 }
 
 .social-title{
@@ -523,7 +524,11 @@
     display:flex;
     flex-wrap:wrap;
 
-    gap:18px;
+    gap:14px;
+}
+
+.social-right .social-row{
+    justify-content:flex-end;
 }
 
 .social-row a{
@@ -533,8 +538,7 @@
 
     gap:12px;
 
-    padding:
-        14px 24px;
+    padding:14px 22px;
 
     background:white;
 
@@ -547,6 +551,17 @@
     font-weight:600;
 
     color:#667085;
+
+    transition:.3s;
+}
+
+.social-row a:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(255,180,220,.15);
 }
 
 .social-row i{
@@ -555,9 +570,9 @@
 
 .social-chibi{
 
-    width:180px;
+    width:130px;
 
-    margin:auto;
+    flex-shrink:0;
 }
 
 
