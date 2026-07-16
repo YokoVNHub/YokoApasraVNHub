@@ -572,52 +572,112 @@
     margin-top: 8px;
 }
 
-.exclusive-btn {
+.exclusive-btn{
 
-    position: relative;
+    position:relative;
 
-    display: inline-flex;
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
 
-    align-items: center;
+    width:260px;
 
-    justify-content: center;
+    padding:14px 16px 14px 28px;
 
-    gap: 10px;
+    border-radius:999px;
 
-    padding: 14px 28px;
+    overflow:hidden;
 
-    border-radius: 999px;
+    text-decoration:none;
 
-    background: linear-gradient(
-        135deg,
-        #f7b4cf,
-        #ee8db6
-    );
+    color:#fff;
 
-    color: #fff;
-
-    text-decoration: none;
-
-    font-weight: 600;
-
-    font-size: .96rem;
-
-    letter-spacing: .02em;
-
-    overflow: hidden;
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        background .35s ease;
-}
-
-.exclusive-btn:hover {
-
-    transform: translateY(-3px);
+    background:
+        linear-gradient(
+            135deg,
+            #7bc6ff 0%,
+            #9fd7ff 30%,
+            #cdbbff 65%,
+            #f3a9d3 100%
+        );
 
     box-shadow:
-        0 14px 30px rgba(238,141,182,.35);
+        0 10px 30px
+        rgba(140,200,255,.35),
+
+        0 10px 25px
+        rgba(243,169,211,.25);
+
+    transition:
+        .45s;
+}
+
+.exclusive-btn:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 16px 40px
+        rgba(140,200,255,.45),
+
+        0 16px 35px
+        rgba(243,169,211,.35);
+}
+
+.exclusive-btn span{
+    position:relative;
+    z-index:2;
+}
+
+.exclusive-btn-moon{
+
+    position:relative;
+    z-index:2;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:1.35rem;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(255,255,255,.95),
+            rgba(255,255,255,.35)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        inset
+        -8px -8px 15px
+        rgba(255,255,255,.45),
+
+        0 8px 20px
+        rgba(255,255,255,.25);
+
+    transition:
+        .5s;
+}
+
+.exclusive-btn:hover
+.exclusive-btn-moon{
+
+    transform:
+        rotate(15deg)
+        scale(1.08);
 }
 
 .exclusive-btn::before {
