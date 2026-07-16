@@ -133,15 +133,13 @@ function renderAlbums(albums) {
                     </p>
 
 
-                    <p>
+                  <p>
 
                         <span>📷</span>
 
-                        ${album.photos}
-                        Original Photos
+                        ${album.photos} Photos
 
-                    </p>
-
+                </p>
                 </div>
 
 
