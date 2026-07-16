@@ -840,7 +840,7 @@
 
 .footer-copy h2{
 
-    font-size:3rem;
+    font-size:2rem;
     line-height:1.1;
 
     color:#ff69ab;
@@ -868,7 +868,7 @@
 
 .footer-mascot img{
 
-    width:180px;
+    width:300px;
 
     animation:
         mascotFloat
