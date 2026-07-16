@@ -61,18 +61,27 @@
             <ul class="nav-menu">
 
                 <li>
+
                     <a href="../index.html">
+
                         Home
+
                     </a>
+
                 </li>
 
                 <li>
+
                     <a href="../events/">
+
                         Events
+
                     </a>
+
                 </li>
 
                 <li>
+
                     <a
                         href="./"
                         class="active">
@@ -80,12 +89,17 @@
                         Exclusive
 
                     </a>
+
                 </li>
 
                 <li>
+
                     <a href="../about/">
+
                         About
+
                     </a>
+
                 </li>
 
             </ul>
@@ -97,11 +111,13 @@
 </header>
 
 
-<main class="gallery-page exclusive-detail-page">
+<main class="exclusive-detail-page">
 
     <div class="container">
 
-        <!-- Back -->
+        <!-- ==========================
+             BACK
+        =========================== -->
 
         <a
             href="index.html"
@@ -112,71 +128,90 @@
         </a>
 
 
-        <!-- Poster -->
+        <!-- ==========================
+             HERO
+        =========================== -->
 
-        <section class="exclusive-poster">
+        <section class="exclusive-hero">
 
-            <img
-                id="poster-image"
-                src=""
-                alt="Poster">
+            <!-- Poster -->
+
+            <div class="exclusive-poster">
+
+                <img
+                    id="poster-image"
+                    src=""
+                    alt="Poster">
+
+            </div>
+
+
+            <!-- Album Info -->
+
+            <div class="exclusive-info">
+
+                <span class="exclusive-badge">
+
+                    ✦ Exclusive Collection
+
+                </span>
+
+                <h1
+                    id="event-title"
+                    class="exclusive-title">
+
+                </h1>
+
+                <p
+                    id="event-subtitle"
+                    class="exclusive-subtitle">
+
+                </p>
+
+                <div
+                    id="event-meta"
+                    class="exclusive-meta">
+
+                </div>
+
+                <a
+                    id="download-album"
+                    class="download-album"
+                    href=""
+                    download>
+
+                    ⭳ Download Full Album
+
+                </a>
+
+            </div>
 
         </section>
 
+                <!-- ==========================
+             GALLERY DIVIDER
+        =========================== -->
 
-        <!-- Info -->
+        <section class="gallery-divider">
 
-        <section class="exclusive-info">
+            <span></span>
 
-            <span class="exclusive-badge">
+            <h2>
 
-                ✦ Exclusive Collection
-
-            </span>
-
-            <h1
-                id="event-title">
-
-            </h1>
-
-            <h2
-                id="event-subtitle">
+                Gallery
 
             </h2>
 
-            <div
-                id="event-meta"
-                class="gallery-meta">
-
-            </div>
-
-
-            <a
-                id="download-album"
-                href=""
-                class="download-album"
-                download>
-
-                Download Full Album
-
-            </a>
+            <span></span>
 
         </section>
 
 
-        <!-- Gallery -->
+        <!-- ==========================
+             GALLERY
+        =========================== -->
 
         <section class="exclusive-gallery">
-
-            <div class="gallery-heading">
-
-                <h2>
-
-                    Gallery
-
-                </h2>
-
-            </div>
 
             <div
                 id="gallery"
@@ -191,7 +226,80 @@
 </main>
 
 
-<!-- ==========================================
+<!-- ==========================
+     FOOTER
+========================== -->
+
+<section class="events-footer">
+
+    <div class="container">
+
+        <div class="footer-message">
+
+            <div class="footer-copy">
+
+                <span class="footer-heart">
+
+                    🤍
+
+                </span>
+
+                <h2>
+
+                    WITH YO,<br>
+                    THROUGH EVERY CHAPTER
+
+                </h2>
+
+                <p>
+
+                    Vietnamese space for people
+                    who love Yoko Apasra 🤍
+
+                </p>
+
+                <p class="footer-slogan">
+
+                    Powered by love,
+                    protein &
+                    sunny-side-up behavior 🍳
+
+                </p>
+
+            </div>
+
+
+            <div class="footer-mascot">
+
+                <span class="footer-bubble"></span>
+                <span class="footer-bubble"></span>
+                <span class="footer-bubble"></span>
+                <span class="footer-bubble"></span>
+                <span class="footer-bubble"></span>
+
+                <img
+                    src="../assets/images/chibi.png"
+                    alt="Mascot">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer class="site-credit">
+
+    © 2026 Yoko Apasra VNHub.
+    Made with 🤍 by Vietnamese Fans •
+    Unofficial fan-made archive •
+    Non-commercial project.
+
+</footer>
+
+    <!-- ==========================================
      LIGHTBOX
 ========================================== -->
 
@@ -201,7 +309,8 @@
 
     <button
         type="button"
-        class="lightbox-close">
+        class="lightbox-close"
+        aria-label="Close">
 
         &times;
 
@@ -217,7 +326,8 @@
 
     <button
         type="button"
-        class="lightbox-prev">
+        class="lightbox-prev"
+        aria-label="Previous image">
 
         &#10094;
 
@@ -235,7 +345,8 @@
 
     <button
         type="button"
-        class="lightbox-next">
+        class="lightbox-next"
+        aria-label="Next image">
 
         &#10095;
 
@@ -266,17 +377,12 @@
 </div>
 
 
-<footer class="site-credit">
-
-    © 2026 Yoko Apasra VNHub.
-    Made with 🤍 by Vietnamese Fans •
-    Unofficial fan-made archive •
-    Non-commercial project.
-
-</footer>
-
+<!-- ==========================================
+     SCRIPTS
+========================================== -->
 
 <script src="exclusive-detail.js"></script>
+
 <script src="../js/lightbox.js"></script>
 
 </body>
