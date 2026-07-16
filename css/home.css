@@ -4,12 +4,11 @@
 
 .home-bubbles{
     position:absolute;
-    inset:0;
+    top:0;
+    left:0;
 
-    overflow:hidden;
-    pointer-events:none;
-
-    z-index:1;
+    width:100%;
+    height:4200px;
 }
 
 .home-bubbles span{
