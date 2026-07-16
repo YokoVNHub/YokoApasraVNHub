@@ -105,7 +105,9 @@ function renderAlbum(album) {
 
 
 
-    /* ---------- Poster ---------- */
+    /* ==========================
+       Poster
+    ========================== */
 
     const posterImage =
 
@@ -119,7 +121,9 @@ function renderAlbum(album) {
 
 
 
-    /* ---------- Title ---------- */
+    /* ==========================
+       Title
+    ========================== */
 
     titleElement.textContent =
         album.title;
@@ -129,47 +133,116 @@ function renderAlbum(album) {
 
 
 
-    /* ---------- Meta ---------- */
+    /* ==========================
+       Meta
+    ========================== */
 
     metaElement.innerHTML =
 
         `
-        <p>
 
-            📅
-            ${album.date}
+        <div class="meta-item">
 
-        </p>
+            <span class="meta-icon">
 
-        <p>
+                📅
 
-            📍
-            ${album.location}
+            </span>
 
-        </p>
+            <div>
 
-        <p>
+                <strong>
 
-            📷
-            ${album.photos} Photos
+                    Date
 
-        </p>
+                </strong>
+
+                <p>
+
+                    ${album.date}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="meta-item">
+
+            <span class="meta-icon">
+
+                📍
+
+            </span>
+
+            <div>
+
+                <strong>
+
+                    Location
+
+                </strong>
+
+                <p>
+
+                    ${album.location}
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="meta-item">
+
+            <span class="meta-icon">
+
+                📷
+
+            </span>
+
+            <div>
+
+                <strong>
+
+                    Collection
+
+                </strong>
+
+                <p>
+
+                    ${album.photos}
+                    Photo${album.photos > 1 ? "s" : ""}
+
+                </p>
+
+            </div>
+
+        </div>
+
         `;
 
 
 
-    /* ---------- Download ---------- */
+    /* ==========================
+       Download
+    ========================== */
 
     downloadButton.href =
         album.zip;
 
 
 
-    /* ---------- Gallery ---------- */
+    /* ==========================
+       Gallery
+    ========================== */
 
     gallery.innerHTML =
 
         `
+
         <img
 
             src="${posterImage}"
@@ -185,6 +258,7 @@ function renderAlbum(album) {
             data-caption="${album.title}"
 
         >
+
         `;
 
 }
