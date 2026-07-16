@@ -1,60 +1,42 @@
 /* ======================================================
-   HOME PAGE
-====================================================== */
-
-.home-page section{
-    position:relative;
-    z-index:2;
-}
-
-
-/* ======================================================
-   HERO
+   HOME HERO
 ====================================================== */
 
 .home-hero{
-    padding:70px 0 0;
+    position:relative;
+    padding-top:40px;
 }
 
 .hero-layout{
-
     display:grid;
-    grid-template-columns:1.05fr .95fr;
-
+    grid-template-columns:520px 1fr;
     align-items:center;
-    gap:70px;
-}
-
-.hero-copy{
-    max-width:560px;
+    min-height:760px;
 }
 
 .hero-kicker{
-
-    display:inline-flex;
-    align-items:center;
+    display:inline-block;
 
     padding:10px 22px;
 
-    background:#fff;
-
     border-radius:999px;
 
-    color:#8d92a6;
+    background:
+        rgba(255,255,255,.65);
+
+    backdrop-filter:blur(20px);
+
+    color:#ff69ab;
 
     font-size:.9rem;
-    font-weight:600;
 
-    margin-bottom:28px;
-
-    box-shadow:
-        0 10px 30px rgba(255,180,220,.08);
+    margin-bottom:30px;
 }
 
 .hero-title{
 
-    font-size:5.5rem;
-    line-height:.92;
+    font-size:6rem;
+    line-height:.9;
 
     color:#2f3555;
 
@@ -62,70 +44,75 @@
 }
 
 .hero-title span{
-    color:#ff6cae;
+
+    color:#ff69ab;
 }
 
 .hero-desc{
 
-    max-width:500px;
+    max-width:430px;
 
-    color:#7c8196;
     line-height:1.9;
 
-    margin-bottom:18px;
+    color:#7d8398;
+
+    margin-bottom:14px;
 }
 
 .hero-slogan{
 
-    color:#ff7eb6;
+    color:#9aa0b5;
 
     font-style:italic;
 
-    margin-bottom:38px;
+    margin-bottom:40px;
+}
+
+.hero-button{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6ba8,
+            #ff9588
+        );
+
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+
+    transition:.35s;
+}
+
+.hero-button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 14px 35px
+        rgba(255,120,180,.25);
+}
+
+.hero-visual{
+
+    display:flex;
+    justify-content:flex-end;
 }
 
 .hero-visual img{
 
-    width:100%;
-    max-width:650px;
+    width:700px;
 
-    display:block;
-    margin:auto;
-
-    margin-bottom:-400px;
-
-    filter:
-        drop-shadow(
-            0 30px 60px
-            rgba(255,180,220,.18)
-        );
-}
-
-
-/* ======================================================
-   SHARED CARD
-====================================================== */
-
-.latest-card,
-.schedule-card,
-.featured-card,
-.about-card,
-.social-card{
-
-    background:
-        rgba(255,255,255,.6);
-
-    backdrop-filter:blur(25px);
-
-    border:
-        1px solid
-        rgba(255,220,235,.65);
-
-    border-radius:40px;
-
-    box-shadow:
-        0 18px 55px
-        rgba(255,180,220,.08);
+    margin-bottom:-170px;
 }
 
 
@@ -135,103 +122,126 @@
 
 .latest-home{
 
-    padding-top:140px;
-    padding-bottom:60px;
+    padding-top:70px;
 }
 
-.latest-card{
+.home-latest-card{
 
     display:grid;
 
     grid-template-columns:
-        340px 1fr;
+        420px 1fr;
 
-    gap:38px;
+    gap:50px;
 
-    padding:28px;
+    padding:36px;
 
-    max-width:980px;
+    background:
+        rgba(255,255,255,.68);
 
-    margin:auto;
+    backdrop-filter:blur(25px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.55);
+
+    border-radius:42px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(255,180,210,.08);
 }
 
-.latest-thumb{
+.home-latest-image{
 
-    overflow:hidden;
+    height:320px;
 
     border-radius:28px;
+
+    overflow:hidden;
 }
 
-.latest-thumb img{
+.home-latest-image img{
 
     width:100%;
-    height:300px;
+    height:100%;
 
     object-fit:cover;
-
-    display:block;
 }
 
-.latest-info{
+.home-latest-content{
 
     display:flex;
     flex-direction:column;
     justify-content:center;
+
+    position:relative;
 }
 
-.latest-badge{
+.home-latest-content::after{
+
+    content:"01";
+
+    position:absolute;
+
+    top:-10px;
+    right:20px;
+
+    font-size:7rem;
+    font-weight:700;
+
+    color:#f6dce6;
+}
+
+.home-latest-badge{
 
     width:max-content;
 
-    padding:10px 18px;
+    padding:10px 20px;
 
     border-radius:999px;
 
-    background:
-        rgba(255,130,180,.12);
+    background:#ffe8f2;
 
-    color:#ff6cae;
+    color:#ff69ab;
 
     font-weight:700;
 
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
-.latest-info h2{
+.home-latest-content h2{
 
-    font-size:2.3rem;
+    font-size:3rem;
+
+    line-height:1.15;
 
     color:#2f3555;
-
-    margin-bottom:18px;
-}
-
-.latest-meta{
-
-    display:flex;
-    gap:20px;
-
-    flex-wrap:wrap;
-
-    color:#8d92a6;
 
     margin-bottom:20px;
 }
 
-.latest-info p{
+.home-latest-meta{
 
-    color:#7c8196;
+    display:flex;
+    gap:28px;
 
-    line-height:1.8;
+    flex-wrap:wrap;
 
-    margin-bottom:28px;
+    margin-bottom:20px;
+
+    color:#8d91a8;
 }
 
-.latest-info .hero-button{
+.home-latest-content p{
 
-    width:max-content;
+    color:#7d8398;
 
-    padding:13px 28px;
+    line-height:1.9;
+
+    max-width:500px;
+
+    margin-bottom:30px;
 }
 
 
@@ -240,58 +250,58 @@
 ====================================================== */
 
 .schedule-home{
-    padding-bottom:60px;
+
+    padding-top:90px;
 }
 
 .schedule-card{
 
+    background:
+        rgba(255,255,255,.65);
+
+    backdrop-filter:blur(24px);
+
+    border:
+        1px solid
+        rgba(255,220,235,.7);
+
+    border-radius:42px;
+
+    padding:45px;
+
     display:grid;
 
     grid-template-columns:
-        320px 1fr;
+        280px 1fr;
 
-    gap:50px;
-
-    padding:40px;
-}
-
-.schedule-copy{
-
-    text-align:center;
-
-    margin-bottom:25px;
+    gap:60px;
 }
 
 .schedule-copy h2{
 
-    font-size:2.3rem;
+    font-size:2.5rem;
 
     color:#2f3555;
+
+    margin-bottom:30px;
 }
 
 .schedule-poster img{
 
-    width:100%;
-
-    display:block;
+    width:260px;
 
     border-radius:26px;
+
+    display:block;
 }
 
-.schedule-highlights{
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.schedule-highlights h3{
+.schedule-highlights h2{
 
     font-size:2rem;
 
     color:#2f3555;
 
-    margin-bottom:30px;
+    margin-bottom:35px;
 }
 
 .schedule-item{
@@ -305,51 +315,51 @@
 
     border-bottom:
         1px solid
-        rgba(255,220,235,.7);
+        #f7dfe9;
 }
 
 .schedule-date{
 
-    display:flex;
-    flex-direction:column;
+    width:80px;
 
-    align-items:center;
-
-    width:70px;
-
-    flex-shrink:0;
+    text-align:center;
 }
 
 .schedule-date strong{
 
-    font-size:2rem;
+    display:block;
 
-    color:#ff6cae;
+    font-size:2.2rem;
 
-    line-height:1;
+    color:#ff69ab;
 }
 
 .schedule-date span{
 
-    color:#9da2b4;
+    color:#8d91a8;
 
-    font-size:.9rem;
-
-    letter-spacing:.15em;
+    font-weight:700;
 }
 
-.schedule-detail h4{
+.schedule-detail h3{
 
-    font-size:1.2rem;
+    font-size:1.5rem;
 
     color:#2f3555;
 
-    margin-bottom:6px;
+    margin-bottom:8px;
 }
 
 .schedule-detail p{
 
-    color:#8d92a6;
+    color:#8d91a8;
+}
+
+.schedule-note{
+
+    margin-top:28px;
+
+    color:#9aa0b5;
 }
 
 
@@ -358,10 +368,19 @@
 ====================================================== */
 
 .featured-home{
-    padding-bottom:60px;
+
+    padding-top:90px;
 }
 
 .featured-card{
+
+    background:
+        rgba(255,255,255,.65);
+
+    backdrop-filter:blur(24px);
+
+    border-radius:42px;
+
     padding:40px;
 }
 
@@ -376,29 +395,9 @@
 
 .featured-head h2{
 
-    font-size:2.5rem;
+    font-size:2.4rem;
 
     color:#2f3555;
-}
-
-.view-all-btn{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    height:46px;
-
-    padding:0 26px;
-
-    border-radius:999px;
-
-    background:
-        rgba(255,130,180,.12);
-
-    color:#ff6cae;
-
-    font-weight:700;
 }
 
 .featured-grid{
@@ -408,17 +407,10 @@
     grid-template-columns:
         repeat(4,1fr);
 
-    gap:20px;
+    gap:18px;
 }
 
-.featured-item{
-
-    overflow:hidden;
-
-    border-radius:24px;
-}
-
-.featured-item img{
+.featured-grid img{
 
     width:100%;
 
@@ -426,13 +418,7 @@
 
     object-fit:cover;
 
-    display:block;
-
-    transition:.35s;
-}
-
-.featured-item:hover img{
-    transform:scale(1.05);
+    border-radius:22px;
 }
 
 
@@ -441,49 +427,60 @@
 ====================================================== */
 
 .about-home{
-    padding-bottom:60px;
+
+    padding-top:90px;
 }
 
 .about-card{
 
-    text-align:center;
+    display:flex;
+    align-items:center;
 
-    padding:55px;
+    gap:45px;
+
+    padding:40px 60px;
+
+    background:
+        rgba(255,255,255,.65);
+
+    backdrop-filter:blur(24px);
+
+    border-radius:42px;
 }
 
 .about-chibi{
 
-    width:130px;
+    width:120px;
 
-    margin:auto auto 25px;
+    flex-shrink:0;
 }
 
-.about-card h2{
+.about-content{
 
-    font-size:2.6rem;
+    flex:1;
+}
+
+.about-content h2{
+
+    font-size:3rem;
 
     color:#2f3555;
 
     margin-bottom:18px;
 }
 
-.about-card p{
+.about-content p{
 
-    max-width:700px;
-
-    margin:auto;
-
-    color:#7c8196;
+    max-width:560px;
 
     line-height:1.9;
+
+    color:#7d8398;
 }
 
 .about-slogan{
 
-    margin-top:18px;
-    margin-bottom:30px;
-
-    color:#ff7eb6;
+    margin-top:12px;
 
     font-style:italic;
 }
@@ -494,96 +491,131 @@
 ====================================================== */
 
 .social-footer{
-    padding-bottom:60px;
+
+    padding-top:70px;
 }
 
 .social-card{
 
-    display:grid;
-
-    grid-template-columns:
-        1fr 170px 1fr;
+    display:flex;
 
     align-items:center;
+    justify-content:space-between;
 
     gap:40px;
 
-    padding:10px 30px;
+    padding:35px 50px;
+
+    background:
+        rgba(255,255,255,.6);
+
+    backdrop-filter:blur(24px);
+
+    border-radius:40px;
 }
 
 .social-title{
 
     display:block;
 
-    color:#ff6cae;
+    margin-bottom:18px;
 
-    font-size:.85rem;
-    font-weight:700;
+    font-size:.9rem;
 
-    letter-spacing:.18em;
+    letter-spacing:.12em;
 
-    margin-bottom:22px;
+    color:#ff69ab;
 }
 
 .social-row{
 
     display:flex;
-
-    gap:14px;
+    gap:24px;
+    flex-wrap:wrap;
 }
 
 .social-row a{
 
     display:flex;
     align-items:center;
+    gap:10px;
 
-    gap:12px;
+    text-decoration:none;
 
-    padding:14px 20px;
-
-    background:white;
-
-    border-radius:999px;
-
-    border:
-        1px solid
-        rgba(255,220,235,.75);
-
-    font-weight:600;
-
-    color:#70758a;
+    color:#7d8398;
 }
 
-.social-row i{
+.social-divider{
 
-    color:#ff6cae;
+    width:1px;
+    height:70px;
 
-    width:20px;
+    background:#f5d8e5;
 }
 
 .social-chibi{
 
-    width:200px;
-
-    margin:auto;
+    width:100px;
 }
 
 
 /* ======================================================
-   FOOTER
+   CREDIT
 ====================================================== */
 
 .site-credit{
 
+    padding:30px 0 15px;
+
     text-align:center;
 
-    padding:
-        35px 20px
-        45px;
+    color:#9ea2b6;
 
-    color:#9ca1b4;
+    font-size:.85rem;
 
-    font-size:.95rem;
+    line-height:1.8;
+}
 
-    line-height:1.9;
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media(max-width:992px){
+
+    .hero-layout,
+    .home-latest-card,
+    .schedule-card,
+    .about-card,
+    .social-card{
+
+        grid-template-columns:1fr;
+        flex-direction:column;
+    }
+
+    .featured-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .hero-title{
+
+        font-size:4rem;
+    }
+
+    .home-latest-content h2{
+
+        font-size:2.3rem;
+    }
+
+    .about-content h2{
+
+        font-size:2.3rem;
+    }
+
+    .social-divider{
+
+        display:none;
+    }
 }
