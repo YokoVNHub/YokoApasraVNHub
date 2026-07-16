@@ -572,44 +572,48 @@
     margin-top: 8px;
 }
 
+/* ======================================================
+   LUNAR BUTTON
+====================================================== */
+
 .exclusive-btn{
 
     position:relative;
 
     display:inline-flex;
     align-items:center;
-    justify-content:space-between;
 
-    width:260px;
+    gap:26px;
 
-    padding:14px 16px 14px 28px;
+    padding:12px 14px 12px 28px;
 
     border-radius:999px;
-
-    overflow:hidden;
 
     text-decoration:none;
 
     color:#fff;
 
+    overflow:hidden;
+
     background:
         linear-gradient(
             135deg,
-            #7bc6ff 0%,
-            #9fd7ff 30%,
-            #cdbbff 65%,
-            #f3a9d3 100%
+            #6fc2ff 0%,
+            #8fd2ff 35%,
+            #b7c6ff 70%,
+            #d8b8ff 100%
         );
 
     box-shadow:
-        0 10px 30px
-        rgba(140,200,255,.35),
+        0 10px 28px
+        rgba(125,190,255,.30),
 
-        0 10px 25px
-        rgba(243,169,211,.25);
+        0 8px 24px
+        rgba(210,185,255,.20);
 
     transition:
-        .45s;
+        transform .45s ease,
+        box-shadow .45s ease;
 }
 
 .exclusive-btn:hover{
@@ -618,25 +622,88 @@
         translateY(-4px);
 
     box-shadow:
-        0 16px 40px
-        rgba(140,200,255,.45),
+        0 18px 40px
+        rgba(125,190,255,.42),
 
-        0 16px 35px
-        rgba(243,169,211,.35);
+        0 12px 30px
+        rgba(210,185,255,.30);
 }
 
-.exclusive-btn span{
+
+/* shine */
+
+.exclusive-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(255,255,255,.25) 50%,
+            transparent 80%
+        );
+
+    transform:
+        translateX(-140%);
+
+    transition:
+        1s;
+}
+
+.exclusive-btn:hover::before{
+
+    transform:
+        translateX(140%);
+}
+
+
+/* text */
+
+.exclusive-btn-text{
+
     position:relative;
     z-index:2;
+
+    font-weight:600;
 }
+
+
+/* arrow */
+
+.exclusive-arrow{
+
+    position:relative;
+    z-index:2;
+
+    font-size:1.15rem;
+
+    opacity:.95;
+
+    transition:.4s;
+}
+
+.exclusive-btn:hover
+.exclusive-arrow{
+
+    transform:
+        translateX(4px);
+}
+
+
+/* moon bubble */
 
 .exclusive-btn-moon{
 
     position:relative;
     z-index:2;
 
-    width:48px;
-    height:48px;
+    width:52px;
+    height:52px;
 
     border-radius:50%;
 
@@ -644,32 +711,35 @@
     align-items:center;
     justify-content:center;
 
-    font-size:1.35rem;
+    font-size:1.8rem;
+
+    color:#fff;
 
     background:
         radial-gradient(
             circle at 30% 30%,
-            rgba(255,255,255,.95),
-            rgba(255,255,255,.35)
+            rgba(255,255,255,.35),
+            rgba(255,255,255,.08)
         );
 
     border:
         1px solid
-        rgba(255,255,255,.5);
+        rgba(255,255,255,.20);
 
     backdrop-filter:
         blur(10px);
 
     box-shadow:
-        inset
-        -8px -8px 15px
-        rgba(255,255,255,.45),
 
-        0 8px 20px
-        rgba(255,255,255,.25);
+        inset
+        0 1px 2px
+        rgba(255,255,255,.30),
+
+        0 6px 18px
+        rgba(140,190,255,.20);
 
     transition:
-        .5s;
+        transform .45s ease;
 }
 
 .exclusive-btn:hover
