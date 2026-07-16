@@ -20,14 +20,31 @@
         );
 }
 
-.exclusive-bubbles {
-    position: absolute;
-    inset: 0;
+.exclusive-page::before{
+    content:"";
 
-    pointer-events: none;
-    overflow: hidden;
+    position:absolute;
+    inset:0;
 
-    z-index: 1;
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(210,230,255,.12),
+            transparent 55%
+        );
+
+    pointer-events:none;
+    z-index:0;
+}
+
+.exclusive-bubbles{
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+    pointer-events:none;
+
+    z-index:1;
 }
 
 .exclusive-intro,
@@ -39,30 +56,79 @@
    FLOATING BUBBLES
 ====================================================== */
 
-.exclusive-bubbles span {
-    position: absolute;
-    top: 110%;
+.exclusive-bubbles span{
+    position:absolute;
 
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
         radial-gradient(
             circle at 30% 30%,
-            rgba(255,255,255,.85) 0%,
-            rgba(255,255,255,.35) 35%,
-            rgba(255,220,236,.12) 70%,
-            rgba(255,220,236,0) 100%
+            rgba(255,255,255,.95) 0%,
+            rgba(230,245,255,.45) 25%,
+            rgba(210,230,255,.18) 60%,
+            rgba(255,220,236,.08) 100%
         );
 
-    border: 1px solid rgba(255,255,255,.55);
+    border:
+        1px solid
+        rgba(255,255,255,.45);
 
     box-shadow:
-        inset 0 0 25px rgba(255,255,255,.55),
-        0 0 30px rgba(255,210,230,.25);
+        inset
+        -12px -12px 20px
+        rgba(255,255,255,.25),
 
-    opacity: .75;
+        inset
+        10px 10px 18px
+        rgba(210,230,255,.15),
 
-    animation: bubbleRise linear infinite;
+        0 0 25px
+        rgba(200,220,255,.15);
+
+    opacity:.6;
+
+    animation:
+        bubbleRise
+        linear infinite;
+}
+
+.exclusive-bubbles span::before{
+    content:"";
+
+    position:absolute;
+
+    width:28%;
+    height:28%;
+
+    top:18%;
+    left:20%;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.95);
+
+    filter:blur(2px);
+}
+
+.exclusive-bubbles span::after{
+    content:"";
+
+    position:absolute;
+
+    width:14%;
+    height:14%;
+
+    top:42%;
+    left:35%;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.75);
+
+    filter:blur(1px);
 }
 /* ======================================================
    INDIVIDUAL BUBBLES
@@ -71,41 +137,49 @@
 .exclusive-bubbles span:nth-child(1){
     width:80px;
     height:80px;
+    left:8%;
+    animation-duration:22s;
+    animation-delay:-3s;
 }
 
 .exclusive-bubbles span:nth-child(2){
-    width:45px;
-    height:45px;
+    width:40px;
+    height:40px;
+    left:20%;
+    animation-duration:14s;
+    animation-delay:-8s;
 }
 
 .exclusive-bubbles span:nth-child(3){
-    width:95px;
-    height:95px;
+    width:100px;
+    height:100px;
+    left:38%;
+    animation-duration:26s;
+    animation-delay:-12s;
 }
 
 .exclusive-bubbles span:nth-child(4){
-    width:35px;
-    height:35px;
+    width:55px;
+    height:55px;
+    left:52%;
+    animation-duration:18s;
+    animation-delay:-6s;
 }
 
 .exclusive-bubbles span:nth-child(5){
-    width:70px;
-    height:70px;
+    width:75px;
+    height:75px;
+    left:68%;
+    animation-duration:24s;
+    animation-delay:-15s;
 }
 
 .exclusive-bubbles span:nth-child(6){
-    width:50px;
-    height:50px;
-}
-
-.exclusive-bubbles span:nth-child(7){
-    width:30px;
-    height:30px;
-}
-
-.exclusive-bubbles span:nth-child(8){
-    width:90px;
-    height:90px;
+    width:45px;
+    height:45px;
+    left:82%;
+    animation-duration:16s;
+    animation-delay:-10s;
 }
 /* ======================================================
    INTRO
@@ -968,39 +1042,32 @@
 
 @keyframes bubbleRise {
 
-    0% {
+    from{
         transform:
-            translateY(0)
+            translateY(110vh)
             translateX(0)
             scale(.8);
 
-        opacity: 0;
+        opacity:0;
     }
 
-    10% {
-        opacity: .5;
+    15%{
+        opacity:.6;
     }
 
-    35% {
+    50%{
         transform:
-            translateY(-35vh)
-            translateX(25px)
+            translateY(45vh)
+            translateX(35px)
             scale(1);
     }
 
-    65% {
+    to{
         transform:
-            translateY(-70vh)
+            translateY(-120vh)
             translateX(-20px)
-            scale(1.08);
-    }
+            scale(1.15);
 
-    100% {
-        transform:
-            translateY(-140vh)
-            translateX(35px)
-            scale(1.2);
-
-        opacity: 0;
+        opacity:0;
     }
 }
