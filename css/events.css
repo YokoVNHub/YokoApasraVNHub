@@ -197,6 +197,14 @@
    GIỮ NGUYÊN
 ====================================================== */
 
+.events-hero,
+.latest-section,
+.events-archive,
+.events-footer{
+    position:relative;
+    z-index:2;
+}
+
 .events-hero{
     position:relative;
 }
@@ -242,19 +250,15 @@
 .hero-stats{
     display:flex;
     margin-top:50px;
-    margin-bottom:-500px;
+    margin-bottom:-150px;
 
     width:820px;
 
-    background:
-        rgba(255,255,255,.65);
-
+    background:rgba(255,255,255,.65);
     backdrop-filter:blur(25px);
 
     border-radius:35px;
-
     padding:28px 35px;
-
     gap:55px;
 }
 
@@ -267,9 +271,7 @@
 .hero-stat-icon{
     width:70px;
     height:70px;
-
     border-radius:50%;
-
     background:#ffe6f0;
 
     display:flex;
@@ -286,7 +288,6 @@
 }
 
 .hero-stat span{
-    display:block;
     color:#7d8398;
     font-size:.9rem;
 }
