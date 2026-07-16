@@ -2,6 +2,10 @@
    HOME BUBBLES
 ====================================================== */
 
+body.home-page{
+    position:relative;
+}
+
 .home-bubbles{
     position:absolute;
     inset:0;
@@ -964,11 +968,25 @@
             scale(1);
     }
 
+    25%{
+        transform:
+            translateY(-18px)
+            translateX(12px)
+            scale(1.04);
+    }
+
     50%{
         transform:
-            translateY(-30px)
-            translateX(12px)
-            scale(1.06);
+            translateY(-35px)
+            translateX(-10px)
+            scale(1.08);
+    }
+
+    75%{
+        transform:
+            translateY(-15px)
+            translateX(15px)
+            scale(1.03);
     }
 
     100%{
