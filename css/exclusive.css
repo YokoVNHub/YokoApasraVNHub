@@ -1,42 +1,39 @@
+/* ======================================================
+   DREAMY UNDERWATER GLASS BUBBLES
+====================================================== */
+
 .exclusive-page{
     position:relative;
     overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(255,214,232,.18),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at bottom left,
-            rgba(255,233,245,.22),
-            transparent 40%
-        ),
-        linear-gradient(
-            180deg,
-            #fffdfd 0%,
-            #fff8fb 100%
-        );
 }
 
 .exclusive-page::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(190,220,255,.15),
+            circle at 50% 25%,
+            rgba(180,220,255,.22),
             transparent 55%
         );
 
-    pointer-events:none;
-
     z-index:0;
 }
+
+.exclusive-bubbles{
+    position:absolute;
+
+    top:-120vh;
+    left:0;
+
+    width:100%;
+    height:350vh;
+
+    overflow:hidden;
+    pointer-events:none;
+
+    z-index:1;
+}
+
+/* content nằm trên bubbles */
 
 .exclusive-intro,
 .exclusive-featured{
@@ -44,58 +41,59 @@
     z-index:2;
 }
 
-.exclusive-bubbles{
-    position:absolute;
-
-    top:-150vh;
-    left:0;
-
-    width:100%;
-    height:400vh;
-
-    overflow:hidden;
-    pointer-events:none;
-
-    z-index:1;
-}
-/* ======================================================
-   FLOATING BUBBLES
-====================================================== */
+/* bubble */
 
 .exclusive-bubbles span{
     position:absolute;
+    bottom:-250px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle at 30% 30%,
-            rgba(255,255,255,.95) 0%,
-            rgba(230,245,255,.65) 25%,
-            rgba(210,230,255,.28) 60%,
-            rgba(255,220,236,.12) 100%
+            rgba(255,255,255,1) 0%,
+            rgba(225,240,255,.95) 20%,
+            rgba(190,220,255,.55) 55%,
+            rgba(255,205,228,.35) 100%
         );
 
     border:
-        1px solid rgba(255,255,255,.55);
+        2px solid
+        rgba(255,255,255,.75);
 
     box-shadow:
-        inset
-        -12px -12px 20px
-        rgba(255,255,255,.35),
 
         inset
-        10px 10px 20px
-        rgba(210,230,255,.22),
+        -15px -15px 25px
+        rgba(255,255,255,.55),
+
+        inset
+        12px 12px 25px
+        rgba(200,225,255,.35),
 
         0 0 35px
-        rgba(190,220,255,.25);
+        rgba(180,220,255,.45),
 
-    opacity:.85;
+        0 0 80px
+        rgba(255,220,235,.25);
+
+    backdrop-filter:
+        blur(8px);
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(200,230,255,.45)
+        );
+
+    opacity:.95;
 
     animation:
         bubbleRise linear infinite;
 }
+
+/* highlight */
 
 .exclusive-bubbles span::before{
     content:"";
@@ -134,72 +132,119 @@
 
     filter:blur(1px);
 }
-/* ======================================================
-   INDIVIDUAL BUBBLES
-====================================================== */
+
+/* individual */
 
 .exclusive-bubbles span:nth-child(1){
-    width:70px;
-    height:70px;
-    left:8%;
-    animation-duration:20s;
-    animation-delay:-6s;
-}
-
-.exclusive-bubbles span:nth-child(2){
-    width:40px;
-    height:40px;
-    left:20%;
-    animation-duration:14s;
-    animation-delay:-12s;
-}
-
-.exclusive-bubbles span:nth-child(3){
-    width:95px;
-    height:95px;
-    left:35%;
-    animation-duration:24s;
+    width:110px;
+    height:110px;
+    left:6%;
+    animation-duration:22s;
     animation-delay:-8s;
 }
 
-.exclusive-bubbles span:nth-child(4){
+.exclusive-bubbles span:nth-child(2){
     width:55px;
     height:55px;
-    left:52%;
-    animation-duration:18s;
-    animation-delay:-14s;
+    left:18%;
+    animation-duration:15s;
+    animation-delay:-5s;
 }
 
-.exclusive-bubbles span:nth-child(5){
-    width:80px;
-    height:80px;
-    left:65%;
-    animation-duration:22s;
-    animation-delay:-4s;
+.exclusive-bubbles span:nth-child(3){
+    width:140px;
+    height:140px;
+    left:34%;
+    animation-duration:28s;
+    animation-delay:-16s;
 }
 
-.exclusive-bubbles span:nth-child(6){
-    width:45px;
-    height:45px;
-    left:80%;
-    animation-duration:16s;
+.exclusive-bubbles span:nth-child(4){
+    width:75px;
+    height:75px;
+    left:50%;
+    animation-duration:20s;
     animation-delay:-10s;
 }
 
-.exclusive-bubbles span:nth-child(7){
-    width:30px;
-    height:30px;
-    left:90%;
-    animation-duration:12s;
+.exclusive-bubbles span:nth-child(5){
+    width:120px;
+    height:120px;
+    left:66%;
+    animation-duration:24s;
+    animation-delay:-14s;
+}
+
+.exclusive-bubbles span:nth-child(6){
+    width:60px;
+    height:60px;
+    left:80%;
+    animation-duration:17s;
     animation-delay:-7s;
 }
 
+.exclusive-bubbles span:nth-child(7){
+    width:45px;
+    height:45px;
+    left:90%;
+    animation-duration:14s;
+    animation-delay:-4s;
+}
+
 .exclusive-bubbles span:nth-child(8){
-    width:110px;
-    height:110px;
-    left:48%;
-    animation-duration:28s;
-    animation-delay:-16s;
+    width:170px;
+    height:170px;
+    left:45%;
+    animation-duration:34s;
+    animation-delay:-20s;
+}
+
+/* animation */
+
+@keyframes bubbleRise{
+
+    0%{
+        transform:
+            translateY(0)
+            translateX(0)
+            scale(.8);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.95;
+    }
+
+    30%{
+        transform:
+            translateY(-60vh)
+            translateX(40px)
+            scale(.92);
+    }
+
+    55%{
+        transform:
+            translateY(-140vh)
+            translateX(-30px)
+            scale(1);
+    }
+
+    80%{
+        transform:
+            translateY(-230vh)
+            translateX(45px)
+            scale(1.08);
+    }
+
+    100%{
+        transform:
+            translateY(-330vh)
+            translateX(-20px)
+            scale(1.15);
+
+        opacity:0;
+    }
 }
 /* ======================================================
    INTRO
@@ -1056,45 +1101,3 @@
     opacity: .7;
 }
 
-/* ======================================================
-   ANIMATION
-====================================================== */
-
-@keyframes bubbleRise{
-
-    from{
-        transform:
-            translateY(300vh)
-            translateX(0)
-            scale(.8);
-
-        opacity:0;
-    }
-
-    15%{
-        opacity:.85;
-    }
-
-    40%{
-        transform:
-            translateY(180vh)
-            translateX(30px)
-            scale(.95);
-    }
-
-    70%{
-        transform:
-            translateY(60vh)
-            translateX(-20px)
-            scale(1.05);
-    }
-
-    to{
-        transform:
-            translateY(-150vh)
-            translateX(25px)
-            scale(1.15);
-
-        opacity:0;
-    }
-}
