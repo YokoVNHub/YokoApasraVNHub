@@ -170,7 +170,7 @@
 .home-hero-kicker{
     display:inline-block;
 
-    padding:10px 22px;
+    padding:10px 10px;
 
     border-radius:999px;
 
@@ -179,7 +179,7 @@
 
     color:#ff69ab;
     font-size:.9rem;
-
+    font-weight:600;
     margin-bottom:30px;
 }
 
