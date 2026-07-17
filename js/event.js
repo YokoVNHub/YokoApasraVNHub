@@ -1,10 +1,15 @@
+/* ======================================================
+   EVENT DETAIL
+   Yoko Apasra VNHub
+====================================================== */
+
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-        /*==================================
-        =            Elements             =
-        ==================================*/
+        /* ======================================================
+           ELEMENTS
+        ====================================================== */
 
         const titleElement =
             document.getElementById(
@@ -28,16 +33,17 @@ document.addEventListener(
         ) {
 
             console.error(
-                "Missing HTML elements."
+                "Gallery elements not found."
             );
 
             return;
 
         }
 
-        /*==================================
-        =          Get Event ID           =
-        ==================================*/
+
+        /* ======================================================
+           GET EVENT ID
+        ====================================================== */
 
         const params =
             new URLSearchParams(
@@ -59,18 +65,20 @@ document.addEventListener(
 
         }
 
-        /*==================================
-        =      Load Gallery + Download    =
-        ==================================*/
 
-        let events = [];
-        let downloads = {};
+        /* ======================================================
+           LOAD JSON
+        ====================================================== */
+
+        let galleryData = [];
+        let downloadData = {};
 
         try {
 
             const [
                 galleryResponse,
                 downloadResponse
+
             ] = await Promise.all([
 
                 fetch(
@@ -83,61 +91,58 @@ document.addEventListener(
 
             ]);
 
-            if (
-                !galleryResponse.ok
-            ) {
+            if (!galleryResponse.ok) {
 
                 throw new Error(
-                    "Unable to load gallery.json"
+                    "gallery.json not found."
                 );
 
             }
 
-            if (
-                !downloadResponse.ok
-            ) {
-
-                throw new Error(
-                    "Unable to load download.json"
-                );
-
-            }
-
-            events =
+            galleryData =
                 await galleryResponse.json();
 
-            downloads =
-                await downloadResponse.json();
+
+            if (
+                downloadResponse.ok
+            ) {
+
+                downloadData =
+                    await downloadResponse.json();
+
+            }
 
         }
 
         catch (error) {
 
-            console.error(
-                error
-            );
+            console.error(error);
 
             titleElement.textContent =
                 "Loading failed";
 
             metaElement.innerHTML =
-                "<span>Unable to load event data.</span>";
+                "<span>Unable to load gallery.</span>";
 
             return;
 
         }
 
-        /*==================================
-        =        Find Event Data          =
-        ==================================*/
 
-        const currentEvent =
-            events.find(
-                event =>
-                    event.id === eventId
+        /* ======================================================
+           FIND EVENT
+        ====================================================== */
+
+        const eventData =
+            galleryData.find(
+
+                item =>
+
+                    item.id === eventId
+
             );
 
-        if (!currentEvent) {
+        if (!eventData) {
 
             titleElement.textContent =
                 "Event not found";
@@ -149,41 +154,47 @@ document.addEventListener(
 
         }
 
-        /*==================================
-        =          Destructure            =
-        ==================================*/
+
+        /* ======================================================
+           EVENT DATA
+        ====================================================== */
 
         const {
 
             title,
+
             date,
+
             folder,
+
             photos,
-            format,
-            cover
 
-        } = currentEvent;
+            format = "jpg"
 
-        const extension =
-            format || "jpg";
+        } = eventData;
+
 
         const downloadLink =
-            downloads.events?.[
+
+            downloadData.events?.[
                 eventId
             ] || "";
 
+
         document.title =
+
             `${title} | Yoko Apasra VNHub`;
 
-        /*==================================
-        =          Render Info            =
-        ==================================*/
+            /* ======================================================
+           RENDER HEADER
+        ====================================================== */
 
         titleElement.textContent =
             title;
 
-        metaElement.innerHTML = `
+        metaElement.innerHTML =
 
+            `
             <div class="event-meta-info">
 
                 <span>
@@ -191,75 +202,95 @@ document.addEventListener(
                 </span>
 
                 <span>
-                    📷 ${photos} Photos
+                    📷 ${photos.toLocaleString()} Photos
                 </span>
 
             </div>
 
             ${
+
                 downloadLink
-                    ? `
+
+                    ?
+
+                    `
                     <a
                         href="${downloadLink}"
                         class="download-album"
                         target="_blank"
-                        rel="noopener">
+                        rel="noopener noreferrer">
 
                         ⬇ Download Full Album
 
                     </a>
                     `
-                    : ""
+
+                    :
+
+                    ""
+
             }
 
-        `;
+            `;
 
-        /*==================================
-        =          Render Gallery         =
-        ==================================*/
 
-        galleryElement.innerHTML =
-            "";
+        /* ======================================================
+           CLEAR GALLERY
+        ====================================================== */
+
+        galleryElement.innerHTML = "";
+
+
+        /* ======================================================
+           RENDER GALLERY
+        ====================================================== */
 
         for (
+
             let i = 1;
+
             i <= photos;
+
             i++
+
         ) {
 
-            const number =
+            const fileNumber =
+
                 String(i).padStart(
                     3,
                     "0"
                 );
 
             const imagePath =
-                `../assets/events/${folder}/${number}.${extension}`;
+
+                `../assets/events/${folder}/${fileNumber}.${format}`;
+
 
             const link =
-                document.createElement(
-                    "a"
-                );
 
-            link.href =
-                imagePath;
+                document.createElement("a");
+
+            link.href = imagePath;
 
             link.className =
                 "lightbox-trigger";
 
             link.dataset.filename =
-                `yoko-${folder}-${number}.${extension}`;
+
+                `yoko-${folder}-${fileNumber}.${format}`;
+
 
             const image =
-                document.createElement(
-                    "img"
-                );
+
+                document.createElement("img");
 
             image.src =
                 imagePath;
 
             image.alt =
-                `${title} - Photo ${number}`;
+
+                `${title} ${fileNumber}`;
 
             image.loading =
                 "lazy";
@@ -270,17 +301,18 @@ document.addEventListener(
             image.draggable =
                 false;
 
-                    image.onerror =
-                () => {
+            image.onerror = () => {
 
-                    console.warn(
-                        "Missing:",
-                        imagePath
-                    );
+                console.warn(
 
-                    link.remove();
+                    `Missing image: ${imagePath}`
 
-                };
+                );
+
+                link.remove();
+
+            };
+
 
             link.appendChild(
                 image
@@ -292,53 +324,98 @@ document.addEventListener(
 
         }
 
-        /*==================================
-        =          Cover Image            =
-        ==================================*/
-
-        if (cover) {
-
-            const firstImage =
-                galleryElement.querySelector(
-                    "img"
-                );
-
-            const coverPath =
-                `../assets/events/${folder}/${String(
-                    cover
-                ).padStart(
-                    3,
-                    "0"
-                )}.${extension}`;
-
-            if (
-                firstImage
-            ) {
-
-                firstImage.src =
-                    coverPath;
-
-            }
-
-        }
-
-        /*==================================
-        =        Refresh Lightbox         =
-        ==================================*/
+            /* ======================================================
+           REFRESH LIGHTBOX
+        ====================================================== */
 
         if (
-            window.refreshLightbox
+
+            typeof window.refreshLightbox ===
+            "function"
+
         ) {
 
             window.refreshLightbox();
 
         }
 
-        console.log(
 
-            `Loaded "${title}" (${photos} photos)`
+        /* ======================================================
+           UPDATE PHOTO COUNT
+        ====================================================== */
+
+        const loadedPhotos =
+
+            galleryElement.querySelectorAll(
+                ".lightbox-trigger"
+            ).length;
+
+        const info =
+
+            metaElement.querySelector(
+                ".event-meta-info"
+            );
+
+        if (info) {
+
+            info.innerHTML =
+
+                `
+                <span>
+                    📅 ${date}
+                </span>
+
+                <span>
+                    📷 ${loadedPhotos.toLocaleString()} Photos
+                </span>
+                `;
+
+        }
+
+
+        /* ======================================================
+           FINISH
+        ====================================================== */
+
+        console.groupCollapsed(
+
+            "Event Detail"
 
         );
 
+        console.log(
+
+            "Title:",
+            title
+
+        );
+
+        console.log(
+
+            "Folder:",
+            folder
+
+        );
+
+        console.log(
+
+            "Photos:",
+            loadedPhotos
+
+        );
+
+        console.log(
+
+            "Download:",
+
+            downloadLink
+                ? "Available"
+                : "Unavailable"
+
+        );
+
+        console.groupEnd();
+
     }
+
 );
