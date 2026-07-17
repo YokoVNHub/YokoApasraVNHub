@@ -19,11 +19,7 @@
 
     max-width:1200px;
 
-    margin:0 auto 48px;
-
-    text-align:center;
-
-}
+    margin:0 auto 48px;}
 
 .back-link{
 
@@ -67,6 +63,8 @@
 
     line-height:1.2;
 
+   text-align:center;
+
 }
 
 
@@ -84,7 +82,7 @@
 
     align-items:center;
 
-    gap:18px;
+    gap:28px;
 
 }
 
