@@ -1,109 +1,15 @@
-/* ==========================================
-   EVENTS RESPONSIVE
-========================================== */
-@media (max-width:768px){
-
-    .home-bubbles span{
-        transform:scale(.65);
-        opacity:.75;
-    }
-}
-
-@media (max-width:576px){
-
-    .home-bubbles span{
-        transform:scale(.5);
-        opacity:.55;
-    }
-}
-
 /* ======================================================
-   LAPTOP (1366px / 1280px)
+   1366
 ====================================================== */
+
 @media (max-width:1366px){
-
-    /* HERO */
-
-    .home-hero{
-        padding-bottom:140px;
-    }
 
     .home-hero-layout{
         grid-template-columns:480px 1fr;
     }
 
     .home-hero-copy{
-        margin-top:-300px;
-    }
-
-    .home-hero-title{
-        font-size:5.4rem;
-    }
-
-    .home-hero-visual img{
-        width:660px;
-    }
-
-    /* SCHEDULE */
-
-    .schedule-home{
-        margin-top:-460px;
-    }
-
-    .schedule-card{
-        grid-template-columns:400px 1fr;
-        gap:45px;
-        padding:45px;
-    }
-
-    .schedule-poster img{
-        max-width:360px;
-    }
-
-    .schedule-copy h2,
-    .schedule-highlights h2{
-        font-size:2.05rem;
-    }
-
-    /* FEATURED */
-
-    .featured-head h2{
-        font-size:2.1rem;
-    }
-
-    .featured-grid{
-        gap:16px;
-    }
-
-    /* ABOUT */
-
-    .about-social-card{
-        padding:30px 35px;
-    }
-
-    .about-chibi{
-        width:170px;
-    }
-
-    .social-chibi{
-        width:165px;
-    }
-}
-
-/* ======================================================
-   LAPTOP SMALL
-====================================================== */
-
-@media (max-width:1200px){
-
-    /* HERO */
-
-    .home-hero-layout{
-        grid-template-columns:460px 1fr;
-    }
-
-    .home-hero-copy{
-        margin-top:-280px;
+        margin-top:-240px;
     }
 
     .home-hero-title{
@@ -114,104 +20,75 @@
         width:620px;
     }
 
-    /* SCHEDULE */
-
     .schedule-home{
-        margin-top:-400px;
+        margin-top:-360px;
+    }
+}
+
+/* ======================================================
+   1200
+====================================================== */
+
+@media (max-width:1200px){
+
+    .home-hero-layout{
+        grid-template-columns:430px 1fr;
     }
 
-    .schedule-card{
-        grid-template-columns:380px 1fr;
-        gap:40px;
-
-        padding:42px;
+    .home-hero-title{
+        font-size:4.6rem;
     }
 
-    .schedule-copy h2,
-    .schedule-highlights h2{
-        font-size:2rem;
-    }
-
-    .schedule-poster img{
-        max-width:340px;
-    }
-
-    /* FEATURED */
-
-    .featured-head h2{
-        font-size:2rem;
+    .home-hero-visual img{
+        width:560px;
     }
 
     .featured-grid{
         grid-template-columns:repeat(4,1fr);
-        gap:16px;
     }
-
-    /* ABOUT + SOCIAL */
-
-    .about-social-card{
-        grid-template-columns:
-            1fr
-            1px
-            360px;
-
-        gap:30px;
-
-        padding:28px 35px;
-    }
-
-    .about-chibi{
-        width:160px;
-    }
-
-    .social-chibi{
-        width:150px;
-    }
-
 }
 
-/* =========================
+/* ======================================================
    TABLET
-========================= */
+====================================================== */
+
 @media (max-width:992px){
 
     .home-hero{
-        padding-bottom:120px;
+        padding-bottom:100px;
     }
 
     .home-hero-layout{
         display:flex;
         flex-direction:column;
         text-align:center;
-        gap:35px;
+        gap:40px;
     }
 
     .home-hero-copy{
         margin-top:0;
+        order:2;
+    }
+
+    .home-hero-visual{
         order:1;
+        justify-content:center;
     }
 
     .home-hero-desc{
         margin:auto;
     }
 
-    .home-hero-visual{
-        justify-content:center;
-        order:2;
-    }
-
     .home-hero-visual img{
         width:360px;
-        margin-top:0;
     }
 
     .schedule-home{
-        margin-top:-120px;
+        margin-top:-80px;
     }
 
     .schedule-card{
         grid-template-columns:1fr;
-        gap:40px;
     }
 
     .featured-grid{
@@ -220,7 +97,6 @@
 
     .about-social-card{
         grid-template-columns:1fr;
-        gap:30px;
     }
 
     .about-divider{
@@ -228,7 +104,6 @@
     }
 
     .social-side{
-        padding-right:0;
         text-align:center;
     }
 
@@ -238,26 +113,22 @@
 
     .social-chibi{
         position:static;
-        display:block;
         margin:30px auto 0;
     }
 }
 
-/* =========================
+/* ======================================================
    MOBILE
-========================= */
-@media (max-width:768px){
+====================================================== */
 
-    .home-hero{
-        padding-bottom:80px;
-    }
+@media (max-width:768px){
 
     .home-hero-title{
         font-size:3rem;
     }
 
     .home-hero-desc{
-        max-width:320px;
+        max-width:340px;
         margin:auto;
         font-size:.95rem;
     }
@@ -266,42 +137,31 @@
         width:270px;
     }
 
-    .schedule-home{
-        margin-top:-40px;
+    .home-hero-button,
+    .latest-btn,
+    .exclusive-btn{
+        padding:13px 24px;
+        font-size:.9rem;
     }
 
-    .schedule-card{
+    .schedule-card,
+    .featured-card,
+    .about-social-card{
         padding:28px;
         border-radius:30px;
     }
 
     .schedule-copy h2,
-    .schedule-highlights h2{
-        font-size:2rem;
+    .schedule-highlights h2,
+    .featured-head h2{
+        font-size:1.9rem;
         text-align:center;
-    }
-
-    .schedule-item{
-        grid-template-columns:80px 1fr;
-        padding:20px;
-    }
-
-    .schedule-poster img{
-        max-width:300px;
-    }
-
-    .featured-card{
-        padding:30px;
     }
 
     .featured-head{
         flex-direction:column;
-        gap:20px;
         text-align:center;
-    }
-
-    .featured-head h2{
-        font-size:2rem;
+        gap:20px;
     }
 
     .featured-grid{
@@ -309,39 +169,34 @@
         gap:14px;
     }
 
-    .about-social-card{
-        padding:28px;
+    .home-bubbles span:nth-child(n+7){
+        display:none;
     }
 
-    .about-side{
+    .footer-message{
         flex-direction:column;
         text-align:center;
+        gap:28px;
+        padding:40px 28px;
     }
 
-    .about-chibi{
-        width:150px;
+    .footer-copy{
+        max-width:100%;
     }
 
-    .social-chibi{
-        width:140px;
+    .footer-mascot img{
+        width:130px;
     }
 }
 
-.schedule-copy,
-.schedule-highlights{
-    text-align:center;
-}
-
-.schedule-item{
-    text-align:left;
-}
-/* =========================
+/* ======================================================
    SMALL MOBILE
-========================= */
+====================================================== */
+
 @media (max-width:576px){
 
     .home-hero-title{
-        font-size:2.5rem;
+        font-size:2.45rem;
     }
 
     .home-hero-kicker{
@@ -352,8 +207,17 @@
         width:220px;
     }
 
-    .schedule-card{
-        padding:20px;
+    .home-hero-button,
+    .latest-btn,
+    .exclusive-btn{
+        font-size:.85rem;
+        padding:12px 22px;
+    }
+
+    .schedule-card,
+    .featured-card,
+    .about-social-card{
+        padding:22px;
         border-radius:24px;
     }
 
@@ -370,33 +234,13 @@
         text-align:center;
     }
 
-    .schedule-detail h3{
-        font-size:1.1rem;
-    }
-
-    .featured-card{
-        padding:24px;
-    }
-
     .featured-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
     .featured-grid img{
         border-radius:18px;
-    }
-
-    .about-social-card{
-        padding:22px;
-    }
-
-    .about-content h2{
-        font-size:1.3rem;
-    }
-
-    .about-content p{
-        font-size:.88rem;
     }
 
     .about-chibi,
@@ -405,97 +249,17 @@
     }
 
     .site-credit{
-        font-size:.68rem;
+        font-size:.7rem;
+        line-height:1.7;
         padding:20px;
-        line-height:1.7;
     }
 
-@media (max-width:430px){
-
-    .featured-grid{
-        grid-template-columns:1fr;
+    .home-bubbles span:nth-child(n+5){
+        display:none;
     }
-
-}
-
-/* =========================
-   Footer Mobile Fix
-========================= */
-@media (max-width:768px){
-
-    .events-footer{
-        padding-top:70px;
-    }
-
-    .footer-message{
-        padding:40px 28px;
-        border-radius:32px;
-
-        flex-direction:column;
-        text-align:center;
-        gap:28px;
-    }
-
-    .footer-copy{
-        max-width:100%;
-    }
-
-    .footer-copy h2{
-        font-size:2.1rem;
-        line-height:1.2;
-    }
-
-    .footer-copy p{
-        font-size:.95rem;
-        line-height:1.7;
-    }
-
-    .footer-mascot img{
-        width:130px;
-    }
-
-    /* giảm kích thước bubbles */
-
-    .footer-message::before{
-        width:60px;
-        height:60px;
-
-        top:18px;
-        right:25px;
-    }
-
-    .footer-message::after{
-        width:38px;
-        height:38px;
-
-        top:80px;
-        right:80px;
-    }
-
-    .footer-bubble:nth-child(1){
-        width:70px;
-        height:70px;
-    }
-
-    .footer-bubble:nth-child(2){
-        width:35px;
-        height:35px;
-    }
-
-    .footer-bubble:nth-child(3){
-        width:50px;
-        height:50px;
-    }
-}
-
-/* =========================
-   Small Phone
-========================= */
-@media (max-width:576px){
 
     .footer-message{
         padding:32px 20px;
-        border-radius:28px;
     }
 
     .footer-copy h2{
@@ -503,56 +267,22 @@
     }
 
     .footer-copy p{
-        font-size:.88rem;
-    }
-
-    .footer-heart{
-        margin-bottom:10px;
+        font-size:.9rem;
     }
 
     .footer-mascot img{
         width:105px;
     }
-
-    .footer-message::before{
-        width:45px;
-        height:45px;
-
-        top:15px;
-        right:20px;
-    }
-
-    .footer-message::after{
-        width:28px;
-        height:28px;
-
-        top:65px;
-        right:65px;
-    }
-
-   @media (max-width:768px){
-
-    .home-bubbles span:nth-child(n+7){
-        display:none;
-    }
-
 }
 
-@media (max-width:576px){
+/* ======================================================
+   EXTRA SMALL
+====================================================== */
 
-    .home-bubbles span:nth-child(n+5){
-        display:none;
-    }
-
-}
-
-   /* =========================
-   EXTRA SMALL PHONE
-========================= */
 @media (max-width:430px){
 
     .home-hero-title{
-        font-size:2.15rem;
+        font-size:2.1rem;
     }
 
     .home-hero-desc{
@@ -560,13 +290,12 @@
         font-size:.88rem;
     }
 
-    .home-hero-button{
-        padding:14px 26px;
-        font-size:.9rem;
-    }
-
     .home-hero-visual img{
         width:190px;
+    }
+
+    .featured-grid{
+        grid-template-columns:1fr;
     }
 
     .schedule-card,
@@ -580,10 +309,6 @@
     .schedule-highlights h2,
     .featured-head h2{
         font-size:1.6rem;
-    }
-
-    .featured-grid{
-        grid-template-columns:1fr;
     }
 
     .about-chibi,
