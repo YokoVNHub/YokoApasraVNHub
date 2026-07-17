@@ -1,4 +1,56 @@
 /* ======================================================
+   1366
+====================================================== */
+
+@media (max-width:1366px){
+
+    .home-hero-layout{
+        grid-template-columns:480px 1fr;
+    }
+
+    .home-hero-copy{
+        margin-top:-240px;
+    }
+
+    .home-hero-title{
+        font-size:5rem;
+    }
+
+    .home-hero-visual img{
+        width:620px;
+    }
+
+    .schedule-home{
+        margin-top:-360px;
+    }
+}
+
+
+/* ======================================================
+   1200
+====================================================== */
+
+@media (max-width:1200px){
+
+    .home-hero-layout{
+        grid-template-columns:430px 1fr;
+    }
+
+    .home-hero-title{
+        font-size:4.6rem;
+    }
+
+    .home-hero-visual img{
+        width:560px;
+    }
+
+    .featured-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
+
+/* ======================================================
    TABLET + MOBILE
 ====================================================== */
 
