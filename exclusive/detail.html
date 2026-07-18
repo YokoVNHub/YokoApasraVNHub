@@ -10,15 +10,19 @@
         content="width=device-width, initial-scale=1.0">
 
     <title>
+
         Exclusive • Yoko Apasra VNHub
+
     </title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
@@ -31,6 +35,10 @@
 </head>
 
 <body>
+
+<!-- ==========================================
+     HEADER
+========================================== -->
 
 <header class="header">
 
@@ -111,6 +119,10 @@
 </header>
 
 
+<!-- ==========================================
+     MAIN
+========================================== -->
+
 <main class="exclusive-detail-page">
 
     <div class="container">
@@ -134,19 +146,31 @@
 
         <section class="exclusive-hero">
 
-            <!-- Poster -->
+            <!-- ==========================
+                 POSTER
+            =========================== -->
 
             <div class="exclusive-poster">
 
-                <img
-                    id="poster-image"
-                    src=""
-                    alt="Poster">
+                <a
+                    id="poster-link"
+                    href=""
+                    class="lightbox-trigger">
+
+                    <img
+                        id="poster-image"
+                        src=""
+                        alt="Poster"
+                        draggable="false">
+
+                </a>
 
             </div>
 
 
-            <!-- Album Info -->
+            <!-- ==========================
+                 INFO
+            =========================== -->
 
             <div class="exclusive-info">
 
@@ -174,11 +198,15 @@
 
                 </div>
 
+
+                <!-- Download -->
+
                 <a
                     id="download-album"
                     class="download-album"
                     href=""
-                    download>
+                    target="_blank"
+                    rel="noopener noreferrer">
 
                     ⭳ Download Full Album
 
@@ -188,8 +216,9 @@
 
         </section>
 
-                <!-- ==========================
-             GALLERY DIVIDER
+
+        <!-- ==========================
+             GALLERY TITLE
         =========================== -->
 
         <section class="gallery-divider">
@@ -225,10 +254,9 @@
 
 </main>
 
-
-<!-- ==========================
-     FOOTER
-========================== -->
+    <!-- ==========================================
+     FOOTER MESSAGE
+========================================== -->
 
 <section class="events-footer">
 
@@ -299,7 +327,8 @@
 
 </footer>
 
-    <!-- ==========================================
+
+<!-- ==========================================
      LIGHTBOX
 ========================================== -->
 
@@ -338,6 +367,7 @@
 
         <img
             id="lightbox-image"
+            src=""
             alt="">
 
     </div>
@@ -357,7 +387,8 @@
         id="lightbox-download"
         class="lightbox-download"
         href=""
-        download>
+        target="_blank"
+        rel="noopener noreferrer">
 
         Download Original
 
@@ -381,9 +412,15 @@
      SCRIPTS
 ========================================== -->
 
-<script src="exclusive-detail.js"></script>
+<script
+    src="exclusive-detail.js">
 
-<script src="../js/lightbox.js"></script>
+</script>
+
+<script
+    src="../js/lightbox.js">
+
+</script>
 
 </body>
 
