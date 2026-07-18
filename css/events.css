@@ -334,12 +334,14 @@
 
     border-radius:40px;
 
-    background:rgba(255,255,255,.72);
+    background:rgba(255,255,255,.92);
 
     backdrop-filter:blur(25px);
 
     box-shadow:
         0 25px 60px rgba(255,190,220,.12);
+
+   margin-top: -120px;
 }
 
 .latest-image img{
