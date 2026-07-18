@@ -197,18 +197,17 @@ return `
                 href="detail.html?id=${album.id}"
                 class="btn-primary">
 
-                <span>
+               <span>
+                        View Gallery
+                    </span>
 
-                    View Gallery
+                    <span class="arrow">
+                        →
+                    </span>
 
-                </span>
-
-                <span class="moon-icon">
-
-                    ☾
-
-                </span>
-
+                    <span class="moon-icon">
+                        ☾
+                    </span>
             </a>
 
         </div>
