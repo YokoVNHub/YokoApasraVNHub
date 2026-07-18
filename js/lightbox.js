@@ -1,37 +1,31 @@
-/* ======================================================
-   LIGHTBOX V6
-   Yoko Apasra VNHub
-====================================================== */
-
 document.addEventListener(
     "DOMContentLoaded",
     () => {
-
-        /* ======================================================
-           ELEMENTS
-        ====================================================== */
 
         const lightbox =
             document.getElementById(
                 "lightbox"
             );
 
-        const lightboxImage =
+        const image =
             document.getElementById(
                 "lightbox-image"
             );
 
-        const closeButton =
+        if (!lightbox || !image)
+            return;
+
+        const closeBtn =
             document.querySelector(
                 ".lightbox-close"
             );
 
-        const prevButton =
+        const prevBtn =
             document.querySelector(
                 ".lightbox-prev"
             );
 
-        const nextButton =
+        const nextBtn =
             document.querySelector(
                 ".lightbox-next"
             );
@@ -46,250 +40,131 @@ document.addEventListener(
                 "lightbox-caption"
             );
 
-        const downloadButton =
+        const download =
             document.getElementById(
                 "lightbox-download"
             );
 
-        if (
-
-            !lightbox ||
-
-            !lightboxImage
-
-        ) {
-
-            console.warn(
-                "Lightbox not found."
-            );
-
-            return;
-
-        }
-
-
-        /* ======================================================
-           STATE
-        ====================================================== */
-
         let gallery = [];
-
-        let currentIndex = 0;
-
+        let current = 0;
         let zoom = 1;
+        let touchStart = 0;
 
-        let isLoading = false;
-
-        let touchStartX = 0;
-
-
-        /* ======================================================
-           COLLECT IMAGES
-        ====================================================== */
-
-        function collectGallery() {
+        function collect() {
 
             gallery = [
-
                 ...document.querySelectorAll(
                     ".lightbox-trigger"
                 )
-
             ];
 
         }
 
-
         window.refreshLightbox =
-            collectGallery;
+            collect;
 
-
-        /* ======================================================
-           GET SOURCE
-        ====================================================== */
-
-        function getSource(item) {
-
-            if (!item)
-                return "";
+        function getSrc(item) {
 
             return (
-
-                item.getAttribute(
-                    "href"
-                ) ||
-
+                item.getAttribute("href") ||
                 item.dataset.src ||
-
                 ""
-
             );
 
         }
 
-
-        /* ======================================================
-           GET IMAGE
-        ====================================================== */
-
-        function getImage(item) {
+        function getImg(item) {
 
             return (
-
-                item.querySelector(
-                    "img"
-                ) ||
-
-                item
-
+                item.querySelector("img")
             );
 
         }
-
-
-        /* ======================================================
-           RESET ZOOM
-        ====================================================== */
 
         function resetZoom() {
 
             zoom = 1;
 
-            lightboxImage.style.transform =
+            image.style.transform =
                 "scale(1)";
 
         }
 
-
-        /* ======================================================
-           PRELOAD
-        ====================================================== */
-
         function preload(index) {
 
             if (
-
                 index < 0 ||
-
                 index >= gallery.length
+            ) return;
 
-            ) {
-
-                return;
-
-            }
-
-            const preloadImage =
+            const img =
                 new Image();
 
-            preloadImage.src =
-                getSource(
+            img.src =
+                getSrc(
                     gallery[index]
                 );
 
         }
 
-
         function preloadNearby() {
 
-            preload(
-                currentIndex - 1
-            );
+            preload(current - 1);
+            preload(current + 1);
 
-            preload(
-                currentIndex + 1
-            );
-
-                    /* ======================================================
-           UPDATE UI
-        ====================================================== */
+        }
 
         function updateUI() {
 
             const item =
-                gallery[currentIndex];
+                gallery[current];
 
-            if (!item)
-                return;
+            if (!item) return;
 
             const img =
-                getImage(item);
+                getImg(item);
 
             const src =
-                getSource(item);
+                getSrc(item);
 
             if (counter) {
 
                 counter.textContent =
-                    `${currentIndex + 1} / ${gallery.length}`;
+                    `${current + 1} / ${gallery.length}`;
 
             }
 
             if (caption) {
 
                 caption.textContent =
-                    img.alt || "";
+                    img?.alt || "";
 
             }
 
-            if (downloadButton) {
+            if (download) {
 
-                downloadButton.href =
+                download.href =
                     src;
-
-                downloadButton.target =
-                    "_blank";
-
-                downloadButton.rel =
-                    "noopener noreferrer";
-
-                downloadButton.removeAttribute(
-                    "download"
-                );
 
             }
 
         }
 
-
-        /* ======================================================
-           SHOW IMAGE
-        ====================================================== */
-
-        function showImage(index) {
-
-            if (
-
-                isLoading ||
-
-                !gallery.length
-
-            ) {
-
-                return;
-
-            }
-
-            isLoading = true;
+        function show(index) {
 
             const item =
                 gallery[index];
 
-            if (!item) {
-
-                isLoading = false;
-
+            if (!item)
                 return;
 
-            }
-
             const src =
-                getSource(item);
+                getSrc(item);
 
             const img =
-                getImage(item);
+                getImg(item);
 
-            lightboxImage.classList.add(
+            image.classList.add(
                 "loading"
             );
 
@@ -299,16 +174,13 @@ document.addEventListener(
             loader.onload =
                 () => {
 
-                    lightboxImage.src =
-                        loader.src;
+                    image.src =
+                        src;
 
-                    lightboxImage.alt =
+                    image.alt =
+                        img?.alt || "";
 
-                        img.alt ||
-
-                        `Photo ${index + 1}`;
-
-                    currentIndex =
+                    current =
                         index;
 
                     updateUI();
@@ -320,26 +192,12 @@ document.addEventListener(
                     requestAnimationFrame(
                         () => {
 
-                            lightboxImage.classList.remove(
+                            image.classList.remove(
                                 "loading"
                             );
 
                         }
                     );
-
-                    isLoading = false;
-
-                };
-
-            loader.onerror =
-                () => {
-
-                    console.warn(
-                        "Unable to load:",
-                        src
-                    );
-
-                    isLoading = false;
 
                 };
 
@@ -348,14 +206,9 @@ document.addEventListener(
 
         }
 
+        function open(index) {
 
-        /* ======================================================
-           OPEN
-        ====================================================== */
-
-        function openLightbox(index) {
-
-            collectGallery();
+            collect();
 
             if (!gallery.length)
                 return;
@@ -368,16 +221,11 @@ document.addEventListener(
                 "lightbox-open"
             );
 
-            showImage(index);
+            show(index);
 
         }
 
-
-        /* ======================================================
-           CLOSE
-        ====================================================== */
-
-        function closeLightbox() {
+        function close() {
 
             lightbox.classList.remove(
                 "show"
@@ -391,334 +239,224 @@ document.addEventListener(
 
         }
 
+        function next() {
 
-        /* ======================================================
-           NEXT
-        ====================================================== */
-
-        function nextImage() {
-
-            currentIndex++;
+            current++;
 
             if (
-
-                currentIndex >=
-
+                current >=
                 gallery.length
-
             ) {
 
-                currentIndex = 0;
+                current = 0;
 
             }
 
-            showImage(
-                currentIndex
-            );
+            show(current);
 
         }
 
+        function prev() {
 
-        /* ======================================================
-           PREVIOUS
-        ====================================================== */
-
-        function previousImage() {
-
-            currentIndex--;
+            current--;
 
             if (
-
-                currentIndex < 0
-
+                current < 0
             ) {
 
-                currentIndex =
+                current =
                     gallery.length - 1;
 
             }
 
-            showImage(
-                currentIndex
-            );
+            show(current);
 
         }
 
-                    /* ======================================================
-           CLICK TO OPEN
-        ====================================================== */
-
         document.addEventListener(
             "click",
-            (event) => {
+            (e) => {
 
-                const target =
-                    event.target.closest(
+                const trigger =
+                    e.target.closest(
                         ".lightbox-trigger"
                     );
 
-                if (!target)
+                if (!trigger)
                     return;
 
-                event.preventDefault();
+                e.preventDefault();
 
-                collectGallery();
+                collect();
 
                 const index =
                     gallery.indexOf(
-                        target
+                        trigger
                     );
 
                 if (
                     index >= 0
                 ) {
 
-                    openLightbox(
-                        index
-                    );
+                    open(index);
 
                 }
 
             }
         );
 
-
-        /* ======================================================
-           BUTTON EVENTS
-        ====================================================== */
-
-        closeButton?.addEventListener(
+        closeBtn?.addEventListener(
             "click",
-            (event) => {
-
-                event.stopPropagation();
-
-                closeLightbox();
-
-            }
+            close
         );
 
-
-        nextButton?.addEventListener(
+        nextBtn?.addEventListener(
             "click",
-            (event) => {
-
-                event.stopPropagation();
-
-                nextImage();
-
-            }
+            next
         );
 
-
-        prevButton?.addEventListener(
+        prevBtn?.addEventListener(
             "click",
-            (event) => {
-
-                event.stopPropagation();
-
-                previousImage();
-
-            }
+            prev
         );
-
-
-        /* ======================================================
-           CLICK OUTSIDE
-        ====================================================== */
 
         lightbox.addEventListener(
             "click",
-            (event) => {
+            (e) => {
 
                 if (
-
-                    event.target ===
+                    e.target ===
                     lightbox
-
                 ) {
 
-                    closeLightbox();
+                    close();
 
                 }
 
             }
         );
-
-
-        /* ======================================================
-           KEYBOARD
-        ====================================================== */
 
         document.addEventListener(
             "keydown",
-            (event) => {
+            (e) => {
 
                 if (
-
                     !lightbox.classList.contains(
                         "show"
                     )
+                ) return;
 
+                if (
+                    e.key ===
+                    "Escape"
                 ) {
 
-                    return;
+                    close();
 
                 }
 
-                switch (event.key) {
+                if (
+                    e.key ===
+                    "ArrowRight"
+                ) {
 
-                    case "Escape":
+                    next();
 
-                        closeLightbox();
+                }
 
-                        break;
+                if (
+                    e.key ===
+                    "ArrowLeft"
+                ) {
 
-                    case "ArrowRight":
-
-                        nextImage();
-
-                        break;
-
-                    case "ArrowLeft":
-
-                        previousImage();
-
-                        break;
+                    prev();
 
                 }
 
             }
         );
-
-
-        /* ======================================================
-           SWIPE
-        ====================================================== */
 
         lightbox.addEventListener(
             "touchstart",
-            (event) => {
+            (e) => {
 
-                touchStartX =
-
-                    event.changedTouches[0]
+                touchStart =
+                    e.changedTouches[0]
                         .screenX;
 
-            },
-
-            {
-                passive: true
             }
-
         );
-
 
         lightbox.addEventListener(
             "touchend",
-            (event) => {
+            (e) => {
 
-                const touchEndX =
-
-                    event.changedTouches[0]
+                const end =
+                    e.changedTouches[0]
                         .screenX;
 
                 const distance =
-
-                    touchEndX -
-                    touchStartX;
-
-                if (
-
-                    Math.abs(distance) < 60
-
-                ) {
-
-                    return;
-
-                }
+                    end -
+                    touchStart;
 
                 if (
+                    Math.abs(
+                        distance
+                    ) < 60
+                ) return;
 
+                if (
                     distance > 0
-
                 ) {
 
-                    previousImage();
+                    prev();
 
                 }
 
                 else {
 
-                    nextImage();
+                    next();
 
                 }
 
-            },
-
-            {
-                passive: true
             }
-
         );
 
-
-        /* ======================================================
-           CLICK TO ZOOM
-        ====================================================== */
-
-        lightboxImage.addEventListener(
+        image.addEventListener(
             "click",
-            (event) => {
+            (e) => {
 
-                event.stopPropagation();
+                e.stopPropagation();
 
                 zoom =
-
                     zoom === 1
                         ? 2
                         : 1;
 
-                lightboxImage.style.transform =
-
+                image.style.transform =
                     `scale(${zoom})`;
 
             }
         );
 
-
-        /* ======================================================
-           MOUSE WHEEL ZOOM
-        ====================================================== */
-
         lightbox.addEventListener(
             "wheel",
-            (event) => {
+            (e) => {
 
                 if (
-
                     !lightbox.classList.contains(
                         "show"
                     )
+                ) return;
 
-                ) {
-
-                    return;
-
-                }
-
-                event.preventDefault();
+                e.preventDefault();
 
                 zoom +=
-
-                    event.deltaY > 0
-
+                    e.deltaY > 0
                         ? -0.15
-
                         : 0.15;
 
                 zoom =
-
                     Math.max(
                         1,
                         Math.min(
@@ -727,32 +465,16 @@ document.addEventListener(
                         )
                     );
 
-                lightboxImage.style.transform =
-
+                image.style.transform =
                     `scale(${zoom})`;
 
             },
-
             {
-                passive: false
+                passive:false
             }
-
         );
 
-
-        /* ======================================================
-           INITIALIZE
-        ====================================================== */
-
-        collectGallery();
-
-        console.log(
-
-            `Lightbox ready (${gallery.length} images).`
-
-        );
+        collect();
 
     }
-
 );
-        }
