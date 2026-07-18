@@ -372,37 +372,24 @@ function renderEvents() {
             </small>
 
         </div>
-
-        <div class="event-tag">
-
-            Yoko Moment
-
-        </div>
-
+        
     </div>
 
-    <div class="event-info">
+   <div class="event-info">
 
-        <h2>
-            ${item.title}
-        </h2>
+    <h2>
+        ${item.title}
+    </h2>
 
-        <p class="event-date">
-            📅 ${item.date}
-        </p>
+    <p class="event-date">
+        📅 ${item.date}
+    </p>
 
-        <p class="event-location">
-            ☾ Event Archive
-        </p>
+    <p class="event-photos">
+        ${item.photos} photos →
+    </p>
 
-        <p class="event-photos">
-
-            🖼 ${item.photos}
-            photos
-
-        </p>
-
-    </div>
+</div>
 
 </a>
 
