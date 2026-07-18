@@ -6,7 +6,7 @@
 
     padding:70px 0 90px;
 
-    animation:fadePage .45s ease;
+    animation:fadeUp .45s ease;
 
 }
 
@@ -19,35 +19,7 @@
 
     max-width:1200px;
 
-    margin:0 auto 48px;}
-
-.back-link{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:24px;
-
-    color:var(--primary-dark);
-
-    font-size:.95rem;
-
-    font-weight:600;
-
-    text-decoration:none;
-
-    transition:.25s;
-
-}
-
-.back-link:hover{
-
-    opacity:.8;
-
-    transform:translateX(-4px);
+    margin:0 auto 48px;
 
 }
 
@@ -55,15 +27,11 @@
 
     margin:0;
 
+    text-align:center;
+
     font-size:clamp(2rem,4vw,3rem);
 
-    font-weight:700;
-
-    color:var(--text-dark);
-
     line-height:1.2;
-
-   text-align:center;
 
 }
 
@@ -114,79 +82,6 @@
 
 
 /* ======================================================
-   DOWNLOAD BUTTON
-====================================================== */
-
-.download-album{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    padding:15px 34px;
-
-    border-radius:999px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #ffdbe8,
-            #ffc5dc
-        );
-
-    color:#5d4d57;
-
-    font-weight:700;
-
-    text-decoration:none;
-
-    letter-spacing:.02em;
-
-    transition:
-
-        transform .3s,
-
-        box-shadow .3s,
-
-        background .3s;
-
-    box-shadow:
-
-        0 12px 28px rgba(255,184,208,.35);
-
-}
-
-.download-album:hover{
-
-    transform:translateY(-3px);
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #ffd2e4,
-            #ffb8d4
-        );
-
-    box-shadow:
-
-        0 18px 38px rgba(255,184,208,.45);
-
-}
-
-.download-album:active{
-
-    transform:translateY(0);
-
-}
-
-
-/* ======================================================
    GALLERY GRID
 ====================================================== */
 
@@ -195,7 +90,6 @@
     display:grid;
 
     grid-template-columns:
-
         repeat(
             auto-fill,
             minmax(260px,1fr)
@@ -206,43 +100,6 @@
     max-width:1400px;
 
     margin:0 auto;
-
-}
-
-
-/* ======================================================
-   GALLERY CARD
-====================================================== */
-
-.lightbox-trigger{
-
-    display:block;
-
-    overflow:hidden;
-
-    border-radius:22px;
-
-    background:#fff;
-
-    box-shadow:
-
-        0 8px 24px rgba(0,0,0,.08);
-
-    transition:
-
-        transform .35s,
-
-        box-shadow .35s;
-
-}
-
-.lightbox-trigger:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:
-
-        0 18px 42px rgba(0,0,0,.15);
 
 }
 
@@ -261,62 +118,14 @@
 
     object-fit:cover;
 
-    opacity:1;
-
-    transition:
-
-        transform .35s ease;
-
-}
-
-.lightbox-trigger:hover img{
-
-    transform:scale(1.05);
-
-}
-
-/* ======================================================
-   EMPTY STATE
-====================================================== */
-
-.empty{
-
-    grid-column:1 / -1;
-
-    padding:80px 20px;
-
-    text-align:center;
-
-    color:#888;
-
-    font-size:1rem;
+    animation:fadeImage .35s ease;
 
 }
 
 
 /* ======================================================
-   ANIMATION
+   IMAGE ANIMATION
 ====================================================== */
-
-@keyframes fadePage{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(18px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
 
 @keyframes fadeImage{
 
@@ -338,40 +147,6 @@
 
 }
 
-.gallery img{
-
-    animation:fadeImage .35s ease;
-
-}
-
-
-/* ======================================================
-   ACCESSIBILITY
-====================================================== */
-
-.back-link:focus-visible,
-
-.download-album:focus-visible,
-
-.lightbox-trigger:focus-visible{
-
-    outline:3px solid rgba(255,184,208,.45);
-
-    outline-offset:4px;
-
-    border-radius:20px;
-
-}
-
-.gallery img{
-
-    user-select:none;
-
-    -webkit-user-drag:none;
-
-}
-
-
 /* ======================================================
    RESPONSIVE
 ====================================================== */
@@ -381,7 +156,6 @@
     .gallery{
 
         grid-template-columns:
-
             repeat(3,1fr);
 
     }
@@ -411,7 +185,6 @@
     .gallery{
 
         grid-template-columns:
-
             repeat(2,1fr);
 
         gap:14px;
@@ -423,14 +196,6 @@
         gap:12px;
 
         font-size:.92rem;
-
-    }
-
-    .download-album{
-
-        width:100%;
-
-        max-width:320px;
 
     }
 
@@ -458,14 +223,6 @@
 
     }
 
-    .download-album{
-
-        width:100%;
-
-        padding:15px 22px;
-
-    }
-
 }
 
 
@@ -475,30 +232,9 @@
 
 @media print{
 
-    .back-link,
+    .gallery{
 
-    .download-album{
-
-        display:none;
-
-    }
-
-}
-
-
-/* ======================================================
-   REDUCED MOTION
-====================================================== */
-
-@media (prefers-reduced-motion:reduce){
-
-    *{
-
-        animation:none !important;
-
-        transition:none !important;
-
-        scroll-behavior:auto !important;
+        gap:0;
 
     }
 
