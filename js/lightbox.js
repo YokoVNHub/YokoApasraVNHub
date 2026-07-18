@@ -41,29 +41,43 @@ document.addEventListener(
             );
 
         const download =
-    document.getElementById(
-        "lightbox-download"
-    );
+            document.getElementById(
+                "lightbox-download"
+            );
 
+        /* ============================
+           DOWNLOAD BUBBLES
+        ============================ */
 
-/* ==================================
-   ADD DOWNLOAD BUBBLES
-================================== */
+        if (download) {
 
-if (download) {
+            download.innerHTML =
+                `
+                <span class="moon-icon">🌙</span>
+                <span>Download Original</span>
+                `;
 
-    download.insertAdjacentHTML(
+            for (
+                let i = 0;
+                i < 6;
+                i++
+            ) {
 
-        "afterbegin",
+                const bubble =
+                    document.createElement(
+                        "span"
+                    );
 
-        `
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        `
-    );
+                bubble.className =
+                    "bubble";
 
-}
+                download.appendChild(
+                    bubble
+                );
+
+            }
+
+        }
 
         let gallery = [];
         let current = 0;
@@ -86,7 +100,9 @@ if (download) {
         function getSrc(item) {
 
             return (
-                item.getAttribute("href") ||
+                item.getAttribute(
+                    "href"
+                ) ||
                 item.dataset.src ||
                 ""
             );
@@ -96,7 +112,9 @@ if (download) {
         function getImg(item) {
 
             return (
-                item.querySelector("img")
+                item.querySelector(
+                    "img"
+                )
             );
 
         }
@@ -114,8 +132,10 @@ if (download) {
 
             if (
                 index < 0 ||
-                index >= gallery.length
-            ) return;
+                index >=
+                    gallery.length
+            )
+                return;
 
             const img =
                 new Image();
@@ -129,8 +149,13 @@ if (download) {
 
         function preloadNearby() {
 
-            preload(current - 1);
-            preload(current + 1);
+            preload(
+                current - 1
+            );
+
+            preload(
+                current + 1
+            );
 
         }
 
@@ -139,7 +164,8 @@ if (download) {
             const item =
                 gallery[current];
 
-            if (!item) return;
+            if (!item)
+                return;
 
             const img =
                 getImg(item);
@@ -198,7 +224,8 @@ if (download) {
                         src;
 
                     image.alt =
-                        img?.alt || "";
+                        img?.alt ||
+                        "";
 
                     current =
                         index;
@@ -221,8 +248,7 @@ if (download) {
 
                 };
 
-            loader.src =
-                src;
+            loader.src = src;
 
         }
 
@@ -230,7 +256,9 @@ if (download) {
 
             collect();
 
-            if (!gallery.length)
+            if (
+                !gallery.length
+            )
                 return;
 
             lightbox.classList.add(
@@ -285,7 +313,8 @@ if (download) {
             ) {
 
                 current =
-                    gallery.length - 1;
+                    gallery.length -
+                    1;
 
             }
 
@@ -293,9 +322,13 @@ if (download) {
 
         }
 
+        /* ============================
+           OPEN
+        ============================ */
+
         document.addEventListener(
             "click",
-            (e) => {
+            e => {
 
                 const trigger =
                     e.target.closest(
@@ -342,7 +375,7 @@ if (download) {
 
         lightbox.addEventListener(
             "click",
-            (e) => {
+            e => {
 
                 if (
                     e.target ===
@@ -356,49 +389,49 @@ if (download) {
             }
         );
 
+        /* ============================
+           KEYBOARD
+        ============================ */
+
         document.addEventListener(
             "keydown",
-            (e) => {
+            e => {
 
                 if (
                     !lightbox.classList.contains(
                         "show"
                     )
-                ) return;
+                )
+                    return;
 
-                if (
-                    e.key ===
-                    "Escape"
+                switch (
+                    e.key
                 ) {
 
-                    close();
+                    case "Escape":
+                        close();
+                        break;
 
-                }
+                    case "ArrowRight":
+                        next();
+                        break;
 
-                if (
-                    e.key ===
-                    "ArrowRight"
-                ) {
-
-                    next();
-
-                }
-
-                if (
-                    e.key ===
-                    "ArrowLeft"
-                ) {
-
-                    prev();
+                    case "ArrowLeft":
+                        prev();
+                        break;
 
                 }
 
             }
         );
 
+        /* ============================
+           TOUCH SWIPE
+        ============================ */
+
         lightbox.addEventListener(
             "touchstart",
-            (e) => {
+            e => {
 
                 touchStart =
                     e.changedTouches[0]
@@ -409,7 +442,7 @@ if (download) {
 
         lightbox.addEventListener(
             "touchend",
-            (e) => {
+            e => {
 
                 const end =
                     e.changedTouches[0]
@@ -423,7 +456,8 @@ if (download) {
                     Math.abs(
                         distance
                     ) < 60
-                ) return;
+                )
+                    return;
 
                 if (
                     distance > 0
@@ -442,9 +476,13 @@ if (download) {
             }
         );
 
+        /* ============================
+           ZOOM
+        ============================ */
+
         image.addEventListener(
             "click",
-            (e) => {
+            e => {
 
                 e.stopPropagation();
 
@@ -461,13 +499,14 @@ if (download) {
 
         lightbox.addEventListener(
             "wheel",
-            (e) => {
+            e => {
 
                 if (
                     !lightbox.classList.contains(
                         "show"
                     )
-                ) return;
+                )
+                    return;
 
                 e.preventDefault();
 
@@ -490,7 +529,7 @@ if (download) {
 
             },
             {
-                passive:false
+                passive: false
             }
         );
 
