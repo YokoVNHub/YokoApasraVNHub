@@ -1,17 +1,43 @@
 /* ======================================================
-   EXCLUSIVE DETAIL
+   PAGE
 ====================================================== */
 
 .exclusive-detail-page{
-
-    padding:60px 0 100px;
-
+    padding:70px 0 110px;
 }
 
 .exclusive-detail-page .container{
-
     max-width:1200px;
+}
 
+
+/* ======================================================
+   BACK LINK
+====================================================== */
+
+.back-link{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:34px;
+
+    text-decoration:none;
+
+    font-size:.95rem;
+    font-weight:700;
+
+    color:var(--primary-dark);
+
+    transition:var(--transition);
+}
+
+.back-link:hover{
+
+    transform:translateX(-4px);
+
+    color:var(--primary);
 }
 
 
@@ -22,15 +48,17 @@
 .exclusive-hero{
 
     display:grid;
-
     grid-template-columns:500px 1fr;
 
     align-items:center;
 
     gap:70px;
 
-    margin-bottom:90px;
+    padding:38px;
 
+    border-radius:42px;
+
+    margin-bottom:90px;
 }
 
 
@@ -44,7 +72,6 @@
 
     animation:
         fadeUp .8s ease both;
-
 }
 
 .exclusive-poster img{
@@ -53,25 +80,21 @@
 
     width:100%;
 
-    border-radius:28px;
+    border-radius:30px;
 
     box-shadow:
-
-        0 20px 60px rgba(0,0,0,.12);
+        0 25px 70px rgba(0,0,0,.12);
 
     transition:var(--transition);
-
 }
 
 .exclusive-poster img:hover{
 
     transform:
-        translateY(-8px);
+        translateY(-6px);
 
     box-shadow:
-
-        0 35px 80px rgba(0,0,0,.18);
-
+        0 35px 90px rgba(0,0,0,.16);
 }
 
 
@@ -82,14 +105,23 @@
 .exclusive-info{
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
 
     animation:
         fadeUp .8s .15s ease both;
+}
 
+
+/* ======================================================
+   BADGE POSITION ONLY
+====================================================== */
+
+.exclusive-info .badge{
+
+    width:fit-content;
+
+    margin-bottom:24px;
 }
 
 
@@ -99,32 +131,34 @@
 
 .exclusive-title{
 
-    margin:0 0 16px;
+    margin:0 0 18px;
 
     font-family:var(--font-heading);
 
-    font-size:3.3rem;
-
-    line-height:1.15;
+    font-size:3.4rem;
+    line-height:1.12;
 
     color:var(--text-dark);
-
 }
+
+
+/* ======================================================
+   SUBTITLE
+====================================================== */
 
 .exclusive-subtitle{
 
     margin:0 0 42px;
 
-    font-size:1.2rem;
-
-    line-height:1.7;
+    font-size:1.15rem;
+    line-height:1.8;
 
     color:var(--text-light);
-
 }
 
+
 /* ======================================================
-   META
+   META LAYOUT
 ====================================================== */
 
 .exclusive-meta{
@@ -133,85 +167,21 @@
 
     gap:18px;
 
-    margin-bottom:40px;
-
-}
-
-.meta-item{
-
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:18px;
-
-    padding:18px 22px;
-
-    border-radius:var(--radius-lg);
-
-    background:var(--surface);
-
-    box-shadow:var(--shadow-soft);
-
-}
-
-.meta-icon{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    width:48px;
-
-    height:48px;
-
-    flex-shrink:0;
-
-    border-radius:50%;
-
-    background:
-
-        rgba(255,219,232,.45);
-
-    font-size:1.25rem;
-
-}
-
-.meta-item strong{
-
-    display:block;
-
-    margin-bottom:4px;
-
-    color:var(--text-dark);
-
-    font-size:1rem;
-
-    font-weight:700;
-
-}
-
-.meta-item p{
-
-    margin:0;
-
-    color:var(--text-light);
-
-    line-height:1.7;
-
+    margin-bottom:42px;
 }
 
 
 /* ======================================================
-   DOWNLOAD
+   DOWNLOAD BUTTON
 ====================================================== */
 
 .download-album{
 
-    align-self:flex-start;
+    width:fit-content;
 
+    min-width:320px;
+
+    align-self:flex-start;
 }
 
 
@@ -222,7 +192,6 @@
 .exclusive-gallery{
 
     margin-top:20px;
-
 }
 
 .exclusive-gallery .gallery{
@@ -237,8 +206,8 @@
         );
 
     gap:22px;
-
 }
+
 
 .exclusive-gallery .lightbox-trigger{
 
@@ -246,23 +215,16 @@
 
     overflow:hidden;
 
-    border-radius:22px;
-
-    background:var(--surface);
-
-    box-shadow:var(--shadow-soft);
+    border-radius:24px;
 
     transition:var(--transition);
-
 }
 
 .exclusive-gallery .lightbox-trigger:hover{
 
     transform:translateY(-6px);
-
-    box-shadow:var(--shadow-large);
-
 }
+
 
 .exclusive-gallery img{
 
@@ -275,41 +237,65 @@
     object-fit:cover;
 
     transition:
-
         transform .45s ease;
-
 }
 
 .exclusive-gallery .lightbox-trigger:hover img{
 
     transform:scale(1.05);
-
 }
+
+
+/* ======================================================
+   ANIMATION
+====================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
 
 /* ======================================================
    RESPONSIVE
 ====================================================== */
 
-@media (max-width:1100px){
+@media(max-width:1100px){
 
     .exclusive-hero{
 
-        grid-template-columns:420px 1fr;
+        grid-template-columns:
+            420px 1fr;
 
         gap:50px;
-
     }
 
     .exclusive-title{
 
-        font-size:2.8rem;
-
+        font-size:2.9rem;
     }
-
 }
 
 
-@media (max-width:900px){
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media(max-width:900px){
 
     .exclusive-hero{
 
@@ -318,7 +304,6 @@
         gap:40px;
 
         text-align:center;
-
     }
 
     .exclusive-poster{
@@ -326,157 +311,132 @@
         max-width:520px;
 
         margin:0 auto;
-
     }
 
     .exclusive-info{
 
         align-items:center;
+    }
 
+    .exclusive-info .badge{
+
+        margin-inline:auto;
+        margin-bottom:22px;
     }
 
     .exclusive-title{
 
-        font-size:2.5rem;
-
+        font-size:2.6rem;
     }
 
     .exclusive-subtitle{
 
-        max-width:680px;
-
+        max-width:700px;
     }
 
     .exclusive-meta{
 
         width:100%;
-
         max-width:560px;
-
     }
 
     .download-album{
 
         width:100%;
-
         max-width:360px;
 
         justify-content:center;
 
+        align-self:center;
     }
-
 }
 
 
-@media (max-width:768px){
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media(max-width:768px){
 
     .exclusive-detail-page{
 
         padding:50px 0 80px;
-
     }
 
     .exclusive-hero{
 
-        margin-bottom:70px;
-
         gap:34px;
 
+        padding:28px;
+
+        margin-bottom:70px;
     }
 
     .exclusive-title{
 
-        font-size:2.1rem;
-
+        font-size:2.2rem;
     }
 
     .exclusive-subtitle{
 
+        margin-bottom:34px;
+
         font-size:1rem;
-
-        margin-bottom:32px;
-
-    }
-
-    .meta-item{
-
-        padding:16px 18px;
-
-    }
-
-    .meta-icon{
-
-        width:42px;
-
-        height:42px;
-
-        font-size:1.05rem;
-
     }
 
     .exclusive-gallery .gallery{
 
         grid-template-columns:
-
             repeat(2,1fr);
 
         gap:14px;
-
     }
-
 }
 
 
-@media (max-width:480px){
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media(max-width:560px){
 
     .exclusive-detail-page{
 
         padding:40px 0 70px;
-
     }
 
     .exclusive-title{
 
-        font-size:1.8rem;
-
+        font-size:1.9rem;
     }
 
     .exclusive-subtitle{
 
         font-size:.95rem;
-
     }
 
-    .meta-item{
+    .exclusive-hero{
 
-        gap:14px;
-
-    }
-
-    .meta-icon{
-
-        width:38px;
-
-        height:38px;
-
-        font-size:1rem;
-
+        padding:22px;
     }
 
     .exclusive-gallery .gallery{
 
-        gap:10px;
+        grid-template-columns:1fr;
 
+        gap:12px;
     }
 
     .download-album{
 
         width:100%;
-
         max-width:none;
-
     }
 
+    .back-link{
+
+        margin-bottom:26px;
+    }
 }
 
 
@@ -489,7 +449,6 @@
     user-select:none;
 
     -webkit-user-drag:none;
-
 }
 
 
@@ -497,25 +456,15 @@
    REDUCED MOTION
 ====================================================== */
 
-@media (prefers-reduced-motion:reduce){
+@media(prefers-reduced-motion:reduce){
 
     .exclusive-poster,
-
     .exclusive-info,
-
     .exclusive-poster img,
-
     .exclusive-gallery img{
 
         animation:none !important;
 
         transition:none !important;
-
     }
-
 }
-
-
-/* ======================================================
-   END
-====================================================== */
