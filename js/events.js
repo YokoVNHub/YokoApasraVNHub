@@ -345,7 +345,7 @@ function renderEvents() {
             const year =
                 date.getFullYear();
 
-        return `
+      return `
 
 <a
     href="detail.html?id=${item.id}"
@@ -357,8 +357,6 @@ function renderEvents() {
             src="../assets/events/${item.folder}/${item.cover}.${item.format}"
             alt="${item.title}">
 
-        <div class="moon-overlay"></div>
-
         <div class="event-date-badge">
 
             <strong>
@@ -369,43 +367,40 @@ function renderEvents() {
                 ${month}
             </span>
 
+            <small>
+                ${year}
+            </small>
+
         </div>
 
         <div class="event-tag">
 
-            🫧 Yoko Moment
+            Yoko Moment
 
         </div>
 
     </div>
 
-
     <div class="event-info">
 
         <h2>
-
             ${item.title}
-
         </h2>
 
         <p class="event-date">
-
             📅 ${item.date}
-
         </p>
 
         <p class="event-location">
-
-            🌙 Event Archive
-
+            ☾ Event Archive
         </p>
 
-        <div class="event-photos">
+        <p class="event-photos">
 
-            🫧 ${item.photos}
-            photos →
+            🖼 ${item.photos}
+            photos
 
-        </div>
+        </p>
 
     </div>
 
