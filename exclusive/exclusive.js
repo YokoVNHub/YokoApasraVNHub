@@ -122,113 +122,102 @@ function renderAlbums(albums) {
 
                 `../assets/exclusive/${album.folder}/poster.${extension}`;
 
-            return `
+return `
 
-            <article class="exclusive-card">
+<article class="exclusive-card glass-card">
 
-                <div class="exclusive-cover">
+    <div class="exclusive-cover">
 
-                    <img
+        <img
+            src="${poster}"
+            alt="${album.title}"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+            onerror="this.src='../assets/logo/logo.png'">
 
-                        src="${poster}"
-
-                        alt="${album.title}"
-
-                        loading="lazy"
-
-                        decoding="async"
-
-                        draggable="false"
-
-                        onerror="this.src='../assets/logo/logo.png'">
-
-                </div>
+    </div>
 
 
-                <div class="exclusive-content">
+    <div class="exclusive-content">
 
-                    <h2 class="exclusive-title">
+        <span class="badge">
 
-                        ${album.title}
+            ✦ Exclusive Collection
 
-                    </h2>
+        </span>
 
+        <h2 class="exclusive-title">
 
-                    <p class="exclusive-subtitle">
+            ${album.title}
 
-                        ${album.subtitle || ""}
-
-                    </p>
-
-
-                    <div class="exclusive-meta">
-
-                        <p>
-
-                            <span>📅</span>
-
-                            ${album.date}
-
-                        </p>
+        </h2>
 
 
-                        <p>
+        <p class="exclusive-subtitle">
 
-                            <span>📍</span>
+            ${album.subtitle || ""}
 
-                            ${album.location}
-
-                        </p>
+        </p>
 
 
-                        <p>
+        <div class="exclusive-meta">
 
-                            <span>📷</span>
+            <p>
 
-                            ${album.photos}
+                <span>📅</span>
 
-                            Photo${album.photos > 1 ? "s" : ""}
+                ${album.date}
 
-                        </p>
+            </p>
 
-                    </div>
+            <p>
+
+                <span>📍</span>
+
+                ${album.location}
+
+            </p>
+
+            <p>
+
+                <span>📷</span>
+
+                ${album.photos}
+                Photo${album.photos > 1 ? "s" : ""}
+
+            </p>
+
+        </div>
 
 
-                    <div class="exclusive-action">
+        <div class="exclusive-action">
 
-                        <a
+            <a
+                href="detail.html?id=${album.id}"
+                class="btn-primary">
 
-                            href="detail.html?id=${album.id}"
+                <span>
 
-                            class="exclusive-btn">
+                    View Gallery
 
-                            <span class="btn-text">
+                </span>
 
-                                View Gallery
+                <span class="moon-icon">
 
-                                <span class="btn-arrow">
+                    ☾
 
-                                    →
+                </span>
 
-                                </span>
+            </a>
 
-                            </span>
+        </div>
 
-                            <span class="moon-icon">
+    </div>
 
-                                ☾
+</article>
 
-                            </span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            `;
+`;
 
         }).join("");
 
