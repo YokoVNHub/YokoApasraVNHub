@@ -134,6 +134,16 @@
 
 .btn-download{
 
+    display:inline-flex;
+
+    width:fit-content;
+    max-width:max-content;
+
+    flex:0 0 auto;
+    align-self:flex-start;
+
+    white-space:nowrap;
+
     padding:
         15px
         18px
