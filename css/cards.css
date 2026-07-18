@@ -3,14 +3,18 @@
 ========================================== */
 
 .event-card{
+    position:relative;
 
     display:block;
 
-    background:rgba(255,255,255,.72);
+    background:
+        rgba(255,255,255,.62);
 
-    border:1px solid rgba(255,255,255,.35);
+    border:
+        1px solid rgba(255,255,255,.45);
 
-    backdrop-filter:blur(24px);
+    backdrop-filter:
+        blur(28px);
 
     border-radius:34px;
 
@@ -20,17 +24,93 @@
     color:inherit;
 
     box-shadow:
-        0 18px 55px rgba(255,120,180,.08);
+        0 18px 55px rgba(255,140,190,.08);
 
-    transition:.35s ease;
+    transition:.45s ease;
+}
+
+/* Glow border */
+
+.event-card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    border-radius:34px;
+
+    padding:1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.8),
+            rgba(255,180,220,.5),
+            rgba(255,255,255,.15)
+        );
+
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    mask-composite:exclude;
+    -webkit-mask-composite:xor;
+
+    opacity:0;
+
+    transition:.45s;
+
+    pointer-events:none;
+}
+
+/* shimmer */
+
+.event-card::after{
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+    left:-90%;
+
+    width:70%;
+    height:300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.22),
+            transparent
+        );
+
+    transform:rotate(25deg);
+
+    transition:1s;
+
+    pointer-events:none;
 }
 
 .event-card:hover{
 
-    transform:translateY(-8px);
+    transform:
+        translateY(-10px);
 
     box-shadow:
-        0 24px 70px rgba(255,120,180,.12);
+        0 25px 80px rgba(255,140,200,.18),
+        0 0 40px rgba(255,190,225,.18);
+}
+
+.event-card:hover::before{
+    opacity:1;
+}
+
+.event-card:hover::after{
+    left:180%;
 }
 
 /* ==========================================
@@ -38,7 +118,6 @@
 ========================================== */
 
 .event-thumb{
-
     position:relative;
 
     width:100%;
@@ -48,7 +127,6 @@
 }
 
 .event-thumb img{
-
     width:100%;
     height:100%;
 
@@ -57,12 +135,85 @@
     object-fit:cover;
     object-position:center;
 
-    transition:.45s ease;
+    transition:.7s ease;
 }
 
 .event-card:hover .event-thumb img{
+    transform:scale(1.06);
+}
 
-    transform:scale(1.04);
+/* gradient overlay */
+
+.event-thumb::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(65,30,70,.55),
+            rgba(80,40,90,.15),
+            transparent
+        );
+}
+
+/* sparkle */
+
+.event-thumb::after{
+    content:"✨";
+
+    position:absolute;
+
+    right:18px;
+    bottom:16px;
+
+    z-index:2;
+
+    font-size:1rem;
+
+    opacity:.75;
+
+    animation:
+        sparkle 4s infinite;
+}
+
+/* ==========================================
+   EVENT TAG
+========================================== */
+
+.event-tag{
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    z-index:3;
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,235,245,.7);
+
+    backdrop-filter:
+        blur(15px);
+
+    border:
+        1px solid rgba(255,255,255,.45);
+
+    color:#ff5ea8;
+
+    font-size:.85rem;
+    font-weight:700;
 }
 
 /* ==========================================
@@ -76,38 +227,49 @@
     top:18px;
     left:18px;
 
-    background:white;
+    z-index:3;
 
-    padding:12px 14px;
+    min-width:82px;
 
-    border-radius:18px;
+    padding:14px;
 
-    min-width:72px;
+    border-radius:24px;
 
     text-align:center;
 
+    background:
+        rgba(255,255,255,.18);
+
+    border:
+        1px solid rgba(255,255,255,.45);
+
+    backdrop-filter:
+        blur(24px);
+
     box-shadow:
-        0 10px 30px rgba(0,0,0,.08);
+        0 12px 35px rgba(0,0,0,.08);
 }
 
 .event-date-badge strong{
 
     display:block;
 
-    font-size:1.2rem;
+    font-size:2rem;
+    line-height:1;
 
-    color:#2f3555;
+    color:white;
 
-    line-height:1.1;
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.15);
 }
 
 .event-date-badge span{
 
-    font-size:.8rem;
+    font-size:.82rem;
 
-    color:#8d91a8;
+    letter-spacing:.1em;
 
-    text-transform:uppercase;
+    color:#ffe5f1;
 }
 
 /* ==========================================
@@ -115,8 +277,7 @@
 ========================================== */
 
 .event-info{
-
-    padding:24px;
+    padding:26px;
 }
 
 .event-info h2{
@@ -128,6 +289,12 @@
     color:#2f3555;
 
     margin-bottom:14px;
+
+    transition:.35s;
+}
+
+.event-card:hover .event-info h2{
+    color:#ff69ab;
 }
 
 .event-date{
@@ -141,9 +308,11 @@
 
 .event-location{
 
-    color:#9fa3b5;
+    color:#9ea3b5;
 
-    margin-bottom:14px;
+    margin-bottom:18px;
+
+    line-height:1.7;
 }
 
 /* ==========================================
@@ -156,18 +325,19 @@
 
     align-items:center;
 
-    gap:8px;
+    gap:10px;
 
     color:#ff69ab;
 
     font-weight:700;
 
-    transition:.3s ease;
+    transition:.35s;
 }
 
 .event-card:hover .event-photos{
 
-    transform:translateX(5px);
+    transform:
+        translateX(8px);
 }
 
 /* ==========================================
@@ -186,7 +356,7 @@
 .events-grid.list-view .event-thumb{
 
     width:340px;
-    height:220px;
+    height:230px;
 
     flex-shrink:0;
 }
@@ -214,9 +384,12 @@
 
     overflow:hidden;
 
-    border-radius:24px;
+    border-radius:28px;
 
-    cursor:pointer;
+    background:white;
+
+    box-shadow:
+        0 18px 45px rgba(255,170,210,.08);
 }
 
 .gallery-item img{
@@ -225,12 +398,12 @@
 
     display:block;
 
-    transition:.35s ease;
+    transition:.5s;
 }
 
 .gallery-item:hover img{
 
-    transform:scale(1.04);
+    transform:scale(1.05);
 }
 
 /* ==========================================
@@ -255,5 +428,53 @@
     .event-info h2{
 
         font-size:1.2rem;
+    }
+}
+
+@media(max-width:560px){
+
+    .event-thumb{
+        height:230px;
+    }
+
+    .event-info{
+        padding:22px;
+    }
+
+    .event-date-badge{
+
+        min-width:72px;
+
+        padding:12px;
+    }
+
+    .event-date-badge strong{
+        font-size:1.7rem;
+    }
+
+    .event-tag{
+        font-size:.78rem;
+        padding:8px 14px;
+    }
+}
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+@keyframes sparkle{
+
+    0%,100%{
+        transform:
+            translateY(0);
+
+        opacity:.55;
+    }
+
+    50%{
+        transform:
+            translateY(-8px);
+
+        opacity:1;
     }
 }
