@@ -258,8 +258,11 @@ body.lightbox-open{
     top:22px;
     right:88px;
 
-    padding:
-        12px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:12px 20px;
 
     border-radius:999px;
 
@@ -270,7 +273,9 @@ body.lightbox-open{
     font-size:14px;
     font-weight:600;
 
-    overflow:hidden;
+    overflow:visible;
+
+    isolation:isolate;
 }
 
 /*==================================
@@ -287,7 +292,7 @@ body.lightbox-open{
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.8);
+        rgba(255,255,255,.85);
 
     opacity:0;
 
@@ -298,29 +303,45 @@ body.lightbox-open{
 
     animation:
         bubbleFloat
-        2s infinite;
-}
-
-.lightbox-download .bubble:nth-child(2){
-
-    left:25%;
-    bottom:8px;
+        2.2s infinite;
 }
 
 .lightbox-download .bubble:nth-child(3){
 
-    left:50%;
+    left:15%;
     bottom:8px;
-
-    animation-delay:.5s;
 }
 
 .lightbox-download .bubble:nth-child(4){
 
-    left:75%;
-    bottom:8px;
+    left:35%;
+    bottom:6px;
 
-    animation-delay:1s;
+    animation-delay:.4s;
+}
+
+.lightbox-download .bubble:nth-child(5){
+
+    left:55%;
+    bottom:10px;
+
+    animation-delay:.8s;
+}
+
+.lightbox-download .bubble:nth-child(6){
+
+    left:72%;
+    bottom:7px;
+
+    animation-delay:1.2s;
+}
+
+.lightbox-download .bubble:nth-child(7){
+
+    left:88%;
+    bottom:9px;
+
+    animation-delay:1.6s;
 }
 
 @keyframes bubbleFloat{
@@ -343,8 +364,8 @@ body.lightbox-open{
         opacity:0;
 
         transform:
-            translateY(-25px)
-            scale(1.5);
+            translateY(-28px)
+            scale(1.6);
     }
 }
 
