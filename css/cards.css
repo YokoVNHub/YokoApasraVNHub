@@ -1,158 +1,118 @@
-/* ======================================================
+/* ==================================================
    EVENT CARD
-====================================================== */
+================================================== */
 
 .event-card{
     position:relative;
 
     display:block;
-
     overflow:hidden;
-
-    border-radius:34px;
-
-    text-decoration:none;
-    color:inherit;
 
     background:
         linear-gradient(
             180deg,
-            rgba(255,255,255,.78),
-            rgba(255,255,255,.62)
+            rgba(255,255,255,.92),
+            rgba(255,248,252,.88)
         );
-
-    backdrop-filter:blur(24px);
 
     border:
         1px solid
-        rgba(255,255,255,.55);
+        rgba(255,210,230,.65);
+
+    border-radius:38px;
+
+    text-decoration:none;
+    color:inherit;
+
+    backdrop-filter:blur(28px);
 
     box-shadow:
-        0 18px 55px rgba(255,170,210,.10);
+        0 18px 45px rgba(255,185,215,.12),
+        inset 0 1px 0 rgba(255,255,255,.9);
 
-    transition:.45s;
+    transition:.45s ease;
 }
 
-/* ======================================================
-   DECORATION
-====================================================== */
+/* moon glow */
 
 .event-card::before{
     content:"";
 
     position:absolute;
 
-    width:170px;
-    height:170px;
+    width:180px;
+    height:180px;
 
     top:-70px;
-    right:-60px;
+    right:-70px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.9),
-            rgba(255,225,240,.25)
+            rgba(255,248,200,.55),
+            transparent 70%
         );
 
-    z-index:1;
+    opacity:.8;
 
-    transition:.5s;
+    pointer-events:none;
 }
 
+/* stars */
+
 .event-card::after{
-    content:"☾";
+    content:"✦";
 
     position:absolute;
 
     top:28px;
-    right:28px;
+    right:30px;
 
-    width:52px;
-    height:52px;
+    font-size:1rem;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    color:#ffd56f;
 
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.4);
-
-    backdrop-filter:blur(14px);
-
-    color:#ff74b3;
-
-    font-size:1.2rem;
-
-    z-index:5;
-
-    transition:.4s;
+    opacity:.8;
 }
 
-/* ======================================================
-   HOVER
-====================================================== */
+/* hover */
 
 .event-card:hover{
-
     transform:
         translateY(-12px);
 
     box-shadow:
-        0 35px 80px
-        rgba(255,170,210,.18);
+        0 30px 70px rgba(255,170,210,.18);
 }
 
-.event-card:hover::before{
-
-    transform:
-        scale(1.2);
-}
-
-.event-card:hover::after{
-
-    transform:
-        rotate(20deg)
-        scale(1.1);
-}
-
-/* ======================================================
+/* ==================================================
    THUMB
-====================================================== */
+================================================== */
 
 .event-thumb{
     position:relative;
 
-    height:270px;
-
     overflow:hidden;
+
+    height:280px;
 }
 
 .event-thumb img{
     width:100%;
     height:100%;
 
-    display:block;
-
     object-fit:cover;
-    object-position:center;
 
-    transition:.6s;
+    transition:.8s ease;
 }
 
 .event-card:hover .event-thumb img{
-
-    transform:
-        scale(1.08);
+    transform:scale(1.08);
 }
 
-/* ======================================================
-   IMAGE OVERLAY
-====================================================== */
+/* soft gradient */
 
 .event-thumb::after{
     content:"";
@@ -161,46 +121,75 @@
     inset:0;
 
     background:
+
         linear-gradient(
             to top,
-            rgba(30,25,40,.35),
-            transparent 55%
+            rgba(40,25,55,.35),
+            transparent 45%
         );
-
-    pointer-events:none;
 }
 
-/* ======================================================
+/* ==================================================
+   TAG
+================================================== */
+
+.event-tag{
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.78);
+
+    backdrop-filter:blur(15px);
+
+    color:#ff74b5;
+
+    font-size:.75rem;
+    font-weight:700;
+
+    z-index:3;
+}
+
+/* ==================================================
    DATE BADGE
-====================================================== */
+================================================== */
 
 .event-date-badge{
     position:absolute;
 
-    left:20px;
-    top:20px;
+    left:22px;
+    bottom:22px;
 
-    min-width:80px;
+    width:88px;
 
     padding:14px;
 
-    border-radius:22px;
+    text-align:center;
+
+    border-radius:28px;
 
     background:
-        rgba(255,255,255,.75);
+        rgba(255,255,255,.82);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(20px);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.08);
+        0 12px 35px rgba(0,0,0,.08);
 
-    z-index:4;
+    z-index:3;
 }
 
 .event-date-badge strong{
     display:block;
 
-    font-size:1.45rem;
+    font-size:1.6rem;
+    font-weight:800;
 
     color:#2f3555;
 }
@@ -208,73 +197,70 @@
 .event-date-badge span{
     display:block;
 
-    font-size:.78rem;
+    color:#ff74b5;
 
     text-transform:uppercase;
-
-    color:#8d91a8;
-
-    letter-spacing:.12em;
+    font-size:.8rem;
 }
 
 .event-date-badge small{
-    color:#b3b7c7;
+    display:block;
+
+    margin-top:3px;
+
+    color:#9ba0b2;
 }
 
-/* ======================================================
+/* ==================================================
    INFO
-====================================================== */
+================================================== */
 
 .event-info{
     position:relative;
 
-    padding:26px;
-
-    z-index:3;
+    padding:28px;
 }
 
 .event-info h2{
-    font-size:1.35rem;
-
+    font-size:1.32rem;
     line-height:1.45;
 
-    color:#30345f;
+    color:#2f3555;
 
-    margin-bottom:14px;
+    margin-bottom:16px;
 
-    transition:.35s;
-}
-
-.event-card:hover .event-info h2{
-    color:#ff69ab;
+    min-height:70px;
 }
 
 .event-date{
-    color:#9da2b6;
-
-    margin-bottom:14px;
+    color:#8f95a9;
+    margin-bottom:10px;
 }
 
-/* ======================================================
-   PHOTOS
-====================================================== */
+.event-location{
+    color:#b0a4d8;
+
+    margin-bottom:18px;
+
+    font-size:.92rem;
+}
+
+/* photos */
 
 .event-photos{
     display:inline-flex;
     align-items:center;
 
-    gap:12px;
+    gap:8px;
 
-    padding:
-        10px
-        18px;
+    padding:10px 16px;
 
     border-radius:999px;
 
     background:
-        rgba(255,235,245,.65);
+        rgba(255,240,247,.85);
 
-    color:#ff69ab;
+    color:#ff74b5;
 
     font-weight:700;
 
@@ -282,157 +268,91 @@
 }
 
 .event-card:hover .event-photos{
-
-    transform:
-        translateX(8px);
+    transform:translateX(6px);
 }
 
-/* ======================================================
-   PHOTO ICON
-====================================================== */
+/* ==================================================
+   FLOATING BUBBLES INSIDE CARD
+================================================== */
 
-.event-photos::before{
+.event-info::before,
+.event-info::after{
+    content:"";
 
-    content:"🖼️";
-
-    font-size:1rem;
-}
-
-/* ======================================================
-   FLOATING BUBBLES
-====================================================== */
-
-.event-card .bubble{
     position:absolute;
 
     border-radius:50%;
 
-    background:
-        rgba(255,255,255,.45);
-
-    backdrop-filter:blur(8px);
-
     pointer-events:none;
-
-    animation:
-        bubbleCard 6s ease-in-out infinite;
 }
 
-.event-card .bubble:nth-child(1){
-    width:22px;
-    height:22px;
+.event-info::before{
+    width:16px;
+    height:16px;
 
-    top:40%;
-    right:18px;
+    top:25px;
+    right:35px;
+
+    background:
+        rgba(255,210,230,.45);
 }
 
-.event-card .bubble:nth-child(2){
-    width:12px;
-    height:12px;
+.event-info::after{
+    width:8px;
+    height:8px;
 
-    top:58%;
-    right:42px;
+    top:55px;
+    right:60px;
 
-    animation-delay:2s;
+    background:
+        rgba(255,220,240,.7);
 }
 
-/* ======================================================
+/* ==================================================
    LIST VIEW
-====================================================== */
+================================================== */
 
 .events-grid.list-view .event-card{
-
     display:flex;
     align-items:center;
-
-    gap:30px;
-
-    padding:24px;
 }
 
 .events-grid.list-view .event-thumb{
-
-    width:350px;
+    width:360px;
     height:240px;
 
     flex-shrink:0;
-
-    border-radius:26px;
 }
 
 .events-grid.list-view .event-info{
-
-    padding:0;
-
     flex:1;
 }
 
 .events-grid.list-view .event-info h2{
-
-    font-size:2rem;
+    min-height:auto;
+    font-size:1.8rem;
 }
 
-/* ======================================================
-   ANIMATION
-====================================================== */
-
-@keyframes bubbleCard{
-
-    0%{
-        transform:
-            translateY(0);
-    }
-
-    50%{
-        transform:
-            translateY(-10px);
-    }
-
-    100%{
-        transform:
-            translateY(0);
-    }
-}
-
-/* ======================================================
+/* ==================================================
    MOBILE
-====================================================== */
+================================================== */
 
 @media(max-width:900px){
 
     .events-grid.list-view .event-card{
-
         flex-direction:column;
-        align-items:flex-start;
     }
 
     .events-grid.list-view .event-thumb{
-
         width:100%;
-        height:240px;
     }
-}
-
-@media(max-width:560px){
 
     .event-thumb{
         height:240px;
     }
 
-    .event-info{
-        padding:22px;
-    }
-
     .event-info h2{
-        font-size:1.2rem;
-    }
-
-    .event-card::after{
-
-        width:46px;
-        height:46px;
-
-        top:20px;
-        right:20px;
+        min-height:auto;
+        font-size:1.15rem;
     }
 }
