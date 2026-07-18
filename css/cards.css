@@ -110,6 +110,43 @@
     pointer-events:none;
 }
 
+/* =====================================================
+   SHIMMER LIGHT
+===================================================== */
+
+.event-thumb::before{
+    content:"";
+
+    position:absolute;
+
+    top:-40%;
+    left:-120%;
+
+    width:70%;
+    height:180%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.55),
+            rgba(255,255,255,.15),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+        shimmerMove
+        8s linear infinite;
+}
 
 /* =====================================================
    DATE BADGE
