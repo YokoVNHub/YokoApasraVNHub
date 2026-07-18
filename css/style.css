@@ -4,8 +4,6 @@
 
 @import url("header.css");
 
-@import url("cards.css");
-
 @import url("gallery.css");
 
 @import url("lightbox.css");
@@ -13,6 +11,8 @@
 @import url("home.css");
 
 @import url("events.css");
+
+@import url("cards.css");
 
 @import url("exclusive.css");
 
