@@ -345,6 +345,12 @@
         translateX(10px);
 }
 
+.download-album{
+    width:fit-content;
+    align-self:flex-start;
+    margin-top:24px;
+}
+
 
 /* ======================================================
    LIST VIEW
