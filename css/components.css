@@ -316,7 +316,61 @@ a{
 
 }
 
+/* ======================================================
+   META
+====================================================== */
 
+.meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:18px;
+
+}
+
+.meta-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.meta-icon{
+
+    flex-shrink:0;
+
+    font-size:1.1rem;
+
+}
+
+
+
+/* ======================================================
+   SECTION TITLE
+====================================================== */
+
+.section-title{
+
+    margin:0;
+
+    font-size:clamp(2rem,4vw,3rem);
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    text-align:center;
+
+    color:var(--text-dark);
+
+}
 
 /* ======================================================
    SECTION DIVIDER
