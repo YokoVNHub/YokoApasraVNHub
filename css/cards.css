@@ -293,7 +293,6 @@
         rgba(255,255,255,.72);
 }
 
-
 /* ======================================================
    EVENT INFO
 ====================================================== */
@@ -302,45 +301,70 @@
 
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
 
-    gap:10px;
+    padding:28px;
+
+    flex:1;
 }
 
 .event-info h2{
-    margin:0 0 20px;
+
+    margin:0 0 18px;
 
     font-size:1.8rem;
     line-height:1.3;
 
     color:var(--text-dark);
 
-    min-height:95px;
-
     display:-webkit-box;
-    -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
 
     overflow:hidden;
+
+    min-height:95px;
 }
+
+
+/* phần ngày */
 
 .event-meta{
-    margin-bottom:16px;
-
-    color:var(--text-light);
-
-    line-height:1.7;
 
     margin-top:auto;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+
+    color:var(--text-light);
 }
 
+
+/* ngày */
+
+.event-date{
+
+    display:block;
+
+    margin:0;
+
+    font-size:1rem;
+
+    line-height:1.5;
+}
+
+
+/* photos */
+
 .event-photos{
+
     display:inline-flex;
     align-items:center;
 
     gap:8px;
 
-    margin-top:auto;
+    margin:0;
 
     font-size:1.05rem;
     font-weight:700;
