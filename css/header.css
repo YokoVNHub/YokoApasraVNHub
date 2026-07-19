@@ -3,41 +3,34 @@
 ====================================================== */
 
 .header{
-
     position:sticky;
     top:0;
     z-index:1000;
 
-    background:
-        rgba(255,248,252,.88);
-
+    background:rgba(255,248,252,.88);
     backdrop-filter:blur(20px);
 
     border-bottom:
-        1px solid
-        rgba(255,220,235,.55);
+        1px solid rgba(255,220,235,.55);
 
     box-shadow:
-        0 8px 30px
-        rgba(255,190,220,.08);
+        0 8px 30px rgba(255,190,220,.08);
 }
 
-
 /* ======================================================
-   HEADER CONTAINER
+   CONTAINER
 ====================================================== */
 
 .header-container{
 
     display:flex;
-    justify-content:space-between;
     align-items:center;
-
-    gap:50px;
+    justify-content:space-between;
 
     min-height:82px;
-}
 
+    gap:40px;
+}
 
 /* ======================================================
    LOGO
@@ -51,24 +44,16 @@
 
     flex-shrink:0;
 
-    color:var(--primary-dark);
+    text-decoration:none;
 }
-
-
-/* logo image */
 
 .logo img{
 
-    width:100px;
-    height:100px;
+    width:90px;
+    height:auto;
 
-    object-fit:contain;
-
-    flex-shrink:0;
+    display:block;
 }
-
-
-/* logo text */
 
 .logo-title{
 
@@ -86,13 +71,14 @@
     color:#ff6ea8;
 }
 
-
 /* ======================================================
-   NAVIGATION
+   NAV
 ====================================================== */
 
 nav{
     margin-left:auto;
+
+    overflow:visible;
 }
 
 .nav-menu{
@@ -101,23 +87,25 @@ nav{
     align-items:center;
 
     gap:16px;
-}
 
+    flex-wrap:nowrap;
+}
 
 .nav-menu li{
     flex-shrink:0;
 }
 
-
 .nav-menu a{
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     height:46px;
 
-    padding:0 26px;
+    min-width:100px;
+
+    padding:0 24px;
 
     border-radius:999px;
 
@@ -127,11 +115,8 @@ nav{
     color:#9f5f7d;
 
     transition:
-        background .3s,
-        color .3s,
-        transform .3s;
+        .3s;
 }
-
 
 .nav-menu a:hover{
 
@@ -143,7 +128,6 @@ nav{
     transform:
         translateY(-2px);
 }
-
 
 /* active */
 
@@ -163,7 +147,6 @@ nav{
         rgba(255,130,180,.25);
 }
 
-
 /* ======================================================
    TABLET
 ====================================================== */
@@ -171,39 +154,33 @@ nav{
 @media (max-width:980px){
 
     .header-container{
-
-        min-height:72px;
-
-        gap:18px;
+        min-height:74px;
+        gap:20px;
     }
 
     .logo img{
-
-        width:78px;
-        height:78px;
+        width:72px;
     }
 
     .logo-title{
-
         font-size:.9rem;
     }
 
     .nav-menu{
-
         gap:10px;
     }
 
     .nav-menu a{
 
+        min-width:auto;
+
         height:42px;
 
         padding:0 18px;
 
-        font-size:.88rem;
+        font-size:.86rem;
     }
-
 }
-
 
 /* ======================================================
    MOBILE
@@ -211,60 +188,33 @@ nav{
 
 @media (max-width:768px){
 
-    .header{
-
-        position:sticky;
-        top:0;
-
-        backdrop-filter:blur(18px);
-    }
-
     .header-container{
 
         min-height:64px;
 
-        display:flex;
-        flex-direction:row;
-
-        justify-content:space-between;
-        align-items:center;
-
         gap:12px;
 
-        padding:10px 0;
+        padding:8px 0;
     }
 
-
-    /* ========= Logo ========= */
-
     .logo{
-
         gap:8px;
-
-        flex-shrink:0;
     }
 
     .logo img{
-
         width:52px;
-        height:52px;
     }
 
     .logo-title{
 
-        display:block;
-
-        font-size:.78rem;
+        font-size:.76rem;
 
         line-height:1.25;
 
-        max-width:110px;
+        max-width:100px;
 
         white-space:normal;
     }
-
-
-    /* ========= Menu ========= */
 
     nav{
 
@@ -279,8 +229,6 @@ nav{
 
         gap:6px;
 
-        flex-wrap:nowrap;
-
         overflow-x:auto;
 
         scrollbar-width:none;
@@ -289,7 +237,6 @@ nav{
     }
 
     .nav-menu::-webkit-scrollbar{
-
         display:none;
     }
 
@@ -297,17 +244,15 @@ nav{
 
         flex-shrink:0;
 
+        min-width:auto;
+
         height:36px;
 
         padding:0 12px;
 
-        border-radius:999px;
-
-        font-size:.78rem;
+        font-size:.76rem;
     }
-
 }
-
 
 /* ======================================================
    SMALL MOBILE
@@ -315,34 +260,13 @@ nav{
 
 @media (max-width:480px){
 
-    .header-container{
-
-        min-height:58px;
-
-        gap:10px;
-    }
-
-    .logo{
-
-        gap:6px;
-    }
-
     .logo img{
-
         width:44px;
-        height:44px;
     }
 
     .logo-title{
-
         font-size:.7rem;
-
-        max-width:82px;
-    }
-
-    .nav-menu{
-
-        gap:5px;
+        max-width:80px;
     }
 
     .nav-menu a{
@@ -353,9 +277,7 @@ nav{
 
         font-size:.72rem;
     }
-
 }
-
 
 /* ======================================================
    EXTRA SMALL
@@ -364,14 +286,11 @@ nav{
 @media (max-width:430px){
 
     .logo-title{
-
         display:none;
     }
 
     .logo img{
-
         width:42px;
-        height:42px;
     }
 
     .nav-menu a{
@@ -380,5 +299,20 @@ nav{
 
         font-size:.7rem;
     }
+}
 
+/* ======================================================
+   DESKTOP MODE ON PHONE
+====================================================== */
+
+@media (pointer:coarse) and (min-width:769px){
+
+    html,
+    body{
+        min-width:1200px;
+    }
+
+    .container{
+        min-width:1180px;
+    }
 }
