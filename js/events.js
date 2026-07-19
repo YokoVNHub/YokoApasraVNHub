@@ -192,7 +192,7 @@ function renderLatest() {
 
             <div class="latest-content">
 
-                <span class="badge">
+                <span class="badge badge-latest">
                     ✦ LATEST EVENT
                 </span>
 
