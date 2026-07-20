@@ -245,42 +245,58 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 13px 22px;
+    gap: 14px;
+    padding: 13px 28px; /* Khoảng cách đệm cân đối với vòng tròn icon */
     border-radius: 999px;
 
-    /* HIỂN THỊ CỐ ĐỊNH: Dải màu Hồng dâu phối Xanh mint dịu mát (Hợp poster, không bị hóa tím) */
+    /* CHUẨN MÀU MẪU: Hồng dâu phối Tím Xanh Lavender nhạt trong trẻo */
     background: linear-gradient(
-        135deg,
-        #ff7eb3 0%,   /* Màu hồng dâu sáng */
-        #70c1b3 100%  /* Màu xanh mint trong trẻo */
+        135deg, 
+        #f397b9 0%,    /* Hồng dâu dịu ngọt */
+        #d4bfe8 75%,   /* Tím nhạt mượt mà */
+        #b2bcf1 100%   /* Xanh lavender đuôi nút */
     );
     
-    /* Đổi màu chữ mặc định sang màu trắng để nổi bật trên nền gradient */
     color: #fff;
     font-weight: 700;
     cursor: pointer;
-    
-    /* Ẩn viền cũ để màu gradient tràn viền đẹp hơn */
     border: none;
     
-    /* Đổ bóng nhẹ nhàng, lan tỏa theo tông màu của nút */
-    box-shadow: 0 8px 24px rgba(255, 126, 179, 0.25);
+    /* Đổ bóng mịn lan tỏa nhẹ bao quanh nút */
+    box-shadow: 0 10px 25px rgba(243, 151, 185, 0.25);
     
+    overflow: hidden; 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* KHI HOVER: Nút sẽ sáng lên một chút và nhấc nhẹ tạo hiệu ứng tương tác mượt mà */
+/* HIỆU ỨNG TƯƠNG TÁC KHI HOVER VÀ CLICK */
 .btn-secondary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(255, 126, 179, 0.35);
-    opacity: 0.95; /* Tạo hiệu ứng sáng nhẹ khi lướt chuột */
+    box-shadow: 0 12px 30px rgba(243, 151, 185, 0.35);
+    opacity: 0.98;
 }
 
-/* KHI ACTIVE (BẤM XUỐNG): Tạo cảm giác lún nút thật hơn */
 .btn-secondary:active {
-    transform: scale(0.98);
-    box-shadow: 0 4px 12px rgba(255, 126, 179, 0.2);
+    transform: scale(0.97);
+}
+
+/* ------------------------------------------------------
+   VÒNG TRÒN KÍNH MỜ CHỨA MẶT TRĂNG (Căn chỉnh theo ảnh mẫu)
+------------------------------------------------------ */
+.btn-secondary .icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    
+    /* Nền trắng mờ dạng glassmorphism ôm trọn icon */
+    background: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    margin-right: -10px; /* Dịch nhẹ ra rìa phải cho đúng tỷ lệ layout */
 }
 
 /* ======================================================
