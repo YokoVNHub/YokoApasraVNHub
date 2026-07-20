@@ -95,51 +95,61 @@ nav{
 
 
 /* ======================================================
-   NAV LINK
+   NAV LINK (Tinh chỉnh lại để thanh thoát hơn)
 ====================================================== */
 
-.nav-menu a{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    min-width:100px;
-    height:46px;
+    min-width: 100px;
+    height: 40px; /* Giảm nhẹ chiều cao từ 46px xuống 40px để menu thanh mảnh, sang hơn */
 
-    padding:0 24px;
+    padding: 0 24px;
 
-    border-radius:999px;
+    border-radius: 999px;
 
-    color:var(--text-light);
+    color: var(--text-light);
 
-    font-size:.95rem;
-    font-weight:700;
+    font-size: .95rem;
+    font-weight: 700;
 
-    transition:var(--transition);
+    transition: all 0.3s ease; /* Đảm bảo hiệu ứng mượt mà */
 }
 
-.nav-menu a:hover{
-    color:var(--primary);
-
-    background:rgba(255,255,255,.75);
-
-    transform:translateY(-2px);
+/* Hiệu ứng lướt chuột qua các nút thường */
+.nav-menu a:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.6); /* Nền trắng trong suốt nhẹ nhàng */
+    backdrop-filter: blur(8px); /* Tạo độ mờ kính cao cấp */
+    transform: translateY(-1px); /* Nhấc nhẹ tinh tế hơn -2px */
 }
 
 
 /* ======================================================
-   ACTIVE LINK
+   ACTIVE LINK (Làm nổi bật nút Exclusive cực sang)
 ====================================================== */
 
-.nav-menu a.active{
-    color:#fff;
+.nav-menu a.active {
+    color: #fff;
 
-    background:var(--gradient-primary);
+    /* Gradient kết hợp hồng của web và hiệu ứng chuyển sáng nhẹ */
+    background: linear-gradient(135deg, #ff72aa 0%, #ff9ebb 100%);
 
-    box-shadow:var(--shadow-pink);
+    /* Đổ bóng mịn diện rộng để nút có hiệu ứng phát sáng nhẹ (Glow) thay vì bóng đậm cục bộ */
+    box-shadow: 0 8px 20px rgba(255, 114, 170, 0.3);
+    
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Viền mỏng tạo hiệu ứng bắt sáng */
 }
 
-
+/* Đảm bảo khi hover vào nút Active thì không bị mất màu nền gradient */
+.nav-menu a.active:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #ff83b4 0%, #ffaec5 100%); /* Sáng lên một chút khi hover */
+    box-shadow: 0 10px 24px rgba(255, 114, 170, 0.4);
+    transform: translateY(-1px);
+}
 /* ======================================================
    FOCUS
 ====================================================== */
