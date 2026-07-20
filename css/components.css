@@ -249,44 +249,40 @@
     padding: 13px 22px;
     border-radius: 999px;
 
-    /* Giữ nguyên nền trắng mờ tinh tế đúng chuẩn thiết kế hiện tại */
-    background: rgba(255, 255, 255, .82);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 220, 235, .65);
-    color: #ff69ab;
+    /* HIỂN THỊ CỐ ĐỊNH: Dải màu Hồng dâu phối Xanh mint dịu mát (Hợp poster, không bị hóa tím) */
+    background: linear-gradient(
+        135deg,
+        #ff7eb3 0%,   /* Màu hồng dâu sáng */
+        #70c1b3 100%  /* Màu xanh mint trong trẻo */
+    );
+    
+    /* Đổi màu chữ mặc định sang màu trắng để nổi bật trên nền gradient */
+    color: #fff;
     font-weight: 700;
     cursor: pointer;
+    
+    /* Ẩn viền cũ để màu gradient tràn viền đẹp hơn */
+    border: none;
+    
+    /* Đổ bóng nhẹ nhàng, lan tỏa theo tông màu của nút */
+    box-shadow: 0 8px 24px rgba(255, 126, 179, 0.25);
+    
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* KHI LƯỚT CHUỘT QUA (HOVER): Nút chuyển sang dải màu Hồng - Xanh Poster */
+/* KHI HOVER: Nút sẽ sáng lên một chút và nhấc nhẹ tạo hiệu ứng tương tác mượt mà */
 .btn-secondary:hover {
-    color: #fff;
-    border-color: transparent;
-    
-    /* Gradient: Hồng cánh sen của web chuyển mượt sang Xanh biển sâu của poster */
-    background: linear-gradient(
-        135deg,
-        #ff72aa 0%,   /* Hồng web */
-        #1d5d86 100%  /* Xanh poster */
-    );
-    
-    /* Đổ bóng lan tỏa theo 2 tông màu cực kỳ nịnh mắt */
-    box-shadow: 0 8px 24px rgba(255, 114, 170, 0.3), 0 8px 24px rgba(29, 93, 134, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 126, 179, 0.35);
+    opacity: 0.95; /* Tạo hiệu ứng sáng nhẹ khi lướt chuột */
 }
 
-/* KHI ĐƯỢC BẤM CHỌN (ACTIVE) */
-.btn-secondary.active {
-    color: #fff;
-    border-color: transparent;
-    background: linear-gradient(
-        135deg,
-        #ff72aa 0%,
-        #1d5d86 100%
-    );
-    box-shadow: 0 4px 12px rgba(255, 114, 170, 0.2);
-    transform: scale(0.98); /* Hiệu ứng lún nút nhẹ khi click */
+/* KHI ACTIVE (BẤM XUỐNG): Tạo cảm giác lún nút thật hơn */
+.btn-secondary:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(255, 126, 179, 0.2);
 }
+
 /* ======================================================
    ICON
 ====================================================== */
