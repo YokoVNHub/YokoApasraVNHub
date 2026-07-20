@@ -276,6 +276,37 @@
    RESPONSIVE
 ====================================================== */
 
+/* ======================================================
+   1366
+====================================================== */
+
+@media (max-width:1366px){
+
+    .exclusive-detail-page{
+
+        padding:60px 0 100px;
+    }
+
+    .exclusive-hero{
+
+        grid-template-columns:460px 1fr;
+
+        gap:60px;
+
+        padding:34px;
+    }
+
+    .exclusive-title{
+
+        font-size:3rem;
+    }
+
+    .exclusive-subtitle{
+
+        font-size:1.08rem;
+    }
+
+}
 
 /* ======================================================
    1200
@@ -285,28 +316,31 @@
 
     .exclusive-detail-page{
 
-        padding:60px 0 90px;
+        padding:55px 0 90px;
     }
 
     .exclusive-hero{
 
-        grid-template-columns:420px 1fr;
+        grid-template-columns:400px 1fr;
 
-        gap:50px;
+        gap:46px;
 
-        padding:34px;
-
-        margin-bottom:70px;
+        padding:30px;
     }
 
     .exclusive-title{
 
-        font-size:2.8rem;
+        font-size:2.6rem;
     }
 
     .exclusive-subtitle{
 
-        font-size:1.05rem;
+        margin-bottom:34px;
+    }
+
+    .exclusive-meta{
+
+        margin-bottom:34px;
     }
 
     .exclusive-detail-page .download-album{
@@ -316,14 +350,10 @@
 
     .exclusive-gallery .gallery{
 
-        grid-template-columns:
-            repeat(auto-fill,minmax(230px,1fr));
-
-        gap:20px;
+        gap:18px;
     }
 
 }
-
 
 /* ======================================================
    TABLET
@@ -333,7 +363,7 @@
 
     .exclusive-detail-page{
 
-        padding:50px 0 80px;
+        padding:45px 0 80px;
     }
 
     .exclusive-hero{
@@ -342,14 +372,14 @@
 
         gap:40px;
 
-        padding:32px;
+        padding:30px;
 
         text-align:center;
     }
 
     .exclusive-poster{
 
-        max-width:400px;
+        max-width:380px;
 
         margin:auto;
     }
@@ -366,41 +396,32 @@
         margin-inline:auto;
     }
 
-    .exclusive-title{
-
-        font-size:2.4rem;
-    }
-
     .exclusive-subtitle{
 
         max-width:700px;
 
-        margin:0 auto 34px;
+        margin-inline:auto;
     }
 
     .exclusive-meta{
 
         width:100%;
 
-        align-items:center;
+        max-width:420px;
+
+        margin-inline:auto;
+
+        margin-bottom:34px;
     }
 
     .exclusive-detail-page .download-album{
 
-        min-width:300px;
-
         align-self:center;
-    }
 
-    .exclusive-gallery .gallery{
-
-        grid-template-columns:repeat(3,1fr);
-
-        gap:18px;
+        min-width:300px;
     }
 
 }
-
 
 /* ======================================================
    MOBILE
@@ -410,45 +431,41 @@
 
     .exclusive-detail-page{
 
-        padding:40px 0 70px;
+        padding:36px 0 70px;
     }
 
     .exclusive-detail-page .back-link{
 
-        margin-bottom:24px;
+        margin-bottom:26px;
     }
 
     .exclusive-hero{
 
-        gap:30px;
+        gap:32px;
 
-        padding:26px;
+        padding:24px;
 
         border-radius:30px;
-
-        margin-bottom:55px;
     }
 
     .exclusive-poster{
 
-        max-width:280px;
+        max-width:300px;
     }
 
     .exclusive-poster img{
 
-        border-radius:24px;
+        border-radius:22px;
     }
 
     .exclusive-title{
 
         font-size:2rem;
-
-        line-height:1.2;
     }
 
     .exclusive-subtitle{
 
-        font-size:.95rem;
+        font-size:.96rem;
 
         line-height:1.8;
 
@@ -459,7 +476,7 @@
 
         gap:14px;
 
-        margin-bottom:30px;
+        margin-bottom:28px;
     }
 
     .exclusive-detail-page .download-album{
@@ -467,8 +484,11 @@
         width:100%;
 
         min-width:0;
+    }
 
-        max-width:360px;
+    .exclusive-gallery{
+
+        margin-top:10px;
     }
 
     .exclusive-gallery .gallery{
@@ -478,13 +498,7 @@
         gap:14px;
     }
 
-    .exclusive-gallery .lightbox-trigger{
-
-        border-radius:18px;
-    }
-
 }
-
 
 /* ======================================================
    SMALL MOBILE
@@ -494,24 +508,24 @@
 
     .exclusive-detail-page{
 
-        padding:32px 0 60px;
+        padding:30px 0 60px;
     }
 
     .exclusive-hero{
 
-        padding:22px;
+        padding:20px;
 
-        border-radius:26px;
+        border-radius:24px;
     }
 
     .exclusive-poster{
 
-        max-width:240px;
+        max-width:250px;
     }
 
     .exclusive-title{
 
-        font-size:1.7rem;
+        font-size:1.75rem;
     }
 
     .exclusive-subtitle{
@@ -519,18 +533,17 @@
         font-size:.9rem;
     }
 
-    .exclusive-detail-page .download-album{
-
-        width:100%;
-    }
-
     .exclusive-gallery .gallery{
 
         gap:12px;
     }
 
-}
+    .exclusive-gallery .lightbox-trigger{
 
+        border-radius:18px;
+    }
+
+}
 
 /* ======================================================
    EXTRA SMALL
@@ -540,12 +553,7 @@
 
     .exclusive-detail-page{
 
-        padding:28px 0 50px;
-    }
-
-    .exclusive-detail-page .back-link{
-
-        font-size:.88rem;
+        padding:24px 0 50px;
     }
 
     .exclusive-hero{
@@ -554,12 +562,12 @@
 
         gap:24px;
 
-        border-radius:22px;
+        border-radius:20px;
     }
 
     .exclusive-poster{
 
-        max-width:200px;
+        max-width:220px;
     }
 
     .exclusive-poster img{
@@ -569,30 +577,19 @@
 
     .exclusive-title{
 
-        font-size:1.45rem;
+        font-size:1.5rem;
+
+        line-height:1.2;
     }
 
     .exclusive-subtitle{
 
         font-size:.86rem;
-
-        line-height:1.7;
-
-        margin-bottom:24px;
     }
 
     .exclusive-meta{
 
-        font-size:.9rem;
-
         gap:12px;
-    }
-
-    .exclusive-detail-page .download-album{
-
-        width:100%;
-
-        font-size:.9rem;
     }
 
     .exclusive-gallery .gallery{
@@ -600,11 +597,6 @@
         grid-template-columns:repeat(2,1fr);
 
         gap:10px;
-    }
-
-    .exclusive-gallery .lightbox-trigger{
-
-        border-radius:16px;
     }
 
 }
