@@ -1262,11 +1262,9 @@
     /* ---------- GRID ---------- */
 
     .events-grid{
-
-        grid-template-columns:1fr;
-
-        gap:22px;
-    }
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
 
     /* ---------- FOOTER ---------- */
 
@@ -1487,5 +1485,10 @@
         height:42px;
         border-radius:14px;
     }
+
+   .events-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
 
 }
