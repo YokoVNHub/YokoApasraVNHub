@@ -219,7 +219,7 @@ ${
             target="_blank"
             rel="noopener noreferrer">
 
-            <span class="moon-icon">
+            <span class="moon">
 
                 🌙
 
