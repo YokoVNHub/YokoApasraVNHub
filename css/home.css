@@ -899,17 +899,26 @@ body.home-page{
 
 @media (max-width:1366px){
 
+    .home-hero{
+        padding:100px 0 80px;
+    }
+
     .home-hero-layout{
-        grid-template-columns:420px 1fr;
+        grid-template-columns:440px 1fr;
         gap:60px;
+        align-items:center;
     }
 
     .home-hero-copy{
-        margin-top:-180px;
+        margin-top:-120px;
     }
 
     .home-hero-title{
         font-size:clamp(4rem,5vw,4.8rem);
+    }
+
+    .home-hero-desc{
+        max-width:520px;
     }
 
     .home-hero-visual img{
@@ -917,7 +926,7 @@ body.home-page{
     }
 
     .schedule-home{
-        margin-top:-260px;
+        margin-top:-180px;
     }
 
 }
@@ -929,28 +938,33 @@ body.home-page{
 
 @media (max-width:1200px){
 
+    body{
+        padding-top:82px;
+    }
+
     /* ---------- Hero ---------- */
 
     .home-hero{
-        padding:90px 0 80px;
+        padding:90px 0 70px;
+        min-height:auto;
     }
 
     .home-hero-layout{
-        grid-template-columns:380px 1fr;
+        grid-template-columns:390px 1fr;
         gap:50px;
         align-items:center;
     }
 
     .home-hero-copy{
-        margin-top:-120px;
+        margin-top:-60px;
     }
 
     .home-hero-title{
-        font-size:clamp(3.6rem,5vw,4.2rem);
+        font-size:clamp(3.5rem,5vw,4.2rem);
     }
 
     .home-hero-desc{
-        max-width:500px;
+        max-width:480px;
     }
 
     .home-hero-visual img{
@@ -960,20 +974,32 @@ body.home-page{
     /* ---------- Schedule ---------- */
 
     .schedule-home{
-        margin-top:-180px;
+        margin-top:-100px;
+    }
+
+    .schedule-layout{
+        gap:48px;
     }
 
     /* ---------- Featured ---------- */
 
+    .featured{
+        padding:90px 0;
+    }
+
     .featured-grid{
         grid-template-columns:repeat(3,1fr);
-        gap:26px;
+        gap:24px;
     }
 
     /* ---------- About ---------- */
 
+    .about{
+        padding:90px 0;
+    }
+
     .about-grid{
-        gap:45px;
+        gap:42px;
     }
 
 }
@@ -986,47 +1012,39 @@ body.home-page{
 @media (max-width:992px){
 
     body{
-        padding-top:88px;
+        padding-top:84px;
     }
 
     /* ---------- Header ---------- */
 
-    .header{
-        min-height:82px;
-    }
-
     .header-container{
-        padding:18px 28px;
+        min-height:76px;
+        padding:16px 24px;
     }
 
     .logo img{
-        width:110px;
-    }
-
-    .nav-menu{
-        gap:24px;
+        width:88px;
     }
 
     /* ---------- Hero ---------- */
 
     .home-hero{
-        padding:70px 0 60px;
-        min-height:auto;
+        padding:70px 0 50px;
     }
 
     .home-hero-layout{
-        display:flex;
+        display:grid;
+        grid-template-columns:1fr 320px;
+        gap:40px;
         align-items:center;
-        gap:36px;
     }
 
     .home-hero-copy{
-        flex:1;
         margin-top:0;
     }
 
     .home-hero-title{
-        font-size:clamp(3rem,5vw,3.5rem);
+        font-size:clamp(3rem,5vw,3.6rem);
     }
 
     .home-hero-desc{
@@ -1035,16 +1053,16 @@ body.home-page{
 
     .home-hero-buttons{
         flex-wrap:wrap;
+        gap:16px;
     }
 
     .home-hero-visual{
-        flex:1;
         justify-content:center;
     }
 
     .home-hero-visual img{
         width:100%;
-        max-width:300px;
+        max-width:320px;
         height:auto;
     }
 
@@ -1054,18 +1072,49 @@ body.home-page{
         margin-top:40px;
     }
 
+    .schedule-layout{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .schedule-copy{
+        text-align:center;
+        max-width:680px;
+        margin:0 auto;
+    }
+
+    .schedule-copy p{
+        margin-inline:auto;
+    }
+
+    .schedule-poster{
+        justify-content:center;
+    }
+
     /* ---------- Featured ---------- */
+
+    .featured{
+        padding:80px 0;
+    }
+
+    .featured-header{
+        gap:20px;
+    }
 
     .featured-grid{
         grid-template-columns:repeat(2,1fr);
-        gap:24px;
+        gap:22px;
     }
 
     /* ---------- About ---------- */
 
+    .about{
+        padding:80px 0;
+    }
+
     .about-grid{
         grid-template-columns:1fr;
-        gap:50px;
+        gap:45px;
     }
 
     .about-copy{
@@ -1080,9 +1129,7 @@ body.home-page{
         justify-content:center;
     }
 
-}
-
-/* ======================================================
+   /* ======================================================
    MOBILE
 ====================================================== */
 
@@ -1094,86 +1141,135 @@ body.home-page{
 
     /* ---------- Header ---------- */
 
-    .header{
-        min-height:72px;
-    }
-
     .header-container{
-        padding:14px 20px;
+        min-height:68px;
+        padding:10px 16px;
+        gap:10px;
     }
 
     .logo img{
-        width:88px;
+        width:62px;
+    }
+
+    .logo-title{
+        display:none;
+    }
+
+    nav{
+        flex:1;
+        overflow:hidden;
     }
 
     .nav-menu{
-        gap:16px;
-        flex-wrap:wrap;
-        justify-content:center;
+        display:flex;
+        flex-wrap:nowrap;
+        justify-content:flex-end;
+        align-items:center;
+        gap:6px;
+        overflow-x:auto;
+        scrollbar-width:none;
+    }
+
+    .nav-menu::-webkit-scrollbar{
+        display:none;
     }
 
     .nav-menu a{
-        font-size:.92rem;
+        flex-shrink:0;
+        min-width:auto;
+        height:34px;
+        padding:0 10px;
+        font-size:.78rem;
     }
 
     /* ---------- Hero ---------- */
 
     .home-hero{
-        padding:50px 0;
+        padding:42px 0;
     }
 
     .home-hero-layout{
         display:flex;
         flex-direction:column-reverse;
-        gap:32px;
+        align-items:center;
         text-align:center;
+        gap:28px;
     }
 
     .home-hero-copy{
         width:100%;
+        max-width:560px;
     }
 
     .home-hero-title{
-        font-size:clamp(2.6rem,8vw,3.2rem);
+        font-size:clamp(2.4rem,8vw,3rem);
         line-height:1.15;
     }
 
     .home-hero-desc{
-        margin-inline:auto;
-        font-size:.98rem;
+        margin:18px auto 0;
+        max-width:500px;
+        font-size:.95rem;
     }
 
     .home-hero-buttons{
         justify-content:center;
-        gap:16px;
+        flex-wrap:wrap;
+        gap:14px;
+        margin-top:26px;
     }
 
     .home-hero-visual img{
-        max-width:260px;
         width:100%;
+        max-width:240px;
+        height:auto;
     }
 
     /* ---------- Schedule ---------- */
 
     .schedule-home{
-        margin-top:36px;
+        margin-top:50px;
     }
 
     .schedule-layout{
-        grid-template-columns:1fr;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
         gap:30px;
-    }
-
-    .schedule-copy{
-        text-align:center;
-    }
-
-    .schedule-copy p{
-        margin-inline:auto;
     }
 
     .schedule-poster{
         justify-content:center;
+    }
+
+    .schedule-poster img{
+        width:100%;
+        max-width:320px;
+    }
+
+    .schedule-copy{
+        width:100%;
+        max-width:520px;
+        text-align:left;
+    }
+
+    .schedule-title{
+        text-align:center;
+        font-size:2rem;
+    }
+
+    .schedule-copy p{
+        margin:16px 0;
+    }
+
+    .schedule-highlights{
+        text-align:left;
+    }
+
+    .schedule-btn{
+        display:flex;
+        justify-content:center;
+        margin-top:24px;
     }
 
     /* ---------- Featured ---------- */
@@ -1185,8 +1281,8 @@ body.home-page{
     .featured-header{
         flex-direction:column;
         align-items:center;
+        gap:16px;
         text-align:center;
-        gap:18px;
     }
 
     .featured-grid{
@@ -1201,7 +1297,8 @@ body.home-page{
     }
 
     .about-grid{
-        gap:36px;
+        grid-template-columns:1fr;
+        gap:34px;
     }
 
     .about-copy{
@@ -1238,38 +1335,43 @@ body.home-page{
     }
 
     .header-container{
-        padding:12px 16px;
+        padding:8px 12px;
     }
 
     .logo img{
-        width:74px;
+        width:56px;
     }
 
     .nav-menu{
-        gap:12px;
+        gap:4px;
     }
 
     .nav-menu a{
-        font-size:.86rem;
+        height:32px;
+        padding:0 8px;
+        font-size:.72rem;
     }
 
     /* ---------- Hero ---------- */
 
+    .home-hero{
+        padding:36px 0;
+    }
+
     .home-hero-title{
-        font-size:clamp(2.1rem,9vw,2.6rem);
+        font-size:clamp(2rem,9vw,2.5rem);
     }
 
     .home-hero-desc{
-        font-size:.92rem;
+        font-size:.9rem;
     }
 
     .home-hero-visual img{
-        max-width:210px;
+        max-width:200px;
     }
 
     .home-hero-buttons{
         flex-direction:column;
-        width:100%;
     }
 
     .home-hero-buttons .btn{
@@ -1278,13 +1380,12 @@ body.home-page{
 
     /* ---------- Schedule ---------- */
 
-    .schedule-layout{
-        gap:24px;
+    .schedule-title{
+        font-size:1.8rem;
     }
 
     .schedule-poster img{
-        width:100%;
-        max-width:320px;
+        max-width:300px;
     }
 
     /* ---------- Featured ---------- */
@@ -1309,38 +1410,38 @@ body.home-page{
 @media (max-width:430px){
 
     .logo img{
-        width:66px;
+        width:50px;
+    }
+
+    .nav-menu a{
+        padding:0 7px;
+        font-size:.68rem;
     }
 
     .home-hero{
-        padding:40px 0;
+        padding:32px 0;
     }
 
     .home-hero-title{
         font-size:clamp(1.8rem,9vw,2.2rem);
     }
 
-    .home-hero-desc{
-        font-size:.9rem;
-    }
-
     .home-hero-visual img{
-        max-width:180px;
+        max-width:170px;
     }
 
-    /* ---------- Schedule ---------- */
+    .schedule-title{
+        font-size:1.65rem;
+    }
 
     .schedule-poster img{
-        max-width:280px;
+        max-width:270px;
     }
-
-    /* ---------- Featured ---------- */
 
     .featured-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
     }
-
-    /* ---------- About ---------- */
 
     .about-copy h2{
         font-size:1.8rem;
@@ -1351,4 +1452,5 @@ body.home-page{
         gap:14px;
     }
 
+}
 }
