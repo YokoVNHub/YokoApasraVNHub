@@ -221,7 +221,7 @@ ${
 
             <span class="moon">
 
-                🌙
+                ☾
 
             </span>
 
