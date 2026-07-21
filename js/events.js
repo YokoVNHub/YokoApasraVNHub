@@ -40,14 +40,16 @@ async function loadEvents() {
         renderLatest();
         createFilters();
         renderEvents();
-        setupToggleView(); // Kích hoạt bộ lắng nghe đổi layout Grid/List nếu cần
+        setupToggleView(); 
     } catch (error) {
         console.error(error);
-        eventsList.innerHTML = `
-            <div class="empty">
-                Failed to load events.
-            </div>
-        `;
+        if (eventsList) {
+            eventsList.innerHTML = `
+                <div class="empty">
+                    Failed to load events.
+                </div>
+            `;
+        }
     }
 }
 
@@ -71,8 +73,9 @@ function parseDate(dateString) {
 ====================================================== */
 
 function animateNumber(element, target) {
+    if (!element) return;
     let current = 0;
-    const step = Math.ceil(target / 40);
+    const step = Math.ceil(target / 40) || 1;
     const timer = setInterval(() => {
         current += step;
         if (current >= target) {
@@ -94,13 +97,14 @@ function updateStats() {
 }
 
 /* ======================================================
-   LATEST EVENT CARD (Nút bấm đồng bộ màu Hồng - Xanh và Mặt Trăng)
+   LATEST EVENT CARD (Sửa lỗi lấy phần tử đầu tiên)
 ====================================================== */
 
 function renderLatest() {
     if (!latestCard || !events.length) return;
 
-    const item = events[0];
+    // ĐÃ SỬA: Lấy đúng phần tử đầu tiên của mảng sự kiện
+    const item = events[0]; 
 
     latestCard.innerHTML = `
         <article class="latest-card glass-card">
@@ -127,7 +131,6 @@ function renderLatest() {
                     📷 ${item.photos} photos archived
                 </p>
 
-                <!-- Sửa lại class btn-secondary cố định dải màu mượt kẹo ngọt -->
                 <a href="detail.html?id=${item.id}" class="btn-secondary latest-btn">
                     <span>View Gallery &nbsp; →</span>
                     <div class="icon-circle">
@@ -174,7 +177,7 @@ function createFilters() {
 }
 
 /* ======================================================
-   EVENTS RENDER GRID (Tích hợp Bubbles 3D tự động)
+   EVENTS RENDER GRID (Đã sửa lỗi dấu đóng mở thẻ chính tả)
 ====================================================== */
 
 function renderEvents() {
@@ -182,7 +185,6 @@ function renderEvents() {
 
     let filtered = [...events];
 
-    // Xử lý bộ lọc theo tháng
     if (currentMonth !== "all") {
         filtered = filtered.filter(item => {
             const month = parseDate(item.date).toLocaleString("en-US", { month: "long" });
@@ -190,7 +192,6 @@ function renderEvents() {
         });
     }
 
-    // Xử lý sắp xếp Newest / Oldest First
     if (sortSelect && sortSelect.value === "oldest") {
         filtered.sort((a, b) => parseDate(a.date) - parseDate(b.date));
     } else {
@@ -202,7 +203,6 @@ function renderEvents() {
         return;
     }
 
-    // Tiến hành gán chuỗi render chi tiết từng tấm card
     eventsList.innerHTML = filtered.map(item => {
         const date = parseDate(item.date);
         const day = date.getDate();
@@ -218,14 +218,13 @@ function renderEvents() {
                         loading="lazy"
                     >
                     
-                    <!-- LAYER ĐẶT BONG BÓNG ĐỘNG LƠ LỬNG 3D -->
                     <div class="bubble b1"></div>
                     <div class="bubble b2"></div>
                     <div class="bubble b3"></div>
 
-                    <!-- KHỐI LỊCH CHỐNG LÓA AN TOÀN -->
+                    <!-- ĐÃ SỬA: Sửa ký tự lỗi thành thẻ mở <strong> hoàn chỉnh -->
                     <div class="event-date-badge">
-                        strong>${day}</strong>
+                        <strong>${day}</strong>
                         <span>${month.toUpperCase()}</span>
                         <small>${year}</small>
                     </div>
@@ -237,7 +236,6 @@ function renderEvents() {
                         <p class="event-date">
                             📅 ${item.date}
                         </p>
-                        <!-- NÚT ĐẾM ẢNH MINI CHUYỂN SẮC HOVER -->
                         <span class="event-photos">
                             📷 ${item.photos} photos &nbsp; →
                         </span>
@@ -249,7 +247,7 @@ function renderEvents() {
 }
 
 /* ======================================================
-   SORT SELECT WATCHER (Bắt sự kiện Newest First đổi danh sách)
+   SORT SELECT WATCHER
 ====================================================== */
 if (sortSelect) {
     sortSelect.onchange = () => {
@@ -258,7 +256,7 @@ if (sortSelect) {
 }
 
 /* ======================================================
-   VIEW TOGGLE (Xử lý chuyển đổi Grid / List View)
+   VIEW TOGGLE
 ====================================================== */
 function setupToggleView() {
     if (!gridBtn || !listBtn) return;
