@@ -763,61 +763,361 @@
    RESPONSIVE SYSTEM
 ====================================================== */
 
-/* =========================
-   LARGE LAPTOP
-========================= */
-@media (max-width:1200px){
+/* ======================================================
+   RESPONSIVE
+====================================================== */
 
-    .home-bubbles span,
-    .events-bubbles span{
-        transform:scale(.8);
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width:992px){
+
+    .exclusive-page{
+        padding:70px 0 90px;
     }
 
-    .exclusive-card{
-        gap:36px;
+    .exclusive-hero{
+        margin-bottom:70px;
     }
 
     .exclusive-title{
-        font-size:2.5rem;
-    }
-}
-
-
-@media(max-width:992px){
-
-    .exclusive-content{
-        align-items:flex-start;
-        text-align:left;
+        font-size:3rem;
     }
 
-    .exclusive-meta{
-        align-items:flex-start;
+    .exclusive-subtitle{
+        max-width:700px;
+        margin:0 auto;
     }
 
-    .exclusive-meta p{
-        justify-content:flex-start;
-        text-align:left;
+    .exclusive-grid{
+        gap:32px;
     }
-}
-
-@media(max-width:768px){
 
     .exclusive-card{
-        text-align:left;
-        gap:26px;
+
+        padding:30px;
+
+        border-radius:34px;
     }
 
-    .exclusive-cover{
-        aspect-ratio:4/5;
-        max-width:340px;
-        width:100%;
-        margin:auto;
+    .exclusive-card .poster{
+
+        width:180px;
     }
+
+    .exclusive-card h2{
+        font-size:2rem;
+    }
+
+    .exclusive-card .meta{
+        gap:14px;
+    }
+
+    .view-gallery-btn{
+
+        height:60px;
+
+        max-width:230px;
+
+        font-size:1rem;
+    }
+
+    .view-gallery-btn .btn-icon{
+
+        width:48px;
+        height:48px;
+    }
+
+   /* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width:768px){
+
+    .exclusive-page{
+
+        padding:50px 0 70px;
+    }
+
+    /* ==========================
+       HERO
+    ========================== */
+
+    .exclusive-hero{
+
+        margin-bottom:50px;
+
+        text-align:center;
+    }
+
+    .exclusive-badge{
+
+        margin:0 auto 20px;
+    }
+
+    .exclusive-title{
+
+        font-size:2.5rem;
+
+        line-height:1.15;
+
+        margin-bottom:18px;
+    }
+
+    .exclusive-subtitle{
+
+        max-width:100%;
+
+        font-size:1rem;
+
+        line-height:1.8;
+    }
+
+    /* ==========================
+       SECTION
+    ========================== */
+
+    .exclusive-section-title{
+
+        text-align:center;
+
+        font-size:2rem;
+
+        margin-bottom:30px;
+    }
+
+    /* ==========================
+       CARD
+    ========================== */
+
+    .exclusive-card{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+        gap:24px;
+
+        padding:26px;
+
+        border-radius:30px;
+    }
+
+    /* ==========================
+       POSTER
+    ========================== */
+
+    .exclusive-card .poster{
+
+        width:220px;
+
+        max-width:100%;
+
+        margin:0 auto;
+    }
+
+    /* ==========================
+       INFO
+    ========================== */
+
+    .exclusive-card-content{
+
+        width:100%;
+    }
+
+    .exclusive-card h2{
+
+        font-size:2rem;
+
+        margin-bottom:10px;
+    }
+
+    .exclusive-card .subtitle{
+
+        font-size:1rem;
+
+        margin-bottom:20px;
+    }
+
+    /* ==========================
+       META
+    ========================== */
+
+    .exclusive-card .meta{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:14px;
+
+        margin-bottom:24px;
+    }
+
+    .exclusive-card .meta p{
+
+        justify-content:center;
+
+        text-align:center;
+
+        line-height:1.7;
+    }
+
+    /* ==========================
+       BUTTON
+    ========================== */
+
+    .view-gallery-btn{
+
+        width:100%;
+
+        max-width:220px;
+
+        height:56px;
+
+        margin:0 auto;
+
+        font-size:.95rem;
+    }
+
+    .view-gallery-btn .btn-icon{
+
+        width:44px;
+        height:44px;
+    }
+
 }
 
-@media(max-width:430px){
+   /* ======================================================
+   SMALL MOBILE
+====================================================== */
 
-    .exclusive-cover{
-        max-width:280px;
+@media (max-width:576px){
+
+    .exclusive-page{
+        padding:40px 0 60px;
     }
+
+    /* ---------- Hero ---------- */
+
+    .exclusive-title{
+        font-size:2.1rem;
+    }
+
+    .exclusive-subtitle{
+        font-size:.95rem;
+        line-height:1.7;
+    }
+
+    .exclusive-section-title{
+        font-size:1.75rem;
+        margin-bottom:26px;
+    }
+
+    /* ---------- Card ---------- */
+
+    .exclusive-card{
+        padding:22px;
+        gap:20px;
+        border-radius:26px;
+    }
+
+    .exclusive-card .poster{
+        width:190px;
+    }
+
+    .exclusive-card h2{
+        font-size:1.7rem;
+        line-height:1.25;
+    }
+
+    .exclusive-card .subtitle{
+        font-size:.95rem;
+        margin-bottom:18px;
+    }
+
+    .exclusive-card .meta{
+        gap:12px;
+        margin-bottom:22px;
+    }
+
+    .exclusive-card .meta p{
+        font-size:.95rem;
+    }
+
+    /* ---------- Button ---------- */
+
+    .view-gallery-btn{
+        max-width:200px;
+        height:52px;
+        font-size:.9rem;
+    }
+
+    .view-gallery-btn .btn-icon{
+        width:40px;
+        height:40px;
+    }
+
+}
+
+
+/* ======================================================
+   EXTRA SMALL
+====================================================== */
+
+@media (max-width:430px){
+
+    .exclusive-title{
+        font-size:1.85rem;
+    }
+
+    .exclusive-subtitle{
+        font-size:.9rem;
+    }
+
+    .exclusive-section-title{
+        font-size:1.55rem;
+    }
+
+    .exclusive-card{
+        padding:18px;
+        border-radius:22px;
+    }
+
+    .exclusive-card .poster{
+        width:170px;
+    }
+
+    .exclusive-card h2{
+        font-size:1.45rem;
+    }
+
+    .exclusive-card .subtitle{
+        font-size:.9rem;
+    }
+
+    .exclusive-card .meta p{
+        font-size:.9rem;
+    }
+
+    .view-gallery-btn{
+        max-width:185px;
+        height:48px;
+        font-size:.85rem;
+    }
+
+    .view-gallery-btn .btn-icon{
+        width:36px;
+        height:36px;
+    }
+
+}
+
 }
