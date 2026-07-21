@@ -2,100 +2,62 @@
    ELEMENTS
 ====================================================== */
 
-const eventsList =
-    document.getElementById("events-list");
-
-const latestCard =
-    document.getElementById("latest-event-card");
-
-const monthFilter =
-    document.getElementById("month-filter");
-
-const totalEvents =
-    document.getElementById("total-events");
-
-const totalPhotos =
-    document.getElementById("total-photos");
-
-const sortSelect =
-    document.getElementById("sort-select");
-
-const gridBtn =
-    document.getElementById("grid-view");
-
-const listBtn =
-    document.getElementById("list-view");
-
+const eventsList = document.getElementById("events-list");
+const latestCard = document.getElementById("latest-event-card");
+const monthFilter = document.getElementById("month-filter");
+const totalEvents = document.getElementById("total-events");
+const totalPhotos = document.getElementById("total-photos");
+const sortSelect = document.getElementById("sort-select");
+const gridBtn = document.getElementById("grid-view");
+const listBtn = document.getElementById("list-view");
 
 /* ======================================================
    STATE
 ====================================================== */
 
 let events = [];
-
 let currentMonth = "all";
-
 
 /* ======================================================
    LOAD
 ====================================================== */
 
 async function loadEvents() {
-
     try {
-
-        const response =
-            await fetch(
-                "../data/gallery.json"
-            );
+        const response = await fetch("../data/gallery.json");
 
         if (!response.ok) {
-
-            throw new Error(
-                "Cannot load gallery.json"
-            );
+            throw new Error("Cannot load gallery.json");
         }
 
-        events =
-            await response.json();
+        events = await response.json();
 
         events.sort(
-            (a, b) =>
-                parseDate(b.date) -
-                parseDate(a.date)
+            (a, b) => parseDate(b.date) - parseDate(a.date)
         );
 
         updateStats();
         renderLatest();
         createFilters();
         renderEvents();
-    }
-
-    catch (error) {
-
+        setupToggleView(); // Kích hoạt bộ lắng nghe đổi layout Grid/List nếu cần
+    } catch (error) {
         console.error(error);
-
         eventsList.innerHTML = `
-
             <div class="empty">
-
                 Failed to load events.
-
             </div>
-
         `;
     }
 }
 
 loadEvents();
 
-
 /* ======================================================
-   DATE
+   DATE PARSER
 ====================================================== */
 
 function parseDate(dateString) {
-
     return new Date(
         dateString.replace(
             /(\d+) (\w+) (\d+)/,
@@ -104,94 +66,51 @@ function parseDate(dateString) {
     );
 }
 
-
 /* ======================================================
-   COUNTER
+   COUNTER ANIMATION
 ====================================================== */
 
-function animateNumber(
-    element,
-    target
-) {
-
+function animateNumber(element, target) {
     let current = 0;
-
-    const step =
-        Math.ceil(target / 40);
-
-    const timer =
-        setInterval(() => {
-
-            current += step;
-
-            if (current >= target) {
-
-                current = target;
-
-                clearInterval(
-                    timer
-                );
-            }
-
-            element.textContent =
-                current.toLocaleString();
-
-        }, 20);
+    const step = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = current.toLocaleString();
+    }, 20);
 }
 
-
 /* ======================================================
-   STATS
+   STATS UPDATE
 ====================================================== */
 
 function updateStats() {
-
-    const photos =
-        events.reduce(
-
-            (sum, item) =>
-
-                sum + item.photos,
-
-            0
-        );
-
-    animateNumber(
-        totalEvents,
-        events.length
-    );
-
-    animateNumber(
-        totalPhotos,
-        photos
-    );
+    const photos = events.reduce((sum, item) => sum + item.photos, 0);
+    animateNumber(totalEvents, events.length);
+    animateNumber(totalPhotos, photos);
 }
 
-
 /* ======================================================
-   LATEST EVENT
+   LATEST EVENT CARD (Nút bấm đồng bộ màu Hồng - Xanh và Mặt Trăng)
 ====================================================== */
 
 function renderLatest() {
-
-    if (!latestCard || !events.length)
-        return;
+    if (!latestCard || !events.length) return;
 
     const item = events[0];
 
     latestCard.innerHTML = `
         <article class="latest-card glass-card">
-
             <div class="latest-image">
-
                 <img
                     src="../assets/events/${item.folder}/${item.cover}.${item.format}"
                     alt="${item.title}">
-
             </div>
 
             <div class="latest-content">
-
                 <span class="badge">
                     ✦ LATEST EVENT
                 </span>
@@ -208,341 +127,153 @@ function renderLatest() {
                     📷 ${item.photos} photos archived
                 </p>
 
-                <a
-                    href="detail.html?id=${item.id}"
-                    class="btn-primary latest-btn">
-
-                    <span>
-                        View Gallery
-                    </span>
-
-                    <span class="arrow">
-                        →
-                    </span>
-
-                    <span class="moon">
+                <!-- Sửa lại class btn-secondary cố định dải màu mượt kẹo ngọt -->
+                <a href="detail.html?id=${item.id}" class="btn-secondary latest-btn">
+                    <span>View Gallery &nbsp; →</span>
+                    <div class="icon-circle">
                         ☾
-                    </span>
-
+                    </div>
                 </a>
-
             </div>
-
         </article>
     `;
 }
 
 /* ======================================================
-   MONTH FILTER
+   MONTH FILTER CAPTURE
 ====================================================== */
 
 function createFilters() {
-
     if (!monthFilter) return;
 
     const months = [
-
         "all",
-
         ...new Set(
-
-            events.map(
-
-                item =>
-
-                    parseDate(
-                        item.date
-                    ).toLocaleString(
-
-                        "en-US",
-
-                        {
-                            month:
-                                "long"
-                        }
-                    )
+            events.map(item =>
+                parseDate(item.date).toLocaleString("en-US", { month: "long" })
             )
         )
     ];
 
-    monthFilter.innerHTML =
+    monthFilter.innerHTML = months.map(month => `
+        <button
+            data-month="${month}"
+            class="${month === "all" ? "active" : ""}">
+            ${month === "all" ? "All" : month}
+        </button>
+    `).join("");
 
-        months.map(
-
-            month => `
-
-                <button
-
-                    data-month="${month}"
-
-                    class="${
-                        month === "all"
-                            ? "active"
-                            : ""
-                    }">
-
-                    ${
-                        month === "all"
-                            ? "All"
-                            : month
-                    }
-
-                </button>
-
-            `
-        ).join("");
-
-    monthFilter
-        .querySelectorAll(
-            "button"
-        )
-        .forEach(button => {
-
-            button.onclick =
-                () => {
-
-                    monthFilter
-                        .querySelectorAll(
-                            "button"
-                        )
-                        .forEach(
-
-                            btn =>
-                                btn.classList.remove(
-                                    "active"
-                                )
-                        );
-
-                    button.classList.add(
-                        "active"
-                    );
-
-                    currentMonth =
-                        button.dataset.month;
-
-                    renderEvents();
-                };
-        });
+    monthFilter.querySelectorAll("button").forEach(button => {
+        button.onclick = () => {
+            monthFilter.querySelectorAll("button").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+            currentMonth = button.dataset.month;
+            renderEvents();
+        };
+    });
 }
 
-
 /* ======================================================
-   EVENTS
+   EVENTS RENDER GRID (Tích hợp Bubbles 3D tự động)
 ====================================================== */
 
 function renderEvents() {
+    if (!eventsList) return;
 
-    let filtered =
-        [...events];
+    let filtered = [...events];
 
-
-    if (
-        currentMonth !==
-        "all"
-    ) {
-
-        filtered =
-            filtered.filter(
-                item => {
-
-                    const month =
-                        parseDate(
-                            item.date
-                        )
-                        .toLocaleString(
-
-                            "en-US",
-
-                            {
-                                month:
-                                    "long"
-                            }
-                        );
-
-                    return (
-                        month ===
-                        currentMonth
-                    );
-                }
-            );
+    // Xử lý bộ lọc theo tháng
+    if (currentMonth !== "all") {
+        filtered = filtered.filter(item => {
+            const month = parseDate(item.date).toLocaleString("en-US", { month: "long" });
+            return month === currentMonth;
+        });
     }
 
-
-    if (
-
-        sortSelect &&
-        sortSelect.value ===
-            "oldest"
-
-    ) {
-
-        filtered.sort(
-
-            (a, b) =>
-
-                parseDate(
-                    a.date
-                ) -
-
-                parseDate(
-                    b.date
-                )
-        );
+    // Xử lý sắp xếp Newest / Oldest First
+    if (sortSelect && sortSelect.value === "oldest") {
+        filtered.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+    } else {
+        filtered.sort((a, b) => parseDate(b.date) - parseDate(a.date));
     }
 
+    if (filtered.length === 0) {
+        eventsList.innerHTML = `<div class="empty">No events found in this month.</div>`;
+        return;
+    }
 
-    eventsList.innerHTML =
+    // Tiến hành gán chuỗi render chi tiết từng tấm card
+    eventsList.innerHTML = filtered.map(item => {
+        const date = parseDate(item.date);
+        const day = date.getDate();
+        const month = date.toLocaleString("en-US", { month: "short" });
+        const year = date.getFullYear();
 
-        filtered.map(
-            item => {
+        return `
+            <a href="detail.html?id=${item.id}" class="event-card">
+                <div class="event-thumb">
+                    <img 
+                        src="../assets/events/${item.folder}/${item.cover}.${item.format}" 
+                        alt="${item.title}"
+                        loading="lazy"
+                    >
+                    
+                    <!-- LAYER ĐẶT BONG BÓNG ĐỘNG LƠ LỬNG 3D -->
+                    <div class="bubble b1"></div>
+                    <div class="bubble b2"></div>
+                    <div class="bubble b3"></div>
 
-                const date =
-                    parseDate(
-                        item.date
-                    );
+                    <!-- KHỐI LỊCH CHỐNG LÓA AN TOÀN -->
+                    <div class="event-date-badge">
+                        strong>${day}</strong>
+                        <span>${month.toUpperCase()}</span>
+                        <small>${year}</small>
+                    </div>
+                </div>
 
-                const day =
-                    date.getDate();
-
-                const month =
-                    date.toLocaleString(
-                        "en-US",
-                        {
-                            month:
-                                "short"
-                        }
-                    );
-
-                const year =
-                    date.getFullYear();
-
-
-                return `
-
-<a
-    href="detail.html?id=${item.id}"
-    class="event-card">
-
-    <div class="event-thumb">
-
-        <span class="bubble b1"></span>
-
-        <span class="bubble b2"></span>
-
-        <img
-            src="../assets/events/${item.folder}/${item.cover}.${item.format}"
-            alt="${item.title}">
-
-        <div class="event-date-badge">
-
-            <strong>
-
-                ${day}
-
-            </strong>
-
-            <span>
-
-                ${month}
-
-            </span>
-
-            <small>
-
-                ${year}
-
-            </small>
-
-        </div>
-
-    </div>
-
-
-    <div class="event-info">
-
-        <h2>
-
-            ${item.title}
-
-        </h2>
-
-        <p class="event-date">
-
-            📅 ${item.date}
-
-        </p>
-
-        <p class="event-photos">
-
-            ${item.photos}
-            photos →
-
-        </p>
-
-    </div>
-
-</a>
-
-                `;
-            }
-        ).join("");
+                <div class="event-info">
+                    <h2>${item.title}</h2>
+                    <div class="event-meta">
+                        <p class="event-date">
+                            📅 ${item.date}
+                        </p>
+                        <!-- NÚT ĐẾM ẢNH MINI CHUYỂN SẮC HOVER -->
+                        <span class="event-photos">
+                            📷 ${item.photos} photos &nbsp; →
+                        </span>
+                    </div>
+                </div>
+            </a>
+        `;
+    }).join("");
 }
 
-
 /* ======================================================
-   SORT
+   SORT SELECT WATCHER (Bắt sự kiện Newest First đổi danh sách)
 ====================================================== */
-
 if (sortSelect) {
-
-    sortSelect.addEventListener(
-
-        "change",
-
-        renderEvents
-    );
+    sortSelect.onchange = () => {
+        renderEvents();
+    };
 }
 
-
 /* ======================================================
-   VIEW
+   VIEW TOGGLE (Xử lý chuyển đổi Grid / List View)
 ====================================================== */
+function setupToggleView() {
+    if (!gridBtn || !listBtn) return;
 
-if (
-    gridBtn &&
-    listBtn
-) {
+    gridBtn.onclick = () => {
+        gridBtn.classList.add("active");
+        listBtn.classList.remove("active");
+        eventsList.classList.remove("events-list-view");
+        eventsList.classList.add("events-grid");
+    };
 
-    gridBtn.onclick =
-        () => {
-
-            eventsList.classList.remove(
-                "list-view"
-            );
-
-            gridBtn.classList.add(
-                "active"
-            );
-
-            listBtn.classList.remove(
-                "active"
-            );
-        };
-
-
-    listBtn.onclick =
-        () => {
-
-            eventsList.classList.add(
-                "list-view"
-            );
-
-            listBtn.classList.add(
-                "active"
-            );
-
-            gridBtn.classList.remove(
-                "active"
-            );
-        };
+    listBtn.onclick = () => {
+        listBtn.classList.add("active");
+        gridBtn.classList.remove("active");
+        eventsList.classList.remove("events-grid");
+        eventsList.classList.add("events-list-view");
+    };
 }
