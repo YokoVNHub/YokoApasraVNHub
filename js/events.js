@@ -87,7 +87,7 @@ function animateNumber(element, target) {
 }
 
 /* ======================================================
-   STATS UPDATE
+   STATS UPDATE (Đếm tổng số sự kiện và ảnh)
 ====================================================== */
 
 function updateStats() {
@@ -97,13 +97,13 @@ function updateStats() {
 }
 
 /* ======================================================
-   LATEST EVENT CARD (Sửa lỗi lấy phần tử đầu tiên)
+   LATEST EVENT CARD (Lấy chuẩn sự kiện mới nhất phần tử)
 ====================================================== */
 
 function renderLatest() {
     if (!latestCard || !events.length) return;
 
-    // ĐÃ SỬA: Lấy đúng phần tử đầu tiên của mảng sự kiện
+    // Sửa lỗi: Lấy đúng phần tử đầu tiên trong mảng
     const item = events[0]; 
 
     latestCard.innerHTML = `
@@ -177,7 +177,7 @@ function createFilters() {
 }
 
 /* ======================================================
-   EVENTS RENDER GRID (Đã sửa lỗi dấu đóng mở thẻ chính tả)
+   EVENTS RENDER GRID (Render danh sách thẻ card sự kiện)
 ====================================================== */
 
 function renderEvents() {
@@ -222,7 +222,6 @@ function renderEvents() {
                     <div class="bubble b2"></div>
                     <div class="bubble b3"></div>
 
-                    <!-- ĐÃ SỬA: Sửa ký tự lỗi thành thẻ mở <strong> hoàn chỉnh -->
                     <div class="event-date-badge">
                         <strong>${day}</strong>
                         <span>${month.toUpperCase()}</span>
