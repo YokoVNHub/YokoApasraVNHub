@@ -97,8 +97,7 @@
 
 <main class="events-page">
 
-    <!-- bubbles -->
-
+    <!-- bubbles (Hiệu ứng bong bóng nền trang) -->
     <div
         class="events-bubbles"
         aria-hidden="true">
@@ -281,20 +280,23 @@
 
                 <div class="toolbar-right">
 
-                    <select
-                        id="sort-select"
-                        class="select-glass"
-                        aria-label="Sort events">
+                    <!-- BỌC NGOÀI ĐỂ CSS ĐIỀU CHỈNH MŨI TÊN CHO NEWEST FIRST -->
+                    <div class="filter-select-wrapper">
+                        <select
+                            id="sort-select"
+                            class="select-glass"
+                            aria-label="Sort events">
 
-                        <option value="newest">
-                            Newest First
-                        </option>
+                            <option value="newest">
+                                Newest First
+                            </option>
 
-                        <option value="oldest">
-                            Oldest First
-                        </option>
+                            <option value="oldest">
+                                Oldest First
+                            </option>
 
-                    </select>
+                        </select>
+                    </div>
 
 
                     <div class="view-toggle">
@@ -326,6 +328,7 @@
             </div>
 
 
+            <!-- Danh sách card sẽ được render động vào đây -->
             <div
                 id="events-list"
                 class="events-grid"
@@ -363,10 +366,10 @@
                     </h2>
 
                     <p>
-            WITH YO, THROUGH EVERY CHAPTER<br>
-            A Vietnamese space for people who love Yoko Apasra<br>
-            Powered by love, protein & sunny-side-up behavior 🍳
-        </p>
+                        WITH YO, THROUGH EVERY CHAPTER<br>
+                        A Vietnamese space for people who love Yoko Apasra🤍<br>
+                        Powered by love, protein & sunny-side-up behavior 🍳
+                    </p>
 
                     <p class="about-slogan">
 
@@ -396,48 +399,11 @@
 
                     <div class="social-row">
 
-                        <a href="#">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>@Yoko_apasra</span>
-                        </a>
-
-                        <a href="#">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>@yoko</span>
-                        </a>
-
-                        <a href="#">
-                            <i class="fa-brands fa-tiktok"></i>
-                            <span>@apasraa</span>
-                        </a>
+                        <a href="#">Link</a>
 
                     </div>
 
                 </div>
-
-                <div class="social-group">
-
-                    <span class="social-title">
-
-                        FOLLOW VNHUB
-
-                    </span>
-
-                    <div class="social-row">
-
-                        <a href="#">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>@YokoApasraVNHub</span>
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <img
-                    class="social-chibi"
-                    src="../assets/images/chibi2.png"
-                    alt="VNHub">
 
             </div>
 
@@ -447,20 +413,7 @@
 
 </section>
 
-    <footer class="site-credit">
-
-        © 2026 Yoko Apasra VNHub.
-        Made with 🤍 by Vietnamese Fans •
-        Unofficial fan-made archive •
-        Non-commercial project.
-
-    </footer>
-
 </main>
 
-
-<script src="../js/events.js"></script>
-
 </body>
-
 </html>
