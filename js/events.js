@@ -100,45 +100,49 @@ function updateStats() {
    LATEST EVENT CARD (Lấy chuẩn sự kiện mới nhất phần tử)
 ====================================================== */
 
+/* ======================================================
+   LATEST EVENT CARD (Đã loại bỏ thẻ article trùng lặp)
+====================================================== */
+
 function renderLatest() {
     if (!latestCard || !events.length) return;
 
-    // Sửa lỗi: Lấy đúng phần tử đầu tiên trong mảng
+    // Lấy chuẩn phần tử đầu tiên trong mảng dữ liệu
     const item = events[0]; 
 
+    // ĐÃ LOẠI BỎ THẺ <article> BÊN TRONG:
+    // Bản thân thẻ div#latest-event-card ở file index.html đã mang sẵn class này rồi.
     latestCard.innerHTML = `
-        <article class="latest-card glass-card">
-            <div class="latest-image">
-                <img
-                    src="../assets/events/${item.folder}/${item.cover}.${item.format}"
-                    alt="${item.title}">
-            </div>
+        <div class="latest-image">
+            <img
+                src="../assets/events/${item.folder}/${item.cover}.${item.format}"
+                alt="${item.title}">
+        </div>
 
-            <div class="latest-content">
-                <span class="badge">
-                    ✦ LATEST EVENT
-                </span>
+        <div class="latest-content">
+            <span class="badge">
+                ✦ LATEST EVENT
+            </span>
 
-                <h2>
-                    ${item.title}
-                </h2>
+            <h2>
+                ${item.title}
+            </h2>
 
-                <p class="latest-meta">
-                    📅 ${item.date}
-                </p>
+            <p class="latest-meta">
+                📅 ${item.date}
+            </p>
 
-                <p class="latest-meta">
-                    📷 ${item.photos} photos archived
-                </p>
+            <p class="latest-meta">
+                📷 ${item.photos} photos archived
+            </p>
 
-                <a href="detail.html?id=${item.id}" class="btn-secondary latest-btn">
-                    <span>View Gallery &nbsp; →</span>
-                    <div class="icon-circle">
-                        ☾
-                    </div>
-                </a>
-            </div>
-        </article>
+            <a href="detail.html?id=${item.id}" class="btn-secondary latest-btn">
+                <span>View Gallery &nbsp; →</span>
+                <div class="icon-circle">
+                    ☾
+                </div>
+            </a>
+        </div>
     `;
 }
 
