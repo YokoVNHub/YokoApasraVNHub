@@ -280,82 +280,37 @@
     box-shadow: 0 4px 15px rgba(243, 151, 185, 0.35);
 }
 
-
 /* ======================================================
-   💻 RESPONSIVE MÁY TÍNH BẢNG (Max-width: 992px)
+   💻 RESPONSIVE MÁY TÍNH BẢNG (Max-width: 1024px)
 ====================================================== */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Chia thành 2 cột cân đối */
+        gap: 24px !important;
+    }
+
     .event-card {
         border-radius: 32px;
     }
 
-    .event-card::before {
-        border-radius: 34px;
-    }
-
     .event-thumb {
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 10; /* Tỷ lệ hiển thị poster chuẩn */
     }
 
-    /* Co giãn khối lịch nhỏ lại cho cân đối */
     .event-date-badge {
-        width: 78px;
-        padding: 14px 8px;
-        top: 18px;
-        left: 18px;
-        border-radius: 22px;
+        width: 76px;
+        padding: 12px 6px;
+        top: 16px;
+        left: 16px;
+        border-radius: 20px;
     }
 
-    .event-date-badge strong {
-        font-size: 1.7rem;
-    }
+    .event-date-badge strong { font-size: 1.6rem; }
+    .event-date-badge span { font-size: 0.75rem; margin-top: 6px; }
+    .event-date-badge small { display: none; } /* Ẩn năm để đỡ rối */
 
-    .event-date-badge span {
-        margin-top: 8px;
-        font-size: .8rem;
-    }
-
-    .event-date-badge small {
-        margin-top: 8px;
-        font-size: .7rem;
-    }
-
-    /* Điều chỉnh size bong bóng trên Tablet */
-    .b1 {
-        width: 46px;
-        height: 46px;
-        top: 18px;
-        right: 22px;
-    }
-
-    .b2 {
-        width: 60px;
-        height: 60px;
-        bottom: 90px;
-        right: -12px;
-    }
-
-    .event-info {
-        padding: 24px;
-    }
-
-    .event-info h2 {
-        font-size: 1.45rem;
-        min-height: 72px;
-    }
-
-    .event-meta {
-        margin-top: 18px;
-        gap: 12px;
-    }
-
-    .event-date {
-        font-size: .92rem;
-    }
-
-    .event-photos {
-        font-size: .95rem;
-    }
+    .event-info { padding: 22px; }
+    .event-info h2 { font-size: 1.35rem; min-height: 64px; }
 }
 
 
@@ -363,77 +318,97 @@
    📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
 ====================================================== */
 @media (max-width: 768px) {
+    /* 1. Thiết lập lại lưới hiển thị 1 cột đứng thoáng đãng */
+    .events-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 28px !important;
+        padding: 0 8px; /* Tạo khoảng cách với rìa màn hình điện thoại */
+    }
+
+    /* 2. Cấu trúc lại tấm Card trên Mobile */
     .event-card {
-        border-radius: 24px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.9); /* Tăng độ đặc nền để dễ đọc chữ */
+        box-shadow: 0 12px 30px rgba(255, 190, 220, 0.12);
+    }
+    
+    /* Tắt hiệu ứng nhấc card quá cao trên mobile để tránh giật lag khi cuộn trang */
+    .event-card:hover {
+        transform: translateY(-4px); 
     }
 
-    .event-card::before {
-        border-radius: 26px;
-    }
-
-    /* Ảnh chuyển sang tỉ lệ vuông 1:1 trên mobile giúp lướt xem rất gọn gọn, đẹp mắt */
+    /* 3. Phần hình ảnh hiển thị */
     .event-thumb {
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 16 / 10; /* Giữ tỷ lệ chữ nhật vàng cho poster idol */
     }
 
-    /* Thu nhỏ khối lịch tối ưu diện tích màn hình nhỏ */
+    /* 4. Khối lịch tối giản siêu đẹp chống lóa */
     .event-date-badge {
-        width: 58px;
+        width: 62px;
         padding: 10px 4px;
-        top: 12px;
-        left: 12px;
+        top: 14px;
+        left: 14px;
         border-radius: 16px;
+        background: rgba(0, 0, 0, 0.45); /* Tăng độ mờ tối để chữ trắng nổi bật */
     }
 
     .event-date-badge strong {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .event-date-badge span {
+        font-size: 0.65rem;
         margin-top: 4px;
-        font-size: .62rem;
+        letter-spacing: 0.05em;
     }
 
-    /* Ẩn năm sinh (small text) trên mobile để đỡ chật chội */
     .event-date-badge small {
         display: none;
     }
 
-    /* Ẩn bớt một bong bóng to b2 trên mobile để không làm mất bố cục che ảnh mặt idol */
+    /* 5. Bong bóng kính trên Mobile (Ẩn bớt bóng to để tránh che mặt idol trên màn hình nhỏ) */
     .b2 {
-        display: none;
+        display: none; 
     }
-    
     .b1 {
-        width: 36px;
-        height: 36px;
-        top: 12px;
-        right: 16px;
+        width: 38px;
+        height: 38px;
+        top: 14px;
+        right: 18px;
     }
 
+    /* 6. Phần chữ thông tin sự kiện */
     .event-info {
-        padding: 18px;
+        padding: 20px;
     }
 
     .event-info h2 {
         font-size: 1.25rem;
-        min-height: auto; /* Thả tự do dòng chữ không ép khoảng cách */
-        -webkit-line-clamp: 2;
+        line-height: 1.4;
+        min-height: auto; /* Thả tự do chiều cao để không bị khoảng trống thừa */
+        margin-bottom: 12px;
+        -webkit-line-clamp: 2; /* Giới hạn tối đa 2 dòng, tránh tràn chữ */
     }
 
     .event-meta {
-        margin-top: 14px;
-        gap: 10px;
-   }
-   
-.event-date {
-font-size: 0.85rem;
-   
-   }
-   
-.event-photos {
-font-size: 0.88rem;
-padding: 5px 12px;
-   }
-   
+        margin-top: 12px;
+        gap: 12px;
+    }
+
+    .event-date {
+        font-size: 0.88rem;
+    }
+
+    /* 7. Nút đếm số lượng ảnh kẹo ngọt trên Mobile */
+    .event-photos {
+        font-size: 0.88rem;
+        padding: 6px 14px;
+        width: 100%; /* Dãn rộng full chiều ngang phần info nhìn rất hiện đại */
+        justify-content: center; /* Căn giữa chữ và icon */
+        border-radius: 14px; /* Bo góc nhẹ nhàng hợp màn hình dọc */
+    }
+    
+    .event-card:hover .event-photos {
+        transform: translateX(0); /* Tắt hiệu ứng dịch ngang trên mobile */
+    }
 }
