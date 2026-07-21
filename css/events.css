@@ -1,5 +1,5 @@
 /* ======================================================
-   EVENTS PAGE
+   EVENTS PAGE & GLOBAL LINKS
 ====================================================== */
 
 .events-page {
@@ -17,6 +17,11 @@
 .site-credit {
     position: relative;
     z-index: 2;
+}
+
+/* KHÔI PHỤC: Hiệu ứng chuyển động mượt mà cho toàn bộ liên kết Back Link trong trang */
+.events-page a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ======================================================
@@ -64,7 +69,7 @@
 .events-bubbles span:nth-child(12){ width:220px; height:220px; bottom:-70px; right:-80px; animation-delay:4s; }
 
 /* ======================================================
-   HERO STYLE (Cấu trúc giao diện máy tính)
+   HERO STYLE
 ====================================================== */
 
 .events-hero {
@@ -162,56 +167,62 @@
 }
 
 /* ======================================================
-   LATEST EVENT CARD (Đã sửa lỗi loại bỏ xung đột bố cục đứng)
+   LATEST EVENT CARD (Khối ngang đè khối cực chuẩn)
 ====================================================== */
 
 .latest-section {
     margin-top: 140px;
 }
 
-.latest-card {
-    /* Ép buộc sử dụng bố cục Grid ngang cố định cho PC, triệt tiêu Flexbox */
+.events-page .latest-card {
     display: grid !important; 
     grid-template-columns: 420px 1fr !important;
+    align-items: center !important;
     flex-direction: row !important;
     
-    gap: 60px;
-    align-items: center;
-    padding: 38px;
-    border-radius: 40px;
-    background: rgba(255,255,255,.92);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    box-shadow: 0 25px 60px rgba(255,190,220,.12);
+    gap: 60px !important;
+    padding: 38px !important;
+    border-radius: 40px !important;
+    background: rgba(255,255,255,.92) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    box-shadow: 0 25px 60px rgba(255,190,220,.12) !important;
     
-    /* ÉP KHỐI ĐÈ LÊN HERO TRÊN PC */
-    margin-top: -120px; 
-    position: relative;
-    z-index: 10;
-    
-    /* Cho phép tràn bóng đổ tự nhiên */
+    margin-top: -120px !important; 
+    position: relative !important;
+    z-index: 10 !important;
     overflow: visible !important; 
+    
+    /* KHÔI PHỤC: Hiệu ứng chuyển động nhấc khối nhẹ nhàng cho riêng Latest Card khi hover */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Sửa khung bao bọc ảnh Latest tránh lỗi dựng dọc */
-.latest-image {
-    width: 100% !important;
+.events-page .latest-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 30px 70px rgba(255,190,220,.22) !important;
+}
+
+.events-page .latest-card .latest-image {
+    display: block !important;
+    width: 420px !important;
     height: 330px !important;
     overflow: hidden !important;
     border-radius: 32px !important;
 }
 
-.latest-image img {
+.events-page .latest-card .latest-image img {
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
     border-radius: 32px !important;
 }
 
-.latest-content {
+.events-page .latest-card .latest-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 18px;
+    gap: 18px !important;
+    text-align: left !important;
 }
 
 .latest-content h2 {
@@ -395,108 +406,155 @@
         font-size: 4.5rem;
     }
 
-    .hero-desc {
-        margin: 0 auto;
-    }
-
     .hero-image {
-        justify-content: center;
-    }
-
-    .hero-image img {
-        width: 100%;
-        max-width: 550px;
-        margin-right: 0;
-        margin-bottom: 0;
-    }
-
-    .hero-stats {
-        width: 100%;
-        max-width: 750px;
-        margin: 40px auto 0 auto;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-
-    .latest-section {
-        margin-top: 60px;
-    }
-
-    .latest-card {
-        grid-template-columns: 1fr !important;
-        gap: 30px;
-        padding: 24px;
-
-margin-top: -50px;
+justify-content: center;
 }
-.latest-image {
+.hero-image img {
+width: 100%;
+max-width: 550px;
+margin-right: 0;
+margin-bottom: 0;
+}
+.hero-stats {
+width: 100%;
+max-width: 750px;
+margin: 40px auto 0 auto;
+justify-content: space-around;
+flex-wrap: wrap;
+gap: 30px;
+}
+.latest-section {
+margin-top: 60px;
+}
+.events-page .latest-card {
+grid-template-columns: 1fr !important;
+gap: 30px !important;
+padding: 24px !important;
+margin-top: -50px !important;
+}
+.events-page .latest-card .latest-image {
+width: 100% !important;
 height: 280px !important;
 }
 }
 /* ======================================================
-📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
+   📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
 ====================================================== */
 @media (max-width: 768px) {
-.events-page {
-padding-bottom: 60px;
+    .events-page {
+        padding-bottom: 60px;
+    }
+
+    /* 1. ÉP BỐ CỤC HERO CHUYỂN DỌC HOÀN TOÀN */
+    .hero-layout {
+        grid-template-columns: 1fr !important; /* Chuyển từ 2 cột thành 1 cột đứng */
+        gap: 30px !important;
+        text-align: center !important; /* Căn giữa toàn bộ chữ cho đẹp mắt */
+        min-height: auto !important;
+        padding-top: 40px !important;
+    }
+
+    /* Căn giữa dòng mô tả sự kiện */
+    .hero-desc {
+        margin: 0 auto !important;
+        font-size: 0.98rem;
+        line-height: 1.7;
+    }
+
+    /* Thu nhỏ chữ tiêu đề trang để vừa khít màn hình dọc */
+    .hero-title {
+        font-size: 3.2rem !important;
+        margin: 15px 0 !important;
+        line-height: 1.1 !important;
+    }
+
+    /* 2. SỬA TRIỆT ĐỂ LỖI HÌNH ẢNH YOKO BỊ LỆCH RÌA */
+    .hero-image {
+        display: flex !important;
+        justify-content: center !important; /* Căn hình ảnh chính giữa màn hình */
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    .hero-image img {
+        width: 100% !important;
+        max-width: 340px !important; /* Giới hạn độ rộng vừa vặn với chiều ngang điện thoại */
+        height: auto !important;
+        margin: 0 auto !important; /* Reset hoàn toàn các khoảng cách âm cũ */
+        display: block !important;
+    }
+
+    /* 3. ĐIỀU CHỈNH KHỐI THỐNG KÊ SỐ LIỆU */
+    .hero-stats {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px !important;
+        gap: 20px !important;
+        border-radius: 24px !important;
+        margin: 30px 0 0 0 !important; /* Reset margin âm để không đè lên phần khác */
+        flex-direction: column !important; /* Xếp dọc các dòng thông số */
+    }
+
+    .hero-stat {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        gap: 14px !important;
+    }
+
+    .hero-stat-icon {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 1.2rem !important;
+    }
+
+    .hero-stat strong {
+        font-size: 1.5rem !important;
+    }
+
+    /* 4. ĐIỀU CHỈNH LATEST CARD TRÊN MOBILE */
+    .latest-section {
+        margin-top: 40px !important;
+    }
+
+    /* 5. CHỈNH SỬA TOOLBAR & BỘ LỌC THÁNG */
+    .events-toolbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 20px !important;
+        margin-bottom: 35px !important;
+    }
+
+    .month-filter {
+        gap: 8px !important;
+    }
+
+    .month-filter button {
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
+        flex: 1 !important;
+        text-align: center !important;
+        min-width: calc(33.33% - 8px) !important;
+    }
+
+    .toolbar-right {
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .filter-select-wrapper, 
+    .filter-select-wrapper select {
+        width: 100% !important;
+        max-width: 180px !important;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .events-bubbles span:nth-child(even) {
+        display: none !important;
+    }
 }
-.hero-title {
-font-size: 3.2rem;
-margin: 15px 0;
-}
-.hero-desc {
-font-size: 0.98rem;
-line-height: 1.7;
-}
-.hero-stats {
-padding: 20px;
-gap: 20px;
-border-radius: 24px;
-}
-.hero-stat {
-width: 100%;
-justify-content: flex-start;
-gap: 14px;
-}
-.hero-stat-icon {
-width: 52px;
-height: 52px;
-font-size: 1.2rem;
-}
-.hero-stat strong {
-font-size: 1.5rem;
-}
-.events-toolbar {
-flex-direction: column;
-align-items: stretch;
-gap: 20px;
-margin-bottom: 35px;
-}
-.month-filter {
-gap: 8px;
-}
-.month-filter button {
-padding: 8px 14px;
-font-size: 0.85rem;
-flex: 1;
-text-align: center;
-min-width: calc(33.33% - 8px);
-}
-.toolbar-right {
-justify-content: space-between;
-width: 100%;
-}
-.filter-select-wrapper,
-.filter-select-wrapper select {
-width: 100%;
-max-width: 180px;
-}
-.events-grid {
-grid-template-columns: 1fr !important;
-gap: 24px;
-}
-.events-bubbles span:nth-child(even) {
-display: none;
-}
-}
+
+
