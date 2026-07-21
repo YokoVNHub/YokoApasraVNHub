@@ -393,41 +393,207 @@
     transform:translateX(8px);
 }
 
-/* ==========================================
+/* ======================================================
    TABLET
-========================================== */
+====================================================== */
 
-@media (max-width:768px){
+@media (max-width:992px){
+
+    .event-card{
+
+        border-radius:32px;
+    }
+
+    .event-card::before{
+
+        border-radius:34px;
+    }
+
+    /* ==========================
+       THUMB
+    ========================== */
 
     .event-thumb{
-        height:160px;
+
+        aspect-ratio:16 / 10;
     }
+
+    /* ==========================
+       DATE BADGE
+    ========================== */
 
     .event-date-badge{
 
-        width:64px;
+        width:78px;
 
-        padding:12px 6px;
+        padding:14px 8px;
 
-        border-radius:18px;
+        top:18px;
+        left:18px;
+
+        border-radius:22px;
     }
 
     .event-date-badge strong{
-        font-size:1.3rem;
+
+        font-size:1.7rem;
     }
 
     .event-date-badge span{
-        font-size:.7rem;
-        margin-top:6px;
+
+        margin-top:8px;
+
+        font-size:.8rem;
     }
 
     .event-date-badge small{
-        font-size:.65rem;
-        margin-top:6px;
+
+        margin-top:8px;
+
+        font-size:.7rem;
     }
 
+    /* ==========================
+       BUBBLES
+    ========================== */
+
+    .b1{
+
+        width:46px;
+        height:46px;
+
+        top:18px;
+        right:22px;
+    }
+
+    .b2{
+
+        width:60px;
+        height:60px;
+
+        bottom:90px;
+        right:-12px;
+    }
+
+    /* ==========================
+       INFO
+    ========================== */
+
     .event-info{
+
+        padding:24px;
+    }
+
+    .event-info h2{
+
+        font-size:1.45rem;
+
+        min-height:72px;
+    }
+
+    .event-meta{
+
+        margin-top:18px;
+
+        gap:12px;
+    }
+
+    .event-date{
+
+        font-size:.92rem;
+    }
+
+    .event-photos{
+
+        font-size:.95rem;
+    }
+
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width:768px){
+
+    .event-card{
+
+        border-radius:24px;
+    }
+
+    .event-card::before{
+
+        border-radius:26px;
+    }
+
+    /* ==========================
+       THUMB
+    ========================== */
+
+    .event-thumb{
+
+        aspect-ratio:1 / 1;
+    }
+
+    /* ==========================
+       BADGE
+    ========================== */
+
+    .event-date-badge{
+
+        width:58px;
+
+        padding:10px 4px;
+
+        top:12px;
+        left:12px;
+
+        border-radius:16px;
+    }
+
+    .event-date-badge strong{
+
+        font-size:1.2rem;
+    }
+
+    .event-date-badge span{
+
+        margin-top:4px;
+
+        font-size:.62rem;
+    }
+
+    .event-date-badge small{
+
+        display:none;
+    }
+
+    /* ==========================
+       BUBBLE
+    ========================== */
+
+    .b1{
+
+        width:34px;
+        height:34px;
+
+        top:12px;
+        right:14px;
+    }
+
+    .b2{
+
+        display:none;
+    }
+
+    /* ==========================
+       INFO
+    ========================== */
+
+    .event-info{
+
         padding:16px;
+
         min-height:auto;
     }
 
@@ -435,82 +601,112 @@
 
         font-size:1rem;
 
-        min-height:50px;
-
         line-height:1.35;
+
+        min-height:48px;
 
         -webkit-line-clamp:2;
     }
 
     .event-meta{
 
-        margin-top:14px;
+        margin-top:12px;
 
-        gap:10px;
-
-        font-size:.8rem;
+        gap:8px;
     }
 
     .event-date{
-        font-size:.8rem;
+
+        font-size:.78rem;
     }
 
     .event-photos{
-        font-size:.85rem;
-    }
 
-    .b1,
-    .b2{
-        display:none;
+        font-size:.82rem;
     }
 
 }
 
-/* ==========================================
+/* ======================================================
    SMALL MOBILE
-========================================== */
+====================================================== */
 
-@media (max-width:430px){
+@media (max-width:576px){
 
     .event-card{
+
+        border-radius:20px;
+    }
+
+    .event-card::before{
+
         border-radius:22px;
     }
 
+    /* ==========================
+       THUMB
+    ========================== */
+
     .event-thumb{
-        height:130px;
+
+        aspect-ratio:1 / 1;
     }
+
+    /* ==========================
+       DATE BADGE
+    ========================== */
 
     .event-date-badge{
 
         width:52px;
 
-        top:12px;
-        left:12px;
+        padding:8px 4px;
 
-        padding:10px 4px;
+        top:10px;
+        left:10px;
 
         border-radius:14px;
     }
 
     .event-date-badge strong{
-        font-size:1rem;
+
+        font-size:1.05rem;
     }
 
     .event-date-badge span{
-        font-size:.6rem;
+
+        margin-top:2px;
+
+        font-size:.58rem;
     }
 
-    .event-date-badge small{
-        display:none;
+    /* ==========================
+       BUBBLE
+    ========================== */
+
+    .b1{
+
+        width:28px;
+        height:28px;
+
+        top:10px;
+        right:10px;
     }
+
+    /* ==========================
+       INFO
+    ========================== */
 
     .event-info{
-        padding:12px;
+
+        padding:14px;
     }
 
     .event-info h2{
 
-        font-size:.88rem;
+        font-size:.92rem;
+
+        line-height:1.35;
 
         min-height:42px;
     }
@@ -519,15 +715,143 @@
 
         margin-top:10px;
 
-        gap:8px;
+        gap:6px;
     }
 
     .event-date{
+
         font-size:.72rem;
     }
 
     .event-photos{
+
         font-size:.75rem;
+    }
+
+}
+
+/* ======================================================
+   EXTRA SMALL
+====================================================== */
+
+@media (max-width:430px){
+
+    .event-card{
+
+        border-radius:18px;
+    }
+
+    .event-card::before{
+
+        border-radius:20px;
+    }
+
+    /* ==========================
+       THUMB
+    ========================== */
+
+    .event-thumb{
+
+        aspect-ratio:1 / 1;
+    }
+
+    .event-thumb::before{
+
+        display:none;
+    }
+
+    /* ==========================
+       DATE BADGE
+    ========================== */
+
+    .event-date-badge{
+
+        width:46px;
+
+        padding:6px 2px;
+
+        top:8px;
+        left:8px;
+
+        border-radius:12px;
+    }
+
+    .event-date-badge strong{
+
+        font-size:.9rem;
+
+        line-height:1;
+    }
+
+    .event-date-badge span{
+
+        margin-top:2px;
+
+        font-size:.52rem;
+
+        letter-spacing:0;
+    }
+
+    .event-date-badge small{
+
+        display:none;
+    }
+
+    /* ==========================
+       BUBBLE
+    ========================== */
+
+    .b1{
+
+        width:22px;
+        height:22px;
+
+        top:8px;
+        right:8px;
+    }
+
+    .b2{
+
+        display:none;
+    }
+
+    /* ==========================
+       INFO
+    ========================== */
+
+    .event-info{
+
+        padding:12px;
+    }
+
+    .event-info h2{
+
+        font-size:.86rem;
+
+        line-height:1.35;
+
+        min-height:38px;
+    }
+
+    .event-meta{
+
+        margin-top:8px;
+
+        gap:5px;
+    }
+
+    .event-date{
+
+        font-size:.68rem;
+
+        gap:5px;
+    }
+
+    .event-photos{
+
+        font-size:.7rem;
+
+        gap:5px;
     }
 
 }
