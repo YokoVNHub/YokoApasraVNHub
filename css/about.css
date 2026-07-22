@@ -1,9 +1,9 @@
 /* ======================================================
-   PAGE
+   ABOUT PAGE
 ====================================================== */
 
 .about-page{
-    padding:70px 0 110px;
+    padding:35px 0 70px;
 }
 
 
@@ -12,7 +12,7 @@
 ====================================================== */
 
 .about-section{
-    padding:35px 0;
+    padding:14px 0;
 }
 
 
@@ -24,18 +24,17 @@
 
     text-align:center;
 
-    padding:40px 0 70px;
+    padding:0 0 35px;
 }
 
 .about-sub{
 
     display:inline-block;
 
-    margin-bottom:20px;
+    margin-bottom:16px;
 
     font-size:.95rem;
     font-weight:700;
-
     letter-spacing:1px;
 
     color:var(--primary);
@@ -47,7 +46,7 @@
 
     font-family:var(--font-heading);
 
-    font-size:4rem;
+    font-size:3.5rem;
     line-height:1.15;
 
     color:var(--text-dark);
@@ -55,12 +54,12 @@
 
 .about-hero p{
 
-    max-width:720px;
+    max-width:760px;
 
-    margin:28px auto 0;
+    margin:22px auto 0;
 
-    font-size:1.1rem;
-    line-height:1.8;
+    font-size:1.05rem;
+    line-height:1.9;
 
     color:var(--text-light);
 }
@@ -72,61 +71,63 @@
 
 .section-title{
 
+    margin:0 0 30px;
+
     text-align:center;
-
-    margin:0 0 45px;
-
-    font-size:2.2rem;
-
-    color:var(--text-dark);
-}
-
-
-/* ======================================================
-   CARDS
-====================================================== */
-
-.about-card{
-
-    padding:50px;
-
-    border-radius:40px;
-
-    background:
-        rgba(255,255,255,.82);
-
-    backdrop-filter:blur(24px);
-
-    border:
-        1px solid
-        rgba(255,190,220,.45);
-
-    box-shadow:
-        0 20px 45px rgba(255,190,220,.12);
-}
-
-.about-card.large{
-
-    max-width:1050px;
-
-    margin:0 auto;
-}
-
-.about-card h2{
-
-    margin:0 0 28px;
 
     font-size:2rem;
 
     color:var(--text-dark);
 }
 
-.about-card p{
+
+/* ======================================================
+   GLASS CARD
+====================================================== */
+
+.about-card{
+
+    padding:32px;
+
+    border-radius:36px;
+
+    background:
+        rgba(255,255,255,.82);
+
+    backdrop-filter:blur(22px);
+
+    border:
+        1px solid
+        rgba(255,190,220,.45);
+
+    box-shadow:
+        0 15px 40px
+        rgba(255,190,220,.12);
+}
+
+.about-card.large{
+
+    max-width:1050px;
+
+    margin:auto;
+}
+
+
+.about-card h2{
 
     margin:0 0 20px;
 
-    font-size:1.05rem;
-    line-height:2;
+    font-size:1.9rem;
+
+    color:var(--text-dark);
+}
+
+
+.about-card p{
+
+    margin:0 0 14px;
+
+    line-height:1.85;
 
     color:var(--text-light);
 }
@@ -147,44 +148,47 @@
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(240px,1fr)
+            minmax(250px,1fr)
         );
 
-    gap:26px;
+    gap:22px;
 }
 
 
 .feature-card{
 
-    padding:38px 30px;
+    padding:30px 26px;
 
     text-align:center;
 
-    border-radius:34px;
+    border-radius:32px;
 
     background:
         rgba(255,255,255,.82);
 
-    backdrop-filter:blur(22px);
+    backdrop-filter:blur(20px);
 
     border:
         1px solid
         rgba(255,190,220,.45);
 
     box-shadow:
-        0 15px 40px rgba(255,190,220,.12);
+        0 15px 35px
+        rgba(255,190,220,.10);
 
-    transition:.4s;
+    transition:.35s;
 }
 
 .feature-card:hover{
 
     transform:
-        translateY(-8px);
+        translateY(-6px);
 
     box-shadow:
-        0 25px 55px rgba(255,190,220,.22);
+        0 22px 50px
+        rgba(255,190,220,.18);
 }
+
 
 .feature-card i{
 
@@ -192,15 +196,17 @@
 
     color:var(--primary);
 
-    margin-bottom:22px;
+    margin-bottom:18px;
 }
+
 
 .feature-card h3{
 
-    margin:0 0 14px;
+    margin:0 0 12px;
 
     color:var(--text-dark);
 }
+
 
 .feature-card p{
 
@@ -220,14 +226,14 @@
 
     text-align:center;
 
-    margin:0;
-
-    font-size:2rem;
-    line-height:1.6;
+    font-size:1.7rem;
+    line-height:1.7;
 
     font-style:italic;
 
     color:var(--primary-dark);
+
+    margin:0;
 }
 
 
@@ -237,53 +243,57 @@
 
 .about-ending-section{
 
-    padding:50px 0 70px;
+    padding:25px 0 45px;
 }
 
-.about-ending{
 
-    text-align:center;
+.about-ending{
 
     max-width:900px;
 
     margin:auto;
+
+    text-align:center;
 }
+
 
 .about-ending span{
 
     display:block;
 
-    margin-bottom:18px;
+    margin-bottom:14px;
 
-    font-size:1rem;
     font-weight:700;
 
     color:var(--primary);
 }
 
+
 .about-ending h2{
 
-    margin:0 0 24px;
+    margin:0 0 20px;
 
-    font-size:3rem;
+    font-size:2.6rem;
 
     color:var(--text-dark);
 }
 
+
 .about-ending p{
 
-    margin:0 0 18px;
+    margin:0 0 14px;
 
-    font-size:1.2rem;
+    font-size:1.1rem;
 
     color:var(--text-light);
 }
+
 
 .about-ending small{
 
     display:block;
 
-    font-size:1rem;
+    margin-top:10px;
 
     color:var(--primary-dark);
 }
@@ -308,85 +318,101 @@
 @media(max-width:992px){
 
     .about-hero h1{
-        font-size:3.2rem;
+        font-size:3rem;
     }
 
     .about-card{
-        padding:42px;
+        padding:30px;
     }
 
     .about-ending h2{
-        font-size:2.6rem;
+        font-size:2.3rem;
     }
 }
 
+
+/* ======================================================
+   TABLET
+====================================================== */
 
 @media(max-width:768px){
 
     .about-page{
-        padding:50px 0 80px;
+        padding:28px 0 55px;
     }
 
     .about-section{
-        padding:25px 0;
+        padding:10px 0;
     }
 
     .about-hero{
-        padding:20px 0 50px;
+        padding:0 0 25px;
     }
 
     .about-hero h1{
-        font-size:2.6rem;
+        font-size:2.4rem;
     }
 
     .about-card{
-        padding:34px 28px;
-        border-radius:32px;
+        padding:26px;
+        border-radius:30px;
     }
 
     .about-card h2{
-        font-size:1.7rem;
+        font-size:1.6rem;
     }
 
     .big-quote{
-        font-size:1.55rem;
+        font-size:1.35rem;
     }
 
     .about-ending h2{
-        font-size:2.1rem;
+        font-size:2rem;
     }
 }
 
 
+/* ======================================================
+   MOBILE
+====================================================== */
+
 @media(max-width:560px){
 
+    .about-page{
+        padding:24px 0 45px;
+    }
+
     .about-hero h1{
-        font-size:2rem;
+        font-size:1.95rem;
     }
 
     .about-hero p{
-        font-size:1rem;
+        font-size:.98rem;
     }
 
     .about-card{
-        padding:28px 22px;
+        padding:22px;
     }
 
     .about-card h2{
-        font-size:1.45rem;
+        font-size:1.4rem;
     }
 
     .about-card p{
-        font-size:.98rem;
-        line-height:1.9;
+        font-size:.95rem;
+        line-height:1.8;
+    }
+
+    .feature-card{
+        padding:24px 20px;
     }
 
     .big-quote{
-        font-size:1.3rem;
+        font-size:1.15rem;
     }
 
     .about-ending h2{
-        font-size:1.7rem;
+        font-size:1.6rem;
     }
 
     .about-ending p{
