@@ -1,77 +1,59 @@
-/* ======================================================
-   ABOUT PAGE
-====================================================== */
-
 .about-page{
-    width:100%;
-    overflow-x:hidden;
-
-    padding:40px 0 90px;
-}
-
-
-/* ======================================================
-   HERO
-====================================================== */
-
-.about-hero{
 
     position:relative;
 
+    overflow:hidden;
+
+    padding:30px 0 80px;
+}
+
+
+/* INTRO */
+
+.about-intro{
+
     text-align:center;
 
-    padding:50px 20px 60px;
-
-    margin-bottom:55px;
-
-    overflow:hidden;
+    margin-bottom:60px;
 }
 
 .about-kicker{
 
     display:inline-block;
 
-    padding:12px 28px;
+    padding:12px 24px;
 
     border-radius:999px;
 
     background:
-        rgba(255,255,255,.7);
-
-    backdrop-filter:blur(25px);
+        rgba(255,255,255,.75);
 
     border:
-        1px solid rgba(255,215,230,.55);
+        1px solid rgba(255,220,235,.7);
 
-    color:#be7d9d;
+    color:#c086a2;
 
-    font-size:.85rem;
+    font-size:.82rem;
     font-weight:700;
 
-    letter-spacing:.14em;
-
-    margin-bottom:28px;
+    letter-spacing:.18em;
 }
 
-.about-hero h1{
+.about-intro h1{
 
-    margin:0;
+    margin:28px 0 20px;
 
     font-size:
-        clamp(3rem,7vw,5.6rem);
+        clamp(2.7rem,7vw,5rem);
 
     line-height:1.08;
-
-    color:var(--text-dark);
 }
 
-.about-hero p{
+.about-intro p{
 
-    max-width:760px;
+    max-width:700px;
 
-    margin:28px auto 0;
-
-    font-size:1.15rem;
+    margin:auto;
 
     line-height:1.9;
 
@@ -79,11 +61,18 @@
 }
 
 
-/* ======================================================
-   BUBBLES
-====================================================== */
+/* BUBBLES */
 
-.hero-bubble{
+.page-bubbles{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+}
+
+.bubble{
 
     position:absolute;
 
@@ -92,74 +81,96 @@
     background:
         rgba(255,255,255,.35);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(25px);
 
     border:
-        1px solid rgba(255,255,255,.4);
+        1px solid rgba(255,255,255,.45);
 
-    opacity:.45;
-
-    pointer-events:none;
+    animation:
+        floatBubble 8s ease-in-out infinite;
 }
 
-.b1{
-    width:130px;
-    height:130px;
+.bubble-1{
+    width:140px;
+    height:140px;
 
-    left:12%;
-    top:10px;
+    top:100px;
+    left:-50px;
 }
 
-.b2{
-    width:85px;
-    height:85px;
+.bubble-2{
+    width:90px;
+    height:90px;
 
-    right:15%;
-    top:40px;
+    top:550px;
+    right:5%;
 }
 
-.b3{
-    width:60px;
-    height:60px;
+.bubble-3{
+    width:70px;
+    height:70px;
 
-    left:55%;
-    bottom:0;
+    top:1200px;
+    left:7%;
+}
+
+.bubble-4{
+    width:110px;
+    height:110px;
+
+    top:1800px;
+    right:-30px;
+}
+
+.bubble-5{
+    width:70px;
+    height:70px;
+
+    top:2400px;
+    left:70%;
+}
+
+@keyframes floatBubble{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-20px);
+    }
 }
 
 
-/* ======================================================
-   SECTION
-====================================================== */
+/* SECTION */
 
 .about-section{
-    margin-bottom:65px;
+    margin-bottom:50px;
 }
 
 .chapter-label{
 
-    margin-bottom:18px;
+    display:block;
 
-    color:#c58ca7;
+    margin-bottom:20px;
 
-    font-size:.85rem;
+    font-size:.82rem;
+    font-weight:700;
+
+    color:#c38aa6;
 
     letter-spacing:.18em;
-
-    font-weight:700;
 }
 
 
-/* ======================================================
-   GRID
-====================================================== */
+/* GRID */
 
 .about-grid{
 
     display:grid;
 
     grid-template-columns:
-        minmax(0,1.5fr)
-        minmax(280px,.7fr);
+        1.5fr .9fr;
 
     gap:28px;
 
@@ -167,15 +178,15 @@
 }
 
 
-/* ======================================================
-   GLASS
-====================================================== */
+/* GLASS */
 
-.glass-card{
+.glass-card,
+.timeline-content,
+.disclaimer-card{
 
-    padding:38px;
+    padding:34px;
 
-    border-radius:38px;
+    border-radius:36px;
 
     background:
         rgba(255,255,255,.78);
@@ -183,47 +194,30 @@
     backdrop-filter:blur(30px);
 
     border:
-        1px solid rgba(255,215,230,.55);
+        1px solid rgba(255,220,235,.6);
 
     box-shadow:
-        0 18px 45px rgba(255,205,225,.12);
-}
-
-.glass-card h2{
-
-    margin-top:0;
-    margin-bottom:24px;
-
-    font-size:2rem;
-
-    color:var(--text-dark);
-}
-
-.glass-card p{
-
-    line-height:1.9;
-
-    color:var(--text-light);
-}
-
-.glass-card.center{
-
-    text-align:center;
+        0 18px 40px rgba(255,215,230,.12);
 }
 
 
-/* ======================================================
-   MINI CARDS
-====================================================== */
+/* MINI */
 
 .mini-cards{
 
     display:grid;
 
+    grid-template-columns:
+        repeat(2,1fr);
+
     gap:22px;
 }
 
 .mini-card{
+
+    min-height:120px;
+
+    border-radius:32px;
 
     display:flex;
     flex-direction:column;
@@ -231,24 +225,13 @@
     justify-content:center;
     align-items:center;
 
-    gap:14px;
-
-    min-height:110px;
-
-    padding:26px;
-
-    border-radius:34px;
+    gap:12px;
 
     background:
         rgba(255,255,255,.78);
 
-    backdrop-filter:blur(25px);
-
     border:
-        1px solid rgba(255,215,230,.55);
-
-    box-shadow:
-        0 15px 35px rgba(255,215,235,.1);
+        1px solid rgba(255,220,235,.6);
 
     transition:.35s;
 }
@@ -256,39 +239,18 @@
 .mini-card:hover{
 
     transform:
-        translateY(-6px);
+        translateY(-5px);
 }
 
 .mini-card i{
 
-    font-size:2rem;
+    font-size:1.9rem;
 
-    color:#f08fb5;
-}
-
-.mini-card span{
-
-    color:#af7392;
-
-    font-weight:700;
+    color:#f295bb;
 }
 
 
-/* ======================================================
-   TITLES
-====================================================== */
-
-.section-title{
-
-    margin:0 0 35px;
-
-    font-size:2.4rem;
-}
-
-
-/* ======================================================
-   TIMELINE
-====================================================== */
+/* TIMELINE */
 
 .timeline{
 
@@ -311,7 +273,7 @@
 
     background:
         linear-gradient(
-            #ffd0df,
+            #ffd3e2,
             transparent
         );
 }
@@ -320,15 +282,15 @@
 
     position:relative;
 
-    margin-bottom:32px;
+    margin-bottom:28px;
 }
 
 .dot{
 
     position:absolute;
 
-    left:-41px;
-    top:10px;
+    left:-40px;
+    top:12px;
 
     width:18px;
     height:18px;
@@ -339,147 +301,51 @@
         linear-gradient(
             135deg,
             #ff9fc3,
-            #ffc2d7
+            #ffc6d8
         );
-
-    box-shadow:
-        0 0 20px rgba(255,180,220,.4);
-}
-
-.timeline-content{
-
-    padding:30px;
-
-    border-radius:32px;
-
-    background:
-        rgba(255,255,255,.78);
-
-    border:
-        1px solid rgba(255,215,230,.55);
-}
-
-.timeline-content h3{
-
-    margin-top:0;
-    margin-bottom:12px;
-}
-
-.timeline-content p{
-
-    margin:0;
-
-    line-height:1.8;
-
-    color:var(--text-light);
 }
 
 
-/* ======================================================
-   FEATURES
-====================================================== */
-
-.features-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:24px;
-}
-
-.feature-card{
-
-    padding:36px 25px;
-
-    border-radius:34px;
-
-    text-align:center;
-
-    background:
-        rgba(255,255,255,.78);
-
-    border:
-        1px solid rgba(255,215,230,.55);
-
-    transition:.35s;
-}
-
-.feature-card:hover{
-
-    transform:
-        translateY(-6px);
-}
-
-.feature-card i{
-
-    font-size:2rem;
-
-    color:#ff94bb;
-}
-
-.feature-card h3{
-
-    margin-top:18px;
-
-    font-size:1rem;
-}
-
-
-/* ======================================================
-   QUOTE
-====================================================== */
+/* QUOTE */
 
 .quote-banner{
 
+    padding:55px 35px;
+
     text-align:center;
 
-    margin-bottom:70px;
-
-    padding:65px 35px;
-
     border-radius:45px;
+
+    margin-bottom:50px;
 
     background:
         linear-gradient(
             135deg,
             rgba(255,250,252,.95),
-            rgba(255,255,255,.8)
+            rgba(255,255,255,.85)
         );
-
-    box-shadow:
-        0 20px 45px rgba(255,215,230,.12);
 }
 
 .quote-banner span{
 
     font-size:4rem;
 
-    color:#ffb4cf;
+    color:#ffb8cf;
 }
 
 .quote-banner p{
 
-    max-width:850px;
-
-    margin:auto;
-
-    font-size:2.2rem;
+    font-size:2rem;
 
     line-height:1.5;
-
-    font-family:var(--font-heading);
 }
 
 
-/* ======================================================
-   ENDING
-====================================================== */
+/* ENDING */
 
 .ending{
 
-    margin-top:35px;
+    margin-top:30px;
 }
 
 .ending strong{
@@ -488,142 +354,47 @@
 
     margin-bottom:15px;
 
-    font-size:1.4rem;
-}
-
-.ending span{
-
-    display:block;
-
-    margin-top:18px;
-
-    color:#c687a5;
-
-    font-weight:700;
+    font-size:1.3rem;
 }
 
 
-/* ======================================================
-   DISCLAIMER
-====================================================== */
-
-.disclaimer-card{
-
-    padding:40px;
-
-    border-radius:40px;
-
-    background:
-        rgba(255,255,255,.78);
-
-    border:
-        1px solid rgba(255,215,230,.55);
-}
-
-.disclaimer-card h2{
-
-    margin-top:0;
-
-    margin-bottom:24px;
-}
-
-.disclaimer-card p{
-
-    line-height:1.9;
-
-    color:var(--text-light);
-}
-
-
-/* ======================================================
-   TABLET
-====================================================== */
+/* MOBILE */
 
 @media(max-width:992px){
 
     .about-grid{
         grid-template-columns:1fr;
     }
-
-    .features-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
 }
-
-
-/* ======================================================
-   MOBILE
-====================================================== */
 
 @media(max-width:768px){
 
-    .about-page{
-
-        padding:35px 0 70px;
+    .mini-cards{
+        grid-template-columns:1fr 1fr;
     }
 
-    .about-hero{
-
-        padding:35px 20px 45px;
+    .quote-banner p{
+        font-size:1.45rem;
     }
 
     .glass-card,
     .timeline-content,
     .disclaimer-card{
-
         padding:28px;
-    }
-
-    .quote-banner{
-
-        padding:45px 25px;
-    }
-
-    .quote-banner p{
-
-        font-size:1.6rem;
-    }
-
-    .features-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .mini-card{
-
-        min-height:95px;
     }
 }
 
+@media(max-width:576px){
 
-/* ======================================================
-   SMALL MOBILE
-====================================================== */
-
-@media(max-width:480px){
-
-    .about-hero h1{
-
-        font-size:2.5rem;
+    .mini-cards{
+        grid-template-columns:1fr;
     }
 
-    .section-title{
-
-        font-size:2rem;
+    .about-intro h1{
+        font-size:2.4rem;
     }
 
     .quote-banner p{
-
-        font-size:1.35rem;
-    }
-
-    .timeline{
-
-        padding-left:35px;
-    }
-
-    .dot{
-
-        left:-32px;
+        font-size:1.25rem;
     }
 }
