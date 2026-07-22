@@ -241,14 +241,20 @@ document.addEventListener("DOMContentLoaded", () => {
     thumbPrev?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft -= 150; });
     thumbNext?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft += 150; });
 
+    // ĐÃ SỬA: Thay thế đoạn click lỗi bằng đoạn code chạy trực tiếp không qua trung gian
     document.addEventListener("click", e => {
         const trigger = e.target.closest(".lightbox-trigger");
-        if (trigger) { 
-            e.preventDefault(); 
-            collect(); 
-            open(gallery.indexOf(trigger), trigger); 
+        
+        if (trigger) {
+            e.preventDefault();
+            
+            // ĐÃ SỬA: Gom thẳng lệnh gom ảnh vào đây để sửa lỗi gạch chân đỏ "collect is not defined"
+            gallery = [...document.querySelectorAll(".lightbox-trigger")];
+            
+            open(gallery.indexOf(trigger), trigger);
         }
     });
+
 closeBtn?.addEventListener("click", close);
 nextBtn?.addEventListener("click", () => { current = (current + 1) % gallery.length; show(current); });
 prevBtn?.addEventListener("click", () => { current = (current - 1 + gallery.length) % gallery.length; show(current); });
