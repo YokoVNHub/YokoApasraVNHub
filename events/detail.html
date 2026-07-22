@@ -165,47 +165,55 @@
 
 
 <!-- ======================================================
-     LIGHTBOX (Cấu trúc mới: Gom toàn bộ cụm điều khiển dạt xuống đáy)
+     LIGHTBOX PHIÊN BẢN PREMIUM (Tích hợp dải ảnh & Khôi phục hiệu ứng nút bấm)
 ====================================================== -->
 <div id="lightbox" class="lightbox">
 
-    <!-- Thanh đếm số góc trên bên trái giữ vị trí biệt lập sạch sẽ -->
-    <div id="lightbox-counter" class="lightbox-counter"></div>
+    <!-- TOP CONTROL BAR (Góc trên màn hình) -->
+    <div class="lightbox-top-bar">
+        <!-- 1. Thanh tiến trình góc trái -->
+        <div id="lightbox-counter" class="lightbox-counter"></div>
 
-    <!-- Hai nút mũi tên điều hướng ảnh trái/phải -->
-    <button type="button" class="lightbox-prev" aria-label="Previous image">❮</button>
-
-    <div class="lightbox-stage">
-        <div class="lightbox-image-container">
-            <img id="lightbox-image" alt="" draggable="false">
-        </div>
-    </div>
-
-    <button type="button" class="lightbox-next" aria-label="Next image">❯</button>
-
-    <!-- 🌟 DOCK ĐIỀU KHIỂN MỜ KÍNH ĐÁY MÀN HÌNH CHUẨN PHÁC HỌA CỦA BẠN -->
-    <div class="lightbox-bottom-bar">
-        
-        <!-- Hàng 1: Dòng tiêu đề chữ nằm gọn gàng bên trong thanh dock -->
-        <p id="lightbox-caption" class="lightbox-caption"></p>
-        
-        <!-- Hàng 2: Cặp nút bấm gom chung nằm song song, thẳng hàng tuyệt đối -->
-        <div class="lightbox-buttons-group">
+        <!-- 2. Cụm nút hành động góc phải -->
+        <div class="lightbox-action-buttons">
             
-            <!-- Nút Download Gradient kẹo ngọt chứa icon mặt trăng đuôi chữ -->
+            <!-- KHÔI PHỤC: Thẻ chứa vòng tròn mặt trăng và bong bóng bay gốc -->
             <a id="lightbox-download" class="btn-download lightbox-download" href="" target="_blank" rel="noopener noreferrer">
                 <span>Download Original</span>
                 <div class="moon">☾</div>
             </a>
-
-            <!-- Nút đóng dấu X đồng bộ thon gọn nằm ngay bên cạnh -->
-            <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
             
+            <button type="button" class="lightbox-favorite" aria-label="Favorite">♡</button>
+            <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+        </div>
+    </div>
+
+    <!-- MAIN STAGE (Khu vực ảnh trung tâm) -->
+    <div class="lightbox-stage">
+        <button type="button" class="lightbox-prev" aria-label="Previous image">❮</button>
+
+        <div class="lightbox-image-container">
+            <img id="lightbox-image" alt="" draggable="false">
+            <button type="button" class="lightbox-zoom-btn" aria-label="Zoom image">⛶</button>
+        </div>
+
+        <button type="button" class="lightbox-next" aria-label="Next image">❯</button>
+    </div>
+
+    <!-- BOTTOM INFO & THUMBNAILS (Khu vực đáy màn hình) -->
+    <div class="lightbox-bottom-wrapper">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        
+        <!-- Thanh Thumbnail Strip lướt ảnh nhỏ -->
+        <div class="lightbox-thumbnails-container">
+            <button type="button" class="thumb-nav thumb-prev">❮</button>
+            <div id="lightbox-thumbs-list" class="lightbox-thumbs-list"></div>
+            <button type="button" class="thumb-nav thumb-next">❯</button>
         </div>
     </div>
 
 </div>
-
+    
 <footer class="site-credit">
     © 2026 Yoko Apasra VNHub.
     Made with 🤍 by Vietnamese Fans •
