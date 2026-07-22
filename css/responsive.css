@@ -415,7 +415,7 @@ body{
 
 /* ======================================================
    📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
-   Vá lỗi vỡ dòng Home, dãn khoảng cách Events, khóa hàng Exclusive
+   Vá lề nút Home, dãn cách số Events, khóa 1 hàng tim Exclusive
 ====================================================== */
 @media (max-width: 768px) {
 
@@ -479,27 +479,25 @@ body{
         width: fit-content !important;
     }
 
-    /* ----------------==================================
-       ĐÃ SỬA: FEATURED GALLERY TIÊU ĐỀ & NÚT DÀN HÀNG NGANG
-    -------------------------------------------------- */
+    /* FEATURED GALLERY TIÊU ĐỀ & NÚT DÀN HÀNG NGANG */
     .featured-head {
         display: flex !important;
-        flex-direction: row !important; /* DÀN HÀNG NGANG CHỮ VÀ NÚT */
-        justify-content: space-between !important; /* Đẩy sang 2 bên lề */
-        align-items: center !important; /* Căn giữa thẳng hàng trục dọc */
+        flex-direction: row !important; 
+        justify-content: space-between !important; 
+        align-items: center !important; 
         width: 100% !important;
         margin-bottom: 24px !important;
         gap: 12px !important;
     }
 
     .featured-head h2 {
-        font-size: 1.35rem !important; /* Thu nhỏ chữ tiêu đề vừa vặn bên trái */
+        font-size: 1.35rem !important; 
         margin: 0 !important;
         text-align: left !important;
         white-space: nowrap !important;
     }
 
-    /* Thu nhỏ nút "View All Photos" kẹo ngọt nằm gọn bên phải */
+    /* ĐÃ SỬA: Thêm margin-right giúp nút bấm nhích vào trong lề tinh tế */
     .featured-head .btn-secondary,
     .featured-head .view-all-btn,
     .featured-head a {
@@ -507,6 +505,7 @@ body{
         padding: 8px 14px !important;
         width: max-content !important;
         margin: 0 !important;
+        margin-right: 4px !important; /* Đẩy nút nhích vào trong rìa phải */
         white-space: nowrap !important;
     }
 
@@ -516,7 +515,7 @@ body{
 
 
     /* ======================================================
-       TRANG EVENTS (ẨN ẢNH HERO - DÃN KHOẢNG CÁCH THANH SỐ)
+       TRANG EVENTS (ẨN ẢNH HERO - GIỮ KHOẢNG CÁCH KHUNG SỐ)
     ====================================================== */
     .events-hero .hero-image {
         display: none !important;
@@ -541,6 +540,11 @@ body{
         line-height: 1.2 !important;
     }
 
+    .hero-desc {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+    }
+
     /* THANH SỐ LIỆU SỰ KIỆN DÀN NGANG */
     .hero-stats {
         display: flex !important;
@@ -552,9 +556,7 @@ body{
         padding: 14px 10px !important; 
         border-radius: 20px !important;
         gap: 10px !important;
-        
-        /* ĐÃ SỬA: Tăng khoảng cách lên 50px tạo độ dãn thoáng hoàn hảo với Latest Event */
-        margin: 24px 0 50px 0 !important; 
+        margin: 24px 0 0 0 !important; /* Reset lại margin-bottom về 0 */
     }
 
     .hero-stat {
@@ -564,42 +566,24 @@ body{
         flex: 1 !important;
     }
 
-    .hero-stat-icon {
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 1rem !important;
-    }
-
-    .hero-stat strong {
-        font-size: 1.15rem !important;
-        line-height: 1.1 !important;
-    }
-
-    .hero-stat span {
-        font-size: 0.65rem !important;
-        white-space: nowrap !important; 
-    }
+    .hero-stat-icon { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
+    .hero-stat strong { font-size: 1.15rem !important; line-height: 1.1 !important; }
+    .hero-stat span { font-size: 0.65rem !important; white-space: nowrap !important; }
 
 
     /* ======================================================
-       TRANG EXCLUSIVE (KHÓA TIÊU ĐỀ TRÊN CÙNG 1 HÀNG)
+       TRANG EXCLUSIVE (KHÓA CHỮ VÀ TIM TUYỆT ĐỐI TRÊN 1 HÀNG)
     ====================================================== */
     
-    /* ----------------==================================
-       ĐÃ SỬA: CHỮ ORIGINAL COLLECTIONS VÀ TIM TRÊN 1 HÀNG
-    -------------------------------------------------- */
+    /* ĐÃ SỬA: Hạ nhẹ font-size và khóa cứng chuỗi văn bản không cho bẻ dòng icon tim */
     .exclusive-section-title {
-        font-size: 1.35rem !important; /* Hạ nhỏ size chữ tinh tế chống vỡ */
+        font-size: 1.3rem !important; /* Hạ nhỏ tinh tế để khít lề di động */
         text-align: center !important;
         margin-bottom: 24px !important;
         
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 8px !important;
-        
-        /* Khóa chặt văn bản luôn nằm trên cùng một hàng ngang, cấm xuống dòng */
+        /* ÉP BUỘC CỐ ĐỊNH: Chữ và trái tim luôn nằm chung trên một hàng ngang */
         white-space: nowrap !important; 
+        display: block !important; 
         width: 100% !important;
     }
 
@@ -608,7 +592,8 @@ body{
        LATEST CARD BÊN DƯỚI GIAO DIỆN
     ====================================================== */
     .latest-section {
-        margin-top: 0 !important; 
+        /* ĐÃ SỬA: Tạo khoảng cách chuẩn 24px thoáng đãng dưới thanh số liệu sự kiện */
+        margin-top: 24px !important; 
     }
 
     .latest-card {
