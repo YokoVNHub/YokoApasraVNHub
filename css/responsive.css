@@ -416,236 +416,195 @@ body{
 
 /* ======================================================
    📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
-   Đã vá lỗi chính tả và tối ưu hóa cân đối trung tâm 100%
+   Ẩn bỏ hoàn toàn Hero ảnh - Đẩy chữ lên sát Header tối giản
 ====================================================== */
+@media (max-width: 768px) {
 
-@media (max-width:768px){
-
-    body{
-        padding-top:76px;
+    body {
+        padding-top: 76px;
     }
 
-    .container{
-        width:min(100% - 36px,1200px);
+    .container {
+        width: min(100% - 36px, 1200px);
     }
 
-    /* ---------- Header ---------- */
+    /* ---------- HEADER ---------- */
+    .header-container { min-height: 76px; }
+    .logo img { width: 84px; }
+    .logo-text { display: none; }
+    .nav-menu { gap: 14px; }
+    .nav-menu a { padding: 10px 16px; font-size: .9rem; }
 
-    .header-container{
-        min-height:76px;
+
+    /* ======================================================
+       TRANG HOME (ẨN HERO ẢNH - ĐẨY LỊCH TRÌNH LÊN SÁT ĐẦU)
+    ====================================================== */
+    
+    /* 1. Ẩn hoàn toàn khối bọc Hero khổng lồ của trang chủ */
+    .home-hero,
+    .home-hero-visual {
+        display: none !important;
     }
 
-    .logo img{
-        width:84px;
+    /* 2. Đẩy phần Lịch trình sự kiện (Schedule) lên gần sát Header */
+    .schedule-home {
+        margin-top: 24px !important; /* Tạo khoảng cách nhỏ vừa vặn với Header */
+        padding-top: 0 !important;
     }
 
-    .logo-text{
-        display:none;
+    .schedule-card {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 22px;
+        gap: 24px;
+        border-radius: 24px;
     }
 
-    .nav-menu{
-        gap:14px;
+    .schedule-copy h2,
+    .schedule-highlights h2 {
+        font-size: 1.45rem;
+        text-align: center !important;
     }
 
-    .nav-menu a{
-        padding:10px 16px;
-        font-size:.9rem;
+    .schedule-poster img {
+        max-width: 260px;
+        margin: 0 auto !important;
+        display: block;
     }
 
-    /* ---------- Home Hero (ĐÃ SỬA: Ảnh lên trước, chữ căn giữa, nút giữa trục dọc) ---------- */
-
-    .home-hero{
-        padding:40px 0 60px !important;
+    .schedule-item {
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+        padding: 16px;
     }
 
-    .home-hero-layout{
-        display:flex !important;
-        flex-direction:column !important; /* Đẩy ảnh lên trước chữ */
-        align-items:center !important;
-        text-align:center !important;
-        gap:24px !important;
+    .schedule-date { width: 54px; height: 54px; border-radius: 16px; }
+    .schedule-date strong { font-size: 1.35rem; }
+    .schedule-date span { font-size: .68rem; }
+    .schedule-detail h3 { font-size: .96rem; }
+    .schedule-detail p { font-size: .84rem; }
+
+
+    /* ======================================================
+       TRANG EVENTS (ẨN ẢNH HERO - GIỮ LẠI CHỮ CĂN SÁT ĐẦU)
+    ====================================================== */
+    
+    /* 1. Ẩn khối ảnh Hero lớn bên phải */
+    .events-hero .hero-image {
+        display: none !important;
     }
 
-    .home-hero-copy{
-        margin:0 !important;
-        max-width:100% !important;
-        display:flex !important;
-        flex-direction:column !important;
-        align-items:center !important;
+    /* 2. Co ngắn chiều cao khối Hero, biến thành dải tiêu đề ngắn sát Header */
+    .events-hero {
+        padding: 24px 0 0 0 !important; /* Thu hẹp lề đệm */
     }
 
-    .home-hero-title{
-        font-size:2.8rem !important;
-        line-height:1.2 !important;
+    .hero-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 16px !important;
+        min-height: auto !important;
+        padding-top: 0 !important;
     }
 
-    .home-hero-desc{
-        margin-inline:auto !important;
-        font-size:0.95rem !important;
-        line-height:1.6 !important;
+    .hero-copy {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
-    .home-hero-buttons{
-        justify-content:center !important;
-        margin:10px auto 0 auto !important;
+    .hero-title {
+        font-size: 2.8rem !important; /* Chữ tiêu đề thon gọn */
+        margin: 10px 0 !important;
+        line-height: 1.2 !important;
     }
 
-    .home-hero-buttons .btn-secondary,
-    .home-hero-buttons .explore-btn {
-        margin: 0 auto !important; /* Ép nút bấm kẹo ngọt ra chính giữa */
+    .hero-desc {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        margin: 0 auto !important;
     }
 
-    .home-hero-visual{
-        width:100% !important;
-        display:flex !important;
-        justify-content:center !important;
-    }
-
-    .home-hero-visual img{
-        width:100% !important;
-        max-width:280px !important; /* Khóa chết ảnh Yoko không cho lệch phải */
-        height:auto !important;
-        margin:0 auto !important;
-    }
-
-    .schedule-home{
-        margin-top:20px !important;
-    }
-
-    /* ---------- Events Hero (ĐÃ SỬA: Căn chỉnh ảnh Yoko ngay ngắn chính giữa) ---------- */
-
-    .hero-layout{
-        display:flex !important;
-        flex-direction:column !important;
-        text-align:center !important;
-        gap:24px !important;
-    }
-
-    .hero-copy{
-        align-items:center !important;
-        display:flex !important;
-        flex-direction:column !important;
-    }
-
-    .hero-title{
-        font-size:3rem !important;
-        margin:10px 0 !important;
-    }
-
-    .hero-desc{
-        margin-inline:auto !important;
-        font-size:0.95rem !important;
-    }
-
-    .hero-stats{
-        grid-template-columns:1fr !important;
-        gap:14px !important;
-        width:100% !important;
-        padding:20px !important;
-        border-radius:24px !important;
+    /* 3. Khối số liệu thống kê nhỏ nhắn */
+    .hero-stats {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+        padding: 18px !important;
+        border-radius: 20px !important;
+        margin: 20px 0 0 0 !important; /* Khoảng cách lề vừa phải */
     }
 
     .hero-stat {
         justify-content: flex-start !important;
     }
 
-    .hero-image{
-        width:100% !important;
-        display:flex !important;
-        justify-content:center !important;
-        margin-top:10px !important;
-    }
 
-    .hero-image img{
-        width:100% !important;
-        max-width:280px !important; /* Ép chặt ảnh không bị văng khỏi rìa màn hình */
-        height:auto !important;
-        margin:0 auto !important;
-    }
-
-    /* ---------- Latest Card (Chống vỡ khung grid) ---------- */
-
+    /* ======================================================
+       LATEST CARD & TOOLBAR (ĐỒNG BỘ ĐỘ DÃN)
+    ====================================================== */
+    
     .latest-section {
-        margin-top: 40px !important;
+        margin-top: 24px !important;
     }
 
-    .latest-card{
-        grid-template-columns:1fr !important;
-        gap:24px !important;
-        padding:20px !important;
-        margin-top:-40px !important;
+    .latest-card {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        padding: 20px !important;
+        margin-top: 0 !important; /* Hủy bỏ margin âm đè khối cũ */
     }
 
     .latest-cover,
-    .latest-image{
-        max-width:100% !important;
-        width:100% !important;
-        height:240px !important;
-        margin:auto !important;
+    .latest-image {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 220px !important;
+        margin: auto !important;
     }
 
-    /* ---------- Toolbar ---------- */
-
-    .events-toolbar{
-        flex-direction:column !important;
-        align-items:stretch !important;
-        gap:16px !important;
+    .events-toolbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 16px !important;
     }
 
     .month-filter {
-        gap:6px !important;
+        gap: 6px !important;
     }
 
     .month-filter button {
-        padding:8px 12px !important;
-        font-size:0.8rem !important;
-        flex:1 !important;
-        min-width:calc(33.33% - 6px) !important;
+        padding: 8px 12px !important;
+        font-size: 0.8rem !important;
+        flex: 1 !important;
+        min-width: calc(33.33% - 6px) !important;
     }
 
-    .toolbar-right{
-        width:100% !important;
-        justify-content:space-between !important;
+    .toolbar-right {
+        width: 100% !important;
+        justify-content: space-between !important;
     }
 
     .filter-select-wrapper,
     .filter-select-wrapper select {
-        width:100% !important;
-        max-width:160px !important;
+        width: 100% !important;
+        max-width: 160px !important;
     }
 
-    /* ---------- Cards Lưới sự kiện ---------- */
-
-    .events-grid{
-        grid-template-columns:1fr !important; /* Ép card thành 1 hàng dọc thon gọn */
-        gap:24px !important;
+    /* ---------- Global Items ---------- */
+    .featured-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .gallery { grid-template-columns: repeat(2, 1fr) !important; }
+    .exclusive-hero { grid-template-columns: 1fr !important; text-align: center !important; gap: 36px !important; }
+    .exclusive-poster { max-width: 260px; margin: auto !important; }
+    .exclusive-meta { justify-content: center !important; }
+    .footer-message { grid-template-columns: 1fr !important; text-align: center !important; }
+    .footer-copy { margin: auto !important; }
+    
+    /* Ẩn bong bóng nền để giao diện phẳng sạch sẽ tinh tươm */
+    .events-bubbles span {
+        display: none !important;
     }
-
-    .featured-grid{
-grid-template-columns:repeat(2,1fr) !important;
-}
-.gallery{
-grid-template-columns:repeat(2,1fr) !important;
-}
-/* ---------- Exclusive ---------- */
-.exclusive-hero{
-grid-template-columns:1fr !important;
-text-align:center !important;
-gap:36px !important;
-}
-.exclusive-poster{
-max-width:260px !important;
-margin:auto !important;
-}
-.exclusive-meta{
-justify-content:center !important;
-}
-/* ---------- Footer ---------- */
-.footer-message{
-grid-template-columns:1fr !important;
-text-align:center !important;
-}
-.footer-copy{
-margin:auto !important;
-}
 }
