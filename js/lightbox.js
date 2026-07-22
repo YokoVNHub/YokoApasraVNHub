@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const thumbsList = document.getElementById("lightbox-thumbs-list");
     const thumbPrev = document.querySelector(".thumb-nav.thumb-prev");
     const thumbNext = document.querySelector(".thumb-nav.thumb-next");
+    const zoomBtn = document.querySelector(".lightbox-zoom-btn");
 
     let gallery = [];
     let current = 0;
@@ -41,13 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // KHỞI TẠO BONG BÓNG GỐC CHO NÚT DOWNLOAD
     function initDownloadBubbles() {
         if (!download) return;
-        // Giữ cấu trúc chữ và icon mặt trăng gốc
-        download.innerHTML = `<span>Download Original</span><div class="icon-circle">🌙</div>`;
-        
-        // Tạo 6 thẻ bong bóng dập dềnh
+        download.innerHTML = `<span>Download Original</span><div class="icon-circle">☾</div>`;
         for (let i = 0; i < 6; i++) {
             const bubble = document.createElement("span");
             bubble.className = "bubble";
@@ -66,6 +63,28 @@ document.addEventListener("DOMContentLoaded", () => {
             thumb.onclick = (e) => show(parseInt(e.target.dataset.index));
         });
     }
+
+    // TÍNH NĂNG ZOOM THỰC THI (Đã sửa lỗi không nhấn được)
+    function toggleZoom() {
+        if (image.classList.contains("zoomed")) {
+            image.classList.remove("zoomed");
+        } else {
+            image.classList.add("zoomed");
+        }
+    }
+
+    if (zoomBtn) {
+        zoomBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Ngăn sự kiện đóng lightbox khi nhấn nút zoom
+            toggleZoom();
+        });
+    }
+
+    // Double click vào ảnh chính để phóng to nhanh
+    image.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleZoom();
+    });
 
     function updateUI() {
         if (!gallery[current]) return;
@@ -100,7 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const src = gallery[index].getAttribute("href") || gallery[index].dataset.src || "";
         const img = gallery[index].querySelector("img");
 
+        image.classList.remove("zoomed"); // Reset lại zoom khi chuyển sang ảnh mới
         image.classList.add("loading");
+        
         const loader = new Image();
         loader.onload = () => {
             image.src = src;
@@ -124,12 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function close() {
         lightbox.classList.remove("show");
         document.body.classList.remove("lightbox-open");
+        image.classList.remove("zoomed");
     }
 
-    // XỬ LÝ SỰ KIỆN CLICK NÚT DOWNLOAD ĐỔI TÊN CHUẨN
     if (download) {
-        initDownloadBubbles(); // Sinh bong bóng ngay khi tải trang
-        
+        initDownloadBubbles();
         download.addEventListener("click", async (e) => {
             e.preventDefault();
             const src = image.src;
