@@ -22,22 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentEventTitle = "Yoko Apasra";
 
     /* ======================================================
-       1. HÀM TỰ ĐỘNG TRÍCH XUẤT TÊN SỰ KIỆN - VÁ LỖI LẶP TỪ CHỮ YOKO @
+       1. HÀM TỰ ĐỘNG TRÍCH XUẤT TÊN SỰ KIỆN - SẠCH LỖI LẶP TỪ
     ====================================================== */
     function detectEventTitle(triggerElement) {
-        // A. Nếu đang ở trang chi tiết hoặc exclusive, lấy thẳng từ tiêu đề h1 của trang
         const pageTitleEl = document.getElementById("event-title") || 
                             document.querySelector(".hero-title") || 
                             document.querySelector(".exclusive-title");
         
         if (pageTitleEl && pageTitleEl.textContent.trim() !== "") {
             let title = pageTitleEl.textContent.trim();
-            // Lọc bỏ chữ "Archive" và cụm "Yoko @" dính kèm nếu có
             title = title.replace(/Archive/gi, "").trim();
             return title.replace(/Yoko\s*@\s*/gi, "").trim();
         }
 
-        // B. Nếu đang ở trang danh sách hoặc trang chủ, dò ngược tìm thẻ card chứa ảnh
         const cardParent = triggerElement.closest(".event-card") || 
                            triggerElement.closest(".featured-card") || 
                            triggerElement.closest(".latest-card");
@@ -46,9 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const cardTitleEl = cardParent.querySelector("h2") || cardParent.querySelector("h3");
             if (cardTitleEl) {
                 let title = cardTitleEl.textContent.trim();
-                
-                /* ĐÃ SỬA TRIỆT ĐỂ: Sử dụng cờ quét toàn cục /gi để xóa sạch bóng 
-                   tất cả các chữ "Yoko @" dính trong thẻ h2, trả lại tên sự kiện sạch */
                 return title.replace(/Yoko\s*@\s*/gi, "").trim();
             }
         }
@@ -142,20 +136,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (counter) counter.textContent = `${current + 1} / ${gallery.length}`;
         
-        // Trích xuất số thứ tự ảnh chuẩn xác từ đuôi file
         let photoNumber = String(current + 1).padStart(3, '0');
         const fileBaseName = src.substring(src.lastIndexOf('/') + 1);
         const matchNumber = fileBaseName.match(/\d+/);
         if (matchNumber) photoNumber = String(matchNumber).padStart(3, '0');
 
-        // Gán chuỗi tiêu đề động theo định dạng sạch không nhân đôi Yoko @
         if (caption) {
             caption.textContent = `Yoko @ ${currentEventTitle} - Photo ${photoNumber}`;
         }
 
         if (download) download.href = src;
 
-        // Cập nhật viền sáng active cho ô ảnh thu nhỏ dưới đáy
         if (thumbsList) {
             const thumbs = thumbsList.querySelectorAll("img");
             thumbs.forEach(t => t.classList.remove("active"));
@@ -171,7 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const src = gallery[index].getAttribute("href") || gallery[index].dataset.src || "";
         const img = gallery[index].querySelector("img");
 
-        image.lightbox.classList.remove("fullscreen-mode"); // Trả lại thanh strip khi chuyển hình
+        /* ĐÃ FIX LỖI CHÍNH TẢ: Loại bỏ chữ image thừa kế sai cú pháp cũ, 
+           giúp chuyển đổi ảnh mượt mà khi đổi thumbnail */
+        lightbox.classList.remove("fullscreen-mode"); 
         if (zoomBtn) zoomBtn.innerHTML = "⛶";
         
         image.classList.add("loading");
@@ -190,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
         collect();
         if (!gallery.length) return;
         
-        // Bắt chính xác tên sự kiện động ngay khi click mở ảnh
         currentEventTitle = detectEventTitle(triggerElement);
         
         buildThumbnails();
@@ -227,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const matchNumber = fileBaseName.match(/\d+/);
                 if (matchNumber) photoNumber = String(matchNumber).padStart(3, '0');
 
-                // Tên file tải về tự động khớp sạch sẽ theo tên sự kiện động
                 await downloadFileBlob(src, `${currentEventTitle} - ${photoNumber}`);
             } catch (error) {
                 window.open(src, "_blank");
@@ -239,20 +230,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     thumbPrev?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft -= 150; });
-thumbNext?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft += 150; });
-document.addEventListener("click", e => {
-const trigger = e.target.closest(".lightbox-trigger");
-if (trigger) {
-e.preventDefault();
-collect();
-// Truyền thêm thẻ click trigger để bóc tách tiêu đề h2 động sạch
-open(gallery.indexOf(trigger), trigger);
-}
-});
-closeBtn?.addEventListener("click", close);
-nextBtn?.addEventListener("click", () => { current = (current + 1) % gallery.length; show(current); });
-prevBtn?.addEventListener("click", () => { current = (current - 1 + gallery.length) % gallery.length; show(current); });
-lightbox.addEventListener("click", e => {
+    thumbNext?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft += 150; });
+
+    document.addEventListener("click", e => {
+        const trigger = e.target.closest(".lightbox-trigger");
+        if (trigger) { 
+            e.preventDefault(); 
+            collect(); 
+            open(gallery.indexOf(trigger), trigger); 
+        }
+    });
+
+    closeBtn?.addEventListener("click", close);
+    nextBtn?.addEventListener("click", () => { current = (current + 1) % gallery.length; show(current); });
+    prevBtn?.addEventListener("click", () => { current = (current - 1 + gallery.length) % gallery.length; show(current); });
+
+    lightbox.addEventListener("click", e => {
 if (e.target === lightbox || e.target.classList.contains("lightbox-stage")) close();
 });
 document.addEventListener("keydown", e => {
