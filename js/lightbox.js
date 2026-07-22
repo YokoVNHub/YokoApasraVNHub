@@ -42,11 +42,22 @@ document.addEventListener(
         }
 
         /* ======================================================
-           2. SỰ KIỆN KHỞI TẠO NÚT BẤM DOWNLOAD CỐ ĐỊNH FORM HTML
+           2. SỰ KIỆN KHỞI TẠO NÚT DOWNLOAD + 6 HẠT BONG BÓNG KÍNH KHÔI PHỤC
         ====================================================== */
         if (download) {
-            // Chỉ sinh 6 hạt bong bóng, KHÔNG viết đè innerHTML để giữ cấu trúc thẻ div mặt trăng của file HTML
-            for (let i = 0; i < 6; i++) {
+            // Gán cấu trúc chữ và vòng tròn chứa mặt trăng đúng chuẩn giao diện dock đáy mới
+            download.innerHTML =
+                `
+                <span>Download Original</span>
+                <div class="moon">☾</div>
+                `;
+
+            // KHÔI PHỤC 100%: Vòng lặp tự động tạo ra 6 hạt bong bóng kính 3D dập dềnh lấp lánh
+            for (
+                let i = 0;
+                i < 6;
+                i++
+            ) {
                 const bubble = document.createElement("span");
                 bubble.className = "bubble";
                 download.appendChild(bubble);
@@ -63,11 +74,11 @@ document.addEventListener(
                 download.style.pointerEvents = "none";
 
                 try {
-                    // ĐÃ SỬA: Lấy con số thứ tự ảnh chuẩn dựa trên tên file nguồn (Ví dụ: 001.jpg, 002.jpg)
+                    // Lấy con số thứ tự ảnh chuẩn dựa trên tên file nguồn (Ví dụ: 001.jpg)
                     let photoNumber = String(current + 1).padStart(3, '0');
                     const fileBaseName = src.substring(src.lastIndexOf('/') + 1);
                     const matchNumber = fileBaseName.match(/\d+/);
-                    if (matchNumber) photoNumber = String(matchNumber[0]).padStart(3, '0');
+                    if (matchNumber) photoNumber = String(matchNumber).padStart(3, '0');
 
                     await downloadFileBlob(src, `Special Day 2026 - ${photoNumber}`);
                 } catch (error) {
@@ -129,13 +140,13 @@ document.addEventListener(
             }
 
             if (caption) {
-                // ĐÃ SỬA TRIỆT ĐỂ: Cắt bỏ tên mục để dò số từ đuôi file ảnh (ví dụ: 002.jpg -> 002), tránh bắt nhầm năm 2026
+                // Dò số từ đuôi file ảnh (ví dụ: 002.jpg -> 002) để cấm bắt nhầm năm 2026
                 let photoNumber = String(current + 1).padStart(3, '0');
                 const fileBaseName = src.substring(src.lastIndexOf('/') + 1);
                 const matchNumber = fileBaseName.match(/\d+/);
                 
                 if (matchNumber) {
-                    photoNumber = String(matchNumber[0]).padStart(3, '0');
+                    photoNumber = String(matchNumber).padStart(3, '0');
                 }
                 
                 caption.textContent = `Yoko @ Special Day 2026 - Photo ${photoNumber}`;
@@ -233,11 +244,11 @@ document.addEventListener(
         });
 
         lightbox.addEventListener("touchstart", e => {
-            touchStart = e.changedTouches[0].screenX;
+            touchStart = e.changedTouches.screenX;
         });
 
         lightbox.addEventListener("touchend", e => {
-            const touchEnd = e.changedTouches[0].screenX;
+            const touchEnd = e.changedTouches.screenX;
             const distance = touchEnd - touchStart;
             if (distance > 50) prev();
             else if (distance < -50) next();
