@@ -413,10 +413,9 @@ body{
 
 } /* ĐÃ SỬA: Đóng ngoặc nhọn kết thúc phân đoạn 992px chuẩn xác */
 
-
 /* ======================================================
    📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
-   Ẩn bỏ hoàn toàn Hero ảnh - Đẩy chữ lên sát Header tối giản
+   Khôi phục chữ Home - Dàn ngang thanh số liệu Events thoáng đãng
 ====================================================== */
 @media (max-width: 768px) {
 
@@ -437,66 +436,80 @@ body{
 
 
     /* ======================================================
-       TRANG HOME (ẨN HERO ẢNH - ĐẨY LỊCH TRÌNH LÊN SÁT ĐẦU)
+       TRANG HOME (ẨN ẢNH HERO - GIỮ LẠI CHỮ CĂN GIỮA SÁT ĐẦU)
     ====================================================== */
     
-    /* 1. Ẩn hoàn toàn khối bọc Hero khổng lồ của trang chủ */
-    .home-hero,
+    /* 1. Chỉ ẩn duy nhất khối ảnh Hero lớn bên phải */
     .home-hero-visual {
         display: none !important;
     }
 
-    /* 2. Đẩy phần Lịch trình sự kiện (Schedule) lên gần sát Header */
-    .schedule-home {
-        margin-top: 24px !important; /* Tạo khoảng cách nhỏ vừa vặn với Header */
-        padding-top: 0 !important;
+    /* 2. Co ngắn lề đệm của khối Hero bọc chữ để đẩy sát lên Header */
+    .home-hero {
+        padding: 24px 0 0 0 !important; 
     }
 
-    .schedule-card {
+    .home-hero-layout {
         display: flex !important;
         flex-direction: column !important;
-        padding: 22px;
-        gap: 24px;
-        border-radius: 24px;
-    }
-
-    .schedule-copy h2,
-    .schedule-highlights h2 {
-        font-size: 1.45rem;
+        align-items: center !important;
         text-align: center !important;
+        gap: 16px !important;
+        min-height: auto !important;
     }
 
-    .schedule-poster img {
-        max-width: 260px;
+    /* Khối chữ giới thiệu căn giữa gọn gàng sát đầu trang */
+    .home-hero-copy {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-top: 0 !important; /* Xóa bỏ margin âm bản PC */
+    }
+
+    .home-hero-kicker {
+        margin-bottom: 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .home-hero-title {
+        font-size: 2.8rem !important;
+        line-height: 1.2 !important;
+        margin: 10px 0 !important;
+    }
+
+    .home-hero-desc {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
         margin: 0 auto !important;
-        display: block;
+        max-width: 100% !important;
     }
 
-    .schedule-item {
-        grid-template-columns: 56px 1fr;
-        gap: 14px;
-        padding: 16px;
+    .home-hero-slogan {
+        margin: 10px auto 16px auto !important;
     }
 
-    .schedule-date { width: 54px; height: 54px; border-radius: 16px; }
-    .schedule-date strong { font-size: 1.35rem; }
-    .schedule-date span { font-size: .68rem; }
-    .schedule-detail h3 { font-size: .96rem; }
-    .schedule-detail p { font-size: .84rem; }
+    .home-hero-button {
+        margin: 0 auto !important;
+        width: fit-content !important;
+    }
+    
+    /* Khoảng cách đẩy phần Lịch trình (Schedule) phía dưới */
+    .schedule-home {
+        margin-top: 35px !important;
+    }
 
 
     /* ======================================================
-       TRANG EVENTS (ẨN ẢNH HERO - GIỮ LẠI CHỮ CĂN SÁT ĐẦU)
+       TRANG EVENTS (ẨN ẢNH HERO - GIỮ CHỮ VÀ DÀN NGANG THANH SỐ)
     ====================================================== */
     
-    /* 1. Ẩn khối ảnh Hero lớn bên phải */
     .events-hero .hero-image {
         display: none !important;
     }
 
-    /* 2. Co ngắn chiều cao khối Hero, biến thành dải tiêu đề ngắn sát Header */
     .events-hero {
-        padding: 24px 0 0 0 !important; /* Thu hẹp lề đệm */
+        padding: 24px 0 0 0 !important;
     }
 
     .hero-layout {
@@ -506,7 +519,6 @@ body{
         text-align: center !important;
         gap: 16px !important;
         min-height: auto !important;
-        padding-top: 0 !important;
     }
 
     .hero-copy {
@@ -517,7 +529,7 @@ body{
     }
 
     .hero-title {
-        font-size: 2.8rem !important; /* Chữ tiêu đề thon gọn */
+        font-size: 2.8rem !important;
         margin: 10px 0 !important;
         line-height: 1.2 !important;
     }
@@ -528,34 +540,62 @@ body{
         margin: 0 auto !important;
     }
 
-    /* 3. Khối số liệu thống kê nhỏ nhắn */
+    /* ĐÃ SỬA: Biến khung số liệu khổng lồ thành thanh ngang mỏng, tinh tế */
     .hero-stats {
-        grid-template-columns: 1fr !important;
-        gap: 12px !important;
+        display: flex !important;
+        flex-direction: row !important; /* DÀN HÀNG NGANG */
+        justify-content: space-around !important; /* Dãn đều 3 cột */
+        align-items: center !important;
+        
         width: 100% !important;
-        padding: 18px !important;
+        max-width: 100% !important;
+        padding: 14px 10px !important; /* Thu hẹp chiều cao thanh */
         border-radius: 20px !important;
-        margin: 20px 0 0 0 !important; /* Khoảng cách lề vừa phải */
+        gap: 10px !important;
+        
+        /* TẠO KHOẢNG CÁCH THOÁNG: Đẩy Latest Event cách xa 40px, không còn dính liền */
+        margin: 24px 0 40px 0 !important; 
     }
 
+    /* Thu nhỏ cấu trúc từng dòng thông số để xếp vừa hàng ngang di động */
     .hero-stat {
-        justify-content: flex-start !important;
+        flex-direction: column !important; /* Icon ở trên, số ở dưới cho gọn */
+        gap: 6px !important;
+        text-align: center !important;
+        flex: 1 !important;
+    }
+
+    /* Thu nhỏ vòng tròn chứa icon */
+    .hero-stat-icon {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1rem !important;
+    }
+
+    .hero-stat strong {
+        font-size: 1.15rem !important; /* Hạ kích thước con số */
+        line-height: 1.1 !important;
+    }
+
+    .hero-stat span {
+        font-size: 0.65rem !important; /* Chữ chú thích nhỏ nhắn */
+        white-space: nowrap !important; /* Khóa chữ không cho vỡ dòng lung tung */
     }
 
 
     /* ======================================================
-       LATEST CARD & TOOLBAR (ĐỒNG BỘ ĐỘ DÃN)
+       LATEST CARD & TOOLBAR BÊN DƯỚI
     ====================================================== */
     
     .latest-section {
-        margin-top: 24px !important;
+        margin-top: 0 !important; /* Reset khoảng cách thừa */
     }
 
     .latest-card {
         grid-template-columns: 1fr !important;
         gap: 24px !important;
         padding: 20px !important;
-        margin-top: 0 !important; /* Hủy bỏ margin âm đè khối cũ */
+        margin-top: 0 !important; /* Hủy bỏ margin âm đè khối cũ trên PC */
     }
 
     .latest-cover,
@@ -603,7 +643,6 @@ body{
     .footer-message { grid-template-columns: 1fr !important; text-align: center !important; }
     .footer-copy { margin: auto !important; }
     
-    /* Ẩn bong bóng nền để giao diện phẳng sạch sẽ tinh tươm */
     .events-bubbles span {
         display: none !important;
     }
