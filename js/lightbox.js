@@ -18,10 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
     let current = 0;
     let touchStart = 0;
 
+    // LẤY TIÊU ĐỀ SỰ KIỆN ĐỘNG: Tự động nhận diện tên sự kiện theo từng h1 của trang hiện tại
+    const eventTitleElement = document.getElementById("event-title") || document.querySelector(".hero-title") || document.querySelector(".exclusive-title");
+    const currentEventTitle = eventTitleElement ? eventTitleElement.textContent.trim() : "Yoko Apasra";
+
     function collect() {
         gallery = [...document.querySelectorAll(".lightbox-trigger")];
     }
 
+    /* ======================================================
+       1. HÀM TẢI FILE NHỊ PHÂN (BLOB) - VƯỢT LỖI CORS & ĐỔI TÊN ĐỘNG
+    ====================================================== */
     async function downloadFileBlob(url, customName) {
         try {
             const response = await fetch(url);
@@ -42,9 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    /* ======================================================
+       2. KHỞI TẠO BONG BÓNG KÍNH 3D CHO NÚT DOWNLOAD ORIGINAL
+    ====================================================== */
     function initDownloadBubbles() {
         if (!download) return;
-        download.innerHTML = `<span>Download Original</span><div class="icon-circle">☾</div>`;
+        download.innerHTML = `<span>Download Original</span><div class="icon-circle">🌙</div>`;
         for (let i = 0; i < 6; i++) {
             const bubble = document.createElement("span");
             bubble.className = "bubble";
@@ -52,6 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    /* ======================================================
+       3. GENERATE DẢI THUMBNAIL STRIP DƯỚI ĐÁY MÀN HÌNH
+    ====================================================== */
     function buildThumbnails() {
         if (!thumbsList) return;
         thumbsList.innerHTML = gallery.map((item, index) => {
@@ -64,51 +77,62 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // TÍNH NĂNG ZOOM THỰC THI (Đã sửa lỗi không nhấn được)
-    function toggleZoom() {
-        if (image.classList.contains("zoomed")) {
-            image.classList.remove("zoomed");
+    /* ======================================================
+       4. CƠ CHẾ BẬT/TẮT FULL SCREEN ĐIỆN ẢNH (ẢNH BỰ TRÀN VIỀN)
+    ====================================================== */
+    function toggleFullscreenMode() {
+        if (lightbox.classList.contains("fullscreen-mode")) {
+            lightbox.classList.remove("fullscreen-mode");
+            if (zoomBtn) zoomBtn.innerHTML = "⛶"; // Trả lại icon vuông ban đầu
         } else {
-            image.classList.add("zoomed");
+            lightbox.classList.add("fullscreen-mode");
+            if (zoomBtn) zoomBtn.innerHTML = "⛵"; // Đổi sang icon thu nhỏ dải strip
         }
     }
 
     if (zoomBtn) {
         zoomBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Ngăn sự kiện đóng lightbox khi nhấn nút zoom
-            toggleZoom();
+            e.stopPropagation(); // Ngăn đóng lightbox khi click trúng nút vuông
+            toggleFullscreenMode();
         });
     }
 
-    // Double click vào ảnh chính để phóng to nhanh
+    // Double click hoặc nhấp chuột vào ảnh chính để kích hoạt full màn hình nhanh
     image.addEventListener("click", (e) => {
         e.stopPropagation();
-        toggleZoom();
+        toggleFullscreenMode();
     });
 
+    /* ======================================================
+       5. ĐỒNG BỘ TEXT ĐỒNG ĐIỆU THEO TỪNG SỰ KIỆN KHÁC NHAU
+    ====================================================== */
     function updateUI() {
         if (!gallery[current]) return;
         const item = gallery[current];
-        const img = item.querySelector("img");
         const src = item.getAttribute("href") || item.dataset.src || "";
 
         if (counter) counter.textContent = `${current + 1} / ${gallery.length}`;
         
+        // Trích xuất số thứ tự ảnh chuẩn xác từ đuôi file
+        let photoNumber = String(current + 1).padStart(3, '0');
+        const fileBaseName = src.substring(src.lastIndexOf('/') + 1);
+        const matchNumber = fileBaseName.match(/\d+/);
+        if (matchNumber) photoNumber = String(matchNumber).padStart(3, '0');
+
+        // Gán chuỗi tiêu đề động theo sự kiện của trang
         if (caption) {
-            let photoNumber = String(current + 1).padStart(3, '0');
-            const fileBaseName = src.substring(src.lastIndexOf('/') + 1);
-            const matchNumber = fileBaseName.match(/\d+/);
-            if (matchNumber) photoNumber = String(matchNumber).padStart(3, '0');
-            caption.textContent = `Yoko @ Special Day 2026 - Photo ${photoNumber}`;
+            caption.textContent = `Yoko @ ${currentEventTitle} - Photo ${photoNumber}`;
         }
 
         if (download) download.href = src;
 
+        // Cập nhật viền sáng active cho ô ảnh thu nhỏ dưới đáy
         if (thumbsList) {
             const thumbs = thumbsList.querySelectorAll("img");
             thumbs.forEach(t => t.classList.remove("active"));
             if (thumbs[current]) {
                 thumbs[current].classList.add("active");
+                // Tự động cuộn ô ảnh nhỏ vào chính giữa thanh strip
                 thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
         }
@@ -119,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const src = gallery[index].getAttribute("href") || gallery[index].dataset.src || "";
         const img = gallery[index].querySelector("img");
 
-        image.classList.remove("zoomed"); // Reset lại zoom khi chuyển sang ảnh mới
         image.classList.add("loading");
         
         const loader = new Image();
@@ -144,12 +167,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function close() {
         lightbox.classList.remove("show");
+        lightbox.classList.remove("fullscreen-mode"); // Reset lại chế độ full màn hình khi tắt
+        if (zoomBtn) zoomBtn.innerHTML = "⛶";
         document.body.classList.remove("lightbox-open");
-        image.classList.remove("zoomed");
     }
 
+    /* ======================================================
+       6. SỰ KIỆN CLICK NÚT DOWNLOAD: ĐỔI TÊN ĐỘNG THEO SỰ KIỆN
+    ====================================================== */
     if (download) {
-        initDownloadBubbles();
+        initDownloadBubbles(); // Khởi tạo sinh bong bóng bay
+        
         download.addEventListener("click", async (e) => {
             e.preventDefault();
             const src = image.src;
@@ -165,7 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const matchNumber = fileBaseName.match(/\d+/);
                 if (matchNumber) photoNumber = String(matchNumber).padStart(3, '0');
 
-                await downloadFileBlob(src, `Special Day 2026 - ${photoNumber}`);
+                // Tên file tải về tự động khớp theo tên sự kiện hiện tại
+                await downloadFileBlob(src, `${currentEventTitle} - ${photoNumber}`);
             } catch (error) {
                 window.open(src, "_blank");
             } finally {
@@ -175,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Sự kiện click nút bấm cuộn dải ảnh strip trái/phải
     thumbPrev?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft -= 150; });
     thumbNext?.addEventListener("click", () => { if (thumbsList) thumbsList.scrollLeft += 150; });
 
@@ -191,6 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === lightbox || e.target.classList.contains("lightbox-stage")) close();
     });
 
+    // Điều khiển bàn phím mũi tên máy tính
     document.addEventListener("keydown", e => {
         if (!lightbox.classList.contains("show")) return;
         if (e.key === "Escape") close();
@@ -198,10 +229,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "ArrowLeft") { current = (current - 1 + gallery.length) % gallery.length; show(current); }
     });
 
-    lightbox.addEventListener("touchstart", e => { touchStart = e.changedTouches.screenX; });
-    lightbox.addEventListener("touchend", e => {
-        const distance = e.changedTouches.screenX - touchStart;
-        if (distance > 50) { current = (current - 1 + gallery.length) % gallery.length; show(current); }
-        else if (distance < -50) { current = (current + 1) % gallery.length; show(current); }
-    });
+    // Thao tác vuốt lướt màn hình điện thoại mượt mà
+lightbox.addEventListener("touchstart", e => { touchStart = e.changedTouches.screenX; });
+lightbox.addEventListener("touchend", e => {
+const distance = e.changedTouches.screenX - touchStart;
+if (distance > 50) { current = (current - 1 + gallery.length) % gallery.length; show(current); }
+else if (distance < -50) { current = (current + 1) % gallery.length; show(current); }
+});
 });
