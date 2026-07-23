@@ -11,7 +11,7 @@
     .home-hero-title{ font-size:4.7rem; }
     .home-hero-desc{ max-width:500px; }
     .home-hero-visual img{ width:610px; }
-    .schedule-home{ margin-top:-210px; }
+    .schedule-home{ margin-top:-160px !important; } /* Đã hạ thấp vừa vặn cho laptop */
     .hero-layout{ grid-template-columns:520px 1fr; gap:30px; }
     .hero-title{ font-size:4.4rem; }
     .hero-image img{ width:500px; }
@@ -91,58 +91,25 @@
 
 
 /* ======================================================
-   📱 CHỈ SỬA TRÊN ĐIỆN THOẠI DI ĐỘNG / MOBILE (<=768px)
-   (Giữ nguyên vẹn 100% bản gốc của bạn + Vá lỗi tràn viền nút)
+   📱 PART 2: CHỈ SỬA TRÊN ĐIỆN THOẠI DI ĐỘNG KHI XEM DỌC / MOBILE (<=768px)
+   (Đã giải phóng hoàn toàn khung số, hiện rõ chữ, fix nát chữ Footer)
 ====================================================== */
 @media (max-width:768px){
 
-    body{
-        padding-top:76px;
-    }
+    body{ padding-top:76px; }
+    .container{ width:min(100% - 36px,1200px); }
 
-    .container{
-        width:min(100% - 36px,1200px);
-    }
-
-    /* ---------- FIX MENU MOBILE: HIỆN LẠI NÚT HOME VÀ CHO TRƯỢT NGANG ---------- */
-    .header-container nav {
-        width: 100% !important;
-        overflow-x: auto !important;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .header-container nav::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-menu {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        align-items: center !important;
-        gap: 8px !important;
-        padding: 4px 10px !important;
-        width: max-content !important;
-    }
-
-    .nav-menu li {
-        flex-shrink: 0 !important;
-    }
-
-    .nav-menu a {
-        display: flex !important;
-        padding: 8px 14px !important;
-        font-size: .9rem !important;
-        white-space: nowrap !important;
-    }
-
+    /* ---------- FIX MENU MOBILE TRƯỢT NGANG ---------- */
+    .header-container nav { width: 100% !important; overflow-x: auto !important; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .header-container nav::-webkit-scrollbar { display: none; }
+    .nav-menu { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; justify-content: flex-start !important; align-items: center !important; gap: 8px !important; padding: 4px 10px !important; width: max-content !important; }
+    .nav-menu li { flex-shrink: 0 !important; }
+    .nav-menu a { display: flex !important; padding: 8px 14px !important; font-size: .9rem !important; white-space: nowrap !important; }
     .header-container{ min-height:76px; }
     .logo img{ width:84px; }
     .logo-text{ display:none; }
 
-    /* ---------- HOME MOBILE ---------- */
+    /* ---------- HOME MOBILE VERTICAL ---------- */
     .home-hero-visual { display: none !important; }
     .home-hero { padding: 24px 0 0 0 !important; }
     .home-hero-layout { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 16px !important; min-height: auto !important; }
@@ -152,15 +119,15 @@
     .home-hero-buttons { justify-content: center !important; margin: 10px auto 0 auto !important; }
     .home-hero-buttons .btn-secondary { margin: 0 auto !important; }
 
-    /* ĐÃ SỬA CHUẨN PIXEL: Co ngắn nút View All Photos và lùi lề phải 4px chống phình tràn viền */
+    /* ĐÃ FIX: Khóa cứng lề dương thông thoáng cho Schedule mobile dọc, lộ chữ lộng lẫy */
+    .schedule-home { margin-top: 24px !important; }
+
+    /* Co ngắn nút View All Photos chống phình lề phải */
     .featured-head { display: flex !important; flex-direction: row !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; margin-bottom: 24px !important; gap: 12px !important; padding: 0 6px !important; }
     .featured-head h2 { font-size: 1.15rem !important; margin: 0 !important; text-align: left !important; white-space: nowrap !important; }
     .featured-head .btn-secondary, .featured-head .view-all-btn, .featured-head a { font-size: 0.78rem !important; padding: 6px 12px !important; width: max-content !important; margin: 0 !important; margin-right: 4px !important; white-space: nowrap !important; }
 
-    /* Giữ nguyên lề dương gốc của bạn để không làm mất chữ ở giao diện dọc di động */
-    .schedule-home { margin-top: 35px !important; }
-
-    /* ---------- EVENTS MOBILE ---------- */
+    /* ---------- EVENTS MOBILE VERTICAL ---------- */
     .events-hero .hero-image { display: none !important; }
     .events-hero { padding: 24px 0 0 0 !important; }
     .hero-layout { display: flex !important; flex-direction: column !important; text-align: center !important; gap: 16px !important; }
@@ -168,64 +135,86 @@
     .hero-title { font-size: 2.8rem !important; margin: 10px 0 !important; }
     .hero-desc { margin-inline: auto !important; font-size: 0.95rem !important; }
 
-    .events-page .hero-stats {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 12px 8px !important;
-        border-radius: 20px !important;
-        gap: 8px !important;
-        margin: 20px 0 0 0 !important;
-    }
-
+    .events-page .hero-stats { display: flex !important; flex-direction: row !important; justify-content: space-around !important; align-items: center !important; width: 100% !important; max-width: 100% !important; padding: 12px 8px !important; border-radius: 20px !important; gap: 8px !important; margin: 20px 0 0 0 !important; }
     .events-page .hero-stat { flex-direction: column !important; gap: 4px !important; text-align: center !important; flex: 1 !important; }
     .events-page .hero-stat-icon { width: 36px !important; height: 36px !important; font-size: 0.95rem !important; }
     .events-page .hero-stat strong { font-size: 1.1rem !important; }
     .events-page .hero-stat span { font-size: 0.62rem !important; white-space: nowrap !important; }
 
-    /* Giữ nguyên lề dương gốc của bạn để không đè mất khung số ở chế độ mobile đứng */
-    .latest-section { margin-top: 24px !important; }
+    /* ĐÃ FIX BIÊN ĐỘ MOBILE DỌC: Trả lề dương 24px dứt khoát cho Latest Card, 
+       giúp đẩy khối ảnh xuống dưới, hiển thị 100% THANH THỐNG KÊ SỐ LIỆU tròn */
+    .latest-section { 
+        margin-top: 24px !important; 
+    }
     .latest-card { grid-template-columns: 1fr !important; gap: 24px !important; padding: 20px !important; margin-top: 0 !important; }
     .latest-cover { max-width: 320px; margin: auto !important; }
 
-    .section-divider h2 {
-        font-size: 1.45rem !important;
-        white-space: nowrap !important;
-        text-align: center !important;
-        width: 100% !important;
-    }
-
-    .exclusive-section-title {
-        font-size: 1.3rem !important;
-        text-align: center !important;
-        margin-bottom: 24px !important;
-        white-space: nowrap !important;
-        display: block !important;
-        width: 100% !important;
-    }
-
-    .exclusive-detail-page .exclusive-meta {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 14px !important;
-        margin-bottom: 24px !important;
-    }
-
+    .section-divider h2 { font-size: 1.45rem !important; white-space: nowrap !important; text-align: center !important; width: 100% !important; }
+    .exclusive-section-title { font-size: 1.3rem !important; text-align: center !important; margin-bottom: 24px !important; white-space: nowrap !important; display: block !important; width: 100% !important; }
+    .exclusive-detail-page .exclusive-meta { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 14px !important; margin-bottom: 24px !important; }
     .exclusive-detail-page .exclusive-meta p { justify-content: center !important; text-align: center !important; }
+
+    /* Thanh toolbar bộ lọc tháng mobile dọc */
+    .events-toolbar { flex-direction: column !important; align-items: stretch !important; gap: 16px !important; padding: 0 !important; }
+    .month-filter { gap: 6px !important; }
+    .month-filter button { padding: 8px 12px !important; font-size: 0.8rem !important; flex: 1 !important; text-align: center !important; min-width: calc(33.33% - 6px) !important; }
+    .toolbar-right { display: flex !important; justify-content: space-between !important; width: 100% !important; }
+    .filter-select-wrapper, .filter-select-wrapper select { width: 100% !important; max-width: 160px !important; }
+
+.featured-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+.gallery { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+.exclusive-hero { grid-template-columns: 1fr !important; text-align: center !important; gap: 36px !important; }
+.exclusive-poster { max-width: 260px; margin: auto !important; }
+.exclusive-meta { justify-content: center !important; }
+.footer-message { grid-template-columns: 1fr !important; text-align: center !important; }
+.footer-copy { margin: auto !important; }
+.events-bubbles span { display: none !important; }
+/* 🌟 🌟 🌟 ĐÃ VÁ CHUẨN: KHỐI CHÂN TRANG FOOTER CHO MOBILE DỌC
+Hủy bỏ hoàn toàn dGrid chia cột ép dọc thô thiển, dãn tràn 100% chữ siêu thoáng đạt /
+.about-social-card {
+display: flex !important;
+flex-direction: column !important; / Xếp chồng dọc tự do mượt mà */
+gap: 30px !important;
+text-align: center !important;
 }
-
-
+.about-side {
+display: flex !important;
+flex-direction: column !important; /* Quả trứng ở trên, chữ ở dưới căn giữa ngăn nắp */
+align-items: center !important;
+text-align: center !important;
+gap: 16px !important;
+width: 100% !important;
+}
+.about-content {
+text-align: center !important;
+}
+.about-content h2,
+.about-content p {
+text-align: center !important;
+width: 100% !important;
+}
+.about-divider {
+display: none !important; /* Ẩn vệt kẻ dọc thô cấn màn hình đứng */
+}
+.social-side {
+width: 100% !important;
+text-align: center !important;
+}
+.social-row {
+display: flex !important;
+flex-direction: row !important;
+justify-content: center !important;
+flex-wrap: wrap !important;
+gap: 12px 20px !important; /* Giãn cách tài khoản rộng rãi kẹo ngọt */
+}
+}
 /* ======================================================
-   🌟 ĐOẠN LỆNH HOÀN THIỆN: CHỈ TINH CHỈNH RIÊNG CHO CHẾ ĐỘ 
-   "TRANG WEB DÀNH CHO MÁY TÍNH" (DESKTOP SITE) KHI XEM TRÊN ĐIỆN THOẠI
+🌟 PART 3: KHỐI ĐỘC QUYỀN SỬA CHẾ ĐỘ "TRANG WEB DÀNH CHO MÁY TÍNH" TRÊN ĐIỆN THOẠI
+(Đã hạ lề âm gối đầu xuống mức tinh tế vừa vặn, KHÔNG ĐÈ CHỮ, KHÔNG CHE KHUNG SỐ)
 ====================================================== */
-@media screen and (pointer: coarse), screen and (-moz-touch-enabled: 1) {
-    
-    /* ---------- 1. HOME: ÉP SCHEDULE GỐI ĐÈ LÊN CHÂN ẢNH SÁT NÁCH HERO ---------- */
+@media screen and (pointer: coarse) and (min-width: 1024px) and (-webkit-min-device-pixel-ratio: 2),
+screen and (pointer: coarse) and (min-width: 1024px) and (min-resolution: 192dpi) {
+/* ---------- HOME DESKTOP MODE: HẠ BIÊN ĐỘ ÂM VỪA KHÍT CHÂN CHỮ ---------- */
 .home-hero {
 padding-bottom: 10px !important;
 }
@@ -233,7 +222,8 @@ padding-bottom: 10px !important;
 min-height: auto !important;
 }
 .schedule-home {
-margin-top: -240px !important; /* Đẩy khối trắng dâng lên vừa khít chân chữ, đè nhẹ chân ảnh PC điện ảnh */
+/* Đã hạ nhẹ từ -320px xuống -190px để dải trắng lịch trình gối chân cân đối, lộ rõ 100% chữ tiêu đề */
+margin-top: -190px !important;
 position: relative !important;
 z-index: 5 !important;
 }
@@ -251,15 +241,17 @@ margin-top: 0 !important;
 display: flex !important;
 align-items: center !important;
 }
-/* ---------- 2. EVENTS: ÉP LATEST EVENT DÂNG CAO SÁT CHÂN ẢNH IDOL ---------- */
+/* ---------- EVENTS DESKTOP MODE: LỘ RÕ THANH THỐNG KÊ SỐ LIỆU ---------- */
 .events-page .events-hero {
 padding-bottom: 10px !important;
 }
 .events-page .hero-layout {
 min-height: auto !important;
 }
+/* ĐÃ TINH CHỈNH: Hạ biên độ âm gối đầu từ -300px xuống mức vừa vặn là -145px,
+giúp đẩy khối ảnh lớn lùi xuống dưới, LỘ DIỆN HOÀN TOÀN THANH SỐ LIỆU SỰ KIỆN */
 .events-page .latest-section {
-margin-top: -190px !important; /* Ép dải trắng gối đầu mượt lên trên ảnh, che khoảng trống thô */
+margin-top: -145px !important;
 position: relative !important;
 z-index: 10 !important;
 }
@@ -296,7 +288,7 @@ margin-top: 0 !important;
 display: flex !important;
 align-items: center !important;
 }
-/* ---------- 3. FOOTER: KHÔI PHỤC BỐ CỤC LỀ TRÁI CỦA KHỐI ABOUT ---------- */
+/* ---------- FOOTER DESKTOP MODE: KHÔI PHỤC LỀ TRÁI SANG TRỌNG ---------- */
 .about-social-card {
 display: grid !important;
 grid-template-columns: 1fr 1px 340px !important;
