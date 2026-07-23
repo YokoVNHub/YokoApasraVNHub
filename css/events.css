@@ -409,13 +409,6 @@
         justify-content: center;
     }
 
-    .hero-image img {
-        width: 100%;
-        max-width: 500px;
-        margin-right: 0 !important;
-        margin-bottom: 0 !important;
-    }
-
     /* Thanh số liệu dàn ngang thu gọn trên Laptop/Tablet */
     .events-page .hero-stats {
         display: flex !important;
