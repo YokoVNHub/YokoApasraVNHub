@@ -1097,7 +1097,6 @@ body.home-page{
 .social-row a{
 
     display:flex;
-
     align-items:center;
 
     gap:10px;
@@ -1116,8 +1115,18 @@ body.home-page{
     color:#ff69ab;
 
     transform:translateX(4px);
+
 }
 
+.social-row a:hover i{
+
+    transform:scale(1.12);
+}
+
+.social-row i{
+
+    transition:.3s ease;
+}
 
 /* ---------- CHIBI ---------- */
 
