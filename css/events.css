@@ -409,6 +409,8 @@
         justify-content: center;
     }
 
+   .hero-image img{ width:620px; margin-right:-70px; margin-bottom:-100px; }
+
     /* Thanh số liệu dàn ngang thu gọn trên Laptop/Tablet */
     .events-page .hero-stats {
         display: flex !important;
@@ -430,7 +432,7 @@
         grid-template-columns: 1fr !important;
         gap: 30px !important;
         padding: 24px !important;
-        margin-top: -50px !important;
+        margin-top: -80px !important;
     }
 
     .events-page .latest-card .latest-image {
