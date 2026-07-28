@@ -569,9 +569,9 @@
 
     margin: 0;
 
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(2rem,4vw,3rem);
+    font-family: var(--font-heading);
+   
+    font-size: 3.3rem;
 
     line-height: 1.15;
 
