@@ -378,91 +378,52 @@
 
 
 <!-- ======================================================
-     LIGHTBOX
+     LIGHTBOX PHIÊN BẢN PREMIUM (Tích hợp dải ảnh & Khôi phục hiệu ứng nút bấm)
 ====================================================== -->
+<div id="lightbox" class="lightbox">
 
-<div
-    id="lightbox"
-    class="lightbox">
+    <!-- TOP CONTROL BAR (Góc trên màn hình) -->
+    <div class="lightbox-top-bar">
+        <!-- 1. Thanh tiến trình góc trái -->
+        <div id="lightbox-counter" class="lightbox-counter"></div>
 
-    <button
-        type="button"
-        class="lightbox-close"
-        aria-label="Close">
-
-        &times;
-
-    </button>
-
-
-    <div
-        id="lightbox-counter"
-        class="lightbox-counter">
-
+        <!-- 2. Cụm nút hành động góc phải -->
+        <div class="lightbox-action-buttons">
+            
+            <!-- ĐÃ SỬA: Đồng bộ class .icon-circle của mặt trăng để khớp lệnh render trong JS -->
+            <a id="lightbox-download" class="btn-download lightbox-download" href="" target="_blank" rel="noopener noreferrer">
+                <span>Download Original</span>
+                <div class="moon">☾</div>
+            </a>
+            <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+        </div>
     </div>
 
-
-    <button
-        type="button"
-        class="lightbox-prev"
-        aria-label="Previous image">
-
-        &#10094;
-
-    </button>
-
-
+    <!-- MAIN STAGE (Khu vực ảnh trung tâm) -->
     <div class="lightbox-stage">
+        <button type="button" class="lightbox-prev" aria-label="Previous image">❮</button>
 
-        <img
-            id="lightbox-image"
-            src=""
-            alt=""
-            draggable="false">
+        <div class="lightbox-image-container">
+            <img id="lightbox-image" alt="" draggable="false">
+            <button type="button" class="lightbox-zoom-btn" aria-label="Zoom image">⛶</button>
+        </div>
 
+        <button type="button" class="lightbox-next" aria-label="Next image">❯</button>
     </div>
 
-
-    <button
-        type="button"
-        class="lightbox-next"
-        aria-label="Next image">
-
-        &#10095;
-
-    </button>
-
-
-    <a
-        id="lightbox-download"
-        class="btn-download lightbox-download"
-        href=""
-        target="_blank"
-        rel="noopener noreferrer">
-
-        <span class="moon-icon">
-
-            🌙
-
-        </span>
-
-        <span>
-
-            Download Original
-
-        </span>
-
-    </a>
-
-
-    <p
-        id="lightbox-caption"
-        class="lightbox-caption">
-
-    </p>
+    <!-- BOTTOM INFO & THUMBNAILS (Khu vực đáy màn hình) -->
+    <div class="lightbox-bottom-wrapper">
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+        
+        <!-- Thanh Thumbnail Strip lướt ảnh nhỏ -->
+        <div class="lightbox-thumbnails-container">
+            <button type="button" class="thumb-nav thumb-prev">❮</button>
+            <div id="lightbox-thumbs-list" class="lightbox-thumbs-list"></div>
+            <button type="button" class="thumb-nav thumb-next">❯</button>
+        </div>
+    </div>
 
 </div>
-
 
 <!-- ======================================================
      SCRIPTS
