@@ -1081,59 +1081,100 @@
 }
 
 
-/* Right */
+/* ======================================================
+   RIGHT
+====================================================== */
 
 .about-footer-right{
 
-    position:relative;
-
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
 
-    gap:40px;
+    gap:30px;
 }
+
+
+/* mỗi group */
+
+.about-footer-group{
+
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:18px;
+}
+
+
+/* title */
 
 .about-footer-group h4{
 
-    margin-bottom:18px;
+    margin:0;
 
-    color:#c889aa;
-
-    letter-spacing:.18em;
+    min-width:145px;
 
     font-size:.82rem;
+    font-weight:800;
+
+    letter-spacing:.18em;
+    text-transform:uppercase;
+
+    color:#c889aa;
 }
+
+
+/* link */
 
 .about-footer-group a{
 
     display:flex;
-
     align-items:center;
 
-    gap:14px;
+    gap:10px;
 
-    margin:12px 0;
+    text-decoration:none;
 
     color:var(--text-dark);
 
-    transition:.25s;
+    font-weight:600;
+
+    transition:
+        color .25s,
+        transform .25s;
 }
 
 .about-footer-group a:hover{
 
     color:#ef84b2;
+
+    transform:translateY(-2px);
 }
+
+
+/* divider */
+
+.about-footer-group .divider{
+
+    width:1px;
+    height:18px;
+
+    background:
+        rgba(220,180,200,.6);
+}
+
+
+/* icon */
 
 .about-footer-group i{
 
-    width:22px;
+    width:18px;
 
     text-align:center;
-}
 
+    color:var(--primary);
+}
 
 /* Chibi */
 
@@ -1146,48 +1187,6 @@
     bottom:-10px;
 
     width:150px;
-}
-
-.about-footer-group a{
-
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    padding:10px 0;
-
-    text-decoration:none;
-
-    color:var(--text-dark);
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
-
-}
-
-.about-footer-group a:hover{
-
-    color:#ef84b2;
-
-    transform:translateX(6px);
-
-}
-
-.about-footer-group a i{
-
-    width:22px;
-
-    text-align:center;
-
-    transition:transform .25s ease;
-
-}
-
-.about-footer-group a:hover i{
-
-    transform:scale(1.1);
-
 }
 
 /* ======================================================
