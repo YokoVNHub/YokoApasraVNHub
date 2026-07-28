@@ -413,12 +413,13 @@
         0 28px 70px rgba(232,170,198,.20);
 }
 
-
 /* ======================================================
    COVER
 ====================================================== */
 
 .exclusive-cover{
+
+    position:relative;
 
     display:flex;
 
@@ -426,24 +427,103 @@
 
     align-items:center;
 
-    padding:24px;
+    padding:38px;
 
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.82),
+            rgba(255,247,251,.92)
+        );
+
+    border:
+        1px solid
+        rgba(255,220,235,.8);
+
+    box-shadow:
+        0 18px 45px rgba(255,205,225,.12);
+
+    overflow:hidden;
 }
+
+
+/* Soft glow */
+
+.exclusive-cover::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.9),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* Decorative light */
+
+.exclusive-cover::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,220,235,.18);
+
+    filter:blur(50px);
+
+    top:-70px;
+    right:-40px;
+}
+
+
+/* Image */
 
 .exclusive-cover img{
 
-    width:68%;
+    position:relative;
 
-    transition:.35s;
+    width:58%;
 
+    border-radius:20px;
+
+    box-shadow:
+        0 22px 55px rgba(0,0,0,.16);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
 }
+
+
+/* Hover */
 
 .exclusive-card:hover .exclusive-cover img{
 
-    transform:translateY(-6px) scale(1.02);
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.20);
 
 }
-
 
 /* ======================================================
    CONTENT
@@ -869,11 +949,17 @@
        POSTER
     ========================== */
 
-    .exclusive-card .poster{
-        width:220px;
-        max-width:100%;
-        margin:0 auto;
-    }
+.exclusive-card .exclusive-cover{
+
+    padding:28px;
+
+}
+
+.exclusive-card .exclusive-cover img{
+
+    width:70%;
+
+}
 
     /* ==========================
        INFO
@@ -965,9 +1051,17 @@
         border-radius:26px;
     }
 
-    .exclusive-card .poster{
-        width:190px;
-    }
+   .exclusive-card .exclusive-cover{
+
+    padding:22px;
+
+}
+
+.exclusive-card .exclusive-cover img{
+
+    width:78%;
+
+}
 
     .exclusive-card h2{
         font-size:1.7rem;
@@ -1027,9 +1121,17 @@
         border-radius:22px;
     }
 
-    .exclusive-card .poster{
-        width:170px;
-    }
+    .exclusive-card .exclusive-cover{
+
+    padding:18px;
+
+}
+
+.exclusive-card .exclusive-cover img{
+
+    width:82%;
+
+}
 
     .exclusive-card h2{
         font-size:1.45rem;
