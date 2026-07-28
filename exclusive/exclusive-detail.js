@@ -222,32 +222,17 @@ const posterPath =
         /* ======================================================
            POSTER
         ====================================================== */
+posterElement.src = posterPath;
+posterElement.alt = album.title;
 
-        posterElement.src =
-            posterPath;
+posterElement.onload = () => {
+    posterElement.classList.add("loaded");
+};
 
-        posterElement.alt =
-            album.title;
-
-        posterElement.onload =
-            () => {
-
-                posterElement.classList.add(
-                    "loaded"
-                );
-
-            };
-
-        posterLink.href =
-            posterPath;
-
-        posterLink.classList.add(
-            "lightbox-trigger"
-        );
-
-        posterLink.dataset.filename =
-    `${album.folder}-${posterNumber}.${extension}`;
-
+posterLink.href = posterPath;
+posterLink.className = "lightbox-trigger";
+posterLink.dataset.filename =
+`${album.folder}-${posterNumber}.${extension}`;
 
         /* ======================================================
            TITLE
@@ -425,9 +410,9 @@ else {
        RENDER GALLERY
     ====================================================== */
 
-   for (
+for (
 
-    let i = 2;
+    let i = 1;
 
     i <= album.photos;
 
@@ -435,16 +420,15 @@ else {
 
 ){
 
-        const fileNumber =
+    const fileNumber =
+        String(i).padStart(3,"0");
 
-            String(i).padStart(
-                3,
-                "0"
-            );
+    if(fileNumber === posterNumber){
+        continue;
+    }
 
-        const imagePath =
-
-            `../assets/exclusive/${album.folder}/${fileNumber}.${extension}`;
+    const imagePath =
+        `../assets/exclusive/${album.folder}/${fileNumber}.${extension}`;
 
         const link =
 
@@ -528,6 +512,22 @@ else {
 
         }
 
+       const loadedPhotos =
+galleryElement.querySelectorAll(
+".lightbox-trigger"
+).length;
+
+const collection =
+metaElement.querySelector(
+".meta-item:last-child p"
+);
+
+if(collection){
+
+    collection.textContent =
+`${loadedPhotos + 1} Photos`;
+
+}
 
         /* ======================================================
            DEBUG
@@ -552,10 +552,10 @@ else {
     posterNumber
 );
 
-        console.log(
-            "Gallery:",
-            album.photos
-        );
+    console.log(
+"Gallery:",
+loadedPhotos + 1
+);
 
         console.log(
             "Download:",
