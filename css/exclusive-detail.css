@@ -86,7 +86,7 @@
    TITLE
 ====================================================== */
 
-.exclusive-title{
+.exclusive-detail-title{
 
     margin:0 0 18px;
 
@@ -105,7 +105,7 @@
    SUBTITLE
 ====================================================== */
 
-.exclusive-subtitle{
+.exclusive-detail-subtitle{
 
     max-width:760px;
 
@@ -119,11 +119,12 @@
 
 }
 
+
 /* ======================================================
    META
 ====================================================== */
 
-.exclusive-meta{
+.exclusive-detail-meta{
 
     display:flex;
 
@@ -137,7 +138,8 @@
 
 }
 
-.meta-item{
+
+.exclusive-detail-meta .meta-item{
 
     display:flex;
 
@@ -162,7 +164,8 @@
 
 }
 
-.meta-icon{
+
+.exclusive-detail-meta .meta-icon{
 
     flex-shrink:0;
 
@@ -182,7 +185,8 @@
 
 }
 
-.meta-item strong{
+
+.exclusive-detail-meta .meta-item strong{
 
     display:block;
 
@@ -194,7 +198,8 @@
 
 }
 
-.meta-item p{
+
+.exclusive-detail-meta .meta-item p{
 
     margin:0;
 
@@ -205,7 +210,6 @@
     line-height:1.5;
 
 }
-
 
 /* ======================================================
    DOWNLOAD BUTTON
