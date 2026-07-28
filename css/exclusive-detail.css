@@ -224,61 +224,6 @@
 
 }
 
-
-/* ======================================================
-   SECTION DIVIDER
-====================================================== */
-
-.section-divider{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-
-    margin:70px 0 42px;
-
-}
-
-.section-divider span{
-
-    flex:1;
-
-    height:1px;
-
-    background:
-
-        linear-gradient(
-
-            to right,
-
-            transparent,
-
-            rgba(255,205,225,.75),
-
-            transparent
-
-        );
-
-}
-
-.section-divider h2{
-
-    margin:0;
-
-    white-space:nowrap;
-
-    font-family:var(--font-heading);
-
-    font-size:2rem;
-
-    color:var(--text-dark);
-
-    letter-spacing:.04em;
-
-}
-
 /* ======================================================
    GALLERY
 ====================================================== */
