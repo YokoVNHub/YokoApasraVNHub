@@ -210,15 +210,15 @@ document.addEventListener(
            FILE PATH
         ====================================================== */
 
-        const extension =
+       const extension =
+    album.format || "jpg";
 
-            album.format || "jpg";
+const posterNumber =
+    String(album.cover || "001").padStart(3, "0");
 
-        const posterPath =
+const posterPath =
 
-            `../assets/exclusive/${album.folder}/poster.${extension}`;
-
-
+    `../assets/exclusive/${album.folder}/${posterNumber}.${extension}`;
         /* ======================================================
            POSTER
         ====================================================== */
@@ -246,7 +246,7 @@ document.addEventListener(
         );
 
         posterLink.dataset.filename =
-            `${album.folder}-poster.${extension}`;
+    `${album.folder}-${posterNumber}.${extension}`;
 
 
         /* ======================================================
@@ -389,7 +389,7 @@ galleryElement.innerHTML = "";
    EMPTY GALLERY
 ====================================================== */
 
-if (album.photos === 0) {
+if (!album.photos || album.photos <= 0) {
 
 galleryElement.innerHTML = `
 
@@ -425,15 +425,15 @@ else {
        RENDER GALLERY
     ====================================================== */
 
-    for (
+   for (
 
-        let i = 1;
+    let i = 2;
 
-        i <= album.photos;
+    i <= album.photos;
 
-        i++
+    i++
 
-    ) {
+){
 
         const fileNumber =
 
@@ -547,10 +547,10 @@ else {
             album.folder
         );
 
-        console.log(
-            "Poster:",
-            posterPath
-        );
+      console.log(
+    "Poster:",
+    posterNumber
+);
 
         console.log(
             "Gallery:",
