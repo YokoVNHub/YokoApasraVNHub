@@ -187,7 +187,7 @@
     align-items: center;
     justify-content: center;
     gap: 14px;
-    padding: 13px 28px; /* Khoảng cách đệm cân đối với vòng tròn icon */
+    padding: 5px 15px; /* Khoảng cách đệm cân đối với vòng tròn icon */
     border-radius: 999px;
 
     color:#fff;

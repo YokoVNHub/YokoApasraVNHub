@@ -1024,7 +1024,9 @@ body.home-page{
 
     font-size:.95rem;
 
-    line-height:1.8;
+    line-height:1.8
+   
+   margin-bottom:18px;
 }
 
 .about-slogan{
@@ -1083,15 +1085,6 @@ body.home-page{
     letter-spacing:.08em;
 }
 
-
-/* ---------- GROUP ---------- */
-
-.social-group{
-
-    margin-bottom:35px;
-}
-
-
 /* ---------- ROW ---------- */
 
 .social-row{
@@ -1106,7 +1099,6 @@ body.home-page{
 .social-row a{
 
     display:flex;
-
     align-items:center;
 
     gap:10px;
@@ -1125,8 +1117,18 @@ body.home-page{
     color:#ff69ab;
 
     transform:translateX(4px);
+
 }
 
+.social-row a:hover i{
+
+    transform:scale(1.12);
+}
+
+.social-row i{
+
+    transition:.3s ease;
+}
 
 /* ---------- CHIBI ---------- */
 
@@ -1822,7 +1824,7 @@ body.home-page{
     }
 
     .about-content h2{
-        font-size:1.1rem;
+        font-size:1rem;
     }
 
     .about-content p{
