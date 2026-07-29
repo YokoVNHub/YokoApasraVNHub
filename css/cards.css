@@ -225,6 +225,7 @@
 
     width:max-content;
 
+    pointer-events:none;
 }
 
 .event-info h2 {
@@ -292,7 +293,6 @@
     border-color: transparent;
     box-shadow: 0 4px 15px rgba(243, 151, 185, 0.35);
 }
-
 /* ======================================================
    💻 RESPONSIVE MÁY TÍNH BẢNG (Max-width: 1024px)
 ====================================================== */
