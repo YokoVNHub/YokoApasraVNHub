@@ -212,6 +212,19 @@
     flex-direction: column;
     flex: 1;
     padding: 28px;
+    height:100%;
+}
+
+.event-action{
+
+    margin-top:auto;
+
+}
+
+.event-gallery-btn{
+
+    width:max-content;
+
 }
 
 .event-info h2 {
