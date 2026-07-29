@@ -213,39 +213,53 @@ function renderEvents() {
         const month = date.toLocaleString("en-US", { month: "short" });
         const year = date.getFullYear();
 
-        return `
-            <a href="detail.html?id=${item.id}" class="event-card">
-                <div class="event-thumb">
-                    <img 
-                        src="../assets/events/${item.folder}/${item.cover}.${item.format}" 
-                        alt="${item.title}"
-                        loading="lazy"
-                    >
-                    
-                    <div class="bubble b1"></div>
-                    <div class="bubble b2"></div>
-                    <div class="bubble b3"></div>
+return `
+    <a href="detail.html?id=${item.id}" class="event-card">
 
-                    <div class="event-date-badge">
-                        <strong>${day}</strong>
-                        <span>${month.toUpperCase()}</span>
-                        <small>${year}</small>
-                    </div>
-                </div>
+        <div class="event-thumb">
+            <img
+                src="../assets/events/${item.folder}/${item.cover}.${item.format}"
+                alt="${item.title}"
+                loading="lazy">
 
-                <div class="event-info">
-                    <h2>${item.title}</h2>
-                    <div class="event-meta">
-                        <p class="event-date">
-                            📅 ${item.date}
-                        </p>
-                        <span class="event-photos">
-                            📷 ${item.photos} photos &nbsp; →
-                        </span>
-                    </div>
-                </div>
-            </a>
-        `;
+            <div class="bubble b1"></div>
+            <div class="bubble b2"></div>
+            <div class="bubble b3"></div>
+
+            <div class="event-date-badge">
+                <strong>${day}</strong>
+                <span>${month.toUpperCase()}</span>
+                <small>${year}</small>
+            </div>
+        </div>
+
+        <div class="event-info">
+
+            <h2>${item.title}</h2>
+
+            <div class="event-meta">
+
+                <p class="event-date">
+                    📅 ${item.date}
+                </p>
+
+            </div>
+
+            <div class="event-action">
+
+                <span class="btn-primary event-gallery-btn">
+
+                    <span>View Gallery →</span>
+                    <span class="moon">☾</span>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </a>
+`;
     }).join("");
 }
 

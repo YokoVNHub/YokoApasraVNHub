@@ -118,11 +118,22 @@ function renderAlbums(albums) {
 
                 album.format || "jpg";
 
+            /* ==========================================
+               COVER IMAGE
+               (001.jpg mặc định)
+            ========================================== */
+
+            const cover =
+
+                String(
+                    album.cover || "001"
+                ).padStart(3, "0");
+
             const poster =
 
-                `../assets/exclusive/${album.folder}/poster.${extension}`;
+                `../assets/exclusive/${album.folder}/${cover}.${extension}`;
 
-return `
+            return `
 
 <article class="exclusive-card glass-card">
 
@@ -197,17 +208,24 @@ return `
                 href="detail.html?id=${album.id}"
                 class="btn-secondary">
 
-               <span>
-                        View Gallery
-                    </span>
+                <span>
 
-                    <span class="arrow">
-                        →
-                    </span>
+                    View Gallery
 
-                    <span class="moon">
-                        ☾
-                    </span>
+                </span>
+
+                <span class="arrow">
+
+                    →
+
+                </span>
+
+                <span class="moon">
+
+                    ☾
+
+                </span>
+
             </a>
 
         </div>

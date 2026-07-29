@@ -1,241 +1,858 @@
 /* ======================================================
-   RESPONSIVE GLOBAL ARCHIVE
-   PART 1: Desktop → Tablet (Giữ nguyên cấu trúc gốc của bạn)
+   RESPONSIVE GLOBAL
+   PART 1: Desktop → Tablet
+   (1200px & 992px)
 ====================================================== */
 
-@media (max-width:1366px){
-    .container{ width:min(94%,1200px); }
-    .home-hero{ padding:120px 0 80px; }
-    .home-hero-layout{ grid-template-columns:480px 1fr; gap:30px; }
-    .home-hero-copy{ margin-top:-120px; }
-    .home-hero-title{ font-size:4.7rem; }
-    .home-hero-desc{ max-width:500px; }
-    .home-hero-visual img{ width:610px; }
-    .schedule-home{ margin-top:-180px; }
-    .hero-layout{ grid-template-columns:520px 1fr; gap:30px; }
-    .hero-title{ font-size:4.4rem; }
-    .hero-image img{ width:500px; margin-right:-50px; margin-bottom:-100px; }
-    .hero-stats{ gap:18px; }
-    .latest-card{ gap:34px; }
-    .exclusive-intro{ padding:90px 0 45px; }
-    .exclusive-hero{ gap:42px; }
-    .exclusive-poster{ width:340px; }
-    .about-hero{ padding:90px 0; }
-    .about-wrapper{ gap:50px; }
-}
+/* ======================================================
+   <= 1200px
+====================================================== */
 
 @media (max-width:1200px){
-    .container{ width:min(94%,1100px); }
-    .header-container{ gap:30px; }
-    .nav-menu{ gap:24px; }
-    .home-hero-layout{ grid-template-columns:430px 1fr; }
-    .home-hero-copy{ margin-top:-120px; }
-    .home-hero-title{ font-size:4rem; }
-    .home-hero-desc{ font-size:1.05rem; }
-    .home-hero-visual img{ width:620px; }
-    .schedule-home{ margin-top:-160px; }
-    .home-gallery-grid{ grid-template-columns:repeat(3,1fr); }
-    .hero-layout{ grid-template-columns:460px 1fr; }
-    .hero-title{ font-size:3.8rem; }
-    .hero-image img{ width:720px; margin-right:-70px; margin-bottom:-100px; }
-    .events-grid{ grid-template-columns:repeat(2,1fr); }
-    .hero-stats{ grid-template-columns:repeat(3,1fr); }
-    .gallery{ grid-template-columns:repeat(3,1fr); }
-    .exclusive-list{ gap:28px; }
-    .exclusive-card{ padding:30px; }
-    .exclusive-hero{ gap:36px; }
-    .exclusive-poster{ width:300px; }
-    .about-gallery{ grid-template-columns:repeat(2,1fr); }
+
+    .container{
+        width:min(94%,1100px);
+    }
+
+    /* ---------- Header ---------- */
+
+    .header-container{
+        gap:30px;
+    }
+
+    .nav-menu{
+        gap:24px;
+    }
+
+    /* ---------- Home ---------- */
+
+    .home-hero-layout{
+        grid-template-columns:430px 1fr;
+        gap:30px;
+    }
+
+    .home-hero-copy{
+        margin-top:-120px;
+    }
+
+    .home-hero-title{
+        font-size:4rem;
+    }
+
+    .home-hero-desc{
+        font-size:1.05rem;
+    }
+
+    .home-hero-visual img{
+        width:620px;
+    }
+
+    .schedule-home{
+        margin-top:-160px;
+    }
+
+    .home-gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    /* ---------- Events ---------- */
+
+    .hero-layout{
+        grid-template-columns:460px 1fr;
+    }
+
+    .hero-title{
+        font-size:3.8rem;
+    }
+
+    .hero-image img{
+        width:620px;
+        margin-right:-60px;
+        margin-bottom:-100px;
+    }
+
+    .events-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero-stats{
+        width:100%;
+        max-width:760px;
+    }
+
+    /* ---------- Gallery ---------- */
+
+    .gallery{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    /* ---------- Exclusive ---------- */
+
+    .exclusive-card{
+        gap:32px;
+        padding:30px;
+    }
+
+    /* ---------- About ---------- */
+
+    .about-gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
+
+/* ======================================================
+   <= 992px
+====================================================== */
+
 @media (max-width:992px){
-    body{ padding-top:82px; }
-    .header{ height:82px; }
-    .header-container{ min-height:82px; }
-    .logo img{ width:105px; }
-    .logo-title{ font-size:1rem; }
-    .nav-menu{ gap:18px; }
-    .nav-menu a{ font-size:.95rem; }
-    .home-hero{ padding:80px 0 70px; }
-    .home-hero-layout{ display:flex; align-items:center; gap:45px; }
-    .home-hero-copy{ flex:1; margin-top:-50px; text-align:left; }
-    .home-hero-title{ font-size:3.25rem; }
-    .home-hero-desc{ max-width:unset; }
-    .home-hero-visual{ flex:1; display:flex; justify-content:center; }
-    .home-hero-visual img{ width:620px; }
-    .schedule-home{ margin-top:-70px; }
-    .home-gallery-grid{ grid-template-columns:repeat(2,1fr); }
-    .events-hero{ padding:70px 0; }
-    .hero-layout{ display:flex; align-items:center; gap:40px; }
-    .hero-copy{ flex:1; }
-    .hero-image{ flex:1; display:flex; justify-content:center; }
-    .hero-image img{ width:720px; margin-right:-70px; margin-bottom:-100px; }
-    .hero-title{ font-size:3.2rem; }
-    .hero-desc{ max-width:unset; }
-    .hero-stats { display: flex !important; flex-direction: row !important; justify-content: space-around !important; gap:15px; }
-    .latest-card{ flex-direction:row; align-items:center; margin-top:-60px; }
-    .events-toolbar{ flex-direction:column; align-items:stretch; gap:18px; }
-    .toolbar-right{ justify-content:space-between; }
-    .events-grid{ grid-template-columns:repeat(2,1fr); }
-    .gallery-header{ text-align:center; }
-    .gallery{ grid-template-columns:repeat(3,1fr); }
-    .exclusive-hero{ display:flex; align-items:center; gap:40px; }
-    .exclusive-poster{ flex:0 0 260px; width:260px; }
-    .exclusive-info{ flex:1; text-align:left; }
-    .exclusive-meta{ justify-content:flex-start; }
-    .exclusive-list{ grid-template-columns:1fr; }
-    .about-wrapper{ display:flex; gap:40px; }
-    .about-content{ flex:1; }
-    .about-image{ flex:1; }
-    .about-gallery{ grid-template-columns:repeat(2,1fr); }
-    .site-credit{ font-size:.9rem; }
+
+    body{
+        padding-top:82px;
+    }
+
+    .header{
+        height:82px;
+    }
+
+    .header-container{
+        min-height:82px;
+    }
+
+    .logo img{
+        width:105px;
+    }
+
+    .logo-title{
+        font-size:1rem;
+    }
+
+    .nav-menu{
+        gap:18px;
+    }
+
+    .nav-menu a{
+        font-size:.95rem;
+    }
+
+    /* ---------- Home ---------- */
+
+    .home-hero{
+        padding:80px 0 70px;
+    }
+
+    .home-hero-layout{
+        display:flex;
+        align-items:center;
+        gap:40px;
+    }
+
+    .home-hero-copy{
+        flex:1;
+        margin-top:-50px;
+    }
+
+    .home-hero-title{
+        font-size:3.3rem;
+    }
+
+    .home-hero-visual{
+        flex:1;
+        display:flex;
+        justify-content:center;
+    }
+
+    .home-hero-visual img{
+        width:540px;
+    }
+
+    .schedule-home{
+        margin-top:-70px;
+    }
+
+    .home-gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    /* ---------- Events ---------- */
+
+    .events-hero{
+        padding:70px 0;
+    }
+
+    .hero-layout{
+        display:flex;
+        align-items:center;
+        gap:40px;
+    }
+
+    .hero-copy{
+        flex:1;
+    }
+
+    .hero-image{
+        flex:1;
+        display:flex;
+        justify-content:center;
+    }
+
+    .hero-image img{
+        width:560px;
+        margin-right:-60px;
+        margin-bottom:-100px;
+    }
+
+    .hero-title{
+        font-size:3.2rem;
+    }
+
+    .hero-stats{
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+        gap:18px;
+        width:100%;
+        max-width:720px;
+    }
+
+    .latest-card{
+        grid-template-columns:1fr;
+        gap:30px;
+        margin-top:-60px;
+    }
+
+    .events-toolbar{
+        flex-direction:column;
+        align-items:stretch;
+        gap:18px;
+    }
+
+    .toolbar-right{
+        justify-content:space-between;
+    }
+
+    .events-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    /* ---------- Gallery ---------- */
+
+    .gallery{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    /* ---------- Exclusive ---------- */
+
+    .exclusive-card{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:32px;
+    }
+
+    .exclusive-content{
+        align-items:center;
+    }
+
+    .exclusive-meta{
+        justify-items:center;
+    }
+
+    .exclusive-meta p{
+        justify-content:center;
+    }
+
+    /* ---------- About ---------- */
+
+    .about-wrapper{
+        display:flex;
+        gap:40px;
+    }
+
+    .about-content,
+    .about-image{
+        flex:1;
+    }
+
+    .about-gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
 /* ======================================================
-   📱 PART 2: CHỈ SỬA TRÊN ĐIỆN THOẠI DI ĐỘNG KHI XEM DỌC / MOBILE (<=768px)
+   RESPONSIVE GLOBAL
+   PART 2: Mobile Header & Navigation
+   (<=768px)
 ====================================================== */
-@media (max-width: 768px) {
-    /* --- Cấu trúc chung & Khung chứa --- */
-    body { padding-top: 76px; }
-    .container { width: min(100% - 36px, 1200px); }
 
-    /* --- Thanh điều hướng (Header & Navigation) --- */
-    .header-container { min-height: 76px; }
-    .logo img { width: 84px; }
-    .logo-text { display: none; }
-    
-    .header-container nav { 
-        width: 100% !important; 
-        overflow-x: auto !important; 
-        scrollbar-width: none; 
-        -webkit-overflow-scrolling: touch; 
-    }
-    .header-container nav::-webkit-scrollbar { display: none; }
-    
-    .nav-menu { 
-        display: flex !important; 
-        flex-direction: row !important; 
-        flex-wrap: nowrap !important; 
-        justify-content: flex-start !important; 
-        align-items: center !important; 
-        gap: 8px !important; 
-        padding: 4px 10px !important; 
-        width: max-content !important; 
-    }
-    .nav-menu li { flex-shrink: 0 !important; }
-    .nav-menu a { 
-        display: flex !important; 
-        padding: 8px 14px !important; 
-        font-size: 0.9rem !important; 
-        white-space: nowrap !important; 
+@media (max-width:768px){
+
+    /* ---------- Global ---------- */
+
+    body{
+        padding-top:76px;
     }
 
-    /* --- Trang chủ - Khu vực Hero (Home Hero) --- */
-    .home-hero-visual { display: none !important; }
-    .home-hero { padding: 24px 0 0 0 !important; }
-    .home-hero-layout { 
-        display: flex !important; 
-        flex-direction: column !important; 
-        align-items: center !important; 
-        text-align: center !important; 
-        gap: 16px !important; 
-        min-height: auto !important; 
-    }
-    .home-hero-copy { 
-        margin: 0 !important; 
-        max-width: 100% !important; 
-        display: flex !important; 
-        flex-direction: column !important; 
-        align-items: center !important; 
-    }
-    .home-hero-title { font-size: 2.8rem !important; line-height: 1.2 !important; }
-    .home-hero-desc { margin-inline: auto !important; font-size: 0.95rem !important; }
-    .home-hero-buttons { justify-content: center !important; margin: 10px auto 0 auto !important; }
-    .home-hero-buttons .btn-secondary { margin: 0 auto !important; }
-    .schedule-home { margin-top: 24px !important; }
-
-    /* --- Tiêu đề danh mục (Featured Head) --- */
-    .featured-head { 
-        display: flex !important; 
-        flex-direction: row !important; 
-        justify-content: space-between !important; 
-        align-items: center !important; 
-        width: 100% !important; 
-        margin-bottom: 24px !important; 
-        gap: 12px !important; 
-        padding: 0 6px !important; 
-    }
-    .featured-head h2 { font-size: 1.15rem !important; margin: 0 !important; text-align: left !important; white-space: nowrap !important; }
-    .featured-head .btn-secondary, 
-    .featured-head .view-all-btn, 
-    .featured-head a { 
-        font-size: 0.78rem !important; 
-        padding: 6px 12px !important; 
-        width: max-content !important; 
-        margin: 0 !important; 
-        margin-right: 4px !important; 
-        white-space: nowrap !important; 
+    .container{
+        width:min(100% - 36px,1200px);
     }
 
-    /* --- Trang Sự kiện - Khu vực Hero (Events Hero) --- */
-    .events-hero .hero-image { display: none !important; }
-    .events-hero { padding: 24px 0 0 0 !important; }
-    .hero-layout { display: flex !important; flex-direction: column !important; text-align: center !important; gap: 16px !important; }
-    .hero-copy { align-items: center !important; display: flex !important; flex-direction: column !important; }
-    .hero-title { font-size: 2.8rem !important; margin: 10px 0 !important; }
-    .hero-desc { margin-inline: auto !important; font-size: 0.95rem !important; }
+    /* ---------- Header ---------- */
 
-    /* --- Thống kê Sự kiện (Hero Stats) --- */
-    .events-page .hero-stats { 
-        display: flex !important; 
-        flex-direction: row !important; 
-        justify-content: space-around !important; 
-        align-items: center !important; 
-        width: 100% !important; 
-        max-width: 100% !important; 
-        padding: 12px 8px !important; 
-        border-radius: 20px !important; 
-        gap: 8px !important; 
-        margin: 20px 0 0 0 !important; 
+    .header{
+        height:76px;
     }
-    .events-page .hero-stat { flex-direction: column !important; gap: 4px !important; text-align: center !important; flex: 1 !important; }
-    .events-page .hero-stat-icon { width: 36px !important; height: 36px !important; font-size: 0.95rem !important; }
-    .events-page .hero-stat strong { font-size: 1.1rem !important; }
-    .events-page .hero-stat span { font-size: 0.62rem !important; white-space: nowrap !important; }
 
-    /* --- Phần Mới nhất & Tiêu đề (Latest & Titles) --- */
-    .latest-section { margin-top: 24px !important; }
-    .latest-card { grid-template-columns: 1fr !important; gap: 24px !important; padding: 20px !important; margin-top: 0 !important; }
-    .latest-cover { max-width: 320px; margin: auto !important; }
+    .header-container{
+        min-height:76px;
+        gap:14px;
+    }
 
-    .section-divider h2 { font-size: 1.45rem !important; white-space: nowrap !important; text-align: center !important; width: 100% !important; }
-    .exclusive-section-title { font-size: 1.3rem !important; text-align: center !important; margin-bottom: 24px !important; white-space: nowrap !important; display: block !important; width: 100% !important; }
-    .exclusive-detail-page .exclusive-meta { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 14px !important; margin-bottom: 24px !important; }
-    .exclusive-detail-page .exclusive-meta p { justify-content: center !important; text-align: center !important; }
+    .logo img{
+        width:84px;
+    }
 
-    /* --- Thanh công cụ Bộ lọc (Toolbar & Filters) --- */
-    .events-toolbar { flex-direction: column !important; align-items: stretch !important; gap: 16px !important; padding: 0 !important; }
-    .month-filter { gap: 6px !important; }
-    .month-filter button { padding: 8px 12px !important; font-size: 0.8rem !important; flex: 1 !important; text-align: center !important; min-width: calc(33.33% - 6px) !important; }
-    .toolbar-right { display: flex !important; justify-content: space-between !important; width: 100% !important; }
-    .filter-select-wrapper, .filter-select-wrapper select { width: 100% !important; max-width: 160px !important; }
+    .logo-title,
+    .logo-text{
+        display:none;
+    }
 
-    /* --- Bố cục lưới (Grids & Layouts) --- */
-    .featured-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
-    .gallery { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
-    .exclusive-hero { grid-template-columns: 1fr !important; text-align: center !important; gap: 36px !important; }
-    .exclusive-poster { max-width: 260px; margin: auto !important; }
-    .exclusive-meta { justify-content: center !important; }
-    .footer-message { grid-template-columns: 1fr !important; text-align: center !important; }
-    .footer-copy { margin: auto !important; }
-    .events-bubbles span { display: none !important; }
+    /* ---------- Navigation ---------- */
 
-    /* --- Trang Giới thiệu & Mạng xã hội (About & Social) --- */
-    .about-social-card { display: flex !important; flex-direction: column !important; gap: 30px !important; text-align: center !important; }
-    .about-side { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 16px !important; width: 100% !important; }
-    .about-content { text-align: center !important; }
-    .about-content h2, .about-content p { text-align: center !important; width: 100% !important; }
-    .about-divider { display: none !important; }
-    .social-side { width: 100% !important; text-align: center !important; }
-    .social-row { display: flex !important; flex-direction: row !important; justify-content: center !important; flex-wrap: wrap !important; gap: 12px 20px !important; }
+    .header-container nav{
+        width:100%;
+        overflow-x:auto;
+        overflow-y:hidden;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .header-container nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    .nav-menu{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-items:center;
+
+        gap:8px;
+
+        width:max-content;
+
+        padding:4px 10px;
+    }
+
+    .nav-menu li{
+        flex-shrink:0;
+    }
+
+    .nav-menu a{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        padding:8px 14px;
+
+        font-size:.9rem;
+
+        white-space:nowrap;
+    }
+
+}
+
+/* ======================================================
+   RESPONSIVE GLOBAL
+   PART 3: HOME (<=768px)
+====================================================== */
+
+@media (max-width:768px){
+
+    /* ---------- Hero ---------- */
+
+    .home-hero{
+        padding:24px 0 0;
+    }
+
+    .home-hero-layout{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:18px;
+        min-height:auto;
+    }
+
+    /* Giữ nguyên hero hiện tại:
+       mobile KHÔNG có ảnh */
+
+    .home-hero-visual{
+        display:none;
+    }
+
+    .home-hero-copy{
+        width:100%;
+        max-width:100%;
+        margin:0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .home-hero-title{
+        font-size:2.8rem;
+        line-height:1.15;
+    }
+
+    .home-hero-desc{
+        max-width:620px;
+        margin:0 auto;
+        font-size:.95rem;
+        line-height:1.8;
+    }
+
+    .home-hero-buttons{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:14px;
+        margin-top:14px;
+    }
+
+    .schedule-home{
+        margin-top:24px;
+    }
+
+    /* ---------- Featured ---------- */
+
+    .featured-head{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:12px;
+        margin-bottom:24px;
+    }
+
+    .featured-head h2{
+        margin:0;
+        font-size:1.15rem;
+        white-space:nowrap;
+    }
+
+    .featured-head .btn-secondary,
+    .featured-head .view-all-btn,
+    .featured-head a{
+        flex-shrink:0;
+        padding:6px 12px;
+        font-size:.78rem;
+        white-space:nowrap;
+    }
+
+    /* ---------- Gallery ---------- */
+
+    .home-gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+    }
+
+}
+
+/* ======================================================
+   RESPONSIVE GLOBAL
+   PART 4: EVENTS (<=768px)
+====================================================== */
+
+@media (max-width:768px){
+
+    /* ---------- Hero ---------- */
+
+    .events-hero{
+        padding:24px 0 0;
+    }
+
+    .hero-layout{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:18px;
+        min-height:auto;
+    }
+
+    .hero-copy{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hero-image{
+        display:none;
+    }
+
+    .hero-title{
+        font-size:2.8rem;
+        line-height:1.15;
+        margin:10px 0;
+    }
+
+    .hero-desc{
+        max-width:620px;
+        margin:0 auto;
+        font-size:.95rem;
+        line-height:1.8;
+    }
+
+    /* ---------- Hero Stats ---------- */
+
+    .events-page .hero-stats{
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+
+        width:100%;
+        margin:22px 0 0;
+        padding:14px 10px;
+
+        gap:10px;
+
+        border-radius:22px;
+    }
+
+    .events-page .hero-stat{
+        flex:1;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:6px;
+    }
+
+    .events-page .hero-stat-icon{
+        width:38px;
+        height:38px;
+        font-size:.95rem;
+    }
+
+    .events-page .hero-stat strong{
+        font-size:1.05rem;
+    }
+
+    .events-page .hero-stat span{
+        font-size:.65rem;
+        white-space:nowrap;
+    }
+
+    /* ---------- Latest ---------- */
+
+    .latest-section{
+        margin-top:24px;
+    }
+
+    .latest-card{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:22px;
+
+        padding:20px;
+
+        margin-top:0;
+    }
+
+    .latest-card .latest-image{
+        width:100%;
+        height:220px;
+    }
+
+    /* ---------- Toolbar ---------- */
+
+    .events-toolbar{
+        display:flex;
+        flex-direction:column;
+        gap:16px;
+        align-items:stretch;
+    }
+
+    .toolbar-right{
+        display:flex;
+        justify-content:space-between;
+        gap:12px;
+        width:100%;
+    }
+
+    .month-filter{
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+    }
+
+    .month-filter button{
+        flex:1;
+        min-width:calc(33.33% - 8px);
+
+        padding:8px 12px;
+
+        font-size:.8rem;
+    }
+
+    .filter-select-wrapper{
+        width:160px;
+        max-width:100%;
+    }
+
+    .filter-select-wrapper select{
+        width:100%;
+    }
+
+    /* ---------- Grid ---------- */
+
+    .events-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    /* ---------- Section Title ---------- */
+
+    .section-divider{
+        text-align:center;
+    }
+
+    .section-divider h2{
+        font-size:1.45rem;
+        white-space:nowrap;
+    }
+
+    /* ---------- Bubble ---------- */
+
+    .events-bubbles{
+        opacity:.55;
+    }
+
+    .events-bubbles span{
+        transform:scale(.55);
+    }
+
+    /* Ẩn bớt bubble để đỡ rối */
+
+    .events-bubbles span:nth-child(2),
+    .events-bubbles span:nth-child(4),
+    .events-bubbles span:nth-child(6),
+    .events-bubbles span:nth-child(8),
+    .events-bubbles span:nth-child(10),
+    .events-bubbles span:nth-child(12){
+        display:none;
+    }
+
+}
+
+/* ======================================================
+   RESPONSIVE GLOBAL
+   PART 5: GALLERY (<=768px)
+====================================================== */
+
+@media (max-width:768px){
+
+    /* ---------- Gallery Detail ---------- */
+
+    .gallery-page{
+        padding:50px 0 70px;
+    }
+
+    .gallery-header{
+        margin-bottom:36px;
+        text-align:center;
+    }
+
+    .gallery-header h1{
+        font-size:2rem;
+        line-height:1.3;
+    }
+
+    .gallery-meta{
+        gap:22px;
+    }
+
+    .event-meta-info{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+        font-size:.92rem;
+    }
+
+    .event-meta-info span{
+        justify-content:center;
+    }
+
+    /* ---------- Gallery Grid ---------- */
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+    }
+
+    .gallery img{
+        width:100%;
+        aspect-ratio:3/2;
+        object-fit:cover;
+    }
+
+}
+
+/* ======================================================
+   <=480px
+====================================================== */
+
+@media (max-width:480px){
+
+    .gallery-page{
+        padding:40px 0 60px;
+    }
+
+    .gallery-header h1{
+        font-size:1.7rem;
+    }
+
+    .gallery{
+        gap:10px;
+    }
+
+    .event-meta-info{
+        flex-direction:column;
+        align-items:center;
+        gap:8px;
+        text-align:center;
+    }
+
+}
+
+/* ======================================================
+   PART 6
+   EXTRA SMALL MOBILE (≤430px)
+====================================================== */
+
+@media (max-width:430px){
+
+    .container{
+        width:min(100% - 24px,1200px);
+    }
+
+    /* ---------- HOME ---------- */
+
+    .home-hero-title{
+        font-size:2.25rem;
+    }
+
+    .home-hero-desc{
+        font-size:.9rem;
+    }
+
+    .home-gallery-grid{
+        gap:10px;
+    }
+
+    /* ---------- EVENTS ---------- */
+
+    .hero-title{
+        font-size:2.2rem;
+    }
+
+    .hero-desc{
+        font-size:.9rem;
+    }
+
+    .hero-stat strong{
+        font-size:1rem;
+    }
+
+    .hero-stat span{
+        font-size:.58rem;
+    }
+
+    .events-grid{
+        gap:18px;
+    }
+
+    /* ---------- GALLERY ---------- */
+
+    .gallery{
+        gap:8px;
+    }
+
+    .gallery-header h1{
+        font-size:1.55rem;
+    }
+
+    .event-meta-info{
+        gap:8px;
+        font-size:.88rem;
+    }
+
+    /* ---------- EXCLUSIVE ---------- */
+
+    .exclusive-title{
+        font-size:1.9rem;
+    }
+
+    .exclusive-subtitle{
+        font-size:.9rem;
+    }
+
+    .exclusive-card{
+        padding:18px;
+        border-radius:22px;
+    }
+
+    .exclusive-cover{
+        padding:16px;
+    }
+
+    .exclusive-cover img{
+        width:82%;
+    }
+
+    .exclusive-meta{
+        gap:10px;
+    }
+
+    .exclusive-meta p{
+        font-size:.9rem;
+    }
+
+    /* ---------- ABOUT ---------- */
+
+    .about-content h2{
+        font-size:1.8rem;
+    }
+
+    .about-content p{
+        font-size:.92rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    .footer-copy{
+        font-size:.88rem;
+    }
+
+    .site-credit{
+        font-size:.78rem;
+    }
+
+    /* ---------- BUBBLES ---------- */
+
+    .events-bubbles span,
+    .exclusive-bubbles span{
+        opacity:.45;
+        filter:blur(.3px);
+    }
+
+    .events-bubbles span:nth-child(n+9),
+    .exclusive-bubbles span:nth-child(n+9){
+        display:none;
+    }
+
 }

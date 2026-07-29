@@ -321,8 +321,6 @@
 
     margin: 22px 0 16px;
 
-    font-family: "Playfair Display", serif;
-
     font-size: clamp(2.8rem,5vw,4.2rem);
 
     font-weight: 700;
@@ -413,47 +411,99 @@
         0 28px 70px rgba(232,170,198,.20);
 }
 
-
 /* ======================================================
    COVER
 ====================================================== */
 
-.exclusive-cover {
+.exclusive-cover{
 
-    position: relative;
+    position:relative;
 
-    overflow: hidden;
+    display:flex;
 
-    border-radius: 24px;
+    justify-content:center;
 
-    background: #f6f6f6;
+    align-items:center;
 
-    aspect-ratio: 4 / 5;
+   border-radius: 30px;
+
+    overflow:hidden;
 }
 
-.exclusive-cover img {
 
-    width: 100%;
+/* Soft glow */
 
-    height: 100%;
+.exclusive-cover::before{
 
-    object-fit: cover;
+    content:"";
 
-    display: block;
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.9),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* Decorative light */
+
+.exclusive-cover::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,220,235,.18);
+
+    filter:blur(50px);
+
+    top:-70px;
+    right:-40px;
+}
+
+
+/* Image */
+
+.exclusive-cover img{
+
+    position:relative;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 22px 55px rgba(0,0,0,.16);
 
     transition:
-        transform .6s ease,
-        filter .6s ease;
+        transform .4s ease,
+        box-shadow .4s ease;
 }
 
-.exclusive-card:hover
-.exclusive-cover img {
 
-    transform: scale(1.03);
+/* Hover */
 
-    filter: brightness(1.05);
+.exclusive-card:hover .exclusive-cover img{
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.20);
+
 }
-
 
 /* ======================================================
    CONTENT
@@ -499,9 +549,9 @@
 
     margin: 0;
 
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(2rem,4vw,3rem);
+    font-family: var(--font-heading);
+   
+    font-size: 3.3rem;
 
     line-height: 1.15;
 
@@ -758,310 +808,3 @@
         transition: none;
     }
 }
-/* ======================================================
-   TABLET (Max-width: 992px)
-====================================================== */
-
-@media (max-width:992px){
-
-    .exclusive-page{
-        padding:70px 0 90px;
-    }
-
-    .exclusive-hero{
-        margin-bottom:70px;
-    }
-
-    .exclusive-title{
-        font-size:3rem;
-    }
-
-    .exclusive-subtitle{
-        max-width:700px;
-        margin:0 auto;
-    }
-
-    .exclusive-grid{
-        gap:32px;
-    }
-
-    .exclusive-card{
-        padding:30px;
-        border-radius:34px;
-    }
-
-    .exclusive-card .poster{
-        width:180px;
-    }
-
-    .exclusive-card h2{
-        font-size:2rem;
-    }
-
-    .exclusive-card .meta{
-        gap:14px;
-    }
-
-    .view-gallery-btn{
-        height:60px;
-        max-width:230px;
-        font-size:1rem;
-    }
-
-    .view-gallery-btn .btn-icon{
-        width:48px;
-        height:48px;
-    }
-
-} /* Đmanager ĐÃ SỬA: Đóng dấu ngoặc nhọn kết thúc phân đoạn 992px chuẩn xác */
-
-
-/* ======================================================
-   📱 MOBILE (Max-width: 768px)
-====================================================== */
-
-@media (max-width:768px){
-
-    .exclusive-page{
-        padding:50px 0 70px;
-    }
-
-    /* ==========================
-       HERO
-    ========================== */
-
-    .exclusive-hero{
-        margin-bottom:50px;
-        text-align:center;
-    }
-
-    .exclusive-badge{
-        margin:0 auto 20px;
-    }
-
-    .exclusive-title{
-        font-size:2.5rem;
-        line-height:1.15;
-        margin-bottom:18px;
-    }
-
-    .exclusive-subtitle{
-        max-width:100%;
-        font-size:1rem;
-        line-height:1.8;
-    }
-
-    /* ==========================
-       SECTION
-    ========================== */
-
-    .exclusive-section-title{
-        text-align:center;
-        font-size:2rem;
-        margin-bottom:30px;
-    }
-
-    /* ==========================
-       CARD
-    ========================== */
-
-    .exclusive-card{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-        gap:24px;
-        padding:26px;
-        border-radius:30px;
-    }
-
-    /* ==========================
-       POSTER
-    ========================== */
-
-    .exclusive-card .poster{
-        width:220px;
-        max-width:100%;
-        margin:0 auto;
-    }
-
-    /* ==========================
-       INFO
-    ========================== */
-
-    .exclusive-card-content{
-        width:100%;
-    }
-
-    .exclusive-card h2{
-        font-size:2rem;
-        margin-bottom:10px;
-    }
-
-    .exclusive-card .subtitle{
-        font-size:1rem;
-        margin-bottom:20px;
-    }
-
-    /* ==========================
-       META
-    ========================== */
-
-    .exclusive-card .meta{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:14px;
-        margin-bottom:24px;
-    }
-
-    .exclusive-card .meta p{
-        justify-content:center;
-        text-align:center;
-        line-height:1.7;
-    }
-
-    /* ==========================
-       BUTTON
-    ========================== */
-
-    .view-gallery-btn{
-        width:100%;
-        max-width:220px;
-        height:56px;
-        margin:0 auto;
-        font-size:.95rem;
-    }
-
-    .view-gallery-btn .btn-icon{
-        width:44px;
-        height:44px;
-    }
-
-} /* Kết thúc phân đoạn 768px */
-
-
-/* ======================================================
-   📱 SMALL MOBILE (Max-width: 576px)
-====================================================== */
-
-@media (max-width:576px){
-
-    .exclusive-page{
-        padding:40px 0 60px;
-    }
-
-    /* ---------- Hero ---------- */
-
-    .exclusive-title{
-        font-size:2.1rem;
-    }
-
-    .exclusive-subtitle{
-        font-size:.95rem;
-        line-height:1.7;
-    }
-
-    .exclusive-section-title{
-        font-size:1.75rem;
-        margin-bottom:26px;
-    }
-
-    /* ---------- Card ---------- */
-
-    .exclusive-card{
-        padding:22px;
-        gap:20px;
-        border-radius:26px;
-    }
-
-    .exclusive-card .poster{
-        width:190px;
-    }
-
-    .exclusive-card h2{
-        font-size:1.7rem;
-        line-height:1.25;
-    }
-
-    .exclusive-card .subtitle{
-        font-size:.95rem;
-        margin-bottom:18px;
-    }
-
-    .exclusive-card .meta{
-        gap:12px;
-        margin-bottom:22px;
-    }
-
-    .exclusive-card .meta p{
-        font-size:.95rem;
-    }
-
-    /* ---------- Button ---------- */
-
-    .view-gallery-btn{
-        max-width:200px;
-        height:52px;
-        font-size:.9rem;
-    }
-
-    .view-gallery-btn .btn-icon{
-        width:40px;
-        height:40px;
-    }
-
-} /* Kết thúc phân đoạn 576px */
-
-
-/* ======================================================
-   📱 EXTRA SMALL (Max-width: 430px)
-====================================================== */
-
-@media (max-width:430px){
-
-    .exclusive-title{
-        font-size:1.85rem;
-    }
-
-    .exclusive-subtitle{
-        font-size:.9rem;
-    }
-
-    .exclusive-section-title{
-        font-size:1.55rem;
-    }
-
-    .exclusive-card{
-        padding:18px;
-        border-radius:22px;
-    }
-
-    .exclusive-card .poster{
-        width:170px;
-    }
-
-    .exclusive-card h2{
-        font-size:1.45rem;
-    }
-
-    .exclusive-card .subtitle{
-        font-size:.9rem;
-    }
-
-    .exclusive-card .meta p{
-        font-size:.9rem;
-    }
-
-    .view-gallery-btn{
-        max-width:185px;
-        height:48px;
-        font-size:.85rem;
-    }
-
-    .view-gallery-btn .btn-icon{
-        width:36px;
-        height:36px;
-    }
-
-} /* Kết thúc phân đoạn 430px */

@@ -972,170 +972,156 @@
 
 
 /* ======================================================
-   ABOUT FOOTER SOCIAL
+   ABOUT FOOTER
 ====================================================== */
 
 .about-footer-social{
 
     margin-top:90px;
-}
-
-.about-footer-card{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        auto
-        1fr;
-
-    gap:45px;
-
-    padding:50px;
-
-    border-radius:42px;
-
-    background:rgba(255,255,255,.82);
-
-    backdrop-filter:blur(30px);
-
-    border:1px solid rgba(255,220,235,.65);
-
-    box-shadow:
-        0 20px 45px rgba(255,205,225,.12);
-}
-
-
-/* LEFT */
-
-.about-footer-left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:32px;
-}
-
-.about-footer-mascot{
-
-    width:160px;
-
-    flex-shrink:0;
-}
-
-.about-footer-content h2{
-
-    margin:0 0 15px;
-
-    font-size:2.2rem;
-
-    color:var(--text-dark);
-}
-
-.about-footer-subtitle{
-
-    margin-bottom:14px;
-
-    font-weight:700;
-
-    color:#c889aa;
-
-    letter-spacing:.08em;
-}
-
-.about-footer-content p{
-
-    margin:10px 0;
-
-    line-height:1.8;
-
-    color:var(--text-light);
-}
-
-.about-footer-btn{
-
-    margin-top:22px;
-
-    width:max-content;
-}
-
-
-/* Divider */
-
-.about-footer-divider{
-
-    width:1px;
-
-    background:
-
-    linear-gradient(
-
-        transparent,
-
-        rgba(255,205,225,.8),
-
-        transparent
-
-    );
-}
-
-
-/* Right */
-
-.about-footer-right{
-
-    position:relative;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    gap:40px;
-}
-
-.about-footer-group h4{
-
-    margin-bottom:18px;
-
-    color:#c889aa;
-
-    letter-spacing:.18em;
-
-    font-size:.82rem;
-}
-
-.about-footer-group a{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    margin:12px 0;
-
-    color:var(--text-dark);
-
-    transition:.25s;
-}
-
-.about-footer-group a:hover{
-
-    color:#ef84b2;
-}
-
-.about-footer-group i{
-
-    width:22px;
 
     text-align:center;
 }
 
 
-/* Chibi */
+/* ======================================================
+   SOCIAL WRAPPER
+====================================================== */
+
+.about-footer-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:28px;
+
+    margin-bottom:40px;
+}
+
+
+/* ======================================================
+   GROUP
+====================================================== */
+
+.about-footer-group{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    width:100%;
+}
+
+
+/* ======================================================
+   TITLE
+====================================================== */
+
+.about-footer-group h4{
+
+    margin:0;
+
+    font-size:.9rem;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
+
+    color:#c889aa;
+
+    flex-shrink:0;
+}
+
+
+/* ======================================================
+   LINKS
+====================================================== */
+
+.about-footer-links{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+}
+
+
+.about-footer-links a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:var(--text-dark);
+
+    font-weight:600;
+
+    transition:
+        color .25s,
+        transform .25s;
+}
+
+
+.about-footer-links a:hover{
+
+    color:#ef84b2;
+
+    transform:translateY(-2px);
+}
+
+
+.about-footer-links i{
+
+    color:var(--primary);
+}
+
+
+/* Divider */
+
+.about-footer-links .divider{
+
+    width:1px;
+
+    height:18px;
+
+    background:rgba(220,180,200,.6);
+}
+
+
+/* ======================================================
+   COPYRIGHT
+====================================================== */
+
+.about-footer-social .site-credit{
+
+    text-align:center;
+}
+
+
+/* ======================================================
+   CHIBI
+====================================================== */
 
 .about-footer-chibi{
 
@@ -1147,49 +1133,6 @@
 
     width:150px;
 }
-
-.about-footer-group a{
-
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    padding:10px 0;
-
-    text-decoration:none;
-
-    color:var(--text-dark);
-
-    transition:
-        color .25s ease,
-        transform .25s ease;
-
-}
-
-.about-footer-group a:hover{
-
-    color:#ef84b2;
-
-    transform:translateX(6px);
-
-}
-
-.about-footer-group a i{
-
-    width:22px;
-
-    text-align:center;
-
-    transition:transform .25s ease;
-
-}
-
-.about-footer-group a:hover i{
-
-    transform:scale(1.1);
-
-}
-
 /* ======================================================
    FOOTER
 ====================================================== */
@@ -1235,190 +1178,6 @@
         transform:
             translateY(0)
             translateX(0);
-
-    }
-
-}
-
-
-
-/* ======================================================
-   RESPONSIVE
-====================================================== */
-
-@media (max-width:1024px){
-
-    .chapter-grid,
-    .mission-grid,
-    .home-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .about-footer-card{
-
-        grid-template-columns:1fr;
-
-        gap:35px;
-
-        padding:40px;
-
-    }
-
-    .about-footer-divider{
-
-        display:none;
-
-    }
-
-}
-
-
-@media (max-width:768px){
-
-    .feature-grid{
-
-        grid-template-columns:1fr 1fr;
-
-    }
-
-    .timeline-card{
-
-        flex-direction:column;
-
-        text-align:center;
-
-        align-items:center;
-
-    }
-
-    .timeline-icon{
-
-        margin-bottom:10px;
-
-    }
-
-    .quote-card{
-
-        padding:50px 28px;
-
-    }
-
-    .quote-card h2{
-
-        font-size:2rem;
-
-    }
-
-    .about-footer-left{
-
-        flex-direction:column;
-
-        text-align:center;
-
-    }
-
-    .about-footer-btn{
-
-        margin-inline:auto;
-
-    }
-
-    .about-footer-right{
-
-        align-items:center;
-
-        text-align:center;
-
-    }
-
-    .about-footer-group{
-
-        width:100%;
-
-    }
-
-    .about-footer-group a{
-
-        justify-content:center;
-
-    }
-
-    .about-footer-chibi{
-
-        position:static;
-
-        width:120px;
-
-        margin-top:20px;
-
-        align-self:center;
-
-    }
-
-}
-
-
-@media (max-width:576px){
-
-    .feature-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .glass-card{
-
-        padding:28px;
-
-    }
-
-    .about-intro h1{
-
-        font-size:2.5rem;
-
-    }
-
-    .quote-card h2{
-
-        font-size:1.7rem;
-
-    }
-
-    .quote-card p{
-
-        font-size:1rem;
-
-    }
-
-    .thankyou-card{
-
-        padding:35px 24px;
-
-    }
-
-    .about-footer-card{
-
-        padding:28px;
-
-    }
-
-    .about-footer-mascot{
-
-        width:120px;
-
-    }
-
-    .about-footer-content h2{
-
-        font-size:1.8rem;
-
-    }
-
-    .about-footer-chibi{
-
-        width:95px;
 
     }
 
