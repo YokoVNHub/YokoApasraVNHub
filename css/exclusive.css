@@ -427,23 +427,7 @@
 
     align-items:center;
 
-    padding:38px;
-
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.82),
-            rgba(255,247,251,.92)
-        );
-
-    border:
-        1px solid
-        rgba(255,220,235,.8);
-
-    box-shadow:
-        0 18px 45px rgba(255,205,225,.12);
+   border-radius: 30px;
 
     overflow:hidden;
 }
@@ -498,8 +482,6 @@
 .exclusive-cover img{
 
     position:relative;
-
-    width:58%;
 
     border-radius:20px;
 
