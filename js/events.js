@@ -233,10 +233,9 @@ function renderEvents() {
                     </div>
                 </div>
 
-                <div class="event-info">
-                    <h2>${item.title}</h2>
-                    
-<div class="event-meta">
+<div class="event-info">
+
+    <h2>${item.title}</h2>
 
     <p class="event-date">
         📅 ${item.date}
@@ -244,15 +243,13 @@ function renderEvents() {
 
     <a
         href="detail.html?id=${item.id}"
-        class="btn-primary btn-small">
+        class="btn-primary event-btn">
 
         <span>
 
-            View Gallery
+            View Gallery &nbsp; →
 
         </span>
-
-<i class="fa-solid fa-arrow-right"></i>
 
         <span class="moon">
 
@@ -263,8 +260,6 @@ function renderEvents() {
     </a>
 
 </div>
-                </div>
-            </a>
         `;
     }).join("");
 }
