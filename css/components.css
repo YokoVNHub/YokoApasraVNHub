@@ -211,6 +211,28 @@
         rgba(248,113,168,.38);
 }
 
+/* ======================================================
+   SMALL PRIMARY BUTTON
+====================================================== */
+
+.btn-primary.btn-small{
+
+    padding:10px 20px;
+
+    font-size:.9rem;
+
+    gap:10px;
+
+    width:fit-content;
+}
+
+.btn-primary.btn-small .moon{
+
+    width:34px;
+    height:34px;
+
+    font-size:1rem;
+}
 
 /* ======================================================
    DOWNLOAD
