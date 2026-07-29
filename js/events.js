@@ -237,27 +237,28 @@ function renderEvents() {
 
     <h2>${item.title}</h2>
 
-    <p class="event-date">
-        📅 ${item.date}
-    </p>
+    <div class="event-meta">
 
-    <a
-        href="detail.html?id=${item.id}"
-        class="btn-primary event-btn">
+        <p class="event-date">
+            📅 ${item.date}
+        </p>
 
-        <span>
+    </div>
 
-            View Gallery &nbsp; →
+    <div class="event-action">
 
-        </span>
+        <a href="detail.html?id=${item.id}"
+           class="btn-primary event-gallery-btn">
 
-        <span class="moon">
+            <span>
+                View Gallery →
+            </span>
 
-            ☾
+            <span class="moon">☾</span>
 
-        </span>
+        </a>
 
-    </a>
+    </div>
 
 </div>
         `;
