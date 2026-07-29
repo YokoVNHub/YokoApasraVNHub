@@ -311,244 +311,218 @@
     box-shadow: 0 4px 15px rgba(243, 151, 185, 0.35);
 }
 /* ======================================================
-   💻 RESPONSIVE MÁY TÍNH BẢNG (Max-width: 1024px)
+   RESPONSIVE
 ====================================================== */
-@media (max-width: 1024px) {
-    .events-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Chia thành 2 cột cân đối */
-        gap: 24px !important;
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width:1024px){
+
+    .events-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:24px;
+
     }
 
-    .event-card {
-        border-radius: 32px;
+    .event-info{
+
+        padding:22px;
+
     }
 
-    .event-thumb {
-        aspect-ratio: 16 / 10; /* Tỷ lệ hiển thị poster chuẩn */
+    .event-info h2{
+
+        font-size:1.45rem;
+
+        min-height:72px;
+
     }
 
-    .event-date-badge {
-        width: 76px;
-        padding: 12px 6px;
-        top: 16px;
-        left: 16px;
-        border-radius: 20px;
+    .event-date-badge{
+
+        width:72px;
+
+        top:18px;
+        left:18px;
+
+        padding:14px 6px;
+
+        border-radius:22px;
+
     }
 
-    .event-date-badge strong { font-size: 1.6rem; }
-    .event-date-badge span { font-size: 0.75rem; margin-top: 6px; }
-    .event-date-badge small { display: none; } /* Ẩn năm để đỡ rối */
+    .event-date-badge strong{
 
-    .event-info { padding: 22px; }
-    .event-info h2 { font-size: 1.35rem; min-height: 64px; }
+        font-size:1.6rem;
+
+    }
+
+    .event-date-badge small{
+
+        display:none;
+
+    }
+
 }
 
 
-/* ======================================================
-   📱 RESPONSIVE ĐIỆN THOẠI DI ĐỘNG (Max-width: 768px)
-   Phân tách rõ ràng: Chế độ Lưới (2 cột) & Danh sách (1 cột)
-====================================================== */
-@media (max-width: 768px) {
-    
-    /* CHẾ ĐỘ XEM LƯỚI (GRID VIEW): Chia thành 2 cột thon gọn cực đẹp */
-    .events-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Ép chia 2 cột đều nhau */
-        gap: 16px !important; /* Thu nhỏ khoảng cách giữa các card để vừa màn hình đứng */
-        padding: 0 4px !important;
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+    /* chỉ còn 1 cột */
+
+    .events-grid{
+
+        grid-template-columns:1fr !important;
+
+        gap:24px;
+
     }
 
-    /* CHẾ ĐỘ XEM DANH SÁCH (LIST VIEW): Quay về 1 cột dọc dãn rộng dứt khoát */
-    .events-list-view,
-    .events-grid.list-view {
-        grid-template-columns: 1fr !important; /* Ép về 1 cột duy nhất */
-        gap: 24px !important;
-        padding: 0 8px !important;
+    /* ẩn nút Grid/List */
+
+    .view-toggle,
+    .view-switch{
+
+        display:none;
+
     }
 
-    /* --------------------------------------------------
-       CẤU TRÚC CARD TỰ ĐỘNG CO GIÃN THEO CHẾ ĐỘ XEM
-    -------------------------------------------------- */
-    .event-card {
-        border-radius: 20px !important; /* Bo góc nhỏ hơn một chút cho tinh tế */
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 8px 24px rgba(255, 190, 220, 0.08);
-    }
-    
-    .event-card:hover {
-        transform: translateY(-4px); 
+    .event-card{
+
+        border-radius:26px;
+
     }
 
-    /* Tỷ lệ ảnh poster hiển thị (Duy trì dạng chữ nhật điện ảnh trên di động) */
-    .event-thumb {
-        aspect-ratio: 16 / 10 !important; 
+    .event-thumb{
+
+        aspect-ratio:16/9;
+
     }
 
-    /* Khối lịch mini góc trái ảnh - Thu nhỏ tối đa để không che poster khi chia 2 cột */
-    .event-date-badge {
-        width: 48px !important;
-        padding: 6px 2px !important;
-        top: 8px !important;
-        left: 8px !important;
-        border-radius: 10px !important;
-        background: rgba(0, 0, 0, 0.5) !important;
+    .event-info{
+
+        padding:22px;
+
     }
 
-    .event-date-badge strong {
-        font-size: 1rem !important;
+    .event-info h2{
+
+        font-size:1.4rem;
+
+        min-height:auto;
+
+        margin-bottom:16px;
+
     }
 
-    .event-date-badge span {
-        font-size: 0.55rem !important;
-        margin-top: 1px !important;
+    .event-meta{
+
+        margin-bottom:24px;
+
+        gap:12px;
+
     }
 
-    .event-date-badge small {
-        display: none !important;
+    .event-date{
+
+        font-size:.95rem;
+
     }
 
-    /* Ẩn bong bóng kính trên Mobile để tránh rối mắt ở giao diện 2 cột */
-    .bubble {
-        display: none !important; 
+    .event-gallery-btn{
+
+        min-width:200px;
+
     }
 
-    /* Phần chữ thông tin sự kiện */
-    .event-info {
-        padding: 14px !important; /* Thu nhỏ khoảng đệm chữ */
+    .event-date-badge{
+
+        width:64px;
+
+        top:16px;
+        left:16px;
+
+        padding:10px 4px;
+
+        border-radius:18px;
+
     }
 
-    .event-info h2 {
-        font-size: 1rem !important; /* Hạ kích thước chữ tiêu đề sự kiện */
-        line-height: 1.3 !important;
-        min-height: auto !important; 
-        margin-bottom: 8px;
-        -webkit-line-clamp: 2; /* Khóa chặt tối đa 2 dòng chữ, không lo tràn khung */
+    .event-date-badge strong{
+
+        font-size:1.35rem;
+
     }
 
-    .event-meta {
-        margin-top: 8px !important;
-        gap: 8px !important;
+    .event-date-badge span{
+
+        font-size:.72rem;
+
     }
 
-    .event-date {
-        font-size: 0.78rem !important;
+    .event-date-badge small{
+
+        display:none;
+
     }
 
-    /* Nút đếm số lượng ảnh kẹo ngọt dãn full chiều ngang */
-    .event-photos {
-        font-size: 0.78rem !important;
-        padding: 6px 10px !important;
-        width: 100% !important;
-        justify-content: center !important;
-        border-radius: 10px !important;
-    }
-    
-    .event-card:hover .event-photos {
-        transform: translateX(0);
-    }
-}
+    /* bubble nhỏ lại */
 
-/* ======================================================
-   📱 RESPONSIVE SMALL MOBILE (Max-width: 576px)
-   Giữ nguyên bố cục Lưới 2 cột cho các dòng điện thoại nhỏ
-====================================================== */
-@media (max-width: 576px) {
-    /* CHẾ ĐỘ XEM LƯỚI: Thu nhỏ gap thành 12px để chừa chỗ cho nội dung */
-    .events-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-        padding: 0 !important;
+    .b1{
+
+        width:42px;
+        height:42px;
+
+        top:18px;
+        right:20px;
+
     }
 
-    /* CHẾ ĐỘ XEM DANH SÁCH: Vẫn giữ 1 cột dãn rộng */
-    .events-list-view,
-    .events-grid.list-view {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
+    .b2{
+
+        width:56px;
+        height:56px;
+
+        right:-10px;
+        bottom:90px;
+
     }
 
-    .event-card {
-        border-radius: 16px !important;
-    }
-
-    .event-info {
-        padding: 12px !important; /* Thu nhỏ lề đệm chữ cho thoáng */
-    }
-
-    .event-info h2 {
-        font-size: 0.92rem !important; /* Hạ nhẹ kích thước tiêu đề sự kiện */
-        margin-bottom: 6px !important;
-    }
-
-    /* Hộp lịch mini tinh tế */
-    .event-date-badge {
-        width: 44px !important;
-        padding: 5px 2px !important;
-        top: 6px !important;
-        left: 6px !important;
-        border-radius: 8px !important;
-    }
-
-    .event-date-badge strong { font-size: 0.9rem !important; }
-    .event-date-badge span { font-size: 0.5rem !important; }
-
-    .event-date {
-        font-size: 0.72rem !important;
-    }
-
-    /* Nút đếm số lượng ảnh mini */
-    .event-photos {
-        font-size: 0.75rem !important;
-        padding: 5px 8px !important;
-        border-radius: 8px !important;
-    }
 }
 
 
-/* ======================================================
-   📱 RESPONSIVE EXTRA SMALL (Max-width: 430px)
-   Tối ưu hóa tuyệt đối cho màn hình siêu dọc cực hẹp
-====================================================== */
-@media (max-width: 430px) {
-    /* CHẾ ĐỘ XEM LƯỚI: Thu nhỏ gap xuống 10px để khóa chặt layout không bị tràn viền */
-    .events-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width:430px){
+
+    .event-info{
+
+        padding:18px;
+
     }
 
-    /* CHẾ ĐỘ XEM DANH SÁCH */
-    .events-list-view,
-    .events-grid.list-view {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
+    .event-info h2{
+
+        font-size:1.25rem;
+
     }
 
-    .event-card {
-        border-radius: 14px !important;
+    .event-gallery-btn{
+
+        width:100%;
+
+        justify-content:center;
+
     }
 
-    .event-info {
-        padding: 10px !important;
-    }
-
-    .event-info h2 {
-        font-size: 0.85rem !important; /* Giúp tiêu đề hiển thị trọn vẹn 2 dòng không bị cắt cụt chữ */
-        line-height: 1.3 !important;
-        margin-bottom: 4px !important;
-    }
-
-    .event-meta {
-        margin-top: 6px !important;
-        gap: 6px !important;
-    }
-
-    .event-date {
-        font-size: 0.68rem !important;
-    }
-
-    .event-photos {
-        font-size: 0.7rem !important;
-        padding: 4px 6px !important;
-        border-radius: 6px !important;
-        letter-spacing: -0.02em; /* Thu hẹp khoảng cách chữ để vừa khít nút */
-    }
 }
